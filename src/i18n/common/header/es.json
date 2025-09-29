@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "dashboard": "Panel",
+    "mevTracker": "MEV Tracker",
+    "referrals": "Referencias"
+  },
+  "connectWallet": "Conectar Billetera",
+  "connecting": "Conectando...",
+  "installWallet": "Instalar Billetera",
+  "installPhantom": "Instalar Phantom",
+  "installSolflare": "Instalar Solflare",
+  "balance": "Saldo",
+  "disconnect": "Desconectar"
+}

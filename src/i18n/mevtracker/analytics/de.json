@@ -1,0 +1,12 @@
+{
+  "performanceMetrics": "Leistungsmetriken",
+  "performanceDescription": "Wichtige Leistungsindikatoren",
+  "totalTransactions": "Gesamttransaktionen",
+  "avgExecutionTime": "Durchschn. Ausführungszeit",
+  "dailyVolume": "Tägliches Volumen",
+  "strategyDistribution": "Strategieverteilung",
+  "profitByStrategy": "Gewinn nach Strategietyp",
+  "arbitrage": "Arbitrage",
+  "liquidation": "Liquidation",
+  "sandwich": "Sandwich"
+}

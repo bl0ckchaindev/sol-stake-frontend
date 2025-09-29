@@ -1,0 +1,9 @@
+{
+  "title": "MEV Bot Tracker",
+  "subtitle": "Real-time performance and transparency dashboard",
+  "status": {
+    "active": "ACTIVE",
+    "maintenance": "MAINTENANCE",
+    "offline": "OFFLINE"
+  }
+}

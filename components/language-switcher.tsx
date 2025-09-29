@@ -1,39 +1,37 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Globe } from "lucide-react"
-import { useLanguage } from "./language-provider"
+import React from 'react';
+import { useTranslation } from './translation-context';
+import { ChevronDown } from 'lucide-react';
 
 const languages = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "de", name: "Deutsch", flag: "🇩🇪" },
-  { code: "it", name: "Italiano", flag: "🇮🇹" },
-  { code: "es", name: "Español", flag: "🇪🇸" },
-  { code: "pt", name: "Português", flag: "🇵🇹" },
-] as const
+  { code: 'en', label: 'EN', flag: '🇺🇸' },
+  { code: 'de', label: 'DE', flag: '🇩🇪' },
+  { code: 'it', label: 'IT', flag: '🇮🇹' },
+  { code: 'es', label: 'ES', flag: '🇪🇸' },
+];
 
-export function LanguageSwitcher() {
-  const { language, setLanguage } = useLanguage()
-
-  const currentLanguage = languages.find((lang) => lang.code === language)
+export const LanguageSwitcher: React.FC = () => {
+  const { language, setLanguage } = useTranslation();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-2">
-          <Globe className="h-4 w-4" />
-          <span className="hidden sm:inline">{currentLanguage?.flag}</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+    <div className="relative">
+      <select
+        value={language}
+        onChange={(e) => setLanguage(e.target.value)}
+        className="appearance-none rounded-md px-3 py-2 bg-background border border-input text-sm font-medium cursor-pointer focus:outline-none focus:ring-0"
+      >
         {languages.map((lang) => (
-          <DropdownMenuItem key={lang.code} onClick={() => setLanguage(lang.code as any)} className="gap-2">
-            <span>{lang.flag}</span>
-            <span>{lang.name}</span>
-          </DropdownMenuItem>
+          <option
+            key={lang.code}
+            value={lang.code}
+            className="bg-background"
+          >
+            {lang.flag} {lang.label}
+          </option>
         ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  )
-}
+      </select>
+      <ChevronDown className="absolute -right-1 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none text-muted-foreground" />
+    </div>
+  );
+};

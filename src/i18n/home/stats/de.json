@@ -1,0 +1,26 @@
+{
+  "title": "Plattform-Performance",
+  "subtitle": "Unsere MEV-Bot-Infrastruktur liefert konsistente, transparente Ergebnisse für institutionelle und private Staker.",
+  "items": {
+    "tvl": {
+      "value": "$2M+",
+      "label": "Gesamter Gesperrter Wert",
+      "description": "Vermögenswerte in unserer MEV-Infrastruktur gesichert"
+    },
+    "apy": {
+      "value": "365%",
+      "label": "Jährliche Prozentrendite",
+      "description": "Basierend auf 1% täglichen Zinseszinsen"
+    },
+    "uptime": {
+      "value": "99,9%",
+      "label": "Verfügbarkeitsgarantie",
+      "description": "MEV-Bot-Reliabilität auf Institutionenniveau"
+    },
+    "monitoring": {
+      "value": "24/7",
+      "label": "MEV-Überwachung",
+      "description": "Kontinuierliche Möglichkeitserkennung"
+    }
+  }
+}

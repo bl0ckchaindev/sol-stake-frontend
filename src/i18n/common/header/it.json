@@ -1,0 +1,15 @@
+{
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "mevTracker": "MEV Tracker",
+    "referrals": "Referenze"
+  },
+  "connectWallet": "Connetti Wallet",
+  "connecting": "Connessione...",
+  "installWallet": "Installa Wallet",
+  "installPhantom": "Installa Phantom",
+  "installSolflare": "Installa Solflare",
+  "balance": "Saldo",
+  "disconnect": "Disconnetti"
+}

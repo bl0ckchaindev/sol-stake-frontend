@@ -1,0 +1,9 @@
+{
+  "title": "Rastreador de Bot MEV",
+  "subtitle": "Panel de rendimiento y transparencia en tiempo real",
+  "status": {
+    "active": "ACTIVO",
+    "maintenance": "MANTENIMIENTO",
+    "offline": "FUERA DE LÍNEA"
+  }
+}

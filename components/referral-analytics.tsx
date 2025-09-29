@@ -4,11 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { useReferral } from "./referral-provider"
+import { useTranslation } from "./translation-context"
 import { TrendingUp, Calendar, DollarSign, Target, Award } from "lucide-react"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from "recharts"
 
 export function ReferralAnalytics() {
   const { referralData } = useReferral()
+  const { t } = useTranslation()
 
   if (!referralData) return null
 
@@ -41,11 +43,11 @@ export function ReferralAnalytics() {
 
   // Tier system based on total referrals
   const getTier = (referrals: number) => {
-    if (referrals >= 100) return { name: "Diamond", color: "bg-blue-500", bonus: "2.5%" }
-    if (referrals >= 50) return { name: "Platinum", color: "bg-purple-500", bonus: "2%" }
-    if (referrals >= 25) return { name: "Gold", color: "bg-yellow-500", bonus: "1.5%" }
-    if (referrals >= 10) return { name: "Silver", color: "bg-gray-400", bonus: "1.25%" }
-    return { name: "Bronze", color: "bg-orange-500", bonus: "1%" }
+    if (referrals >= 100) return { name: t('referrals.analytics.diamond'), color: "bg-blue-500", bonus: "2.5%" }
+    if (referrals >= 50) return { name: t('referrals.analytics.platinum'), color: "bg-purple-500", bonus: "2%" }
+    if (referrals >= 25) return { name: t('referrals.analytics.gold'), color: "bg-yellow-500", bonus: "1.5%" }
+    if (referrals >= 10) return { name: t('referrals.analytics.silver'), color: "bg-gray-400", bonus: "1.25%" }
+    return { name: t('referrals.analytics.bronze'), color: "bg-orange-500", bonus: "1%" }
   }
 
   const currentTier = getTier(referralData.totalReferrals)
@@ -66,18 +68,18 @@ export function ReferralAnalytics() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Monthly Avg</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('referrals.analytics.monthlyAvg')}</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-success">{avgMonthlyProfit.toFixed(2)} SOL</div>
-            <p className="text-xs text-muted-foreground">Average monthly profit</p>
+            <p className="text-xs text-muted-foreground">{t('referrals.analytics.averageMonthlyProfit')}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Growth Rate</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('referrals.analytics.growthRate')}</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -85,29 +87,29 @@ export function ReferralAnalytics() {
               {profitGrowth >= 0 ? "+" : ""}
               {profitGrowth.toFixed(1)}%
             </div>
-            <p className="text-xs text-muted-foreground">Month over month</p>
+            <p className="text-xs text-muted-foreground">{t('referrals.analytics.monthOverMonth')}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Period</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('referrals.analytics.activePeriod')}</CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">6 Months</div>
-            <p className="text-xs text-muted-foreground">Since first referral</p>
+            <div className="text-2xl font-bold">6 {t('referrals.analytics.months')}</div>
+            <p className="text-xs text-muted-foreground">{t('referrals.analytics.sinceFirstReferral')}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Conversion Rate</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('referrals.analytics.conversionRate')}</CardTitle>
             <Target className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">78%</div>
-            <p className="text-xs text-muted-foreground">Visitors to stakers</p>
+            <p className="text-xs text-muted-foreground">{t('referrals.analytics.visitorsToStakers')}</p>
           </CardContent>
         </Card>
       </div>
@@ -117,26 +119,26 @@ export function ReferralAnalytics() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Award className="h-5 w-5" />
-            Referral Tier Status
+            {t('referrals.analytics.referralTierStatus')}
           </CardTitle>
-          <CardDescription>Unlock higher reward rates by referring more users</CardDescription>
+          <CardDescription>{t('referrals.analytics.unlockHigherRewards')}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className={`w-4 h-4 rounded-full ${currentTier.color}`} />
               <div>
-                <div className="font-semibold">{currentTier.name} Tier</div>
-                <div className="text-sm text-muted-foreground">Current reward rate: {currentTier.bonus}</div>
+                <div className="font-semibold">{currentTier.name} {t('referrals.analytics.tier')}</div>
+                <div className="text-sm text-muted-foreground">{t('referrals.analytics.currentRewardRate')}: {currentTier.bonus}</div>
               </div>
             </div>
-            <Badge variant="secondary">{referralData.totalReferrals} referrals</Badge>
+            <Badge variant="secondary">{referralData.totalReferrals} {t('referrals.analytics.referrals')}</Badge>
           </div>
 
           {referralData.totalReferrals < 100 && (
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span>Progress to next tier</span>
+                <span>{t('referrals.analytics.progressToNextTier')}</span>
                 <span>
                   {referralData.totalReferrals}/{nextTierThreshold}
                 </span>
@@ -150,8 +152,8 @@ export function ReferralAnalytics() {
       {/* Profit History Chart */}
       <Card>
         <CardHeader>
-          <CardTitle>Profit History</CardTitle>
-          <CardDescription>Your referral earnings over the last 6 months</CardDescription>
+          <CardTitle>{t('referrals.analytics.profitHistory')}</CardTitle>
+          <CardDescription>{t('referrals.analytics.profitHistoryDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="h-[300px]">
@@ -166,7 +168,7 @@ export function ReferralAnalytics() {
                     border: "1px solid hsl(var(--border))",
                     borderRadius: "8px",
                   }}
-                  formatter={(value: number) => [`${value.toFixed(2)} SOL`, "Profit"]}
+                  formatter={(value: number) => [`${value.toFixed(2)} SOL`, t('referrals.analytics.profit')]}
                 />
                 <Line
                   type="monotone"
@@ -184,8 +186,8 @@ export function ReferralAnalytics() {
       {/* Referral Activity Chart */}
       <Card>
         <CardHeader>
-          <CardTitle>Referral Activity</CardTitle>
-          <CardDescription>Number of new referrals per month</CardDescription>
+          <CardTitle>{t('referrals.analytics.referralActivity')}</CardTitle>
+          <CardDescription>{t('referrals.analytics.referralActivityDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="h-[250px]">
@@ -200,7 +202,7 @@ export function ReferralAnalytics() {
                     border: "1px solid hsl(var(--border))",
                     borderRadius: "8px",
                   }}
-                  formatter={(value: number) => [`${value}`, "Referrals"]}
+                  formatter={(value: number) => [`${value}`, t('referrals.analytics.referrals')]}
                 />
                 <Bar dataKey="referrals" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
               </BarChart>

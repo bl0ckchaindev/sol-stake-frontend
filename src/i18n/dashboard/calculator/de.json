@@ -1,0 +1,11 @@
+{
+  "title": "Belohnungsrechner",
+  "stakeAmount": "Stake-Betrag",
+  "lockPeriod": "Sperrzeit (Tage)",
+  "dailyReward": "Tägliche Belohnung",
+  "totalRewards": "Gesamtbelohnungen",
+  "apy": "APY",
+  "finalAmount": "Endbetrag",
+  "note": "Hinweis",
+  "noteText": "Berechnungen basieren auf 1% täglichen Belohnungen. Tatsächliche Belohnungen können je nach Netzwerkbedingungen und Plattformleistung variieren."
+}

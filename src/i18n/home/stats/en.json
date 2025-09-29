@@ -1,0 +1,26 @@
+{
+  "title": "Platform Performance",
+  "subtitle": "Our MEV bot infrastructure delivers consistent, transparent results for institutional and retail stakers.",
+  "items": {
+    "tvl": {
+      "value": "$2M+",
+      "label": "Total Value Locked",
+      "description": "Assets secured in our MEV infrastructure"
+    },
+    "apy": {
+      "value": "365%",
+      "label": "Annual Percentage Yield",
+      "description": "Based on 1% daily compound returns"
+    },
+    "uptime": {
+      "value": "99.9%",
+      "label": "Uptime Guarantee",
+      "description": "Institutional-grade MEV bot reliability"
+    },
+    "monitoring": {
+      "value": "24/7",
+      "label": "MEV Monitoring",
+      "description": "Continuous opportunity identification"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "title": "So Funktioniert MEV-Staking",
+  "subtitle": "Unsere hochentwickelte MEV-Bot-Infrastruktur generiert konsistente Renditen durch die Erfassung von Maximum Extractable Value-Möglichkeiten im gesamten Solana-Ökosystem.",
+  "steps": {
+    "step1": {
+      "title": "Verbinden & Staken",
+      "description": "Verbinden Sie Ihr Solana-Wallet und staken Sie SOL, USDC, USDT oder Meme-Token mit unserer Plattform.",
+      "badge": "Schritt 1"
+    },
+    "step2": {
+      "title": "MEV-Bot-Bereitstellung",
+      "description": "Ihre gestakten Mittel werden über unsere MEV-Bot-Infrastruktur bereitgestellt, um Arbitrage-Möglichkeiten zu erfassen.",
+      "badge": "Schritt 2"
+    },
+    "step3": {
+      "title": "Wertextraktion",
+      "description": "Unsere Bots identifizieren und führen profitable Trades, Liquidationen und Arbitrage auf Solana-DEXs aus.",
+      "badge": "Schritt 3"
+    },
+    "step4": {
+      "title": "Belohnungsverteilung",
+      "description": "Verdienen Sie 1% tägliche Belohnungen aus MEV-Gewinnen, während Ihr Kapital 90 Tage lang gesperrt bleibt.",
+      "badge": "Schritt 4"
+    }
+  }
+}

@@ -8,12 +8,14 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useReferral } from "./referral-provider"
 import { useWallet } from "./wallet-provider"
 import { ReferralAnalytics } from "./referral-analytics"
+import { useTranslation } from "./translation-context"
 import { Copy, Users, Gift, TrendingUp, Share2, Check, ExternalLink, Calendar, Wallet } from "lucide-react"
 import { useState } from "react"
 
 export function ReferralPage() {
   const { connected } = useWallet()
   const { referralData, getReferralLink } = useReferral()
+  const { t } = useTranslation()
   const [copied, setCopied] = useState(false)
 
   const copyReferralLink = async () => {
@@ -26,8 +28,8 @@ export function ReferralPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Referral Program</h1>
-        <p className="text-muted-foreground">Earn 1% rewards on every stake made by your referrals</p>
+        <h1 className="text-3xl font-bold mb-2">{t('referrals.main.title')}</h1>
+        <p className="text-muted-foreground">{t('referrals.main.subtitle')}</p>
       </div>
 
       {!connected ? (
@@ -36,34 +38,34 @@ export function ReferralPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Referral Rate</CardTitle>
+                <CardTitle className="text-sm font-medium">{t('referrals.main.referralRate')}</CardTitle>
                 <TrendingUp className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-primary">1%</div>
-                <p className="text-xs text-muted-foreground">Of stake amount</p>
+                <p className="text-xs text-muted-foreground">{t('referrals.main.ofStakeAmount')}</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Instant Rewards</CardTitle>
+                <CardTitle className="text-sm font-medium">{t('referrals.main.instantRewards')}</CardTitle>
                 <Gift className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-success">Immediate</div>
-                <p className="text-xs text-muted-foreground">No waiting period</p>
+                <div className="text-2xl font-bold text-success">{t('referrals.main.instantRewards')}</div>
+                <p className="text-xs text-muted-foreground">{t('referrals.main.noWaitingPeriod')}</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Unlimited</CardTitle>
+                <CardTitle className="text-sm font-medium">{t('referrals.main.unlimited')}</CardTitle>
                 <Users className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">∞</div>
-                <p className="text-xs text-muted-foreground">No referral limit</p>
+                <p className="text-xs text-muted-foreground">{t('referrals.main.noReferralLimit')}</p>
               </CardContent>
             </Card>
           </div>
@@ -71,8 +73,8 @@ export function ReferralPage() {
           {/* How It Works */}
           <Card>
             <CardHeader>
-              <CardTitle>How Referrals Work</CardTitle>
-              <CardDescription>Start earning rewards in 3 simple steps</CardDescription>
+              <CardTitle>{t('referrals.main.howItWorks')}</CardTitle>
+              <CardDescription>{t('referrals.main.howItWorksDescription')}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -80,24 +82,24 @@ export function ReferralPage() {
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                     <span className="text-primary font-bold">1</span>
                   </div>
-                  <h3 className="font-semibold mb-2">Share Your Link</h3>
-                  <p className="text-sm text-muted-foreground">Send your referral link to friends and family</p>
+                  <h3 className="font-semibold mb-2">{t('referrals.main.step1Title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('referrals.main.step1Description')}</p>
                 </div>
 
                 <div className="text-center p-4 border rounded-lg">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                     <span className="text-primary font-bold">2</span>
                   </div>
-                  <h3 className="font-semibold mb-2">They Stake Tokens</h3>
-                  <p className="text-sm text-muted-foreground">When they stake using your link, you earn rewards</p>
+                  <h3 className="font-semibold mb-2">{t('referrals.main.step2Title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('referrals.main.step2Description')}</p>
                 </div>
 
                 <div className="text-center p-4 border rounded-lg">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                     <span className="text-primary font-bold">3</span>
                   </div>
-                  <h3 className="font-semibold mb-2">Earn 1% Rewards</h3>
-                  <p className="text-sm text-muted-foreground">Get 1% of their stake amount as instant rewards</p>
+                  <h3 className="font-semibold mb-2">{t('referrals.main.step3Title')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('referrals.main.step3Description')}</p>
                 </div>
               </div>
             </CardContent>
@@ -108,15 +110,15 @@ export function ReferralPage() {
             <CardHeader className="text-center">
               <CardTitle className="flex items-center justify-center gap-2">
                 <Wallet className="h-5 w-5" />
-                Ready to Start Earning?
+                {t('referrals.main.readyToStart')}
               </CardTitle>
               <CardDescription>
-                Connect your wallet to get your unique referral link and start earning rewards
+                {t('referrals.main.connectWalletDescription')}
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
               <Button size="lg" className="w-full md:w-auto">
-                Connect Wallet to Get Started
+                {t('referrals.main.connectWallet')}
               </Button>
             </CardContent>
           </Card>
@@ -124,15 +126,15 @@ export function ReferralPage() {
       ) : !referralData ? (
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-3xl font-bold mb-4">Loading Referral Data...</h1>
+            <h1 className="text-3xl font-bold mb-4">{t('referrals.main.loading')}</h1>
           </div>
         </div>
       ) : (
         <Tabs defaultValue="overview" className="space-y-6">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="history">History</TabsTrigger>
+            <TabsTrigger value="overview">{t('referrals.main.overview')}</TabsTrigger>
+            <TabsTrigger value="analytics">{t('referrals.main.analytics')}</TabsTrigger>
+            <TabsTrigger value="history">{t('referrals.main.history')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
@@ -140,36 +142,36 @@ export function ReferralPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Referrals</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t('referrals.main.totalReferrals')}</CardTitle>
                   <Users className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{referralData.totalReferrals}</div>
-                  <p className="text-xs text-muted-foreground">Users referred</p>
+                  <p className="text-xs text-muted-foreground">{t('referrals.main.usersReferred')}</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Total Rewards</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t('referrals.main.totalRewards')}</CardTitle>
                   <Gift className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-success">
                     {referralData.totalReferralRewards.toFixed(4)} SOL
                   </div>
-                  <p className="text-xs text-muted-foreground">Lifetime earnings</p>
+                  <p className="text-xs text-muted-foreground">{t('referrals.main.lifetimeEarnings')}</p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Referral Rate</CardTitle>
+                  <CardTitle className="text-sm font-medium">{t('referrals.main.referralRate')}</CardTitle>
                   <TrendingUp className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-primary">1%</div>
-                  <p className="text-xs text-muted-foreground">Of stake amount</p>
+                  <p className="text-xs text-muted-foreground">{t('referrals.main.ofStakeAmount')}</p>
                 </CardContent>
               </Card>
             </div>
@@ -179,10 +181,10 @@ export function ReferralPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Share2 className="h-5 w-5" />
-                  Your Referral Link
+                  {t('referrals.main.yourReferralLink')}
                 </CardTitle>
                 <CardDescription>
-                  Share this link to earn 1% rewards on every stake made by your referrals
+                  {t('referrals.main.yourReferralLinkDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -194,8 +196,8 @@ export function ReferralPage() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <Badge variant="secondary">Your Code: {referralData.referralCode}</Badge>
-                  {referralData.referredBy && <Badge variant="outline">Referred by: {referralData.referredBy}</Badge>}
+                  <Badge variant="secondary">{t('referrals.main.yourCode')}: {referralData.referralCode}</Badge>
+                  {referralData.referredBy && <Badge variant="outline">{t('referrals.main.referredBy')}: {referralData.referredBy}</Badge>}
                 </div>
 
                 <div className="flex gap-2">
@@ -210,7 +212,7 @@ export function ReferralPage() {
                     }
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
-                    Share on Twitter
+                    {t('referrals.main.shareOnTwitter')}
                   </Button>
                   <Button
                     variant="outline"
@@ -223,7 +225,7 @@ export function ReferralPage() {
                     }
                   >
                     <ExternalLink className="h-4 w-4 mr-2" />
-                    Share on Telegram
+                    {t('referrals.main.shareOnTelegram')}
                   </Button>
                 </div>
               </CardContent>
@@ -232,7 +234,7 @@ export function ReferralPage() {
             {/* How It Works */}
             <Card>
               <CardHeader>
-                <CardTitle>How Referrals Work</CardTitle>
+                <CardTitle>{t('referrals.main.howItWorks')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -240,24 +242,24 @@ export function ReferralPage() {
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                       <span className="text-primary font-bold">1</span>
                     </div>
-                    <h3 className="font-semibold mb-2">Share Your Link</h3>
-                    <p className="text-sm text-muted-foreground">Send your referral link to friends and family</p>
+                    <h3 className="font-semibold mb-2">{t('referrals.main.step1Title')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('referrals.main.step1Description')}</p>
                   </div>
 
                   <div className="text-center p-4 border rounded-lg">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                       <span className="text-primary font-bold">2</span>
                     </div>
-                    <h3 className="font-semibold mb-2">They Stake Tokens</h3>
-                    <p className="text-sm text-muted-foreground">When they stake using your link, you earn rewards</p>
+                    <h3 className="font-semibold mb-2">{t('referrals.main.step2Title')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('referrals.main.step2Description')}</p>
                   </div>
 
                   <div className="text-center p-4 border rounded-lg">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
                       <span className="text-primary font-bold">3</span>
                     </div>
-                    <h3 className="font-semibold mb-2">Earn 1% Rewards</h3>
-                    <p className="text-sm text-muted-foreground">Get 1% of their stake amount as instant rewards</p>
+                    <h3 className="font-semibold mb-2">{t('referrals.main.step3Title')}</h3>
+                    <p className="text-sm text-muted-foreground">{t('referrals.main.step3Description')}</p>
                   </div>
                 </div>
               </CardContent>
@@ -274,9 +276,9 @@ export function ReferralPage() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Calendar className="h-5 w-5" />
-                  Referral History
+                  {t('referrals.main.referralHistory')}
                 </CardTitle>
-                <CardDescription>Complete history of your referral rewards</CardDescription>
+                <CardDescription>{t('referrals.main.referralHistoryDescription')}</CardDescription>
               </CardHeader>
               <CardContent>
                 {referralData.referralHistory.length > 0 ? (
@@ -290,8 +292,8 @@ export function ReferralPage() {
                           className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors"
                         >
                           <div className="space-y-1">
-                            <div className="font-medium">Referral Reward</div>
-                            <div className="text-sm text-muted-foreground">Stake Amount: {reward.stakeAmount} SOL</div>
+                            <div className="font-medium">{t('referrals.main.referralReward')}</div>
+                            <div className="text-sm text-muted-foreground">{t('referrals.main.stakeAmount')}: {reward.stakeAmount} SOL</div>
                             <div className="text-xs text-muted-foreground">
                               {reward.timestamp.toLocaleDateString()} at {reward.timestamp.toLocaleTimeString()}
                             </div>
@@ -308,9 +310,9 @@ export function ReferralPage() {
                 ) : (
                   <div className="text-center py-8">
                     <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">No referrals yet</h3>
-                    <p className="text-muted-foreground mb-4">Start sharing your referral link to earn rewards!</p>
-                    <Button onClick={copyReferralLink}>Copy Referral Link</Button>
+                    <h3 className="text-lg font-semibold mb-2">{t('referrals.main.noReferralsYet')}</h3>
+                    <p className="text-muted-foreground mb-4">{t('referrals.main.noReferralsDescription')}</p>
+                    <Button onClick={copyReferralLink}>{t('referrals.main.copyReferralLink')}</Button>
                   </div>
                 )}
               </CardContent>

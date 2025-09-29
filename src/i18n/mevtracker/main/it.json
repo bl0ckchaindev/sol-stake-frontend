@@ -1,0 +1,9 @@
+{
+  "title": "Tracker Bot MEV",
+  "subtitle": "Dashboard di prestazioni e trasparenza in tempo reale",
+  "status": {
+    "active": "ATTIVO",
+    "maintenance": "MANUTENZIONE",
+    "offline": "OFFLINE"
+  }
+}

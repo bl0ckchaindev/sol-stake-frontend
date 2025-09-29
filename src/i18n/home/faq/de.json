@@ -1,0 +1,58 @@
+{
+  "title": "Häufig Gestellte Fragen",
+  "subtitle": "Alles, was Sie über MEV-Bot-Staking, Belohnungen und unsere Plattform wissen müssen.",
+  "categories": {
+    "all": "Alle Fragen",
+    "general": "Allgemein",
+    "staking": "Staking",
+    "rewards": "Belohnungen",
+    "security": "Sicherheit",
+    "referrals": "Empfehlungen"
+  },
+  "items": {
+    "whatIsMev": {
+      "question": "Was ist MEV und wie funktioniert es?",
+      "answer": "Maximum Extractable Value (MEV) bezieht sich auf den Gewinn, der durch Umordnen, Einschließen oder Ausschließen von Transaktionen innerhalb eines Blocks erzielt werden kann. Unsere MEV-Bots identifizieren Arbitrage-Möglichkeiten, Liquidationen und andere profitable Transaktionen auf Solana-DEXs und generieren so konsistente Renditen für Staker."
+    },
+    "howStakingWorks": {
+      "question": "Wie funktioniert MEV-Bot-Staking?",
+      "answer": "Wenn Sie Token bei uns staken, werden Ihre Mittel über unsere hochentwickelte MEV-Bot-Infrastruktur eingesetzt. Diese Bots überwachen kontinuierlich Solana-DEXs nach profitablen Möglichkeiten wie Arbitrage und Liquidationen. Die Gewinne werden täglich als Belohnungen an Staker verteilt, während das Kapital 90 Tage lang gesperrt bleibt."
+    },
+    "supportedTokens": {
+      "question": "Welche Token kann ich staken?",
+      "answer": "Wir unterstützen derzeit SOL, USDC, USDT und ausgewählte Meme-Token. Unsere MEV-Bots sind für die Arbeit mit diesen Token auf wichtigen Solana-DEXs wie Jupiter, Raydium und Orca optimiert. Zusätzliche Token können basierend auf Liquidität und MEV-Möglichkeiten hinzugefügt werden."
+    },
+    "dailyRewards": {
+      "question": "Wie werden tägliche Belohnungen berechnet?",
+      "answer": "Tägliche Belohnungen basieren auf der tatsächlichen MEV-Bot-Performance und zielen typischerweise auf 1% pro Tag ab. Die Belohnungen werden aus den Gewinnen berechnet, die durch unsere MEV-Operationen generiert werden, und proportional an alle Staker verteilt. Die tatsächlichen Renditen können je nach Marktbedingungen und MEV-Möglichkeiten variieren."
+    },
+    "lockPeriod": {
+      "question": "Warum gibt es eine 90-Tage-Sperrfrist?",
+      "answer": "Die 90-Tage-Sperrfrist gewährleistet eine optimale MEV-Erfassung, indem sie unseren Bots stabile Liquidität für größere, profitablere Operationen bietet. Diese Sperrfrist ermöglicht es uns, komplexe Arbitrage-Strategien auszuführen und wettbewerbsfähige Vorteile bei der MEV-Extraktion zu behalten."
+    },
+    "securityMeasures": {
+      "question": "Wie sicher sind meine Mittel?",
+      "answer": "Wir implementieren institutionelle Sicherheitsmaßnahmen einschließlich Multi-Signature-Wallets, regelmäßiger Sicherheitsprüfungen und getrennter Fondsaufbewahrung. Unsere Smart Contracts werden von führenden Sicherheitsfirmen geprüft, und wir unterhalten eine umfassende Versicherungsabdeckung für gestakte Vermögenswerte."
+    },
+    "referralProgram": {
+      "question": "Wie funktioniert das Empfehlungsprogramm?",
+      "answer": "Verdienen Sie 1% Belohnungen auf jede Einzahlung von Benutzern, die über Ihren Empfehlungslink beitreten. Empfehlungsbelohnungen werden sofort ausgezahlt, wenn Ihre Empfehlungen Token staken. Es gibt keine Begrenzung, wie viele Personen Sie empfehlen können, und die Belohnungen werden im gleichen Token wie die Einzahlung ausgezahlt."
+    },
+    "referralTiers": {
+      "question": "Was sind Empfehlungsstufen?",
+      "answer": "Unser Stufensystem belohnt aktive Werber mit höheren Sätzen: Bronze (1%), Silber (1,25%), Gold (1,5%), Platin (2%) und Diamant (2,5%). Die Stufen basieren auf Gesamtempfehlungen: 10+ für Silber, 25+ für Gold, 50+ für Platin und 100+ für Diamant."
+    },
+    "risksInvolved": {
+      "question": "Welche Risiken sind involviert?",
+      "answer": "MEV-Bot-Staking beinhaltet mehrere Risiken einschließlich Smart-Contract-Schwachstellen, MEV-Konkurrenz, die Gewinne reduziert, Solana-Netzwerkprobleme und allgemeine Kryptowährungsmarktrisiken. Frühere Ergebnisse garantieren keine zukünftigen Ergebnisse. Staken Sie nur, was Sie sich leisten können zu verlieren."
+    },
+    "minimumStake": {
+      "question": "Gibt es eine Mindesteinzahlung?",
+      "answer": "Die Mindesteinlage variiert je nach Token: 0,1 SOL, 10 USDC, 10 USDT oder entsprechende Beträge für Meme-Token. Diese Mindestbeträge gewährleisten effiziente MEV-Bot-Operationen und angemessene Gas-Kostenverhältnisse für alle Teilnehmer."
+    },
+    "botPerformance": {
+      "question": "Wie kann ich die MEV-Bot-Performance verfolgen?",
+      "answer": "Wir bieten transparente Leistungskennzahlen einschließlich täglicher Renditen, gesperrtem Gesamtwert, Erfolgsquoten und historischer Performance-Daten. Alle MEV-Operationen werden On-Chain für volle Transparenz und Überprüfung aufgezeichnet."
+    }
+  }
+}

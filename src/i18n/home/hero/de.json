@@ -1,0 +1,24 @@
+{
+  "announcement": "Über 2 Millionen Dollar an MEV-Belohnungen an Staker verteilt",
+  "title": "MEV-Bot-Staking",
+  "subtitle": "für Solana DeFi",
+  "description": "Staken Sie Ihre SOL, USDC, USDT und Meme-Token mit unserer fortschrittlichen MEV-Bot-Infrastruktur. Verdienen Sie 1% tägliche Belohnungen aus Maximum Extractable Value-Möglichkeiten auf Solana.",
+  "buttons": {
+    "startStaking": "Staking Beginnen",
+    "learnMore": "Mehr Erfahren"
+  },
+  "features": {
+    "mevExtraction": {
+      "title": "MEV-Extraktion",
+      "description": "Fortschrittliche Algorithmen erfassen Arbitrage- und Liquidationsmöglichkeiten auf Solana DEXs"
+    },
+    "secureStaking": {
+      "title": "Sicheres Staking",
+      "description": "90-tägige Sperrfristen mit institutioneller Sicherheit und transparenter Belohnungsverteilung"
+    },
+    "dailyRewards": {
+      "title": "Tägliche Belohnungen",
+      "description": "Heben Sie 1% tägliche Belohnungen ab, während Ihr Kapital für optimale MEV-Erfassung gesperrt bleibt"
+    }
+  }
+}

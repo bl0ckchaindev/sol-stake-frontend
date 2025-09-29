@@ -6,8 +6,10 @@ import { Label } from "@/components/ui/label"
 import { RewardEngine } from "@/lib/reward-engine"
 import { useState, useEffect } from "react"
 import { Calculator, TrendingUp, Calendar, Coins } from "lucide-react"
+import { useTranslation } from './translation-context'
 
 export function RewardCalculator() {
+  const { t } = useTranslation();
   const [amount, setAmount] = useState("100")
   const [days, setDays] = useState("90")
   const [calculation, setCalculation] = useState<any>(null)
@@ -38,13 +40,13 @@ export function RewardCalculator() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Calculator className="h-5 w-5" />
-          Reward Calculator
+          {t('dashboard.calculator.title')}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="calc-amount">Stake Amount</Label>
+            <Label htmlFor="calc-amount">{t('dashboard.calculator.stakeAmount')}</Label>
             <Input
               id="calc-amount"
               type="number"
@@ -54,7 +56,7 @@ export function RewardCalculator() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="calc-days">Lock Period (Days)</Label>
+            <Label htmlFor="calc-days">{t('dashboard.calculator.lockPeriod')}</Label>
             <Input
               id="calc-days"
               type="number"
@@ -70,7 +72,7 @@ export function RewardCalculator() {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
                 <TrendingUp className="h-4 w-4" />
-                Daily Reward
+                {t('dashboard.calculator.dailyReward')}
               </div>
               <div className="text-2xl font-bold text-success">{calculation.dailyReward.toFixed(4)} SOL</div>
             </div>
@@ -78,7 +80,7 @@ export function RewardCalculator() {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
                 <Coins className="h-4 w-4" />
-                Total Rewards
+                {t('dashboard.calculator.totalRewards')}
               </div>
               <div className="text-2xl font-bold text-success">{calculation.projectedTotalRewards.toFixed(4)} SOL</div>
             </div>
@@ -86,7 +88,7 @@ export function RewardCalculator() {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
                 <Calendar className="h-4 w-4" />
-                APY
+                {t('dashboard.calculator.apy')}
               </div>
               <div className="text-2xl font-bold text-primary">{RewardEngine.calculateAPY(0.01).toFixed(0)}%</div>
             </div>
@@ -94,7 +96,7 @@ export function RewardCalculator() {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
                 <TrendingUp className="h-4 w-4" />
-                Final Amount
+                {t('dashboard.calculator.finalAmount')}
               </div>
               <div className="text-2xl font-bold">
                 {(Number.parseFloat(amount) + calculation.projectedTotalRewards).toFixed(4)} SOL
@@ -105,8 +107,7 @@ export function RewardCalculator() {
 
         <div className="p-4 bg-muted/50 rounded-lg text-sm text-muted-foreground">
           <p>
-            <strong>Note:</strong> Calculations are based on 1% daily rewards. Actual rewards may vary based on network
-            conditions and platform performance.
+            <strong>{t('dashboard.calculator.note')}:</strong> {t('dashboard.calculator.noteText')}
           </p>
         </div>
       </CardContent>

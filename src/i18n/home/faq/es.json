@@ -1,0 +1,58 @@
+{
+  "title": "Preguntas Frecuentes",
+  "subtitle": "Todo lo que necesitas saber sobre el staking con bots MEV, recompensas y nuestra plataforma.",
+  "categories": {
+    "all": "Todas las Preguntas",
+    "general": "General",
+    "staking": "Staking",
+    "rewards": "Recompensas",
+    "security": "Seguridad",
+    "referrals": "Referidos"
+  },
+  "items": {
+    "whatIsMev": {
+      "question": "¿Qué es MEV y cómo funciona?",
+      "answer": "Maximum Extractable Value (MEV) se refiere a la ganancia que se puede extraer reordenando, incluyendo o excluyendo transacciones dentro de un bloque. Nuestros bots MEV identifican oportunidades de arbitraje, liquidaciones y otras transacciones rentables en DEXs de Solana, generando rendimientos consistentes para los stakers."
+    },
+    "howStakingWorks": {
+      "question": "¿Cómo funciona el staking con bots MEV?",
+      "answer": "Cuando haces staking de tokens con nosotros, tus fondos se despliegan a través de nuestra sofisticada infraestructura de bots MEV. Estos bots monitorean continuamente DEXs de Solana en busca de oportunidades rentables como arbitraje y liquidaciones. Las ganancias se distribuyen diariamente a los stakers como recompensas mientras el principal permanece bloqueado por 90 días."
+    },
+    "supportedTokens": {
+      "question": "¿Qué tokens puedo stackear?",
+      "answer": "Actualmente admitimos SOL, USDC, USDT y tokens meme seleccionados. Nuestros bots MEV están optimizados para trabajar con estos tokens en DEXs principales de Solana incluyendo Jupiter, Raydium y Orca. Se pueden agregar tokens adicionales basándonos en liquidez y oportunidades MEV."
+    },
+    "dailyRewards": {
+      "question": "¿Cómo se calculan las recompensas diarias?",
+      "answer": "Las recompensas diarias se basan en el rendimiento real del bot MEV y típicamente apuntan al 1% por día. Las recompensas se calculan desde las ganancias generadas por nuestras operaciones MEV y se distribuyen proporcionalmente a todos los stakers. Los rendimientos reales pueden variar según las condiciones del mercado y las oportunidades MEV."
+    },
+    "lockPeriod": {
+      "question": "¿Por qué hay un período de bloqueo de 90 días?",
+      "answer": "El período de bloqueo de 90 días garantiza una captura óptima de MEV al proporcionar a nuestros bots liquidez estable para operaciones más grandes y rentables. Este período de bloqueo nos permite ejecutar estrategias complejas de arbitraje y mantener ventajas competitivas en la extracción de MEV."
+    },
+    "securityMeasures": {
+      "question": "¿Qué tan seguros están mis fondos?",
+      "answer": "Implementamos medidas de seguridad de grado institucional incluyendo billeteras de múltiples firmas, auditorías de seguridad regulares y almacenamiento segregado de fondos. Nuestros contratos inteligentes son auditados por empresas líderes de seguridad, y mantenemos cobertura de seguro integral para activos en staking."
+    },
+    "referralProgram": {
+      "question": "¿Cómo funciona el programa de referidos?",
+      "answer": "Gana 1% de recompensas en cada staking realizado por usuarios que se unan a través de tu enlace de referido. Las recompensas de referido se pagan instantáneamente cuando tus referidos hacen staking de tokens. No hay límite en cuántas personas puedes referir, y las recompensas se pagan en el mismo token que el staking."
+    },
+    "referralTiers": {
+      "question": "¿Qué son los niveles de referidos?",
+      "answer": "Nuestro sistema de niveles recompensa a los referidores activos con tasas más altas: Bronce (1%), Plata (1.25%), Oro (1.5%), Platino (2%) y Diamante (2.5%). Los niveles se basan en referidos totales: 10+ para Plata, 25+ para Oro, 50+ para Platino y 100+ para Diamante."
+    },
+    "risksInvolved": {
+      "question": "¿Qué riesgos están involucrados?",
+      "answer": "El staking con bots MEV involucra varios riesgos incluyendo vulnerabilidades de contratos inteligentes, competencia MEV reduciendo ganancias, problemas de red Solana y riesgos generales del mercado de criptomonedas. El rendimiento pasado no garantiza resultados futuros. Solo stackea lo que puedas permitirte perder."
+    },
+    "minimumStake": {
+      "question": "¿Hay una cantidad mínima de staking?",
+      "answer": "El staking mínimo varía por token: 0.1 SOL, 10 USDC, 10 USDT o cantidades equivalentes para tokens meme. Estos mínimos aseguran operaciones eficientes de bots MEV y proporciones razonables de costos de gas para todos los participantes."
+    },
+    "botPerformance": {
+      "question": "¿Cómo puedo rastrear el rendimiento del bot MEV?",
+      "answer": "Proporcionamos métricas de rendimiento transparentes incluyendo rendimientos diarios, valor total bloqueado, tasas de éxito y datos de rendimiento histórico. Todas las operaciones MEV se registran en la cadena para total transparencia y verificación."
+    }
+  }
+}

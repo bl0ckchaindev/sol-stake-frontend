@@ -1,0 +1,7 @@
+{
+  "title": "Panel de Staking",
+  "subtitle": "Gestiona tus tokens en staking y rastrea recompensas",
+  "subtitleDisconnected": "Conecta tu wallet para comenzar el staking",
+  "walletNotConnected": "Wallet no conectado.",
+  "connectPrompt": "Conecta tu wallet de Solana para ver tus posiciones y comenzar el staking."
+}

@@ -4,16 +4,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useWallet } from "./wallet-provider"
-import { useStaking } from "./staking-provider"
-import { useLanguage } from "./language-provider"
-import { StakingModal } from "./staking-modal"
-import { StakePositionCard } from "./stake-position-card"
+import { useWallet } from "@/components/wallet-provider"
+import { useStaking } from "@/components/staking-provider"
+import { useTranslation } from "@/components/translation-context"
+import { StakingModal } from "@/components/staking-modal"
+import { StakePositionCard } from "@/components/stake-position-card"
 import { RewardCalculator } from "./reward-calculator"
-import { WithdrawalHistory } from "./withdrawal-history"
+import { WithdrawalHistory } from "@/components/withdrawal-history"
 import { Coins, TrendingUp, Lock, Wallet, ArrowUpRight, AlertTriangle } from "lucide-react"
 import { useState } from "react"
-import { useReferral } from "./referral-provider"
+import { useReferral } from "@/components/referral-provider"
 
 interface Token {
   symbol: string
@@ -26,7 +26,7 @@ export function StakingDashboard() {
   const { connected, balance, balanceLoading } = useWallet()
   const { stakes, totalStaked, totalRewards, dailyRewards, totalClaimableRewards } = useStaking()
   const { referralData } = useReferral()
-  const { t } = useLanguage()
+  const { t } = useTranslation()
   const [selectedToken, setSelectedToken] = useState<Token | null>(null)
   const [stakingModalOpen, setStakingModalOpen] = useState(false)
 
@@ -52,9 +52,9 @@ export function StakingDashboard() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{t("dashboard.title")}</h1>
+        <h1 className="text-3xl font-bold mb-2">{t('dashboard.main.title')}</h1>
         <p className="text-muted-foreground">
-          {connected ? t("dashboard.subtitle") : t("dashboard.subtitleDisconnected")}
+          {connected ? t('dashboard.main.subtitle') : t('dashboard.main.subtitleDisconnected')}
         </p>
       </div>
 
@@ -63,7 +63,7 @@ export function StakingDashboard() {
           <CardContent className="flex items-center gap-3 pt-6">
             <AlertTriangle className="h-5 w-5 text-warning" />
             <p className="text-sm">
-              <strong>{t("dashboard.walletNotConnected")}</strong> {t("dashboard.connectPrompt")}
+              <strong>{t('dashboard.main.walletNotConnected')}</strong> {t('dashboard.main.connectPrompt')}
             </p>
           </CardContent>
         </Card>
@@ -73,46 +73,33 @@ export function StakingDashboard() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t("stats.totalStaked")}</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('dashboard.stats.totalStaked')}</CardTitle>
             <Wallet className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
-              {connected ? `${totalStaked.toFixed(2)} ${t("common.sol")}` : `-- ${t("common.sol")}`}
+              {connected ? `${totalStaked.toFixed(2)} SOL` : `-- SOL`}
             </div>
             <p className="text-xs text-muted-foreground">
               {connected
-                ? `${stakes.length} ${stakes.length === 1 ? t("stats.activePosition") : t("stats.activePositions")}`
-                : t("stats.connectWallet")}
+                ? `${stakes.length} ${stakes.length === 1 ? t('dashboard.stats.activePosition') : t('dashboard.stats.activePositions')}`
+                : t('dashboard.stats.connectWallet')}
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t("stats.dailyRewards")}</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('dashboard.stats.dailyRewards')}</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-success">
-              {connected ? `${dailyRewards.toFixed(4)} ${t("common.sol")}` : `-- ${t("common.sol")}`}
+              {connected ? `${dailyRewards.toFixed(4)} SOL` : `-- SOL`}
             </div>
             <p className="text-xs text-muted-foreground">
-              {dailyRate} {t("stats.dailyRate")}
+              {dailyRate} {t('dashboard.stats.dailyRate')}
             </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t("stats.totalEarned")}</CardTitle>
-            <Coins className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-success">
-              {connected ? `${totalRewards.toFixed(4)} ${t("common.sol")}` : `-- ${t("common.sol")}`}
-            </div>
-            <p className="text-xs text-muted-foreground">{t("stats.lifetimeRewards")}</p>
           </CardContent>
         </Card>
 
@@ -120,8 +107,8 @@ export function StakingDashboard() {
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
               {connected && referralData && referralData.totalReferralRewards > 0
-                ? t("stats.referralRewards")
-                : t("stats.claimable")}
+                ? t('dashboard.stats.referralRewards')
+                : t('dashboard.stats.claimable')}
             </CardTitle>
             <Lock className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
@@ -129,26 +116,39 @@ export function StakingDashboard() {
             <div className="text-2xl font-bold text-success">
               {connected
                 ? referralData && referralData.totalReferralRewards > 0
-                  ? `${referralData.totalReferralRewards.toFixed(4)} ${t("common.sol")}`
-                  : `${totalClaimableRewards.toFixed(4)} ${t("common.sol")}`
-                : `-- ${t("common.sol")}`}
+                  ? `${referralData.totalReferralRewards.toFixed(4)} SOL`
+                  : `${totalClaimableRewards.toFixed(4)} SOL`
+                : `-- SOL`}
             </div>
             <p className="text-xs text-muted-foreground">
               {connected
                 ? referralData && referralData.totalReferralRewards > 0
-                  ? t("stats.fromReferrals")
-                  : t("stats.readyToClaim")
-                : t("stats.connectWallet")}
+                  ? t('dashboard.stats.fromReferrals')
+                  : t('dashboard.stats.readyToClaim')
+                : t('dashboard.stats.connectWallet')}
             </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">{t('dashboard.stats.totalEarned')}</CardTitle>
+            <Coins className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-success">
+              {connected ? `${totalRewards.toFixed(4)} SOL` : `-- SOL`}
+            </div>
+            <p className="text-xs text-muted-foreground">{t('dashboard.stats.lifetimeRewards')}</p>
           </CardContent>
         </Card>
       </div>
 
       <Tabs defaultValue="stake" className="space-y-8">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="stake">{t("tabs.staking")}</TabsTrigger>
-          <TabsTrigger value="positions">{t("tabs.myStakes")}</TabsTrigger>
-          <TabsTrigger value="history">{t("tabs.history")}</TabsTrigger>
+          <TabsTrigger value="stake">{t('dashboard.tabs.staking')}</TabsTrigger>
+          <TabsTrigger value="positions">{t('dashboard.tabs.myStakes')}</TabsTrigger>
+          <TabsTrigger value="history">{t('dashboard.tabs.history')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="stake" className="space-y-8">
@@ -156,9 +156,9 @@ export function StakingDashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <Card>
               <CardHeader>
-                <CardTitle>{t("staking.availableTokens")}</CardTitle>
+                <CardTitle>{t('dashboard.staking.availableTokens')}</CardTitle>
                 <CardDescription>
-                  {t("staking.selectToken")} {currentAPY}
+                  {t('dashboard.staking.selectToken')} {currentAPY}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -171,22 +171,22 @@ export function StakingDashboard() {
                       <div>
                         <div className="font-semibold">{token.name}</div>
                         <div className="text-sm text-muted-foreground">
-                          {t("staking.balance")}{" "}
+                          {t('dashboard.staking.balance')}{" "}
                           {connected
                             ? balanceLoading
                               ? "Loading..."
                               : `${token.balance} ${token.symbol}`
-                            : t("stats.connectWallet")}
+                            : t('dashboard.stats.connectWallet')}
                         </div>
                       </div>
                     </div>
                     <div className="text-right">
                       <Badge variant="secondary" className="mb-2">
-                        {token.apy} {t("common.apy")}
+                        {token.apy} APY
                       </Badge>
                       <div>
                         <Button size="sm" disabled={!connected} onClick={() => handleStakeClick(token)}>
-                          {!connected ? t("staking.connectWallet") : t("staking.stake")}
+                          {!connected ? t('dashboard.staking.connectWallet') : t('dashboard.staking.stake')}
                           <ArrowUpRight className="h-4 w-4 ml-1" />
                         </Button>
                       </div>
@@ -205,7 +205,7 @@ export function StakingDashboard() {
           {connected ? (
             stakes.length > 0 ? (
               <div>
-                <h2 className="text-2xl font-bold mb-6">{t("positions.yourStakes")}</h2>
+                <h2 className="text-2xl font-bold mb-6">{t('dashboard.positions.yourStakes')}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {stakes.map((stake) => (
                     <StakePositionCard key={stake.id} stake={stake} />
@@ -216,10 +216,10 @@ export function StakingDashboard() {
               <Card>
                 <CardContent className="text-center py-16">
                   <Lock className="h-16 w-16 mx-auto mb-4 text-muted-foreground opacity-50" />
-                  <h3 className="text-xl font-semibold mb-2">{t("positions.noActiveStakes")}</h3>
-                  <p className="text-muted-foreground mb-6">{t("positions.startStaking")}</p>
-                  <Button onClick={() => document.querySelector('[data-state="active"][value="stake"]')?.click()}>
-                    {t("positions.startStakingButton")}
+                  <h3 className="text-xl font-semibold mb-2">{t('dashboard.positions.noActiveStakes')}</h3>
+                  <p className="text-muted-foreground mb-6">{t('dashboard.positions.startStaking')}</p>
+                  <Button onClick={() => setStakingModalOpen(true)}>
+                    {t('dashboard.positions.startStakingButton')}
                   </Button>
                 </CardContent>
               </Card>
@@ -228,9 +228,9 @@ export function StakingDashboard() {
             <Card>
               <CardContent className="text-center py-16">
                 <Wallet className="h-16 w-16 mx-auto mb-4 text-muted-foreground opacity-50" />
-                <h3 className="text-xl font-semibold mb-2">{t("positions.walletNotConnected")}</h3>
-                <p className="text-muted-foreground mb-6">{t("positions.connectPrompt")}</p>
-                <Button>{t("common.connectWallet")}</Button>
+                <h3 className="text-xl font-semibold mb-2">{t('dashboard.positions.walletNotConnected')}</h3>
+                <p className="text-muted-foreground mb-6">{t('dashboard.positions.connectPrompt')}</p>
+                <Button>{t('common.header.connectWallet')}</Button>
               </CardContent>
             </Card>
           )}

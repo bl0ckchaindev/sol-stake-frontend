@@ -1,28 +1,31 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
+import { useTranslation } from "@/components/translation-context"
 
 export function StatsSection() {
+  const { t } = useTranslation()
+
   const stats = [
     {
-      value: "$2M+",
-      label: "Total Value Locked",
-      description: "Assets secured in our MEV infrastructure",
+      value: t('home.stats.items.tvl.value'),
+      label: t('home.stats.items.tvl.label'),
+      description: t('home.stats.items.tvl.description'),
     },
     {
-      value: "365%",
-      label: "Annual Percentage Yield",
-      description: "Based on 1% daily compound returns",
+      value: t('home.stats.items.apy.value'),
+      label: t('home.stats.items.apy.label'),
+      description: t('home.stats.items.apy.description'),
     },
     {
-      value: "99.9%",
-      label: "Uptime Guarantee",
-      description: "Institutional-grade MEV bot reliability",
+      value: t('home.stats.items.uptime.value'),
+      label: t('home.stats.items.uptime.label'),
+      description: t('home.stats.items.uptime.description'),
     },
     {
-      value: "24/7",
-      label: "MEV Monitoring",
-      description: "Continuous opportunity identification",
+      value: t('home.stats.items.monitoring.value'),
+      label: t('home.stats.items.monitoring.label'),
+      description: t('home.stats.items.monitoring.description'),
     },
   ]
 
@@ -30,9 +33,9 @@ export function StatsSection() {
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">Platform Performance</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('home.stats.title')}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-            Our MEV bot infrastructure delivers consistent, transparent results for institutional and retail stakers.
+            {t('home.stats.subtitle')}
           </p>
         </div>
 

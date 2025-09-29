@@ -1,0 +1,7 @@
+{
+  "title": "Staking Dashboard",
+  "subtitle": "Verwalten Sie Ihre gestakten Token und verfolgen Sie Belohnungen",
+  "subtitleDisconnected": "Verbinden Sie Ihr Wallet, um mit dem Staking zu beginnen",
+  "walletNotConnected": "Wallet nicht verbunden.",
+  "connectPrompt": "Verbinden Sie Ihr Solana-Wallet, um Ihre Positionen anzuzeigen und mit dem Staking zu beginnen."
+}

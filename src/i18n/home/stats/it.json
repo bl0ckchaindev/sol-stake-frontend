@@ -1,0 +1,26 @@
+{
+  "title": "Performance della Piattaforma",
+  "subtitle": "La nostra infrastruttura di bot MEV offre risultati consistenti e trasparenti per staker istituzionali e retail.",
+  "items": {
+    "tvl": {
+      "value": "$2M+",
+      "label": "Valore Totale Bloccato",
+      "description": "Asset garantiti nella nostra infrastruttura MEV"
+    },
+    "apy": {
+      "value": "365%",
+      "label": "Rendimento Percentuale Annuale",
+      "description": "Basato su rendimenti composti dell'1% giornaliero"
+    },
+    "uptime": {
+      "value": "99,9%",
+      "label": "Garanzia di Uptime",
+      "description": "Affidabilità bot MEV di livello istituzionale"
+    },
+    "monitoring": {
+      "value": "24/7",
+      "label": "Monitoraggio MEV",
+      "description": "Identificazione continua delle opportunità"
+    }
+  }
+}

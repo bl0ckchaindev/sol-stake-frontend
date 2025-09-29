@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { useWallet } from "./wallet-provider"
 import { Wallet, LogOut, Download } from "lucide-react"
+import { useTranslation } from "@/components/translation-context"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +14,7 @@ import {
 
 export function WalletButton() {
   const { connected, connecting, publicKey, connect, disconnect, balance, walletName } = useWallet()
+  const { t } = useTranslation()
 
   if (
     !connected &&
@@ -27,7 +29,7 @@ export function WalletButton() {
         <DropdownMenuTrigger asChild>
           <Button className="flex items-center gap-2">
             <Download className="h-4 w-4" />
-            Install Wallet
+            {t('common.header.installWallet')}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-48">
@@ -36,7 +38,7 @@ export function WalletButton() {
               <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
                 <span className="text-white text-xs font-bold">P</span>
               </div>
-              Install Phantom
+              {t('common.header.installPhantom')}
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => window.open("https://solflare.com/", "_blank")}>
@@ -44,7 +46,7 @@ export function WalletButton() {
               <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
                 <span className="text-white text-xs font-bold">S</span>
               </div>
-              Install Solflare
+              {t('common.header.installSolflare')}
             </div>
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -68,13 +70,13 @@ export function WalletButton() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-56">
           <div className="px-2 py-1.5">
-            <div className="text-sm font-medium">Balance</div>
+            <div className="text-sm font-medium">{t('common.header.balance')}</div>
             <div className="text-lg font-bold text-primary">{balance.toFixed(4)} SOL</div>
           </div>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={disconnect}>
             <LogOut className="h-4 w-4 mr-2" />
-            Disconnect
+            {t('common.header.disconnect')}
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -84,7 +86,7 @@ export function WalletButton() {
   return (
     <Button onClick={connect} disabled={connecting} className="flex items-center gap-2">
       <Wallet className="h-4 w-4" />
-      {connecting ? "Connecting..." : "Connect Wallet"}
+      {connecting ? t('common.header.connecting') : t('common.header.connectWallet')}
     </Button>
   )
 }

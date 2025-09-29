@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { WalletProvider } from "@/components/wallet-provider"
 import { StakingProvider } from "@/components/staking-provider"
 import { ReferralProvider } from "@/components/referral-provider"
-import { LanguageProvider } from "@/components/language-provider"
+import { TranslationProvider } from "@/components/translation-context"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Suspense } from "react"
 import "./globals.css"
@@ -74,7 +74,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <LanguageProvider>
+          <TranslationProvider>
             <WalletProvider>
               <ReferralProvider>
                 <StakingProvider>
@@ -82,7 +82,7 @@ export default function RootLayout({
                 </StakingProvider>
               </ReferralProvider>
             </WalletProvider>
-          </LanguageProvider>
+          </TranslationProvider>
         </ThemeProvider>
         <Analytics />
       </body>

@@ -1,0 +1,11 @@
+{
+  "title": "Calculadora de Recompensas",
+  "stakeAmount": "Cantidad a Stakear",
+  "lockPeriod": "Período de Bloqueo (Días)",
+  "dailyReward": "Recompensa Diaria",
+  "totalRewards": "Recompensas Totales",
+  "apy": "APY",
+  "finalAmount": "Cantidad Final",
+  "note": "Nota",
+  "noteText": "Los cálculos se basan en recompensas diarias del 1%. Las recompensas reales pueden variar según las condiciones de la red y el rendimiento de la plataforma."
+}

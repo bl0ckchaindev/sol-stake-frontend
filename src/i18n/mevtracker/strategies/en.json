@@ -1,0 +1,11 @@
+{
+  "arbitrageBot": "Arbitrage Bot",
+  "crossDexDescription": "Cross-DEX price differences",
+  "liquidationBot": "Liquidation Bot",
+  "lendingDescription": "Lending protocol liquidations",
+  "sandwichBot": "Sandwich Bot",
+  "mevDescription": "MEV sandwich attacks",
+  "dailyProfit": "Daily Profit",
+  "successRate": "Success Rate",
+  "transactions": "Transactions"
+}

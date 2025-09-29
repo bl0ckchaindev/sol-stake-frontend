@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Progress } from "@/components/ui/progress"
 import { TrendingUp, Activity, DollarSign, Zap, Target, CheckCircle, AlertCircle } from "lucide-react"
 import { useState, useEffect } from "react"
+import { useTranslation } from './translation-context'
 
 interface BotPerformance {
   totalProfit: number
@@ -27,6 +28,8 @@ interface Transaction {
 }
 
 export function MevBotTracker() {
+  const { t } = useTranslation();
+  
   const [performance, setPerformance] = useState<BotPerformance>({
     totalProfit: 1247.89,
     dailyProfit: 23.45,
@@ -120,17 +123,30 @@ export function MevBotTracker() {
     }
   }
 
+  const getTransactionTypeLabel = (type: string) => {
+    switch (type) {
+      case "arbitrage":
+        return t('mevtracker.analytics.arbitrage');
+      case "liquidation":
+        return t('mevtracker.analytics.liquidation');
+      case "sandwich":
+        return t('mevtracker.analytics.sandwich');
+      default:
+        return type;
+    }
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold mb-2">MEV Bot Tracker</h1>
-            <p className="text-muted-foreground">Real-time performance and transparency dashboard</p>
+            <h1 className="text-3xl font-bold mb-2">{t('mevtracker.main.title')}</h1>
+            <p className="text-muted-foreground">{t('mevtracker.main.subtitle')}</p>
           </div>
           <Badge className={getStatusColor(performance.status)}>
             <Activity className="w-3 h-3 mr-1" />
-            {performance.status.toUpperCase()}
+            {t(`mevtracker.main.status.${performance.status}`)}
           </Badge>
         </div>
       </div>
@@ -139,29 +155,29 @@ export function MevBotTracker() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Profit</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.totalProfit')}</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-success">{performance.totalProfit.toFixed(2)} SOL</div>
-            <p className="text-xs text-muted-foreground">All-time earnings</p>
+            <p className="text-xs text-muted-foreground">{t('mevtracker.stats.allTimeEarnings')}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Daily Profit</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.dailyProfit')}</CardTitle>
             <TrendingUp className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-success">+{performance.dailyProfit.toFixed(2)} SOL</div>
-            <p className="text-xs text-muted-foreground">Last 24 hours</p>
+            <p className="text-xs text-muted-foreground">{t('mevtracker.stats.last24Hours')}</p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Success Rate</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.successRate')}</CardTitle>
             <Target className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -172,28 +188,28 @@ export function MevBotTracker() {
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Strategies</CardTitle>
+            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.activeStrategies')}</CardTitle>
             <Zap className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{performance.activeStrategies}</div>
-            <p className="text-xs text-muted-foreground">Running algorithms</p>
+            <p className="text-xs text-muted-foreground">{t('mevtracker.stats.runningAlgorithms')}</p>
           </CardContent>
         </Card>
       </div>
 
       <Tabs defaultValue="live" className="space-y-8">
         <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="live">Live Activity</TabsTrigger>
-          <TabsTrigger value="analytics">Analytics</TabsTrigger>
-          <TabsTrigger value="strategies">Strategies</TabsTrigger>
+          <TabsTrigger value="live">{t('mevtracker.tabs.liveActivity')}</TabsTrigger>
+          <TabsTrigger value="analytics">{t('mevtracker.tabs.analytics')}</TabsTrigger>
+          <TabsTrigger value="strategies">{t('mevtracker.tabs.strategies')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="live" className="space-y-6">
           <Card>
             <CardHeader>
-              <CardTitle>Recent Transactions</CardTitle>
-              <CardDescription>Live MEV bot transaction feed with profit/loss tracking</CardDescription>
+              <CardTitle>{t('mevtracker.live.recentTransactions')}</CardTitle>
+              <CardDescription>{t('mevtracker.live.liveFeedDescription')}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
@@ -207,7 +223,7 @@ export function MevBotTracker() {
                           <AlertCircle className="h-4 w-4 text-destructive" />
                         )}
                         <Badge variant="outline" className={getTransactionTypeColor(tx.type)}>
-                          {tx.type}
+                          {getTransactionTypeLabel(tx.type)}
                         </Badge>
                       </div>
                       <div>
@@ -215,13 +231,13 @@ export function MevBotTracker() {
                           {tx.profit > 0 ? "+" : ""}
                           {tx.profit.toFixed(3)} SOL
                         </div>
-                        <div className="text-sm text-muted-foreground">Gas: {tx.gasUsed.toFixed(4)} SOL</div>
+                        <div className="text-sm text-muted-foreground">{t('mevtracker.live.gas')}: {tx.gasUsed.toFixed(4)} SOL</div>
                       </div>
                     </div>
                     <div className="text-right">
                       <div className="text-sm font-medium">{tx.timestamp.toLocaleTimeString()}</div>
                       <div className="text-xs text-muted-foreground">
-                        {Math.floor((Date.now() - tx.timestamp.getTime()) / 60000)}m ago
+                        {Math.floor((Date.now() - tx.timestamp.getTime()) / 60000)}{t('mevtracker.live.ago')}
                       </div>
                     </div>
                   </div>
@@ -235,24 +251,24 @@ export function MevBotTracker() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card>
               <CardHeader>
-                <CardTitle>Performance Metrics</CardTitle>
-                <CardDescription>Key performance indicators</CardDescription>
+                <CardTitle>{t('mevtracker.analytics.performanceMetrics')}</CardTitle>
+                <CardDescription>{t('mevtracker.analytics.performanceDescription')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Total Transactions</span>
+                  <span className="text-sm font-medium">{t('mevtracker.analytics.totalTransactions')}</span>
                   <span className="text-sm">{performance.totalTransactions.toLocaleString()}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Avg Execution Time</span>
+                  <span className="text-sm font-medium">{t('mevtracker.analytics.avgExecutionTime')}</span>
                   <span className="text-sm">{performance.avgExecutionTime}s</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Success Rate</span>
+                  <span className="text-sm font-medium">{t('mevtracker.analytics.successRate')}</span>
                   <span className="text-sm">{performance.successRate}%</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Daily Volume</span>
+                  <span className="text-sm font-medium">{t('mevtracker.analytics.dailyVolume')}</span>
                   <span className="text-sm">2,847 SOL</span>
                 </div>
               </CardContent>
@@ -260,28 +276,28 @@ export function MevBotTracker() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Strategy Distribution</CardTitle>
-                <CardDescription>Profit by strategy type</CardDescription>
+                <CardTitle>{t('mevtracker.analytics.strategyDistribution')}</CardTitle>
+                <CardDescription>{t('mevtracker.analytics.profitByStrategy')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-3">
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span>Arbitrage</span>
+                      <span>{t('mevtracker.analytics.arbitrage')}</span>
                       <span>67.2%</span>
                     </div>
                     <Progress value={67.2} />
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span>Liquidation</span>
+                      <span>{t('mevtracker.analytics.liquidation')}</span>
                       <span>24.8%</span>
                     </div>
                     <Progress value={24.8} />
                   </div>
                   <div>
                     <div className="flex justify-between text-sm mb-1">
-                      <span>Sandwich</span>
+                      <span>{t('mevtracker.analytics.sandwich')}</span>
                       <span>8.0%</span>
                     </div>
                     <Progress value={8.0} />
@@ -298,22 +314,22 @@ export function MevBotTracker() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
-                  Arbitrage Bot
+                  {t('mevtracker.strategies.arbitrageBot')}
                 </CardTitle>
-                <CardDescription>Cross-DEX price differences</CardDescription>
+                <CardDescription>{t('mevtracker.strategies.crossDexDescription')}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span>Daily Profit</span>
+                    <span>{t('mevtracker.strategies.dailyProfit')}</span>
                     <span className="text-success">+15.7 SOL</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Success Rate</span>
+                    <span>{t('mevtracker.strategies.successRate')}</span>
                     <span>96.4%</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Transactions</span>
+                    <span>{t('mevtracker.strategies.transactions')}</span>
                     <span>247</span>
                   </div>
                 </div>
@@ -324,22 +340,22 @@ export function MevBotTracker() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
-                  Liquidation Bot
+                  {t('mevtracker.strategies.liquidationBot')}
                 </CardTitle>
-                <CardDescription>Lending protocol liquidations</CardDescription>
+                <CardDescription>{t('mevtracker.strategies.lendingDescription')}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span>Daily Profit</span>
+                    <span>{t('mevtracker.strategies.dailyProfit')}</span>
                     <span className="text-success">+5.8 SOL</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Success Rate</span>
+                    <span>{t('mevtracker.strategies.successRate')}</span>
                     <span>89.2%</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Transactions</span>
+                    <span>{t('mevtracker.strategies.transactions')}</span>
                     <span>43</span>
                   </div>
                 </div>
@@ -350,22 +366,22 @@ export function MevBotTracker() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-warning rounded-full"></div>
-                  Sandwich Bot
+                  {t('mevtracker.strategies.sandwichBot')}
                 </CardTitle>
-                <CardDescription>MEV sandwich attacks</CardDescription>
+                <CardDescription>{t('mevtracker.strategies.mevDescription')}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span>Daily Profit</span>
+                    <span>{t('mevtracker.strategies.dailyProfit')}</span>
                     <span className="text-success">+1.9 SOL</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Success Rate</span>
+                    <span>{t('mevtracker.strategies.successRate')}</span>
                     <span>78.5%</span>
                   </div>
                   <div className="flex justify-between text-sm">
-                    <span>Transactions</span>
+                    <span>{t('mevtracker.strategies.transactions')}</span>
                     <span>89</span>
                   </div>
                 </div>

@@ -1,0 +1,11 @@
+{
+  "title": "Calcolatore di Ricompense",
+  "stakeAmount": "Importo da Stake",
+  "lockPeriod": "Periodo di Blocco (Giorni)",
+  "dailyReward": "Ricompensa Giornaliera",
+  "totalRewards": "Ricompense Totali",
+  "apy": "APY",
+  "finalAmount": "Importo Finale",
+  "note": "Nota",
+  "noteText": "I calcoli si basano su ricompense giornaliere dell'1%. Le ricompense effettive possono variare in base alle condizioni di rete e alle prestazioni della piattaforma."
+}

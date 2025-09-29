@@ -1,9 +1,9 @@
 "use client"
 
-import { WalletButton } from "./wallet-button"
-import { ModeToggle } from "./mode-toggle"
-import { LanguageSwitcher } from "./language-switcher"
-import { useLanguage } from "./language-provider"
+import { WalletButton } from "@/components/wallet-button"
+import { ModeToggle } from "@/components/mode-toggle"
+import { LanguageSwitcher } from "@/components/language-switcher"
+import { useTranslation } from "@/components/translation-context"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -14,13 +14,13 @@ import { useState } from "react"
 export function Header() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { t } = useLanguage()
+  const { t } = useTranslation()
 
   const navigation = [
-    { name: "Home", href: "/", current: pathname === "/" },
-    { name: t("nav.dashboard"), href: "/dashboard", current: pathname === "/dashboard" },
-    { name: t("nav.mevTracker"), href: "/mev-tracker", current: pathname === "/mev-tracker" },
-    { name: t("nav.referrals"), href: "/referrals", current: pathname === "/referrals" },
+    { name: t('common.header.navigation.home'), href: "/", current: pathname === "/" },
+    { name: t('common.header.navigation.dashboard'), href: "/dashboard", current: pathname === "/dashboard" },
+    { name: t('common.header.navigation.mevTracker'), href: "/mev-tracker", current: pathname === "/mev-tracker" },
+    { name: t('common.header.navigation.referrals'), href: "/referrals", current: pathname === "/referrals" },
   ]
 
   return (
@@ -58,8 +58,10 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <LanguageSwitcher />
-          <ModeToggle />
+          <div className="flex flex-row gap-3 max-sm:hidden">
+            <LanguageSwitcher />
+            <ModeToggle />
+          </div>
           <WalletButton />
 
           {/* Mobile menu */}
@@ -87,7 +89,7 @@ export function Header() {
                 <nav className="flex flex-col gap-2">
                   {navigation.map((item) => (
                     <Link
-                      key={item.name}
+                      key={`mobile-${item.name}`}
                       href={item.href}
                       onClick={() => setMobileMenuOpen(false)}
                       className={`transition-colors px-3 py-2 rounded-md text-sm font-medium ${

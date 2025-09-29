@@ -1,0 +1,20 @@
+{
+  "company": {
+    "name": "MEVStake",
+    "description": "Advanced MEV bot infrastructure for Solana DeFi staking with institutional-grade security and transparent rewards."
+  },
+  "sections": {
+    "platform": "Platform",
+    "legal": "Legal",
+    "followUs": "Follow Us"
+  },
+  "links": {
+    "dashboard": "Dashboard",
+    "mevBotTracker": "MEV Bot Tracker",
+    "referrals": "Referrals",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "riskDisclosure": "Risk Disclosure"
+  },
+  "copyright": "© {{year}} MEVStake. All rights reserved. Built on Solana."
+}

@@ -3,33 +3,35 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Bot, Coins, TrendingUp, Wallet } from "lucide-react"
+import { useTranslation } from "@/components/translation-context"
 
 export function HowItWorks() {
+  const { t } = useTranslation()
+
   const steps = [
     {
       icon: Wallet,
-      title: "Connect & Stake",
-      description: "Connect your Solana wallet and stake SOL, USDC, USDT, or meme tokens with our platform.",
-      badge: "Step 1",
+      title: t('home.howitworks.steps.step1.title'),
+      description: t('home.howitworks.steps.step1.description'),
+      badge: t('home.howitworks.steps.step1.badge'),
     },
     {
       icon: Bot,
-      title: "MEV Bot Deployment",
-      description:
-        "Your staked funds are deployed across our MEV bot infrastructure to capture arbitrage opportunities.",
-      badge: "Step 2",
+      title: t('home.howitworks.steps.step2.title'),
+      description: t('home.howitworks.steps.step2.description'),
+      badge: t('home.howitworks.steps.step2.badge'),
     },
     {
       icon: TrendingUp,
-      title: "Value Extraction",
-      description: "Our bots identify and execute profitable trades, liquidations, and arbitrage across Solana DEXs.",
-      badge: "Step 3",
+      title: t('home.howitworks.steps.step3.title'),
+      description: t('home.howitworks.steps.step3.description'),
+      badge: t('home.howitworks.steps.step3.badge'),
     },
     {
       icon: Coins,
-      title: "Reward Distribution",
-      description: "Earn 1% daily rewards from MEV profits while your principal remains locked for 90 days.",
-      badge: "Step 4",
+      title: t('home.howitworks.steps.step4.title'),
+      description: t('home.howitworks.steps.step4.description'),
+      badge: t('home.howitworks.steps.step4.badge'),
     },
   ]
 
@@ -37,10 +39,9 @@ export function HowItWorks() {
     <section id="how-it-works" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">How MEV Staking Works</h2>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('home.howitworks.title')}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
-            Our sophisticated MEV bot infrastructure generates consistent returns by capturing Maximum Extractable Value
-            opportunities across the Solana ecosystem.
+            {t('home.howitworks.subtitle')}
           </p>
         </div>
 
