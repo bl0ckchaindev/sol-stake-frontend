@@ -1,0 +1,80 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { ArrowRight, TrendingUp, Shield, Zap } from "lucide-react"
+import Link from "next/link"
+
+export function LandingHero() {
+  return (
+    <section className="relative overflow-hidden bg-background">
+      <div className="bg-accent/10 border-b">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-center gap-2 text-sm">
+            <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+            <span className="text-muted-foreground">Announcing $2M+ in MEV rewards distributed to stakers</span>
+            <ArrowRight className="w-4 h-4 text-muted-foreground" />
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-24 lg:py-32">
+        <div className="text-center max-w-4xl mx-auto">
+          <h1 className="text-4xl lg:text-6xl font-bold text-balance mb-6">
+            MEV Bot Staking
+            <br />
+            <span className="text-muted-foreground">for Solana DeFi</span>
+          </h1>
+
+          <p className="text-xl text-muted-foreground text-balance mb-8 max-w-2xl mx-auto leading-relaxed">
+            Stake your SOL, USDC, USDT and meme tokens with our advanced MEV bot infrastructure. Earn 1% daily rewards
+            from Maximum Extractable Value opportunities on Solana.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button size="lg" className="text-lg px-8" asChild>
+              <Link href="/dashboard">
+                Start Staking
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent" asChild>
+              <Link href="#how-it-works">Learn More</Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-card border rounded-lg flex items-center justify-center mx-auto mb-4">
+                <TrendingUp className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">MEV Extraction</h3>
+              <p className="text-muted-foreground text-sm">
+                Advanced algorithms capture arbitrage and liquidation opportunities across Solana DEXs
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-card border rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Secure Staking</h3>
+              <p className="text-muted-foreground text-sm">
+                90-day lock periods with institutional-grade security and transparent reward distribution
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-card border rounded-lg flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-accent" />
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Daily Rewards</h3>
+              <p className="text-muted-foreground text-sm">
+                Claim 1% daily rewards while your principal remains locked for optimal MEV capture
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
