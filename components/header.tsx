@@ -45,18 +45,19 @@ export function Header() {
         <MotionWrapper type="fadeIn" delay={0.2} className="hidden lg:flex items-center gap-6">
           <nav className="flex items-center gap-6">
             {navigation.map((item, index) => (
-              <MotionWrapper key={item.name} type="fadeIn" delay={0.3 + index * 0.1}>
-                <Link
-                  href={item.href}
-                  className={`transition-all duration-200 px-3 py-2 rounded-md text-sm font-medium ${
-                    item.current
-                      ? "text-foreground bg-muted"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                  }`}
-                >
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`transition-all duration-200 px-3 py-2 rounded-md text-sm font-medium ${
+                  item.current
+                    ? "text-foreground bg-muted"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                }`}
+              >
+                <MotionWrapper type="fadeIn" delay={0.3 + index * 0.1}>
                   {item.name}
-                </Link>
-              </MotionWrapper>
+                </MotionWrapper>
+              </Link>
             ))}
           </nav>
         </MotionWrapper>

@@ -2,36 +2,53 @@
 
 import React from 'react';
 import { useTranslation } from './translation-context';
-import { ChevronDown } from 'lucide-react';
+import ReactCountryFlag from "react-country-flag";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const languages = [
-  { code: 'en', label: 'EN', flag: '🇺🇸' },
-  { code: 'de', label: 'DE', flag: '🇩🇪' },
-  { code: 'it', label: 'IT', flag: '🇮🇹' },
-  { code: 'es', label: 'ES', flag: '🇪🇸' },
+  { code: 'en', label: 'EN', countryCode: 'US' },
+  { code: 'de', label: 'DE', countryCode: 'DE' },
+  { code: 'it', label: 'IT', countryCode: 'IT' },
+  { code: 'es', label: 'ES', countryCode: 'ES' },
 ];
 
 export const LanguageSwitcher: React.FC = () => {
   const { language, setLanguage } = useTranslation();
 
   return (
-    <div className="relative">
-      <select
-        value={language}
-        onChange={(e) => setLanguage(e.target.value)}
-        className="appearance-none rounded-md px-3 py-2 bg-background border border-input text-sm font-medium cursor-pointer focus:outline-none focus:ring-0"
-      >
+    <Select value={language} onValueChange={setLanguage}>
+      <SelectTrigger className="w-[100px] ml-3">
+        <SelectValue>
+          <div className="flex items-center gap-2">
+            <ReactCountryFlag
+              countryCode={languages.find(lang => lang.code === language)?.countryCode || 'US'}
+              svg
+              style={{ width: '16px', height: '12px' }}
+            />
+            {languages.find(lang => lang.code === language)?.label}
+          </div>
+        </SelectValue>
+      </SelectTrigger>
+      <SelectContent>
         {languages.map((lang) => (
-          <option
-            key={lang.code}
-            value={lang.code}
-            className="bg-background"
-          >
-            {lang.flag} {lang.label}
-          </option>
+          <SelectItem key={lang.code} value={lang.code}>
+            <div className="flex items-center gap-2">
+              <ReactCountryFlag
+                countryCode={lang.countryCode}
+                svg
+                style={{ width: '16px', height: '12px' }}
+              />
+              {lang.label}
+            </div>
+          </SelectItem>
         ))}
-      </select>
-      <ChevronDown className="absolute -right-1 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none text-muted-foreground" />
-    </div>
+      </SelectContent>
+    </Select>
   );
 };
