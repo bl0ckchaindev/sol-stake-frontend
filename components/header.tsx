@@ -4,6 +4,7 @@ import { WalletButton } from "@/components/wallet-button"
 import { ModeToggle } from "@/components/mode-toggle"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { useTranslation } from "@/components/translation-context"
+import { MotionWrapper } from "@/components/motion-wrapper"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -24,9 +25,9 @@ export function Header() {
   ]
 
   return (
-    <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+    <MotionWrapper type="slideDown" className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <MotionWrapper type="slideRight" delay={0.1} className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-3">
             <div className="relative">
               <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
@@ -39,25 +40,28 @@ export function Header() {
               <p className="text-xs text-muted-foreground">MEV Bot Infrastructure</p>
             </div>
           </Link>
-        </div>
+        </MotionWrapper>
 
-        <nav className="hidden lg:flex items-center gap-6">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`transition-all duration-200 px-3 py-2 rounded-md text-sm font-medium ${
-                item.current
-                  ? "text-foreground bg-muted"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+        <MotionWrapper type="fadeIn" delay={0.2} className="hidden lg:flex items-center gap-6">
+          <nav className="flex items-center gap-6">
+            {navigation.map((item, index) => (
+              <MotionWrapper key={item.name} type="fadeIn" delay={0.3 + index * 0.1}>
+                <Link
+                  href={item.href}
+                  className={`transition-all duration-200 px-3 py-2 rounded-md text-sm font-medium ${
+                    item.current
+                      ? "text-foreground bg-muted"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </MotionWrapper>
+            ))}
+          </nav>
+        </MotionWrapper>
 
-        <div className="flex items-center gap-3">
+        <MotionWrapper type="slideLeft" delay={0.4} className="flex items-center gap-3">
           <div className="flex flex-row gap-3 max-sm:hidden">
             <LanguageSwitcher />
             <ModeToggle />
@@ -110,8 +114,8 @@ export function Header() {
               </div>
             </SheetContent>
           </Sheet>
-        </div>
+        </MotionWrapper>
       </div>
-    </header>
+    </MotionWrapper>
   )
 }

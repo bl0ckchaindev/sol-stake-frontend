@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, HelpCircle, Shield, DollarSign, Clock, Users, AlertTriangle } from "lucide-react"
 import { useState } from "react"
 import { useTranslation } from "@/components/translation-context"
+import { MotionWrapper } from "@/components/motion-wrapper"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface FAQItem {
   id: string
@@ -121,58 +123,81 @@ export function FAQSection() {
   return (
     <section id="faq" className="py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <MotionWrapper type="slideUp" trigger="inView" className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">{t('home.faq.title')}</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-balance">
             {t('home.faq.subtitle')}
           </p>
-        </div>
+        </MotionWrapper>
 
         <div className="max-w-4xl mx-auto">
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-2 mb-8 justify-center">
-            {categories.map((category) => (
-              <Button
-                key={category.id}
-                variant={selectedCategory === category.id ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedCategory(category.id)}
-                className="text-sm"
-              >
-                {category.label} ({category.count})
-              </Button>
+          <MotionWrapper type="fadeIn" trigger="inView" className="flex flex-wrap gap-2 mb-8 justify-center" staggerChildren={0.1}>
+            {categories.map((category, index) => (
+              <MotionWrapper key={category.id} type="scale" delay={index * 0.1} trigger="inView">
+                <Button
+                  variant={selectedCategory === category.id ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setSelectedCategory(category.id)}
+                  className="text-sm"
+                >
+                  {category.label} ({category.count})
+                </Button>
+              </MotionWrapper>
             ))}
-          </div>
+          </MotionWrapper>
 
           {/* FAQ Items */}
-          <div className="space-y-4">
-            {filteredFAQs.map((faq) => (
-              <Card key={faq.id} className="overflow-hidden">
-                <Collapsible open={openItems.includes(faq.id)} onOpenChange={() => toggleItem(faq.id)}>
-                  <CollapsibleTrigger asChild>
-                    <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <faq.icon className="h-5 w-5 text-primary" />
-                          <CardTitle className="text-left text-lg">{faq.question}</CardTitle>
+          <MotionWrapper type="fadeIn" trigger="inView" className="space-y-4" staggerChildren={0.1}>
+            {filteredFAQs.map((faq, index) => (
+              <MotionWrapper key={faq.id} type="slideUp" delay={index * 0.05} trigger="inView">
+                <Card className="overflow-hidden hover:shadow-md transition-shadow duration-300">
+                  <Collapsible open={openItems.includes(faq.id)} onOpenChange={() => toggleItem(faq.id)}>
+                    <CollapsibleTrigger asChild>
+                      <CardHeader className="cursor-pointer hover:bg-muted/50 transition-colors">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <faq.icon className="h-5 w-5 text-primary" />
+                            <CardTitle className="text-left text-lg">{faq.question}</CardTitle>
+                          </div>
+                          <motion.div
+                            animate={{ rotate: openItems.includes(faq.id) ? 180 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                          >
+                            <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                          </motion.div>
                         </div>
-                        <ChevronDown
-                          className={`h-5 w-5 text-muted-foreground transition-transform ${
-                            openItems.includes(faq.id) ? "rotate-180" : ""
-                          }`}
-                        />
-                      </div>
-                    </CardHeader>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <CardContent className="pt-0">
-                      <p className="text-muted-foreground leading-relaxed">{faq.answer}</p>
-                    </CardContent>
-                  </CollapsibleContent>
-                </Collapsible>
-              </Card>
+                      </CardHeader>
+                    </CollapsibleTrigger>
+                    <AnimatePresence>
+                      {openItems.includes(faq.id) && (
+                        <CollapsibleContent asChild>
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className="overflow-hidden"
+                          >
+                            <CardContent className="pt-0">
+                              <motion.p
+                                initial={{ y: -10, opacity: 0 }}
+                                animate={{ y: 0, opacity: 1 }}
+                                transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+                                className="text-muted-foreground leading-relaxed"
+                              >
+                                {faq.answer}
+                              </motion.p>
+                            </CardContent>
+                          </motion.div>
+                        </CollapsibleContent>
+                      )}
+                    </AnimatePresence>
+                  </Collapsible>
+                </Card>
+              </MotionWrapper>
             ))}
-          </div>
+          </MotionWrapper>
         </div>
       </div>
     </section>

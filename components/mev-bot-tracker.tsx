@@ -7,6 +7,7 @@ import { Progress } from "@/components/ui/progress"
 import { TrendingUp, Activity, DollarSign, Zap, Target, CheckCircle, AlertCircle } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useTranslation } from './translation-context'
+import { MotionWrapper } from "@/components/motion-wrapper"
 
 interface BotPerformance {
   totalProfit: number
@@ -138,7 +139,7 @@ export function MevBotTracker() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
+      <MotionWrapper type="slideUp" delay={0.1} className="mb-8">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">{t('mevtracker.main.title')}</h1>
@@ -149,247 +150,280 @@ export function MevBotTracker() {
             {t(`mevtracker.main.status.${performance.status}`)}
           </Badge>
         </div>
-      </div>
+      </MotionWrapper>
 
       {/* Performance Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.totalProfit')}</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-success">{performance.totalProfit.toFixed(2)} SOL</div>
-            <p className="text-xs text-muted-foreground">{t('mevtracker.stats.allTimeEarnings')}</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.dailyProfit')}</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-success">+{performance.dailyProfit.toFixed(2)} SOL</div>
-            <p className="text-xs text-muted-foreground">{t('mevtracker.stats.last24Hours')}</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.successRate')}</CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{performance.successRate}%</div>
-            <Progress value={performance.successRate} className="mt-2" />
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('mevtracker.stats.activeStrategies')}</CardTitle>
-            <Zap className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{performance.activeStrategies}</div>
-            <p className="text-xs text-muted-foreground">{t('mevtracker.stats.runningAlgorithms')}</p>
-          </CardContent>
-        </Card>
-      </div>
-
-      <Tabs defaultValue="live" className="space-y-8">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="live">{t('mevtracker.tabs.liveActivity')}</TabsTrigger>
-          <TabsTrigger value="analytics">{t('mevtracker.tabs.analytics')}</TabsTrigger>
-          <TabsTrigger value="strategies">{t('mevtracker.tabs.strategies')}</TabsTrigger>
-        </TabsList>
-
-        <TabsContent value="live" className="space-y-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('mevtracker.live.recentTransactions')}</CardTitle>
-              <CardDescription>{t('mevtracker.live.liveFeedDescription')}</CardDescription>
+      <MotionWrapper
+        type="fadeIn"
+        delay={0.2}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8"
+        staggerChildren={0.1}
+      >
+        <MotionWrapper type="scale" delay={0.1}>
+          <Card className="hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.totalProfit')}</CardTitle>
+              <DollarSign className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                {recentTransactions.map((tx) => (
-                  <div key={tx.id} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-2">
-                        {tx.success ? (
-                          <CheckCircle className="h-4 w-4 text-success" />
-                        ) : (
-                          <AlertCircle className="h-4 w-4 text-destructive" />
-                        )}
-                        <Badge variant="outline" className={getTransactionTypeColor(tx.type)}>
-                          {getTransactionTypeLabel(tx.type)}
-                        </Badge>
-                      </div>
-                      <div>
-                        <div className="font-medium">
-                          {tx.profit > 0 ? "+" : ""}
-                          {tx.profit.toFixed(3)} SOL
-                        </div>
-                        <div className="text-sm text-muted-foreground">{t('mevtracker.live.gas')}: {tx.gasUsed.toFixed(4)} SOL</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm font-medium">{tx.timestamp.toLocaleTimeString()}</div>
-                      <div className="text-xs text-muted-foreground">
-                        {Math.floor((Date.now() - tx.timestamp.getTime()) / 60000)}{t('mevtracker.live.ago')}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <div className="text-2xl font-bold text-success">{performance.totalProfit.toFixed(2)} SOL</div>
+              <p className="text-xs text-muted-foreground">{t('mevtracker.stats.allTimeEarnings')}</p>
             </CardContent>
           </Card>
-        </TabsContent>
+        </MotionWrapper>
 
-        <TabsContent value="analytics" className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>{t('mevtracker.analytics.performanceMetrics')}</CardTitle>
-                <CardDescription>{t('mevtracker.analytics.performanceDescription')}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t('mevtracker.analytics.totalTransactions')}</span>
-                  <span className="text-sm">{performance.totalTransactions.toLocaleString()}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t('mevtracker.analytics.avgExecutionTime')}</span>
-                  <span className="text-sm">{performance.avgExecutionTime}s</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t('mevtracker.analytics.successRate')}</span>
-                  <span className="text-sm">{performance.successRate}%</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">{t('mevtracker.analytics.dailyVolume')}</span>
-                  <span className="text-sm">2,847 SOL</span>
-                </div>
-              </CardContent>
-            </Card>
+        <MotionWrapper type="scale" delay={0.2}>
+          <Card className="hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.dailyProfit')}</CardTitle>
+              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold text-success">+{performance.dailyProfit.toFixed(2)} SOL</div>
+              <p className="text-xs text-muted-foreground">{t('mevtracker.stats.last24Hours')}</p>
+            </CardContent>
+          </Card>
+        </MotionWrapper>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>{t('mevtracker.analytics.strategyDistribution')}</CardTitle>
-                <CardDescription>{t('mevtracker.analytics.profitByStrategy')}</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-3">
-                  <div>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span>{t('mevtracker.analytics.arbitrage')}</span>
-                      <span>67.2%</span>
+        <MotionWrapper type="scale" delay={0.3}>
+          <Card className="hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.successRate')}</CardTitle>
+              <Target className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{performance.successRate}%</div>
+              <Progress value={performance.successRate} className="mt-2" />
+            </CardContent>
+          </Card>
+        </MotionWrapper>
+
+        <MotionWrapper type="scale" delay={0.4}>
+          <Card className="hover:shadow-lg transition-shadow duration-300">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.activeStrategies')}</CardTitle>
+              <Zap className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{performance.activeStrategies}</div>
+              <p className="text-xs text-muted-foreground">{t('mevtracker.stats.runningAlgorithms')}</p>
+            </CardContent>
+          </Card>
+        </MotionWrapper>
+      </MotionWrapper>
+
+      <MotionWrapper type="fadeIn" delay={0.3}>
+        <Tabs defaultValue="live" className="space-y-8">
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="live">{t('mevtracker.tabs.liveActivity')}</TabsTrigger>
+            <TabsTrigger value="analytics">{t('mevtracker.tabs.analytics')}</TabsTrigger>
+            <TabsTrigger value="strategies">{t('mevtracker.tabs.strategies')}</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="live" className="space-y-6">
+            <MotionWrapper type="slideRight" delay={0.4}>
+              <Card>
+                <CardHeader>
+                  <CardTitle>{t('mevtracker.live.recentTransactions')}</CardTitle>
+                  <CardDescription>{t('mevtracker.live.liveFeedDescription')}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {recentTransactions.map((tx, index) => (
+                      <MotionWrapper key={tx.id} type="slideUp" delay={index * 0.1}>
+                        <div className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                          <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-2">
+                              {tx.success ? (
+                                <CheckCircle className="h-4 w-4 text-success" />
+                              ) : (
+                                <AlertCircle className="h-4 w-4 text-destructive" />
+                              )}
+                              <Badge variant="outline" className={getTransactionTypeColor(tx.type)}>
+                                {getTransactionTypeLabel(tx.type)}
+                              </Badge>
+                            </div>
+                            <div>
+                              <div className="font-medium">
+                                {tx.profit > 0 ? "+" : ""}
+                                {tx.profit.toFixed(3)} SOL
+                              </div>
+                              <div className="text-sm text-muted-foreground">{t('mevtracker.live.gas')}: {tx.gasUsed.toFixed(4)} SOL</div>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-sm font-medium">{tx.timestamp.toLocaleTimeString()}</div>
+                            <div className="text-xs text-muted-foreground">
+                              {Math.floor((Date.now() - tx.timestamp.getTime()) / 60000)}{t('mevtracker.live.ago')}
+                            </div>
+                          </div>
+                        </div>
+                      </MotionWrapper>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </MotionWrapper>
+          </TabsContent>
+
+          <TabsContent value="analytics" className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <MotionWrapper type="slideLeft" delay={0.4}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{t('mevtracker.analytics.performanceMetrics')}</CardTitle>
+                    <CardDescription>{t('mevtracker.analytics.performanceDescription')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium">{t('mevtracker.analytics.totalTransactions')}</span>
+                      <span className="text-sm">{performance.totalTransactions.toLocaleString()}</span>
                     </div>
-                    <Progress value={67.2} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span>{t('mevtracker.analytics.liquidation')}</span>
-                      <span>24.8%</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium">{t('mevtracker.analytics.avgExecutionTime')}</span>
+                      <span className="text-sm">{performance.avgExecutionTime}s</span>
                     </div>
-                    <Progress value={24.8} />
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span>{t('mevtracker.analytics.sandwich')}</span>
-                      <span>8.0%</span>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium">{t('mevtracker.analytics.successRate')}</span>
+                      <span className="text-sm">{performance.successRate}%</span>
                     </div>
-                    <Progress value={8.0} />
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
+                    <div className="flex justify-between items-center">
+                      <span className="text-sm font-medium">{t('mevtracker.analytics.dailyVolume')}</span>
+                      <span className="text-sm">2,847 SOL</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionWrapper>
 
-        <TabsContent value="strategies" className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-success rounded-full"></div>
-                  {t('mevtracker.strategies.arbitrageBot')}
-                </CardTitle>
-                <CardDescription>{t('mevtracker.strategies.crossDexDescription')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.dailyProfit')}</span>
-                    <span className="text-success">+15.7 SOL</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.successRate')}</span>
-                    <span>96.4%</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.transactions')}</span>
-                    <span>247</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              <MotionWrapper type="slideRight" delay={0.5}>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{t('mevtracker.analytics.strategyDistribution')}</CardTitle>
+                    <CardDescription>{t('mevtracker.analytics.profitByStrategy')}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-3">
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span>{t('mevtracker.analytics.arbitrage')}</span>
+                          <span>67.2%</span>
+                        </div>
+                        <Progress value={67.2} />
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span>{t('mevtracker.analytics.liquidation')}</span>
+                          <span>24.8%</span>
+                        </div>
+                        <Progress value={24.8} />
+                      </div>
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span>{t('mevtracker.analytics.sandwich')}</span>
+                          <span>8.0%</span>
+                        </div>
+                        <Progress value={8.0} />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionWrapper>
+            </div>
+          </TabsContent>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-success rounded-full"></div>
-                  {t('mevtracker.strategies.liquidationBot')}
-                </CardTitle>
-                <CardDescription>{t('mevtracker.strategies.lendingDescription')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.dailyProfit')}</span>
-                    <span className="text-success">+5.8 SOL</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.successRate')}</span>
-                    <span>89.2%</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.transactions')}</span>
-                    <span>43</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <TabsContent value="strategies" className="space-y-6">
+            <MotionWrapper
+              type="fadeIn"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              staggerChildren={0.2}
+            >
+              <MotionWrapper type="scale" delay={0.1}>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                      {t('mevtracker.strategies.arbitrageBot')}
+                    </CardTitle>
+                    <CardDescription>{t('mevtracker.strategies.crossDexDescription')}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.dailyProfit')}</span>
+                        <span className="text-success">+15.7 SOL</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.successRate')}</span>
+                        <span>96.4%</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.transactions')}</span>
+                        <span>247</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionWrapper>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-warning rounded-full"></div>
-                  {t('mevtracker.strategies.sandwichBot')}
-                </CardTitle>
-                <CardDescription>{t('mevtracker.strategies.mevDescription')}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.dailyProfit')}</span>
-                    <span className="text-success">+1.9 SOL</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.successRate')}</span>
-                    <span>78.5%</span>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span>{t('mevtracker.strategies.transactions')}</span>
-                    <span>89</span>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </TabsContent>
-      </Tabs>
+              <MotionWrapper type="scale" delay={0.2}>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                      {t('mevtracker.strategies.liquidationBot')}
+                    </CardTitle>
+                    <CardDescription>{t('mevtracker.strategies.lendingDescription')}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.dailyProfit')}</span>
+                        <span className="text-success">+5.8 SOL</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.successRate')}</span>
+                        <span>89.2%</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.transactions')}</span>
+                        <span>43</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionWrapper>
+
+              <MotionWrapper type="scale" delay={0.3}>
+                <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
+                      {t('mevtracker.strategies.sandwichBot')}
+                    </CardTitle>
+                    <CardDescription>{t('mevtracker.strategies.mevDescription')}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.dailyProfit')}</span>
+                        <span className="text-success">+1.9 SOL</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.successRate')}</span>
+                        <span>78.5%</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span>{t('mevtracker.strategies.transactions')}</span>
+                        <span>89</span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </MotionWrapper>
+            </MotionWrapper>
+          </TabsContent>
+        </Tabs>
+      </MotionWrapper>
     </div>
   )
 }
