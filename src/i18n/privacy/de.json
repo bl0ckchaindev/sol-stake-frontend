@@ -1,0 +1,103 @@
+{
+  "title": "Datenschutzrichtlinie",
+  "lastUpdated": "Zuletzt aktualisiert",
+  "sections": {
+    "collection": {
+      "title": "1. Gesammelte Informationen",
+      "content": "MEVStake wurde mit Fokus auf Datenschutz entwickelt. Als dezentrale Plattform sammeln wir minimale persönliche Informationen, die für den Plattformbetrieb notwendig sind.",
+      "walletInfo": "Wallet-Informationen",
+      "walletItems": [
+        "Öffentliche Wallet-Adressen für Transaktionsverarbeitung",
+        "Transaktionsverlauf in Bezug auf Staking-Aktivitäten",
+        "Staking-Positionen und Belohnungsberechnungen"
+      ],
+      "technicalInfo": "Technische Informationen",
+      "technicalItems": [
+        "IP-Adressen für Sicherheit und Betrugsprävention",
+        "Browser-Typ und Version für Kompatibilität",
+        "Geräteinformationen für optimale Benutzererfahrung",
+        "Nutzungsanalysen zur Verbesserung der Plattform-Performance"
+      ]
+    },
+    "usage": {
+      "title": "2. Verwendung von Informationen",
+      "content": "Wir verwenden gesammelte Informationen ausschließlich für:",
+      "items": [
+        "Verarbeitung von Staking-Transaktionen und Belohnungsverteilungen",
+        "Aufrechterhaltung der Plattformsicherheit und Betrugsprävention",
+        "Verbesserung der Benutzererfahrung und Plattform-Funktionalität",
+        "Einhalten geltender gesetzlicher Anforderungen",
+        "Kommunikation wichtiger Plattform-Updates"
+      ]
+    },
+    "sharing": {
+      "title": "3. Weitergabe von Informationen",
+      "content": "Wir verkaufen, handeln oder übertragen Ihre persönlichen Informationen nicht an Dritte, außer:",
+      "items": [
+        "Wenn es gesetzlich vorgeschrieben ist oder durch rechtliche Verfahren erforderlich",
+        "Zum Schutz unserer Rechte, Eigentum oder Sicherheit",
+        "Mit Dienstleistern, die beim Plattformbetrieb helfen (unter strenger Vertraulichkeit)",
+        "Im Zusammenhang mit einer Fusion, Übernahme oder Vermögensveräußerung"
+      ]
+    },
+    "blockchain": {
+      "title": "4. Blockchain-Transparenz",
+      "notice": "Öffentliche Blockchain-Daten",
+      "noticeText": "Alle Staking-Transaktionen werden auf der Solana-Blockchain aufgezeichnet und sind öffentlich sichtbar. Dies umfasst Wallet-Adressen, Transaktionsbeträge und Zeitstempel."
+    },
+    "security": {
+      "title": "5. Datensicherheit",
+      "content": "Wir implementieren branchenübliche Sicherheitsmaßnahmen zum Schutz Ihrer Informationen:",
+      "items": [
+        "Verschlüsselung sensibler Daten während der Übertragung und Speicherung",
+        "Regelmäßige Sicherheitsprüfungen und Schwachstellenbewertungen",
+        "Zugriffskontrollen und Authentifizierungsmechanismen",
+        "Sichere Infrastruktur und Hosting-Umgebungen",
+        "Vorfallreaktionsverfahren für Sicherheitsverletzungen"
+      ]
+    },
+    "cookies": {
+      "title": "6. Cookies und Tracking",
+      "content": "Wir verwenden minimale Cookies und Tracking-Technologien:",
+      "items": [
+        "Wesentliche Cookies für Plattform-Funktionalität",
+        "Analyse-Cookies zur Verständigung von Nutzungsmustern (anonymisiert)",
+        "Präferenz-Cookies zur Speicherung Ihrer Einstellungen"
+      ],
+      "cookieControl": "Sie können Cookie-Präferenzen über Ihre Browsereinstellungen steuern."
+    },
+    "retention": {
+      "title": "7. Datenaufbewahrung",
+      "content": "Wir behalten Informationen nur so lange wie notwendig für:",
+      "items": [
+        "Bereitstellung von Plattform-Dienstleistungen",
+        "Einhalten gesetzlicher Verpflichtungen",
+        "Beilegung von Streitigkeiten und Durchsetzung von Vereinbarungen",
+        "Aufrechterhaltung von Sicherheit und Betrugsprävention"
+      ]
+    },
+    "rights": {
+      "title": "8. Ihre Rechte",
+      "content": "Je nach Gerichtsbarkeit haben Sie möglicherweise Rechte auf:",
+      "items": [
+        "Zugriff auf Ihre persönlichen Informationen",
+        "Berichtigung ungenauer Informationen",
+        "Löschung Ihrer Informationen",
+        "Widerspruch gegen die Verarbeitung Ihrer Informationen",
+        "Datenübertragbarkeit"
+      ]
+    },
+    "transfers": {
+      "title": "9. Internationale Übertragungen",
+      "content": "Als dezentrale Plattform können Ihre Informationen in verschiedenen Gerichtsbarkeiten verarbeitet werden. Wir stellen sicher, dass angemessene Schutzmaßnahmen für internationale Datenübertragungen vorhanden sind."
+    },
+    "changes": {
+      "title": "10. Änderungen der Datenschutzrichtlinie",
+      "content": "Wir können diese Datenschutzrichtlinie periodically aktualisieren. Wesentliche Änderungen werden über die Plattform-Oberfläche kommuniziert. Ihre fortgesetzte Nutzung stellt die Annahme der aktualisierten Richtlinie dar."
+    },
+    "contact": {
+      "title": "11. Kontaktieren Sie uns",
+      "content": "Bei datenschutzbezogenen Fragen oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte über unsere offiziellen Kanäle oder Community-Foren."
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "title": "Informativa sulla Privacy",
+  "lastUpdated": "Ultimo aggiornamento",
+  "sections": {
+    "collection": {
+      "title": "1. Informazioni che Raccogliamo",
+      "content": "MEVStake è progettato con la privacy in mente. Come piattaforma decentralizzata, raccogliamo informazioni personali minime necessarie per il funzionamento della piattaforma.",
+      "walletInfo": "Informazioni del Wallet",
+      "walletItems": [
+        "Indirizzi wallet pubblici per l'elaborazione delle transazioni",
+        "Cronologia delle transazioni relative alle attività di staking",
+        "Posizioni di staking e calcoli delle ricompense"
+      ],
+      "technicalInfo": "Informazioni Tecniche",
+      "technicalItems": [
+        "Indirizzi IP per sicurezza e prevenzione delle frodi",
+        "Tipo e versione del browser per compatibilità",
+        "Informazioni sul dispositivo per esperienza utente ottimale",
+        "Analisi di utilizzo per migliorare le prestazioni della piattaforma"
+      ]
+    },
+    "usage": {
+      "title": "2. Come Utilizziamo le Informazioni",
+      "content": "Utilizziamo le informazioni raccolte esclusivamente per:",
+      "items": [
+        "Elaborazione delle transazioni di staking e distribuzione delle ricompense",
+        "Mantenimento della sicurezza della piattaforma e prevenzione delle frodi",
+        "Miglioramento dell'esperienza utente e funzionalità della piattaforma",
+        "Conformità ai requisiti legali applicabili",
+        "Comunicazione di aggiornamenti importanti della piattaforma"
+      ]
+    },
+    "sharing": {
+      "title": "3. Condivisione delle Informazioni",
+      "content": "Non vendiamo, scambiamo o trasferiamo in altro modo le tue informazioni personali a terze parti, tranne:",
+      "items": [
+        "Quando richiesto dalla legge o da procedimenti legali",
+        "Per proteggere i nostri diritti, proprietà o sicurezza",
+        "Con fornitori di servizi che assistono nelle operazioni della piattaforma (sotto stretta riservatezza)",
+        "In connessione con una fusione, acquisizione o vendita di asset"
+      ]
+    },
+    "blockchain": {
+      "title": "4. Trasparenza Blockchain",
+      "notice": "Dati Pubblici della Blockchain",
+      "noticeText": "Tutte le transazioni di staking sono registrate sulla blockchain Solana e sono pubblicamente visibili. Questo include indirizzi wallet, importi delle transazioni e timestamp."
+    },
+    "security": {
+      "title": "5. Sicurezza dei Dati",
+      "content": "Implementiamo misure di sicurezza standard del settore per proteggere le tue informazioni:",
+      "items": [
+        "Crittografia dei dati sensibili in transito e a riposo",
+        "Audit di sicurezza regolari e valutazioni delle vulnerabilità",
+        "Controlli di accesso e meccanismi di autenticazione",
+        "Infrastrutture e ambienti di hosting sicuri",
+        "Procedure di risposta agli incidenti per violazioni della sicurezza"
+      ]
+    },
+    "cookies": {
+      "title": "6. Cookie e Tracciamento",
+      "content": "Utilizziamo cookie e tecnologie di tracciamento minime:",
+      "items": [
+        "Cookie essenziali per la funzionalità della piattaforma",
+        "Cookie analitici per comprendere i pattern di utilizzo (anonimizzati)",
+        "Cookie di preferenza per ricordare le tue impostazioni"
+      ],
+      "cookieControl": "Puoi controllare le preferenze dei cookie tramite le impostazioni del tuo browser."
+    },
+    "retention": {
+      "title": "7. Conservazione dei Dati",
+      "content": "Conserviamo le informazioni solo per il tempo necessario per:",
+      "items": [
+        "Fornire servizi della piattaforma",
+        "Conformarsi agli obblighi legali",
+        "Risolvere dispute e far rispettare gli accordi",
+        "Mantenere sicurezza e prevenzione delle frodi"
+      ]
+    },
+    "rights": {
+      "title": "8. I Tuoi Diritti",
+      "content": "A seconda della tua giurisdizione, potresti avere il diritto di:",
+      "items": [
+        "Accedere alle tue informazioni personali",
+        "Correggere informazioni inaccurate",
+        "Richiedere la cancellazione delle tue informazioni",
+        "Opporti al trattamento delle tue informazioni",
+        "Portabilità dei dati"
+      ]
+    },
+    "transfers": {
+      "title": "9. Trasferimenti Internazionali",
+      "content": "Come piattaforma decentralizzata, le tue informazioni possono essere elaborate in varie giurisdizioni. Ci assicuriamo che siano in posto adeguate garanzie per i trasferimenti internazionali di dati."
+    },
+    "changes": {
+      "title": "10. Modifiche all'Informativa sulla Privacy",
+      "content": "Potremmo aggiornare periodicamente questa Informativa sulla Privacy. Le modifiche significative saranno comunicate tramite l'interfaccia della piattaforma. Il tuo utilizzo continuato costituisce accettazione della politica aggiornata."
+    },
+    "contact": {
+      "title": "11. Contattaci",
+      "content": "Per domande relative alla privacy o per esercitare i tuoi diritti, ti preghiamo di contattarci tramite i nostri canali ufficiali o forum della community."
+    }
+  }
+}

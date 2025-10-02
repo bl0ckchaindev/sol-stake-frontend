@@ -1,0 +1,71 @@
+{
+  "title": "Nutzungsbedingungen",
+  "lastUpdated": "Zuletzt aktualisiert",
+  "sections": {
+    "acceptance": {
+      "title": "1. Akzeptanz der Bedingungen",
+      "content": "Durch den Zugriff auf MEVStake (\"die Plattform\") und die Nutzung dieses Dienstes akzeptieren Sie die Bedingungen und Bestimmungen dieser Vereinbarung. Wenn Sie nicht mit den oben genannten Bedingungen einverstanden sind, nutzen Sie diesen Dienst bitte nicht."
+    },
+    "description": {
+      "title": "2. Dienstbeschreibung",
+      "content": "MEVStake ist eine dezentrale Finanzplattform (DeFi), die es Benutzern ermöglicht, Solana-basierte Token (SOL, USDC, USDT und ausgewählte Meme-Token) zu staken, um an Maximum Extractable Value (MEV)-Bot-Operationen teilzunehmen. Unsere MEV-Bots erfassen Arbitrage-Möglichkeiten, Liquidationen und andere profitable Transaktionen auf dezentralen Solana-Börsen.",
+      "rewards": "Benutzer erhalten tägliche Belohnungen von etwa 1% basierend auf der MEV-Bot-Performance, mit einer obligatorischen 90-Tage-Sperrfrist für gestakte Assets. Belohnungen können täglich beansprucht werden, während das Kapital gesperrt bleibt."
+    },
+    "risk": {
+      "title": "3. Risiko-Offenlegung",
+      "warning": "Wichtige Risikowarnung",
+      "warningText": "Kryptowährungs-Staking und MEV-Bot-Operationen beinhalten erhebliche finanzielle Risiken. Frühere Ergebnisse garantieren keine zukünftigen Ergebnisse. Sie könnten einen Teil oder alle Ihrer gestakten Assets verlieren.",
+      "risks": [
+        "MEV-Bot-Performance unterliegt Marktbedingungen und Wettbewerb",
+        "Smart-Contract-Risiken und potenzielle Schwachstellen",
+        "Solana-Netzwerkrisiken einschließlich Ausfallzeiten und Überlastung",
+        "Regulatorische Risiken in Ihrer Gerichtsbarkeit",
+        "Liquiditätsrisiken während der 90-Tage-Sperrfrist",
+        "Impermanent Loss und Slippage-Risiken"
+      ]
+    },
+    "staking": {
+      "title": "4. Staking-Bedingungen",
+      "terms": [
+        "Mindest-Staking-Zeitraum: 90 Tage ab Einzahlung",
+        "Ziel-Tagesbelohnungen: 1% (unterliegt der MEV-Bot-Performance)",
+        "Unterstützte Token: SOL, USDC, USDT und genehmigte Meme-Token",
+        "Belohnungen werden basierend auf den tatsächlichen MEV-Bot-Gewinnen verteilt",
+        "Frühzeitige Auszahlung ist während der Sperrfrist nicht erlaubt",
+        "Die Plattform behält sich das Recht vor, Belohnungsraten basierend auf der Performance anzupassen"
+      ]
+    },
+    "responsibilities": {
+      "title": "5. Benutzerverantwortlichkeiten",
+      "items": [
+        "Sicherheit Ihrer Wallet und privater Schlüssel aufrechterhalten",
+        "Alle Transaktionsdetails vor der Bestätigung überprüfen",
+        "Einhalten der geltenden Gesetze und Vorschriften in Ihrer Gerichtsbarkeit",
+        "Die Plattform nicht für illegale Aktivitäten oder Geldwäsche verwenden",
+        "Die mit Kryptowährungs-Staking verbundenen Risiken verstehen"
+      ]
+    },
+    "limitations": {
+      "title": "6. Plattform-Einschränkungen",
+      "content": "MEVStake arbeitet nach bestem Bemühen. Wir garantieren nicht:",
+      "items": [
+        "Spezifische Belohnungsraten oder Renditen",
+        "Kontinuierliche Plattform-Verfügbarkeit",
+        "Schutz vor Smart-Contract-Schwachstellen",
+        "Wiederherstellung von Geldern im Falle von Benutzerfehlern"
+      ]
+    },
+    "liability": {
+      "title": "7. Haftungsbeschränkung",
+      "content": "In dem maximal gesetzlich zulässigen Umfang haften MEVStake und seine Betreiber nicht für indirekte, zufällige, besondere, Folge- oder Strafschäden, einschließlich, aber nicht beschränkt auf, Gewinn-, Daten-, Nutzungs-, Goodwill- oder andere immaterielle Verluste, die sich aus Ihrer Nutzung der Plattform ergeben."
+    },
+    "modifications": {
+      "title": "8. Änderungen",
+      "content": "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Benutzer werden über wesentliche Änderungen über die Plattform-Oberfläche informiert. Die fortgesetzte Nutzung der Plattform nach Änderungen stellt die Annahme der aktualisierten Bedingungen dar."
+    },
+    "contact": {
+      "title": "9. Kontaktinformationen",
+      "content": "Bei Fragen zu diesen Nutzungsbedingungen kontaktieren Sie uns bitte über unsere offiziellen Kanäle oder Community-Foren."
+    }
+  }
+}
