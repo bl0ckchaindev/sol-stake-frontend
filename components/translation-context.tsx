@@ -85,7 +85,9 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
           referralsMain,
           referralsAnalytics,
           terms,
-          privacy
+          privacy,
+          countdown,
+          comingSoon
         ] = await Promise.all([
           loadTranslation('common/header'),
           loadTranslation('common/footer'),
@@ -108,7 +110,9 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
           loadTranslation('referrals/main'),
           loadTranslation('referrals/analytics'),
           loadTranslation('terms'),
-          loadTranslation('privacy')
+          loadTranslation('privacy'),
+          loadTranslation('countdown'),
+          loadTranslation('coming-soon')
         ]);
 
         const loadedTranslations = {
@@ -143,7 +147,9 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
             analytics: referralsAnalytics
           },
           terms: terms,
-          privacy: privacy
+          privacy: privacy,
+          countdown: countdown,
+          comingSoon: comingSoon
         };
 
         setTranslations(loadedTranslations);
