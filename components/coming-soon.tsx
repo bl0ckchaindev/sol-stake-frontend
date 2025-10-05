@@ -26,10 +26,7 @@ export function ComingSoon({ targetDate }: ComingSoonProps) {
           <MotionWrapper type="slideUp" delay={0.1}>
             <div className="flex items-center justify-center mb-8">
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center shadow-lg">
-                  <Bot className="w-10 h-10 text-primary-foreground" />
-                </div>
-                <div className="absolute -top-2 -right-2 w-6 h-6 bg-success rounded-full border-4 border-background animate-pulse" />
+                <img width={256} height={128} src="/mev.png" />
               </div>
             </div>
           </MotionWrapper>
