@@ -1,0 +1,24 @@
+{
+  "title": "Coming Soon",
+  "subtitle": "We're preparing something amazing",
+  "description": "Our advanced MEV staking platform is launching soon. Get ready for institutional-grade MEV extraction with daily rewards.",
+  "notifyTitle": "Get Notified",
+  "notifyDescription": "Be the first to know when we launch. We'll send you an email as soon as we're live.",
+  "notifyButton": "Get Notified When We Launch",
+  "emailPlaceholder": "Enter your email",
+  "contactTitle": "Contact Support",
+  "contactDescription": "Have questions? Our support team is here to help you.",
+  "contactButton": "Contact Support",
+  "feature1": {
+    "title": "Advanced MEV",
+    "description": "Cutting-edge algorithms for maximum extractable value opportunities"
+  },
+  "feature2": {
+    "title": "Secure Platform",
+    "description": "Institutional-grade security with transparent operations"
+  },
+  "feature3": {
+    "title": "Daily Rewards",
+    "description": "Earn consistent 1% daily returns on your staked assets"
+  }
+}

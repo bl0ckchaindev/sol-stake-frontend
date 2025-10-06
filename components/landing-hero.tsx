@@ -5,6 +5,7 @@ import { ArrowRight, TrendingUp, Shield, Zap } from "lucide-react"
 import Link from "next/link"
 import { useTranslation } from "@/components/translation-context"
 import { MotionWrapper } from "@/components/motion-wrapper"
+import { CountdownTimer } from "@/components/countdown-timer"
 
 export function LandingHero() {
   const { t } = useTranslation()
@@ -44,9 +45,15 @@ export function LandingHero() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 bg-transparent" asChild>
+            <Button size="lg" variant="outline" className="text-lg px-8 bg-transparen" asChild>
               <Link href="#how-it-works">{t('home.hero.buttons.learnMore')}</Link>
             </Button>
+          </MotionWrapper>
+
+          <MotionWrapper type="fadeIn" delay={0.9} className="mt-16">
+            <div className="max-w-2xl mx-auto">
+              <CountdownTimer targetDate="2025-10-10T10:00:00Z" />
+            </div>
           </MotionWrapper>
 
           <MotionWrapper

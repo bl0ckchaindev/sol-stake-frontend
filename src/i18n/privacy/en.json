@@ -1,0 +1,103 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated",
+  "sections": {
+    "collection": {
+      "title": "1. Information We Collect",
+      "content": "MEVStake is designed with privacy in mind. As a decentralized platform, we collect minimal personal information necessary for platform operation.",
+      "walletInfo": "Wallet Information",
+      "walletItems": [
+        "Public wallet addresses for transaction processing",
+        "Transaction history related to staking activities",
+        "Staking positions and reward calculations"
+      ],
+      "technicalInfo": "Technical Information",
+      "technicalItems": [
+        "IP addresses for security and fraud prevention",
+        "Browser type and version for compatibility",
+        "Device information for optimal user experience",
+        "Usage analytics to improve platform performance"
+      ]
+    },
+    "usage": {
+      "title": "2. How We Use Information",
+      "content": "We use collected information solely for:",
+      "items": [
+        "Processing staking transactions and reward distributions",
+        "Maintaining platform security and preventing fraud",
+        "Improving user experience and platform functionality",
+        "Complying with applicable legal requirements",
+        "Communicating important platform updates"
+      ]
+    },
+    "sharing": {
+      "title": "3. Information Sharing",
+      "content": "We do not sell, trade, or otherwise transfer your personal information to third parties, except:",
+      "items": [
+        "When required by law or legal process",
+        "To protect our rights, property, or safety",
+        "With service providers who assist in platform operations (under strict confidentiality)",
+        "In connection with a merger, acquisition, or sale of assets"
+      ]
+    },
+    "blockchain": {
+      "title": "4. Blockchain Transparency",
+      "notice": "Public Blockchain Data",
+      "noticeText": "All staking transactions are recorded on the Solana blockchain and are publicly visible. This includes wallet addresses, transaction amounts, and timestamps."
+    },
+    "security": {
+      "title": "5. Data Security",
+      "content": "We implement industry-standard security measures to protect your information:",
+      "items": [
+        "Encryption of sensitive data in transit and at rest",
+        "Regular security audits and vulnerability assessments",
+        "Access controls and authentication mechanisms",
+        "Secure infrastructure and hosting environments",
+        "Incident response procedures for security breaches"
+      ]
+    },
+    "cookies": {
+      "title": "6. Cookies and Tracking",
+      "content": "We use minimal cookies and tracking technologies:",
+      "items": [
+        "Essential cookies for platform functionality",
+        "Analytics cookies to understand usage patterns (anonymized)",
+        "Preference cookies to remember your settings"
+      ],
+      "cookieControl": "You can control cookie preferences through your browser settings."
+    },
+    "retention": {
+      "title": "7. Data Retention",
+      "content": "We retain information only as long as necessary for:",
+      "items": [
+        "Providing platform services",
+        "Complying with legal obligations",
+        "Resolving disputes and enforcing agreements",
+        "Maintaining security and fraud prevention"
+      ]
+    },
+    "rights": {
+      "title": "8. Your Rights",
+      "content": "Depending on your jurisdiction, you may have rights to:",
+      "items": [
+        "Access your personal information",
+        "Correct inaccurate information",
+        "Request deletion of your information",
+        "Object to processing of your information",
+        "Data portability"
+      ]
+    },
+    "transfers": {
+      "title": "9. International Transfers",
+      "content": "As a decentralized platform, your information may be processed in various jurisdictions. We ensure appropriate safeguards are in place for international data transfers."
+    },
+    "changes": {
+      "title": "10. Changes to Privacy Policy",
+      "content": "We may update this Privacy Policy periodically. Significant changes will be communicated through the platform interface. Your continued use constitutes acceptance of the updated policy."
+    },
+    "contact": {
+      "title": "11. Contact Us",
+      "content": "For privacy-related questions or to exercise your rights, please contact us through our official channels or community forums."
+    }
+  }
+}

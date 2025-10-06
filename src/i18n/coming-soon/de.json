@@ -1,0 +1,24 @@
+{
+  "title": "Demnächst",
+  "subtitle": "Wir bereiten etwas Außergewöhnliches vor",
+  "description": "Unsere fortschrittliche MEV-Staking-Plattform startet bald. Machen Sie sich bereit für institutionelle MEV-Extraktion mit täglichen Belohnungen.",
+  "notifyTitle": "Benachrichtigung Erhalten",
+  "notifyDescription": "Seien Sie der Erste, der erfährt, wann wir starten. Wir senden Ihnen eine E-Mail, sobald wir live sind.",
+  "notifyButton": "Benachrichtigung beim Start",
+  "emailPlaceholder": "E-Mail eingeben",
+  "contactTitle": "Support Kontaktieren",
+  "contactDescription": "Haben Sie Fragen? Unser Support-Team ist hier, um Ihnen zu helfen.",
+  "contactButton": "Support Kontaktieren",
+  "feature1": {
+    "title": "Erweitertes MEV",
+    "description": "Modernste Algorithmen für maximale extrahierbare Wertemöglichkeiten"
+  },
+  "feature2": {
+    "title": "Sichere Plattform",
+    "description": "Institutionelle Sicherheit mit transparenten Operationen"
+  },
+  "feature3": {
+    "title": "Tägliche Belohnungen",
+    "description": "Verdienen Sie konsistente 1% tägliche Renditen auf Ihre gestaketen Assets"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "title": "Termini di Servizio",
+  "lastUpdated": "Ultimo aggiornamento",
+  "sections": {
+    "acceptance": {
+      "title": "1. Accettazione dei Termini",
+      "content": "Accedendo e utilizzando MEVStake (\"la Piattaforma\"), accetti e accetti di essere vincolato dai termini e dalle disposizioni di questo accordo. Se non accetti di rispettare quanto sopra, ti preghiamo di non utilizzare questo servizio."
+    },
+    "description": {
+      "title": "2. Descrizione del Servizio",
+      "content": "MEVStake è una piattaforma di finanza decentralizzata (DeFi) che consente agli utenti di fare staking di token basati su Solana (SOL, USDC, USDT e token meme selezionati) per partecipare alle operazioni dei bot Maximum Extractable Value (MEV). I nostri bot MEV catturano opportunità di arbitraggio, liquidazioni e altre transazioni profittevoli su exchange decentralizzati Solana.",
+      "rewards": "Gli utenti ricevono ricompense giornaliere di circa l'1% basate sulla performance dei bot MEV, con un periodo di blocco obbligatorio di 90 giorni per gli asset in staking. Le ricompense possono essere richieste giornalmente mentre il capitale rimane bloccato."
+    },
+    "risk": {
+      "title": "3. Informativa sui Rischi",
+      "warning": "Importante Avviso di Rischio",
+      "warningText": "Lo staking di criptovalute e le operazioni dei bot MEV comportano rischi finanziari significativi. I risultati passati non garantiscono risultati futuri. Potresti perdere una parte o tutti i tuoi asset in staking.",
+      "risks": [
+        "La performance dei bot MEV è soggetta a condizioni di mercato e concorrenza",
+        "Rischi di smart contract e potenziali vulnerabilità",
+        "Rischi di rete Solana inclusi tempi di inattività e congestione",
+        "Rischi normativi nella tua giurisdizione",
+        "Rischi di liquidità durante il periodo di blocco di 90 giorni",
+        "Rischi di perdita impermanente e slippage"
+      ]
+    },
+    "staking": {
+      "title": "4. Termini di Staking",
+      "terms": [
+        "Periodo minimo di staking: 90 giorni dal deposito",
+        "Ricompense giornaliere target: 1% (soggetto alla performance del bot MEV)",
+        "Token supportati: SOL, USDC, USDT e token meme approvati",
+        "Le ricompense sono distribuite in base ai profitti reali del bot MEV",
+        "Il prelievo anticipato non è consentito durante il periodo di blocco",
+        "La piattaforma si riserva il diritto di modificare i tassi di ricompensa in base alla performance"
+      ]
+    },
+    "responsibilities": {
+      "title": "5. Responsabilità dell'Utente",
+      "items": [
+        "Mantenere la sicurezza del tuo wallet e delle chiavi private",
+        "Verificare tutti i dettagli della transazione prima di confermare",
+        "Rispettare le leggi e i regolamenti applicabili nella tua giurisdizione",
+        "Non utilizzare la piattaforma per attività illegali o riciclaggio di denaro",
+        "Comprendere i rischi associati allo staking di criptovalute"
+      ]
+    },
+    "limitations": {
+      "title": "6. Limitazioni della Piattaforma",
+      "content": "MEVStake opera con il miglior impegno possibile. Non garantiamo:",
+      "items": [
+        "Tassi di ricompensa o rendimenti specifici",
+        "Disponibilità continua della piattaforma",
+        "Protezione contro vulnerabilità di smart contract",
+        "Recupero di fondi in caso di errore dell'utente"
+      ]
+    },
+    "liability": {
+      "title": "7. Limitazione di Responsabilità",
+      "content": "Nella massima misura consentita dalla legge, MEVStake e i suoi operatori non saranno responsabili per eventuali danni indiretti, incidentali, speciali, consequenziali o punitivi, inclusi senza limitazione, perdite di profitti, dati, uso, goodwill o altre perdite immateriali, derivanti dal tuo utilizzo della piattaforma."
+    },
+    "modifications": {
+      "title": "8. Modifiche",
+      "content": "Ci riserviamo il diritto di modificare questi termini in qualsiasi momento. Gli utenti saranno notificati di modifiche significative tramite l'interfaccia della piattaforma. L'utilizzo continuato della piattaforma dopo le modifiche costituisce accettazione dei termini aggiornati."
+    },
+    "contact": {
+      "title": "9. Informazioni di Contatto",
+      "content": "Per domande su questi Termini di Servizio, ti preghiamo di contattarci tramite i nostri canali ufficiali o forum della community."
+    }
+  }
+}

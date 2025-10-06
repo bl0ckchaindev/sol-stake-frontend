@@ -1,0 +1,71 @@
+{
+  "title": "Terms of Service",
+  "lastUpdated": "Last updated",
+  "sections": {
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "content": "By accessing and using MEVStake (\"the Platform\"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+    },
+    "description": {
+      "title": "2. Description of Service",
+      "content": "MEVStake is a decentralized finance (DeFi) platform that allows users to stake Solana-based tokens (SOL, USDC, USDT, and select meme tokens) to participate in Maximum Extractable Value (MEV) bot operations. Our MEV bots capture arbitrage opportunities, liquidations, and other profitable transactions across Solana decentralized exchanges.",
+      "rewards": "Users receive daily rewards of approximately 1% based on MEV bot performance, with a mandatory 90-day lock period for staked assets. Rewards can be claimed daily while the principal remains locked."
+    },
+    "risk": {
+      "title": "3. Risk Disclosure",
+      "warning": "Important Risk Warning",
+      "warningText": "Cryptocurrency staking and MEV bot operations involve significant financial risks. Past performance does not guarantee future results. You may lose some or all of your staked assets.",
+      "risks": [
+        "MEV bot performance is subject to market conditions and competition",
+        "Smart contract risks and potential vulnerabilities",
+        "Solana network risks including downtime and congestion",
+        "Regulatory risks in your jurisdiction",
+        "Liquidity risks during the 90-day lock period",
+        "Impermanent loss and slippage risks"
+      ]
+    },
+    "staking": {
+      "title": "4. Staking Terms",
+      "terms": [
+        "Minimum staking period: 90 days from deposit",
+        "Target daily rewards: 1% (subject to MEV bot performance)",
+        "Supported tokens: SOL, USDC, USDT, and approved meme tokens",
+        "Rewards are distributed based on actual MEV bot profits",
+        "Early withdrawal is not permitted during the lock period",
+        "Platform reserves the right to adjust reward rates based on performance"
+      ]
+    },
+    "responsibilities": {
+      "title": "5. User Responsibilities",
+      "items": [
+        "Maintain security of your wallet and private keys",
+        "Verify all transaction details before confirming",
+        "Comply with applicable laws and regulations in your jurisdiction",
+        "Not use the platform for illegal activities or money laundering",
+        "Understand the risks associated with cryptocurrency staking"
+      ]
+    },
+    "limitations": {
+      "title": "6. Platform Limitations",
+      "content": "MEVStake operates on a best-effort basis. We do not guarantee:",
+      "items": [
+        "Specific reward rates or returns",
+        "Continuous platform availability",
+        "Protection against smart contract vulnerabilities",
+        "Recovery of funds in case of user error"
+      ]
+    },
+    "liability": {
+      "title": "7. Limitation of Liability",
+      "content": "To the maximum extent permitted by law, MEVStake and its operators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your use of the platform."
+    },
+    "modifications": {
+      "title": "8. Modifications",
+      "content": "We reserve the right to modify these terms at any time. Users will be notified of significant changes through the platform interface. Continued use of the platform after modifications constitutes acceptance of the updated terms."
+    },
+    "contact": {
+      "title": "9. Contact Information",
+      "content": "For questions about these Terms of Service, please contact us through our official channels or community forums."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "title": "Próximamente",
+  "subtitle": "Estamos preparando algo increíble",
+  "description": "Nuestra avanzada plataforma de staking MEV se lanzará pronto. Prepárate para la extracción MEV de grado institucional con recompensas diarias.",
+  "notifyTitle": "Recibir Notificaciones",
+  "notifyDescription": "Sé el primero en saber cuándo lanzamos. Te enviaremos un correo electrónico tan pronto como estemos en vivo.",
+  "notifyButton": "Recibir Notificación al Lanzamiento",
+  "emailPlaceholder": "Ingresa tu correo electrónico",
+  "contactTitle": "Contactar Soporte",
+  "contactDescription": "¿Tienes preguntas? Nuestro equipo de soporte está aquí para ayudarte.",
+  "contactButton": "Contactar Soporte",
+  "feature1": {
+    "title": "MEV Avanzado",
+    "description": "Algoritmos de vanguardia para oportunidades de valor extraíble máximo"
+  },
+  "feature2": {
+    "title": "Plataforma Segura",
+    "description": "Seguridad de grado institucional con operaciones transparentes"
+  },
+  "feature3": {
+    "title": "Recompensas Diarias",
+    "description": "Gana rendimientos diarios consistentes del 1% en tus activos en staking"
+  }
+}

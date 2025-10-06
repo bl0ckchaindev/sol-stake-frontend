@@ -30,10 +30,7 @@ export function Header() {
         <MotionWrapper type="slideRight" delay={0.1} className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-3">
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg">
-                <Bot className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-success rounded-full border-2 border-background animate-pulse" />
+              <img width={96} height={48} src="/mev.png" />
             </div>
             <div>
               <h1 className="text-xl font-bold">MEVStake</h1>
