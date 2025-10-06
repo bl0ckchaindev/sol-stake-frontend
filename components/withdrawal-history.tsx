@@ -2,8 +2,10 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { useStaking } from "./staking-provider"
-import { ArrowDownLeft, ArrowUpRight, Clock } from "lucide-react"
+import { useAnchorStaking } from "./anchor-staking-provider"
+import { useWallet } from "./wallet-provider"
+import { SUPPORTED_TOKENS } from "@/lib/anchor/types"
+import { ArrowDownLeft, ArrowUpRight, Clock, TrendingUp, Coins } from "lucide-react"
 
 interface WithdrawalRecord {
   id: string
@@ -16,56 +18,47 @@ interface WithdrawalRecord {
 }
 
 export function WithdrawalHistory() {
-  const { stakes } = useStaking()
+  const { stakes, transactions, formatAmount } = useAnchorStaking()
+  const { connected } = useWallet()
 
-  // Generate mock withdrawal history based on stakes
-  const withdrawalHistory: WithdrawalRecord[] = stakes
-    .filter((stake) => stake.claimedRewards > 0 || stake.status === "withdrawn")
-    .flatMap((stake) => {
-      const records: WithdrawalRecord[] = []
-
-      // Add reward claims
-      if (stake.claimedRewards > 0) {
-        records.push({
-          id: `claim_${stake.id}`,
-          type: "reward_claim",
-          amount: stake.claimedRewards,
-          tokenSymbol: stake.tokenSymbol,
-          timestamp: new Date(stake.startDate.getTime() + 24 * 60 * 60 * 1000), // Mock: 1 day after start
-          stakeId: stake.id,
-          status: "completed",
-        })
+  // Calculate total staked amounts by token
+  const getTotalStakedByToken = () => {
+    const totals: Record<string, { amount: number; symbol: string; name: string; icon: string }> = {}
+    
+    // Initialize all supported tokens with 0
+    Object.entries(SUPPORTED_TOKENS).forEach(([symbol, tokenInfo]) => {
+      totals[symbol] = {
+        amount: 0,
+        symbol: tokenInfo.symbol,
+        name: tokenInfo.name,
+        icon: tokenInfo.icon || "💰"
       }
-
-      // Add stake withdrawal
-      if (stake.status === "withdrawn") {
-        records.push({
-          id: `withdraw_${stake.id}`,
-          type: "stake_withdrawal",
-          amount: stake.amount,
-          tokenSymbol: stake.tokenSymbol,
-          timestamp: stake.endDate,
-          stakeId: stake.id,
-          status: "completed",
-        })
-      }
-
-      return records
     })
-    .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
+    
+    // Calculate actual staked amounts
+    stakes.forEach(stake => {
+      const token = Object.values(SUPPORTED_TOKENS).find(t => t.poolId === stake.userStake.poolId)
+      if (token) {
+        totals[token.symbol].amount += formatAmount(stake.userStake.totalStaked, token.decimals)
+      }
+    })
+    
+    return totals
+  }
 
-  if (withdrawalHistory.length === 0) {
+  const totalStakedByToken = getTotalStakedByToken()
+
+  if (!connected) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Withdrawal History</CardTitle>
-          <CardDescription>Your withdrawal and claim history will appear here</CardDescription>
+          <CardTitle>Staking Overview</CardTitle>
+          <CardDescription>Connect your wallet to see your staking summary</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8 text-muted-foreground">
-            <ArrowDownLeft className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <p>No withdrawals yet</p>
-            <p className="text-sm">Start staking to see your withdrawal history</p>
+            <Coins className="h-12 w-12 mx-auto mb-4 opacity-50" />
+            <p>Connect your wallet to view your staking summary</p>
           </div>
         </CardContent>
       </Card>
@@ -73,67 +66,113 @@ export function WithdrawalHistory() {
   }
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Withdrawal History</CardTitle>
-        <CardDescription>Track all your withdrawals and reward claims</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {withdrawalHistory.map((record) => (
-            <div key={record.id} className="flex items-center justify-between p-4 border rounded-lg">
-              <div className="flex items-center gap-3">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                    record.type === "reward_claim"
-                      ? "bg-success/10"
-                      : record.type === "stake_withdrawal"
-                        ? "bg-primary/10"
-                        : "bg-warning/10"
-                  }`}
-                >
-                  {record.type === "reward_claim" ? (
-                    <ArrowDownLeft className="h-5 w-5 text-success" />
-                  ) : record.type === "stake_withdrawal" ? (
-                    <ArrowUpRight className="h-5 w-5 text-primary" />
-                  ) : (
-                    <Clock className="h-5 w-5 text-warning" />
+    <div className="space-y-6">
+      {/* Total Staked Overview */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <TrendingUp className="h-5 w-5" />
+            My Total Staked
+          </CardTitle>
+          <CardDescription>Your total staked amounts across all tokens</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {Object.entries(totalStakedByToken).map(([symbol, data]) => (
+              <div key={symbol} className="flex items-center justify-between p-4 border rounded-lg bg-muted/20">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-lg">{data.icon}</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold">{data.name}</div>
+                    <div className="text-sm text-muted-foreground">{data.symbol}</div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="font-bold text-lg">
+                    {data.amount.toFixed(2)} {data.symbol}
+                  </div>
+                  {data.amount === 0 && (
+                    <div className="text-xs text-muted-foreground">Not staked</div>
                   )}
                 </div>
-                <div>
-                  <div className="font-semibold">
-                    {record.type === "reward_claim"
-                      ? "Reward Claim"
-                      : record.type === "stake_withdrawal"
-                        ? "Stake Withdrawal"
-                        : "Emergency Withdrawal"}
-                  </div>
-                  <div className="text-sm text-muted-foreground">
-                    {record.timestamp.toLocaleDateString()} at {record.timestamp.toLocaleTimeString()}
-                  </div>
-                </div>
               </div>
-              <div className="text-right">
-                <div className="font-bold text-success">
-                  +{record.amount.toFixed(4)} {record.tokenSymbol}
-                </div>
-                <Badge
-                  variant={
-                    record.status === "completed"
-                      ? "default"
-                      : record.status === "pending"
-                        ? "secondary"
-                        : "destructive"
-                  }
-                  className="text-xs"
-                >
-                  {record.status}
-                </Badge>
-              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Transaction History */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Transactions</CardTitle>
+          <CardDescription>Your recent staking transactions</CardDescription>
+        </CardHeader>
+        <CardContent>
+          {transactions.length === 0 ? (
+            <div className="text-center py-8 text-muted-foreground">
+              <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
+              <p>No transactions yet</p>
+              <p className="text-sm">Your staking transactions will appear here</p>
             </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+          ) : (
+            <div className="space-y-4">
+              {transactions.slice(0, 10).map((transaction) => (
+                <div key={transaction.signature || transaction.timestamp.getTime()} className="flex items-center justify-between p-4 border rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        transaction.type === "claim"
+                          ? "bg-success/10"
+                          : transaction.type === "withdraw"
+                            ? "bg-primary/10"
+                            : "bg-secondary/10"
+                      }`}
+                    >
+                      {transaction.type === "claim" ? (
+                        <ArrowDownLeft className="h-5 w-5 text-success" />
+                      ) : transaction.type === "withdraw" ? (
+                        <ArrowUpRight className="h-5 w-5 text-primary" />
+                      ) : (
+                        <TrendingUp className="h-5 w-5 text-secondary" />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold capitalize">
+                        {transaction.type === "claim" ? "Reward Claim" : 
+                         transaction.type === "withdraw" ? "Stake Withdrawal" : 
+                         "Stake"}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {transaction.timestamp.toLocaleDateString()} at {transaction.timestamp.toLocaleTimeString()}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className={`font-bold ${transaction.type === 'claim' ? 'text-success' : transaction.type === 'withdraw' ? 'text-primary' : 'text-secondary'}`}>
+                      {transaction.type === 'claim' ? '+' : transaction.type === 'withdraw' ? '-' : '+'}
+                      {transaction.amount.toFixed(2)} {Object.keys(SUPPORTED_TOKENS)[transaction.lockPeriod] || 'TOKEN'}
+                    </div>
+                    <Badge
+                      variant={
+                        transaction.status === "confirmed"
+                          ? "default"
+                          : transaction.status === "pending"
+                            ? "secondary"
+                            : "destructive"
+                      }
+                      className="text-xs"
+                    >
+                      {transaction.status}
+                    </Badge>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
   )
 }

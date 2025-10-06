@@ -1,5 +1,5 @@
 import { Header } from "@/components/header"
-import { StakingDashboard } from "@/components/staking-dashboard"
+import { AnchorStakingDashboard } from "@/components/anchor-staking-dashboard"
 import { Footer } from "@/components/footer"
 import { MotionWrapper } from "@/components/motion-wrapper"
 
@@ -8,7 +8,7 @@ export default function DashboardPage() {
     <MotionWrapper type="fadeIn" className="min-h-screen bg-background">
       <Header />
       <main>
-        <StakingDashboard />
+        <AnchorStakingDashboard />
       </main>
       <Footer />
     </MotionWrapper>

@@ -11,5 +11,12 @@
   "installPhantom": "Install Phantom",
   "installSolflare": "Install Solflare",
   "balance": "Balance",
-  "disconnect": "Disconnect"
+  "disconnect": "Disconnect",
+  "selectWallet": "Select Wallet",
+  "selectWalletDescription": "Choose your preferred wallet to connect",
+  "installedWallets": "Installed Wallets",
+  "clickToConnect": "Click to connect",
+  "clickToInstall": "Click to install",
+  "noWalletsFound": "No Wallets Found",
+  "installWalletFirst": "Please install a wallet extension first"
 }

@@ -4,11 +4,13 @@ import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { WalletProvider } from "@/components/wallet-provider"
-import { StakingProvider } from "@/components/staking-provider"
+import { AnchorStakingProvider } from "@/components/anchor-staking-provider"
 import { ReferralProvider } from "@/components/referral-provider"
 import { TranslationProvider } from "@/components/translation-context"
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "sonner"
 import { Suspense } from "react"
+import { ToasterWrapper } from "@/components/toaster-wrapper"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -77,12 +79,13 @@ export default function RootLayout({
           <TranslationProvider>
             <WalletProvider>
               <ReferralProvider>
-                <StakingProvider>
+                <AnchorStakingProvider>
                   <Suspense>{children}</Suspense>
-                </StakingProvider>
+                </AnchorStakingProvider>
               </ReferralProvider>
             </WalletProvider>
           </TranslationProvider>
+          <ToasterWrapper />
         </ThemeProvider>
         <Analytics />
       </body>

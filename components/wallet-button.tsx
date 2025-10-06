@@ -2,8 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import { useWallet } from "./wallet-provider"
-import { Wallet, LogOut, Download } from "lucide-react"
+import { Wallet, LogOut, ChevronDown } from "lucide-react"
 import { useTranslation } from "@/components/translation-context"
+import { WalletSelector } from "./wallet-selector"
+import { useState, useEffect } from "react"
+import { createPortal } from "react-dom"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,46 +16,14 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function WalletButton() {
-  const { connected, connecting, publicKey, connect, disconnect, balance, walletName } = useWallet()
+  const { connected, connecting, publicKey, disconnect, balance, walletName, detectedWallets } = useWallet()
   const { t } = useTranslation()
+  const [showWalletSelector, setShowWalletSelector] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
-  if (
-    !connected &&
-    !connecting &&
-    typeof window !== "undefined" &&
-    !window.phantom &&
-    !window.solflare &&
-    !window.solana
-  ) {
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button className="flex items-center gap-2">
-            <Download className="h-4 w-4" />
-            {t('common.header.installWallet')}
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-48">
-          <DropdownMenuItem onClick={() => window.open("https://phantom.app/", "_blank")}>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">P</span>
-              </div>
-              {t('common.header.installPhantom')}
-            </div>
-          </DropdownMenuItem>
-          <DropdownMenuItem onClick={() => window.open("https://solflare.com/", "_blank")}>
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">S</span>
-              </div>
-              {t('common.header.installSolflare')}
-            </div>
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    )
-  }
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   if (connected && publicKey) {
     return (
@@ -83,10 +54,39 @@ export function WalletButton() {
     )
   }
 
+  const modalContent = showWalletSelector && mounted && (
+    <div 
+      className="fixed inset-0 bg-black/50 z-[9999] flex items-center justify-center"
+      onClick={() => setShowWalletSelector(false)}
+    >
+      <div 
+        className="relative max-w-md w-full max-h-[90vh] overflow-y-auto m-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={() => setShowWalletSelector(false)}
+          className="absolute top-2 right-2 w-8 h-8 bg-background border rounded-full flex items-center justify-center hover:bg-muted z-10 text-lg font-bold shadow-lg"
+        >
+          ×
+        </button>
+        <WalletSelector onClose={() => setShowWalletSelector(false)} />
+      </div>
+    </div>
+  )
+
   return (
-    <Button onClick={connect} disabled={connecting} className="flex items-center gap-2">
-      <Wallet className="h-4 w-4" />
-      {connecting ? t('common.header.connecting') : t('common.header.connectWallet')}
-    </Button>
+    <>
+      <Button 
+        onClick={() => setShowWalletSelector(true)} 
+        disabled={connecting} 
+        className="flex items-center gap-2"
+      >
+        <Wallet className="h-4 w-4" />
+        {connecting ? t('common.header.connecting') : t('common.header.connectWallet')}
+        <ChevronDown className="h-3 w-3" />
+      </Button>
+
+      {mounted && modalContent && createPortal(modalContent, document.body)}
+    </>
   )
 }
