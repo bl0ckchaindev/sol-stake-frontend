@@ -11,5 +11,6 @@
   "installPhantom": "Phantom Installieren",
   "installSolflare": "Solflare Installieren",
   "balance": "Guthaben",
-  "disconnect": "Trennen"
+  "disconnect": "Trennen",
+  "companyTagline": "MEV Bot Infrastruktur"
 }

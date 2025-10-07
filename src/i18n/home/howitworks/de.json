@@ -1,6 +1,7 @@
 {
   "title": "So Funktioniert MEV-Staking",
   "subtitle": "Unsere hochentwickelte MEV-Bot-Infrastruktur generiert konsistente Renditen durch die Erfassung von Maximum Extractable Value-Möglichkeiten im gesamten Solana-Ökosystem.",
+  "badge": "Prozessübersicht",
   "steps": {
     "step1": {
       "title": "Verbinden & Staken",
@@ -22,5 +23,12 @@
       "description": "Verdienen Sie 1% tägliche Belohnungen aus MEV-Gewinnen, während Ihr Kapital 90 Tage lang gesperrt bleibt.",
       "badge": "Schritt 4"
     }
+  },
+  "cta": {
+    "title": "Bereit, um zu verdienen?",
+    "subtitle": "Schließen Sie sich Tausenden von Stakern an, die tägliche Belohnungen aus MEV-Möglichkeiten verdienen",
+    "dailyReturns": "Tägliche Erträge",
+    "apy": "APY",
+    "dayLock": "Tages-Sperre"
   }
 }

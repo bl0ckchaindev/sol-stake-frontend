@@ -18,5 +18,6 @@
   "clickToConnect": "Click to connect",
   "clickToInstall": "Click to install",
   "noWalletsFound": "No Wallets Found",
-  "installWalletFirst": "Please install a wallet extension first"
+  "installWalletFirst": "Please install a wallet extension first",
+  "companyTagline": "MEV Bot Infrastructure"
 }

@@ -30,11 +30,11 @@ export function Header() {
         <MotionWrapper type="slideRight" delay={0.1} className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-3">
             <div className="relative">
-              <img width={96} height={48} src="/mev.png" />
+              <img width={48} height={48} src="/mev.png" />
             </div>
             <div>
               <h1 className="text-xl font-bold">MEVStake</h1>
-              <p className="text-xs text-muted-foreground">MEV Bot Infrastructure</p>
+              <p className="text-xs text-muted-foreground">{t('common.header.companyTagline')}</p>
             </div>
           </Link>
         </MotionWrapper>
@@ -64,7 +64,9 @@ export function Header() {
             <LanguageSwitcher />
             <ModeToggle />
           </div>
-          <WalletButton />
+          <div className="mx-3 max-sm:hidden">
+            <WalletButton />
+          </div>
 
           {/* Mobile menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -77,14 +79,14 @@ export function Header() {
               <div className="flex flex-col gap-6 mt-6">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                      <Bot className="w-5 h-5 text-primary-foreground" />
+                    <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center ml-3">
+                      <img width={48} height={48} src="/mev.png" />
                     </div>
                     <div className="absolute -top-1 -right-1 w-3 h-3 bg-success rounded-full border border-background animate-pulse" />
                   </div>
                   <div>
                     <h2 className="font-bold">MEVStake</h2>
-                    <p className="text-xs text-muted-foreground">MEV Bot Infrastructure</p>
+                    <p className="text-xs text-muted-foreground">{t('common.header.companyTagline')}</p>
                   </div>
                 </div>
 
@@ -105,9 +107,12 @@ export function Header() {
                   ))}
                 </nav>
 
-                <div className="flex items-center gap-3 pt-4 border-t">
+                <div className="flex items-center gap-3 pt-4 border-t mx-auto">
                   <LanguageSwitcher />
                   <ModeToggle />
+                </div>
+                <div className="mx-auto px-3 sm:hidden">
+                  <WalletButton />
                 </div>
               </div>
             </SheetContent>

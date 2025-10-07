@@ -138,15 +138,30 @@ export function MevBotTracker() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <MotionWrapper type="slideUp" delay={0.1} className="mb-8">
+    <div className="container mx-auto px-4 py-8 relative">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-1/3 right-0 w-64 h-64 opacity-5 animate-pulse">
+          <div className="w-full h-full bg-gradient-accent rounded-full blur-3xl"></div>
+        </div>
+        <div className="absolute bottom-1/4 left-0 w-48 h-48 opacity-5 animate-pulse" style={{animationDelay: '1s'}}>
+          <div className="w-full h-full bg-gradient-primary rounded-full blur-3xl"></div>
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <MotionWrapper type="slideUp" delay={0.1} className="mb-12">
         <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">{t('mevtracker.main.title')}</h1>
-            <p className="text-muted-foreground">{t('mevtracker.main.subtitle')}</p>
+          <div className="max-w-2xl">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+              {t('mevtracker.main.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              {t('mevtracker.main.subtitle')}
+            </p>
           </div>
-          <Badge className={getStatusColor(performance.status)}>
-            <Activity className="w-3 h-3 mr-1" />
+          <Badge className={`${getStatusColor(performance.status)} px-4 py-2 text-sm font-medium`}>
+            <Activity className="w-4 h-4 mr-2 animate-pulse" />
             {t(`mevtracker.main.status.${performance.status}`)}
           </Badge>
         </div>
@@ -160,40 +175,49 @@ export function MevBotTracker() {
         staggerChildren={0.1}
       >
         <MotionWrapper type="scale" delay={0.1}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.totalProfit')}</CardTitle>
-              <DollarSign className="h-4 w-4 text-muted-foreground" />
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-success rounded-full opacity-10 blur-2xl"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('mevtracker.stats.totalProfit')}</CardTitle>
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/total-profit.png" className="w-12 h-12 text-accent" alt="Total Profit" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-success">{performance.totalProfit.toFixed(2)} SOL</div>
+              <div className="text-3xl font-bold text-success mb-1">+{performance.totalProfit.toFixed(2)} SOL</div>
               <p className="text-xs text-muted-foreground">{t('mevtracker.stats.allTimeEarnings')}</p>
             </CardContent>
           </Card>
         </MotionWrapper>
 
         <MotionWrapper type="scale" delay={0.2}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.dailyProfit')}</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-accent rounded-full opacity-10 blur-2xl"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('mevtracker.stats.dailyProfit')}</CardTitle>
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/daily-profit.png" className="w-12 h-12 text-accent" alt="Daily Profit" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-success">+{performance.dailyProfit.toFixed(2)} SOL</div>
+              <div className="text-3xl font-bold text-success mb-1">+{performance.dailyProfit.toFixed(2)} SOL</div>
               <p className="text-xs text-muted-foreground">{t('mevtracker.stats.last24Hours')}</p>
             </CardContent>
           </Card>
         </MotionWrapper>
 
         <MotionWrapper type="scale" delay={0.3}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.successRate')}</CardTitle>
-              <Target className="h-4 w-4 text-muted-foreground" />
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary rounded-full opacity-10 blur-2xl"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('mevtracker.stats.successRate')}</CardTitle>
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/success-rate.png" className="w-12 h-12 text-accent" alt="Success Rate" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{performance.successRate}%</div>
-              <Progress value={performance.successRate} className="mt-2" />
+              <div className="text-3xl font-bold text-foreground mb-2">{performance.successRate}%</div>
+              <Progress value={performance.successRate} className="h-2 bg-muted" />
             </CardContent>
           </Card>
         </MotionWrapper>
@@ -202,7 +226,9 @@ export function MevBotTracker() {
           <Card className="hover:shadow-lg transition-shadow duration-300">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">{t('mevtracker.stats.activeStrategies')}</CardTitle>
-              <Zap className="h-4 w-4 text-muted-foreground" />
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/active-strategies.png" className="w-12 h-12 text-accent" alt="Active Strategies" />
+              </div>
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{performance.activeStrategies}</div>

@@ -1,0 +1,14 @@
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="orbGradient2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C5FFDA;stop-opacity:0.4" />
+      <stop offset="50%" style="stop-color:#FFF7C8;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#D1EDF9;stop-opacity:0.2" />
+    </linearGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <ellipse cx="75" cy="75" rx="60" ry="40" fill="url(#orbGradient2)" filter="url(#blur1)" />
+  <ellipse cx="75" cy="75" rx="35" ry="25" fill="rgba(197, 255, 218, 0.5)" />
+</svg>

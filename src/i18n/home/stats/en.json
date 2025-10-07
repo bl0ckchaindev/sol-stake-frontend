@@ -1,6 +1,7 @@
 {
   "title": "Platform Performance",
   "subtitle": "Our MEV bot infrastructure delivers consistent, transparent results for institutional and retail stakers.",
+  "badge": "Performance Metrics",
   "items": {
     "tvl": {
       "value": "$2M+",
@@ -21,6 +22,20 @@
       "value": "24/7",
       "label": "MEV Monitoring",
       "description": "Continuous opportunity identification"
+    }
+  },
+  "additional": {
+    "consistentReturns": {
+      "title": "Consistent Returns",
+      "description": "1% daily target with proven track record"
+    },
+    "realtimeMonitoring": {
+      "title": "Real-time Monitoring",
+      "description": "24/7 MEV opportunity detection"
+    },
+    "instantRewards": {
+      "title": "Instant Rewards",
+      "description": "Daily reward distribution system"
     }
   }
 }

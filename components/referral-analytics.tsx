@@ -63,27 +63,39 @@ export function ReferralAnalytics() {
             : 10
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 relative">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-1/4 right-0 w-48 h-48 opacity-5 animate-pulse">
+          <div className="w-full h-full bg-gradient-secondary rounded-full blur-3xl"></div>
+        </div>
+        <div className="absolute bottom-1/3 left-0 w-64 h-64 opacity-5 animate-pulse" style={{animationDelay: '0.5s'}}>
+          <div className="w-full h-full bg-gradient-accent rounded-full blur-3xl"></div>
+        </div>
+      </div>
+
       {/* Performance Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('referrals.analytics.monthlyAvg')}</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-success rounded-full opacity-10 blur-2xl"></div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">{t('referrals.analytics.monthlyAvg')}</CardTitle>
+            <DollarSign className="h-5 w-5 text-success group-hover:scale-110 transition-transform duration-300" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-success">{avgMonthlyProfit.toFixed(2)} SOL</div>
+            <div className="text-3xl font-bold text-success mb-1">{avgMonthlyProfit.toFixed(2)} SOL</div>
             <p className="text-xs text-muted-foreground">{t('referrals.analytics.averageMonthlyProfit')}</p>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('referrals.analytics.growthRate')}</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+        <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-accent rounded-full opacity-10 blur-2xl"></div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">{t('referrals.analytics.growthRate')}</CardTitle>
+            <TrendingUp className="h-5 w-5 text-accent group-hover:scale-110 transition-transform duration-300" />
           </CardHeader>
           <CardContent>
-            <div className={`text-2xl font-bold ${profitGrowth >= 0 ? "text-success" : "text-destructive"}`}>
+            <div className={`text-3xl font-bold ${profitGrowth >= 0 ? "text-success" : "text-destructive"} mb-1`}>
               {profitGrowth >= 0 ? "+" : ""}
               {profitGrowth.toFixed(1)}%
             </div>
@@ -91,13 +103,14 @@ export function ReferralAnalytics() {
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('referrals.analytics.activePeriod')}</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+        <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary rounded-full opacity-10 blur-2xl"></div>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+            <CardTitle className="text-sm font-medium text-muted-foreground">{t('referrals.analytics.activePeriod')}</CardTitle>
+            <Calendar className="h-5 w-5 text-primary group-hover:scale-110 transition-transform duration-300" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">6 {t('referrals.analytics.months')}</div>
+            <div className="text-3xl font-bold text-foreground mb-1">6 {t('referrals.analytics.months')}</div>
             <p className="text-xs text-muted-foreground">{t('referrals.analytics.sinceFirstReferral')}</p>
           </CardContent>
         </Card>

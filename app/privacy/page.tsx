@@ -8,12 +8,26 @@ export default function PrivacyPage() {
   const { t } = useTranslation()
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-1/4 right-0 w-32 h-32 opacity-5 animate-float">
+          <img src="/gradient-orb-1.svg" alt="" className="w-full h-full" />
+        </div>
+        <div className="absolute bottom-1/3 left-0 w-48 h-48 opacity-5 animate-float" style={{animationDelay: '2s'}}>
+          <img src="/gradient-orb-2.svg" alt="" className="w-full h-full" />
+        </div>
+      </div>
+
       <Header />
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-4xl">
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-4xl relative">
         <div className="prose prose-gray dark:prose-invert max-w-none">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8">{t('privacy.title')}</h1>
-          <p className="text-muted-foreground mb-6 sm:mb-8">{t('privacy.lastUpdated')}: {new Date().toLocaleDateString()}</p>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+              {t('privacy.title')}
+            </h1>
+            <p className="text-lg text-muted-foreground">{t('privacy.lastUpdated')}: {new Date().toLocaleDateString()}</p>
+          </div>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t('privacy.sections.collection.title')}</h2>

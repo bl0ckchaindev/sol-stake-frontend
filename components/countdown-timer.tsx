@@ -16,9 +16,10 @@ interface TimeLeft {
 
 interface CountdownTimerProps {
   targetDate: string;
+  compact?: boolean;
 }
 
-export function CountdownTimer({ targetDate }: CountdownTimerProps) {
+export function CountdownTimer({ targetDate, compact = false }: CountdownTimerProps) {
   const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0, isLaunched: false });
 
@@ -77,56 +78,78 @@ export function CountdownTimer({ targetDate }: CountdownTimerProps) {
 
   return (
     <MotionWrapper type="fadeIn" delay={0.1}>
-      <Card className="bg-card/50 backdrop-blur-sm border-border p-8">
-        <div className="text-center mb-6">
-          <h3 className="text-xl font-semibold mb-2">{t('countdown.title')}</h3>
-          <p className="text-muted-foreground">{t('countdown.untilLaunch')}</p>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <MotionWrapper type="scale" delay={0.2} className="text-center">
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-4 border border-border">
-              <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
-                {formatNumber(timeLeft.days)}
-              </div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wide">
-                {t('countdown.days')}
-              </div>
+      <Card className={`bg-card/50 border-border/50 backdrop-blur-xl relative overflow-hidden ${compact ? 'p-1 md:p-2' : 'p-2 md:p-4'}`}>
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-primary rounded-full opacity-10 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-accent rounded-full opacity-10 blur-3xl"></div>
+        
+        <div className="relative z-10">
+          {!compact && (
+            <div className="text-center mb-2 md:mb-4 py-2">
+              <h3 className="text-xl md:text-2xl font-bold mb-2 text-foreground">
+                {t('countdown.title')}
+              </h3>
+              <p className="text-muted-foreground text-sm md:text-base">{t('countdown.untilLaunch')}</p>
             </div>
-          </MotionWrapper>
-
-          <MotionWrapper type="scale" delay={0.3} className="text-center">
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-4 border border-border">
-              <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
-                {formatNumber(timeLeft.hours)}
-              </div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wide">
-                {t('countdown.hours')}
-              </div>
+          )}
+          
+          {compact && (
+            <div className="text-center mb-2 md:mb-4 py-1">
+              <h3 className="text-base md:text-lg font-bold mb-1 text-foreground">
+                {t('countdown.title')}
+              </h3>
+              <p className="text-muted-foreground text-xs">{t('countdown.untilLaunch')}</p>
             </div>
-          </MotionWrapper>
+          )}
 
-          <MotionWrapper type="scale" delay={0.4} className="text-center">
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-4 border border-border">
-              <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
-                {formatNumber(timeLeft.minutes)}
-              </div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wide">
-                {t('countdown.minutes')}
-              </div>
+          <div className={`flex gap-2 justify-center md:gap-4 flex-wrap`}>
+            <div className="w-[80px] h-[80px] md:w-[80px] md:h-[80px] lg:w-[80px] lg:h-[80px] bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <img src="/launch-clock.png" className="w-12 h-12 text-accent" />
             </div>
-          </MotionWrapper>
+            <MotionWrapper type="scale" delay={0.2} className="text-center flex-shrink-0">
+              <div className={`w-[80px] h-[80px] md:w-[80px] md:h-[80px] lg:w-[80px] lg:h-[80px] bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 flex-col`}>
+                <div className={`font-bold text-foreground group-hover:scale-110 transition-transform duration-300 text-nowrap leading-none ${compact ? 'text-lg md:text-xl mb-1' : 'text-xl md:text-2xl lg:text-3xl mb-2'}`}>
+                  {formatNumber(timeLeft.days)}
+                </div>
+                <div className={`text-muted-foreground uppercase tracking-wide font-medium text-nowrap ${compact ? 'text-[10px] md:text-xs leading-tight' : 'text-xs md:text-sm leading-tight'}`}>
+                  {t('countdown.days')}
+                </div>
+              </div>
+            </MotionWrapper>
 
-          <MotionWrapper type="scale" delay={0.5} className="text-center">
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-4 border border-border">
-              <div className="text-3xl lg:text-4xl font-bold text-primary mb-1">
-                {formatNumber(timeLeft.seconds)}
+            <MotionWrapper type="scale" delay={0.3} className="text-center flex-shrink-0">
+              <div className={`w-[80px] h-[80px] md:w-[80px] md:h-[80px] lg:w-[80px] lg:h-[80px] bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 flex-col`}>
+                <div className={`font-bold text-foreground group-hover:scale-110 transition-transform duration-300 text-nowrap leading-none ${compact ? 'text-lg md:text-xl mb-1' : 'text-xl md:text-2xl lg:text-3xl mb-2'}`}>
+                  {formatNumber(timeLeft.hours)}
+                </div>
+                <div className={`text-muted-foreground uppercase tracking-wide font-medium text-nowrap ${compact ? 'text-[10px] md:text-xs leading-tight' : 'text-xs md:text-sm leading-tight'}`}>
+                  {t('countdown.hours')}
+                </div>
               </div>
-              <div className="text-sm text-muted-foreground uppercase tracking-wide">
-                {t('countdown.seconds')}
+            </MotionWrapper>
+
+            <MotionWrapper type="scale" delay={0.4} className="text-center flex-shrink-0">
+              <div className={`w-[80px] h-[80px] md:w-[80px] md:h-[80px] lg:w-[80px] lg:h-[80px] bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 flex-col`}>
+                <div className={`font-bold text-foreground group-hover:scale-110 transition-transform duration-300 text-nowrap leading-none ${compact ? 'text-lg md:text-xl mb-1' : 'text-xl md:text-2xl lg:text-3xl mb-2'}`}>
+                  {formatNumber(timeLeft.minutes)}
+                </div>
+                <div className={`text-muted-foreground uppercase tracking-wide font-medium text-nowrap ${compact ? 'text-[10px] md:text-xs leading-tight' : 'text-xs md:text-sm leading-tight'}`}>
+                  {t('countdown.minutes')}
+                </div>
               </div>
-            </div>
-          </MotionWrapper>
+            </MotionWrapper>
+
+            <MotionWrapper type="scale" delay={0.5} className="text-center flex-shrink-0">
+              <div className={`w-[80px] h-[80px] md:w-[80px] md:h-[80px] lg:w-[80px] lg:h-[80px] bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 flex-col`}>
+                <div className={`font-bold text-foreground group-hover:scale-110 transition-transform duration-300 text-nowrap leading-none ${compact ? 'text-lg md:text-xl mb-1' : 'text-xl md:text-2xl lg:text-3xl mb-2'}`}>
+                  {formatNumber(timeLeft.seconds)}
+                </div>
+                <div className={`text-muted-foreground uppercase tracking-wide font-medium text-nowrap ${compact ? 'text-[10px] md:text-xs leading-tight' : 'text-xs md:text-sm leading-tight'}`}>
+                  {t('countdown.seconds')}
+                </div>
+              </div>
+            </MotionWrapper>
+          </div>
         </div>
       </Card>
     </MotionWrapper>

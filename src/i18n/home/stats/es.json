@@ -1,6 +1,7 @@
 {
   "title": "Rendimiento de la Plataforma",
   "subtitle": "Nuestra infraestructura de bots MEV ofrece resultados consistentes y transparentes para stakers institucionales y minoristas.",
+  "badge": "Métricas de Rendimiento",
   "items": {
     "tvl": {
       "value": "$2M+",
@@ -21,6 +22,20 @@
       "value": "24/7",
       "label": "Monitoreo MEV",
       "description": "Identificación continua de oportunidades"
+    }
+  },
+  "additional": {
+    "consistentReturns": {
+      "title": "Rendimientos Consistentes",
+      "description": "Objetivo del 1% diario con récord comprobado"
+    },
+    "realtimeMonitoring": {
+      "title": "Monitoreo en Tiempo Real",
+      "description": "Detección de oportunidades MEV 24/7"
+    },
+    "instantRewards": {
+      "title": "Recompensas Instantáneas",
+      "description": "Sistema de distribución de recompensas diarias"
     }
   }
 }

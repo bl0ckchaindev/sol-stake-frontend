@@ -11,5 +11,6 @@
   "installPhantom": "Instalar Phantom",
   "installSolflare": "Instalar Solflare",
   "balance": "Saldo",
-  "disconnect": "Desconectar"
+  "disconnect": "Desconectar",
+  "companyTagline": "Infraestructura MEV Bot"
 }

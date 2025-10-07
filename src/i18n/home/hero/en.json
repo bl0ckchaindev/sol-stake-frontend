@@ -1,5 +1,5 @@
 {
-  "announcement": "Announcing $2M+ in MEV rewards distributed to stakers",
+  "announcement": "We are launching soon! Do not miss out the opportunity to get in early!",
   "title": "MEV Bot Staking",
   "subtitle": "for Solana DeFi",
   "description": "Stake your SOL, USDC, USDT and meme tokens with our advanced MEV bot infrastructure. Earn 1% daily rewards from Maximum Extractable Value opportunities on Solana.",
@@ -20,5 +20,9 @@
       "title": "Daily Rewards",
       "description": "Claim 1% daily rewards while your principal remains locked for optimal MEV capture"
     }
+  },
+  "trustIndicators": {
+    "auditedContracts": "Audited Smart Contracts",
+    "monitoring": "24/7 MEV Monitoring"
   }
 }

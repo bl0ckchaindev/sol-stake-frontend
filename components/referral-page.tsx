@@ -63,7 +63,9 @@ export function ReferralPage() {
                   <CardTitle className="text-sm font-medium">
                     {t("referrals.main.referralRate")}
                   </CardTitle>
-                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                  <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <img src="/referral-rate.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-primary">1%</div>
@@ -80,7 +82,9 @@ export function ReferralPage() {
                   <CardTitle className="text-sm font-medium">
                     {t("referrals.main.instantRewards")}
                   </CardTitle>
-                  <Gift className="h-4 w-4 text-muted-foreground" />
+                  <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <img src="/instant-referral-rewards.png" className="w-12 h-12 text-accent" alt="Instant Rewards" />
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold text-success">
@@ -99,7 +103,9 @@ export function ReferralPage() {
                   <CardTitle className="text-sm font-medium">
                     {t("referrals.main.unlimited")}
                   </CardTitle>
-                  <Users className="h-4 w-4 text-muted-foreground" />
+                  <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <img src="/infinite.png" className="w-12 h-12 text-accent" alt="Unlimited" />
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">∞</div>

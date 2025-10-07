@@ -9,9 +9,7 @@ export default function DashboardPage() {
     <ComingSoonWrapper pageType="dashboard">
       <MotionWrapper type="fadeIn" className="min-h-screen bg-background">
         <Header />
-        <main>
-          <AnchorStakingDashboard />
-        </main>
+        <AnchorStakingDashboard />
         <Footer />
       </MotionWrapper>
     </ComingSoonWrapper>
