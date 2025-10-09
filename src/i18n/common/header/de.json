@@ -12,5 +12,12 @@
   "installSolflare": "Solflare Installieren",
   "balance": "Guthaben",
   "disconnect": "Trennen",
+  "selectWallet": "Wallet Auswählen",
+  "selectWalletDescription": "Wählen Sie Ihr bevorzugtes Wallet zum Verbinden",
+  "installedWallets": "Installierte Wallets",
+  "clickToConnect": "Klicken zum Verbinden",
+  "clickToInstall": "Klicken zum Installieren",
+  "noWalletsFound": "Keine Wallets Gefunden",
+  "installWalletFirst": "Bitte installieren Sie zuerst eine Wallet-Erweiterung",
   "companyTagline": "MEV Bot Infrastruktur"
 }

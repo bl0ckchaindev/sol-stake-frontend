@@ -12,5 +12,12 @@
   "installSolflare": "Instalar Solflare",
   "balance": "Saldo",
   "disconnect": "Desconectar",
+  "selectWallet": "Seleccionar Billetera",
+  "selectWalletDescription": "Elige tu billetera preferida para conectar",
+  "installedWallets": "Billeteras Instaladas",
+  "clickToConnect": "Clic para conectar",
+  "clickToInstall": "Clic para instalar",
+  "noWalletsFound": "No se Encontraron Billeteras",
+  "installWalletFirst": "Por favor instala primero una extensión de billetera",
   "companyTagline": "Infraestructura MEV Bot"
 }
