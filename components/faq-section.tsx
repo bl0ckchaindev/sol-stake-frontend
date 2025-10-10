@@ -152,7 +152,7 @@ export function FAQSection() {
                   }`}
                 >
                   {category.label}
-                  <Badge variant="secondary" className="ml-2 bg-white/20">
+                  <Badge variant="secondary" className="ml-2 bg-[#9993]">
                     {category.count}
                   </Badge>
                 </Button>

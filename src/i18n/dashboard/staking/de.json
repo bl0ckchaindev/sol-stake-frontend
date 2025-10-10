@@ -10,6 +10,7 @@
   "pleaseEnterValidWithdrawalAmount": "Bitte geben Sie einen gültigen Abhebungsbetrag ein",
   "withdrawalAmountExceeds": "Abhebungsbetrag übersteigt den gestaketen Betrag",
   "myTotalStaked": "Mein Gesamt-Stacking",
+  "poolTotal": "Pool Gesamt",
   "amountToStake": "Betrag zum Staken",
   "available": "Verfügbar",
   "max": "Max",

@@ -188,12 +188,12 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
   }
 
   const handleCompound = async () => {
-    if (!userStake || !userStake.pendingRewards) return
+    if (!userStake || !userStake?.pendingRewards) return
 
     setIsCompounding(true)
     try {
       // Compound by staking the pending rewards
-      const compoundAmount = userStake.pendingRewards
+      const compoundAmount = userStake?.pendingRewards
       const currentLockPeriod = getCurrentLockPeriod()
       
       const signature = await stakeTokens(
@@ -232,7 +232,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
               </div>
               {poolInfo && (
                 <p className="text-base text-foreground">
-                  Pool Total: <span className={blurIfLoading("font-extrabold text-lg")}>{formatAmount(poolInfo.totalStaked, tokenInfo.decimals).toFixed(2)} {tokenSymbol}</span>
+                  {t('dashboard.staking.poolTotal')}: <span className={blurIfLoading("font-extrabold text-lg")}>{formatAmount(poolInfo.totalStaked, tokenInfo.decimals).toFixed(2)} {tokenSymbol}</span>
                 </p>
               )}
             </div>
@@ -285,6 +285,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                 variant="outline"
                 size="sm"
                 onClick={() => setAmount(maxAmount.toString())}
+                className="transition-all duration-200 hover:scale-105"
               >
                 {t('dashboard.staking.max')}
               </Button>
@@ -314,10 +315,10 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
           </div>
 
 
-          <Button 
-            onClick={!connected ? () => setShowWalletSelector(true) : handleStake} 
+          <Button
+            onClick={!connected ? () => setShowWalletSelector(true) : handleStake}
             disabled={connected && (isStaking || !amount || parseFloat(amount) <= 0)}
-            className="w-full"
+            className="w-full btn-gradient-primary hover:gradient-hover transition-all duration-300 hover:scale-elevate"
           >
             {isStaking ? (
               <Loader2 className="h-4 w-4 animate-spin mr-2" />
@@ -375,6 +376,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                   variant="outline"
                   size="sm"
                   onClick={() => setWithdrawAmount(getWithdrawableBalance().toString())}
+                  className="transition-all duration-200 hover:scale-105"
                 >
                   {t('dashboard.staking.max')}
                 </Button>
@@ -382,11 +384,11 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <Button 
-                onClick={handleClaim} 
-                disabled={isClaiming || userStake.pendingRewards <= 0}
-                variant="outline"
+              <Button
+                onClick={handleClaim}
+                disabled={isClaiming || userStake?.pendingRewards <= 0}
                 size="sm"
+                className="text-lg btn-gradient-primary hover:gradient-hover transition-all duration-300 hover:scale-elevate"
               >
                 {isClaiming ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-1 sm:mr-2" />
@@ -394,15 +396,16 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                   <Coins className="h-4 w-4 mr-1 sm:mr-2" />
                 )}
                 <span className={blurIfLoading("")}>
-                  <span className="hidden sm:inline">{t('dashboard.staking.claim')} </span>({userStake.pendingRewards.toFixed(2)})
+                  <span className="hidden sm:inline">{t('dashboard.staking.claim')} </span>({userStake?.pendingRewards.toFixed(2)})
                 </span>
               </Button>
               
-              <Button 
-                onClick={handleCompound} 
-                disabled={isCompounding || userStake.pendingRewards <= 0}
+              <Button
+                onClick={handleCompound}
+                disabled={isCompounding || userStake?.pendingRewards <= 0}
                 variant="secondary"
                 size="sm"
+                className="transition-all duration-200 hover:scale-105"
               >
                 {isCompounding ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-1 sm:mr-2" />
@@ -412,11 +415,12 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                 <span className="hidden sm:inline">{t('dashboard.staking.compound')}</span>
               </Button>
               
-              <Button 
-                onClick={handleWithdraw} 
+              <Button
+                onClick={handleWithdraw}
                 disabled={isWithdrawing || !withdrawAmount || parseFloat(withdrawAmount) <= 0}
                 variant="destructive"
                 size="sm"
+                className="transition-all duration-200 hover:scale-105"
               >
                 {isWithdrawing ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-1 sm:mr-2" />

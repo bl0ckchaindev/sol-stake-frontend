@@ -10,6 +10,7 @@
   "pleaseEnterValidWithdrawalAmount": "Please enter a valid withdrawal amount",
   "withdrawalAmountExceeds": "Withdrawal amount exceeds staked amount",
   "myTotalStaked": "My Total Staked",
+  "poolTotal": "Pool Total",
   "amountToStake": "Amount to Stake",
   "available": "Available",
   "max": "Max",

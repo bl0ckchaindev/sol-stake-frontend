@@ -80,7 +80,9 @@ export function ReferralAnalytics() {
           <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-success rounded-full opacity-10 blur-2xl"></div>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">{t('referrals.analytics.monthlyAvg')}</CardTitle>
-            <DollarSign className="h-5 w-5 text-success group-hover:scale-110 transition-transform duration-300" />
+            <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <img src="/monthly-avg.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-success mb-1">{avgMonthlyProfit.toFixed(2)} SOL</div>
@@ -92,7 +94,9 @@ export function ReferralAnalytics() {
           <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-accent rounded-full opacity-10 blur-2xl"></div>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">{t('referrals.analytics.growthRate')}</CardTitle>
-            <TrendingUp className="h-5 w-5 text-accent group-hover:scale-110 transition-transform duration-300" />
+            <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <img src="/growth-rate.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className={`text-3xl font-bold ${profitGrowth >= 0 ? "text-success" : "text-destructive"} mb-1`}>
@@ -107,7 +111,9 @@ export function ReferralAnalytics() {
           <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary rounded-full opacity-10 blur-2xl"></div>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">{t('referrals.analytics.activePeriod')}</CardTitle>
-            <Calendar className="h-5 w-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+            <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <img src="/active-period.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+            </div>
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-bold text-foreground mb-1">6 {t('referrals.analytics.months')}</div>
@@ -115,13 +121,15 @@ export function ReferralAnalytics() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('referrals.analytics.conversionRate')}</CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium text-muted-foreground">{t('referrals.analytics.conversionRate')}</CardTitle>
+            <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+              <img src="/conversion-rate.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+            </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">78%</div>
+            <div className="text-3xl font-bold text-foreground mb-1">78%</div>
             <p className="text-xs text-muted-foreground">{t('referrals.analytics.visitorsToStakers')}</p>
           </CardContent>
         </Card>

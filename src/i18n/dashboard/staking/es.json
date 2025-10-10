@@ -10,6 +10,7 @@
   "pleaseEnterValidWithdrawalAmount": "Por favor ingresa una cantidad de retiro válida",
   "withdrawalAmountExceeds": "La cantidad de retiro excede la cantidad stakeada",
   "myTotalStaked": "Mi Staking Total",
+  "poolTotal": "Total del Pool",
   "amountToStake": "Cantidad para Stakear",
   "available": "Disponible",
   "max": "Máx",

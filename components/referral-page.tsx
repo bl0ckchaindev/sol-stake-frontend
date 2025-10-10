@@ -58,7 +58,7 @@ export function ReferralPage() {
             staggerChildren={0.1}
           >
             <MotionWrapper type="scale" delay={0.1}>
-              <Card className="hover:shadow-lg transition-shadow duration-300">
+              <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     {t("referrals.main.referralRate")}
@@ -77,7 +77,7 @@ export function ReferralPage() {
             </MotionWrapper>
 
             <MotionWrapper type="scale" delay={0.2}>
-              <Card className="hover:shadow-lg transition-shadow duration-300">
+              <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     {t("referrals.main.instantRewards")}
@@ -98,7 +98,7 @@ export function ReferralPage() {
             </MotionWrapper>
 
             <MotionWrapper type="scale" delay={0.3}>
-              <Card className="hover:shadow-lg transition-shadow duration-300">
+              <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                   <CardTitle className="text-sm font-medium">
                     {t("referrals.main.unlimited")}
@@ -231,12 +231,14 @@ export function ReferralPage() {
                 staggerChildren={0.1}
               >
                 <MotionWrapper type="scale" delay={0.1}>
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
                         {t("referrals.main.totalReferrals")}
                       </CardTitle>
-                      <Users className="h-4 w-4 text-muted-foreground" />
+                      <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <img src="/total-referrals.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+                      </div>
                     </CardHeader>
                     <CardContent>
                       <div className="text-2xl font-bold">
@@ -250,12 +252,14 @@ export function ReferralPage() {
                 </MotionWrapper>
 
                 <MotionWrapper type="scale" delay={0.2}>
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
                         {t("referrals.main.totalRewards")}
                       </CardTitle>
-                      <Gift className="h-4 w-4 text-muted-foreground" />
+                      <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <img src="/total-rewards.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+                      </div>
                     </CardHeader>
                     <CardContent>
                       <div className="text-2xl font-bold text-success">
@@ -269,15 +273,19 @@ export function ReferralPage() {
                 </MotionWrapper>
 
                 <MotionWrapper type="scale" delay={0.3}>
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
+                  <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
                         {t("referrals.main.referralRate")}
                       </CardTitle>
-                      <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                      <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <img src="/referral-rate.png" className="w-12 h-12 text-accent" alt="Referral Rate" />
+                      </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-2xl font-bold text-primary">1%</div>
+                      <div className="text-2xl font-bold text-success">
+                        1%
+                      </div>
                       <p className="text-xs text-muted-foreground">
                         {t("referrals.main.ofStakeAmount")}
                       </p>

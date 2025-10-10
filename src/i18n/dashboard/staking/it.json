@@ -10,6 +10,7 @@
   "pleaseEnterValidWithdrawalAmount": "Per favore inserisci un importo di prelievo valido",
   "withdrawalAmountExceeds": "L'importo di prelievo supera l'importo stakeato",
   "myTotalStaked": "Il Mio Staking Totale",
+  "poolTotal": "Totale Pool",
   "amountToStake": "Importo da Stakeare",
   "available": "Disponibile",
   "max": "Max",

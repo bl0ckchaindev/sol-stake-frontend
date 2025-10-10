@@ -223,15 +223,15 @@ export function MevBotTracker() {
         </MotionWrapper>
 
         <MotionWrapper type="scale" delay={0.4}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('mevtracker.stats.activeStrategies')}</CardTitle>
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('mevtracker.stats.activeStrategies')}</CardTitle>
               <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 <img src="/active-strategies.png" className="w-12 h-12 text-accent" alt="Active Strategies" />
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{performance.activeStrategies}</div>
+              <div className="text-3xl font-bold text-foreground mb-2">{performance.activeStrategies}</div>
               <p className="text-xs text-muted-foreground">{t('mevtracker.stats.runningAlgorithms')}</p>
             </CardContent>
           </Card>
