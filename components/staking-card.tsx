@@ -388,7 +388,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                 onClick={handleClaim}
                 disabled={isClaiming || userStake?.pendingRewards <= 0}
                 size="sm"
-                className="text-lg btn-gradient-primary hover:gradient-hover transition-all duration-300 hover:scale-elevate"
+                className="btn-gradient-primary hover:gradient-hover transition-all duration-300 hover:scale-elevate"
               >
                 {isClaiming ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-1 sm:mr-2" />

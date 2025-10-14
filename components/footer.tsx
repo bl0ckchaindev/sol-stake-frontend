@@ -5,10 +5,14 @@ import Image from "next/image"
 import { useState } from "react"
 import { useTranslation } from "@/components/translation-context"
 import { MotionWrapper } from "@/components/motion-wrapper"
+import { useTheme } from "next-themes"
+import { FaXTwitter, FaTelegram } from "react-icons/fa6"
 
 export function Footer() {
   const { t } = useTranslation()
   const [email, setEmail] = useState("")
+  const { theme } = useTheme()
+  const iconColor = theme === "dark" ? "white" : "black"
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -64,16 +68,23 @@ export function Footer() {
               {t('common.footer.address')}
             </p>
 
-            {/* Social Icons */}
+            {/* Social Icons - X and Telegram only */}
             <div className="flex gap-3">
-              <Link href="/" className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity">
-                <Image src="/footer-facebook.svg" alt="Facebook" width={40} height={40} />
+              <Link
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity"
+              >
+                <FaXTwitter size={24} color={iconColor} />
               </Link>
-              <Link href="/" className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity">
-                <Image src="/footer-twitter.svg" alt="Twitter" width={40} height={40} />
-              </Link>
-              <Link href="/" className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity">
-                <Image src="/footer-instagram.svg" alt="Instagram" width={40} height={40} />
+              <Link
+                href="https://t.me"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity"
+              >
+                <FaTelegram size={24} color={iconColor} />
               </Link>
             </div>
           </div>
