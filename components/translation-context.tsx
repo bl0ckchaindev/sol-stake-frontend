@@ -88,7 +88,8 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
           terms,
           privacy,
           countdown,
-          comingSoon
+          comingSoon,
+          cookie
         ] = await Promise.all([
           loadTranslation('common/header'),
           loadTranslation('common/footer'),
@@ -114,7 +115,8 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
           loadTranslation('terms'),
           loadTranslation('privacy'),
           loadTranslation('countdown'),
-          loadTranslation('coming-soon')
+          loadTranslation('coming-soon'),
+          loadTranslation('cookie')
         ]);
 
         const loadedTranslations = {
@@ -152,7 +154,8 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
           terms: terms,
           privacy: privacy,
           countdown: countdown,
-          comingSoon: comingSoon
+          comingSoon: comingSoon,
+          cookie: cookie
         };
 
         setTranslations(loadedTranslations);

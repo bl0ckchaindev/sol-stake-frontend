@@ -75,6 +75,13 @@ export class MevStakingProgram {
     )
   }
 
+  getSolVaultPDA(): [PublicKey, number] {
+    return PublicKey.findProgramAddressSync(
+      [Buffer.from(SOL_VAULT_SEED)],
+      PROGRAM_ID
+    )
+  }
+
   // Account fetching methods
   async getGlobalData(): Promise<GlobalData | null> {
     try {
@@ -97,7 +104,7 @@ export class MevStakingProgram {
   async getPoolInfo(tokenMint: PublicKey): Promise<PoolInfo | null> {
     try {
       const [poolInfoPDA] = this.getPoolInfoPDA(tokenMint)
-      console.log('log-> mint', tokenMint.toBase58(), poolInfoPDA.toBase58())
+      console.log('log-> poolInfoPDA', tokenMint.toBase58(), poolInfoPDA.toBase58())
       return await this.program.account.poolInfo.fetch(poolInfoPDA)
     } catch (error) {
       console.error("Error fetching pool info:", error)
@@ -108,6 +115,7 @@ export class MevStakingProgram {
   async getUserStake(user: PublicKey, poolId: number): Promise<UserStake | null> {
     try {
       const [userStakePDA] = this.getUserStakePDA(user, poolId)
+      console.log('log-> userStakePDA', poolId, userStakePDA.toBase58())
       return await this.program.account.userStake.fetch(userStakePDA)
     } catch (error) {
       console.error("Error fetching user stake:", error)
@@ -121,7 +129,6 @@ export class MevStakingProgram {
       
       // Get all pools from global data
       const globalData = await this.getGlobalData()
-      console.log('log->globalData', globalData)
       if (!globalData) return positions
 
       // Check each supported token for user stakes
@@ -129,7 +136,6 @@ export class MevStakingProgram {
         if (token.poolId === undefined) continue
         
         const userStake = await this.getUserStake(user, token.poolId)
-        console.log('log->userStake', userStake)
         const poolInfo = await this.getPoolInfo(token.mint)
         
         if (userStake && poolInfo && userStake.totalStaked.gt(new BN(0))) {
@@ -175,6 +181,7 @@ export class MevStakingProgram {
     const [globalDataPDA] = this.getGlobalDataPDA()
     const [poolInfoPDA] = this.getPoolInfoPDA(tokenMint)
     const [userStakePDA] = this.getUserStakePDA(user, poolId)
+    const [solVaultPDA] = this.getSolVaultPDA()
     
     const userAta = await getAssociatedTokenAddress(tokenMint, user)
     const poolAta = await getAssociatedTokenAddress(tokenMint, poolInfoPDA, true)
@@ -195,6 +202,7 @@ export class MevStakingProgram {
         user,
         globalData: globalDataPDA,
         poolInfo: poolInfoPDA,
+        solVault: solVaultPDA,
         userStake: userStakePDA,
         referrerStake: referrerStakePDA,
         referrer: finalReferrer,
@@ -261,20 +269,6 @@ export class MevStakingProgram {
       }
       
       console.log('log->transaction created successfully')
-
-      // Check if user ATA exists, create if not
-      const userAtaInfo = await this.connection.getAccountInfo(userAta)
-      if (!userAtaInfo) {
-        const createAtaIx = createAssociatedTokenAccountInstruction(
-          user,
-          userAta,
-          user,
-          tokenMint
-        )
-        tx.instructions.unshift(createAtaIx)
-        console.log('log->added create ATA instruction')
-      }
-
       const signature = await this.provider.sendAndConfirm(tx)
       console.log('log->transaction confirmed:', signature)
       return signature
@@ -296,6 +290,7 @@ export class MevStakingProgram {
     const [globalDataPDA] = this.getGlobalDataPDA()
     const [poolInfoPDA] = this.getPoolInfoPDA(tokenMint)
     const [userStakePDA] = this.getUserStakePDA(user, poolId)
+    const [solVaultPDA] = this.getSolVaultPDA()
     
     // Determine if this is SOL or a token based on the mint
     const isSOL = tokenMint.equals(new PublicKey("So11111111111111111111111111111111111111112"))
@@ -308,17 +303,18 @@ export class MevStakingProgram {
         user,
         globalData: globalDataPDA,
         poolInfo: poolInfoPDA,
+        solVault: solVaultPDA,
         userStake: userStakePDA,
         systemProgram: SystemProgram.programId,
       }
       tx = await this.program.methods
-        .withdrawSol(amount, lockPeriod as number)
+        .withdrawSol(poolId, amount, lockPeriod as number)
         .accounts(accounts)
         .transaction()
     } else {
       const userAta = await getAssociatedTokenAddress(tokenMint, user)
       const poolAta = await getAssociatedTokenAddress(tokenMint, poolInfoPDA, true)
-      
+      console.log('log->withdrawToken params', poolId, poolAta.toBase58(), amount.toString(), lockPeriod)
       accounts = {
         user,
         globalData: globalDataPDA,
@@ -331,6 +327,7 @@ export class MevStakingProgram {
         tokenProgram: TOKEN_PROGRAM_ID,
         systemProgram: SystemProgram.programId,
       }
+      console.log('log->withdrawToken accounts', accounts)
       tx = await this.program.methods
         .withdrawToken(poolId, amount, lockPeriod as number)
         .accounts(accounts)
@@ -348,6 +345,7 @@ export class MevStakingProgram {
     const [globalDataPDA] = this.getGlobalDataPDA()
     const [poolInfoPDA] = this.getPoolInfoPDA(tokenMint)
     const [userStakePDA] = this.getUserStakePDA(user, poolId)
+    const [solVaultPDA] = this.getSolVaultPDA()
     
     // Determine if this is SOL or a token based on the mint
     const isSOL = tokenMint.equals(new PublicKey("So11111111111111111111111111111111111111112"))
@@ -360,6 +358,7 @@ export class MevStakingProgram {
         user,
         globalData: globalDataPDA,
         poolInfo: poolInfoPDA,
+        solVault: solVaultPDA,
         userStake: userStakePDA,
         systemProgram: SystemProgram.programId,
       }

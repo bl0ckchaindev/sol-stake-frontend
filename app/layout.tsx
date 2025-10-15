@@ -11,6 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "sonner"
 import { Suspense } from "react"
 import { ToasterWrapper } from "@/components/toaster-wrapper"
+import { CookieConsent } from "@/components/cookie-consent"
 import "./globals.css"
 
 export const metadata: Metadata = {
@@ -84,8 +85,9 @@ export default function RootLayout({
                 </AnchorStakingProvider>
               </ReferralProvider>
             </WalletProvider>
+            <ToasterWrapper />
+            <CookieConsent />
           </TranslationProvider>
-          <ToasterWrapper />
         </ThemeProvider>
         <Analytics />
       </body>

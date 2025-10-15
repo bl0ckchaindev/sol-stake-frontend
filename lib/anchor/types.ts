@@ -5,7 +5,7 @@ import { BN } from "@coral-xyz/anchor"
 // 🎯 PROGRAM CONFIGURATION
 // ============================================================================
 
-export const PROGRAM_ID = new PublicKey("CKnWdKzE87gGpNM5zoGkjKbjGfHxxMxLLQFcSH5i9eui")
+export const PROGRAM_ID = new PublicKey("AbJ3DoPsWjHg3SLTV1CNP9Ep6dAJSFGAvrMx2AUmTgb9")
 
 // PDA Seeds
 export const GLOBAL_DATA_SEED = "global-authority"
@@ -200,15 +200,15 @@ export const SUPPORTED_TOKENS: Record<string, SupportedToken> = {
     icon: "/usdc.png",
     color: "#2775CA"
   },
-  USDT: {
-    mint: new PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"),
-    symbol: "USDT",
-    name: "Tether",
-    decimals: 6,
-    poolId: 2,
-    icon: "/usdt.png",
-    color: "#26A17B"
-  }
+  // USDT: {
+  //   mint: new PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"),
+  //   symbol: "USDT",
+  //   name: "Tether",
+  //   decimals: 6,
+  //   poolId: 2,
+  //   icon: "/usdt.png",
+  //   color: "#26A17B"
+  // }
 } as const
 
 // ============================================================================
@@ -334,16 +334,16 @@ export const getTierEmoji = (tierIndex: number): string => {
 // ============================================================================
 
 export type MevStaking = {
-  "address": "CKnWdKzE87gGpNM5zoGkjKbjGfHxxMxLLQFcSH5i9eui",
+  "address": "AbJ3DoPsWjHg3SLTV1CNP9Ep6dAJSFGAvrMx2AUmTgb9",
   "metadata": {
-    "name": "mev_staking",
+    "name": "mevStaking",
     "version": "0.1.0",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
   "instructions": [
     {
-      "name": "claim_sol",
+      "name": "claimSol",
       "discriminator": [
         139,
         113,
@@ -361,7 +361,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -389,7 +389,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -453,17 +453,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "sol_vault",
+          "name": "solVault",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  115,
-                  111,
-                  108,
-                  45,
                   118,
                   97,
                   117,
@@ -485,7 +481,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "user_stake",
+          "name": "userStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -514,25 +510,25 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "pool_id",
+          "name": "poolId",
           "type": "u8"
         }
       ]
     },
     {
-      "name": "claim_token",
+      "name": "claimToken",
       "discriminator": [
         116,
         206,
@@ -550,7 +546,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -578,7 +574,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -603,16 +599,16 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ]
           }
         },
         {
-          "name": "token_mint"
+          "name": "tokenMint"
         },
         {
-          "name": "user_stake",
+          "name": "userStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -641,13 +637,13 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
         },
         {
-          "name": "user_ata",
+          "name": "userAta",
           "writable": true,
           "pda": {
             "seeds": [
@@ -694,7 +690,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -737,13 +733,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_ata",
+          "name": "poolAta",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "account",
-                "path": "pool_info"
+                "path": "poolInfo"
               },
               {
                 "kind": "const",
@@ -784,7 +780,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -827,45 +823,45 @@ export type MevStaking = {
           }
         },
         {
-          "name": "associated_token_program",
+          "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "pool_id",
+          "name": "poolId",
           "type": "u8"
         }
       ]
     },
     {
-      "name": "contribute_sol",
+      "name": "compoundSol",
       "discriminator": [
-        186,
-        36,
-        137,
-        50,
-        25,
-        152,
-        8,
-        5
+        29,
+        21,
+        245,
+        129,
+        134,
+        199,
+        146,
+        125
       ],
       "accounts": [
         {
-          "name": "contributor",
+          "name": "user",
           "writable": true,
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -893,7 +889,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -957,17 +953,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "sol_vault",
+          "name": "solVault",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  115,
-                  111,
-                  108,
-                  45,
                   118,
                   97,
                   117,
@@ -989,37 +981,72 @@ export type MevStaking = {
           }
         },
         {
-          "name": "system_program",
+          "name": "userStake",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "arg",
+                "path": "poolId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "amount",
-          "type": "u64"
+          "name": "poolId",
+          "type": "u8"
         }
       ]
     },
     {
-      "name": "contribute_token",
+      "name": "compoundToken",
       "discriminator": [
-        63,
-        47,
-        179,
-        97,
-        237,
-        210,
-        209,
-        49
+        164,
+        195,
+        48,
+        32,
+        175,
+        146,
+        212,
+        179
       ],
       "accounts": [
         {
-          "name": "contributor",
+          "name": "user",
           "writable": true,
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -1047,7 +1074,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1072,16 +1099,391 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ]
           }
         },
         {
-          "name": "token_mint"
+          "name": "tokenMint"
         },
         {
-          "name": "contributor_ata",
+          "name": "userStake",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "arg",
+                "path": "poolId"
+              }
+            ]
+          }
+        },
+        {
+          "name": "poolAta",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "account",
+                "path": "poolInfo"
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  221,
+                  246,
+                  225,
+                  215,
+                  101,
+                  161,
+                  147,
+                  217,
+                  203,
+                  225,
+                  70,
+                  206,
+                  235,
+                  121,
+                  172,
+                  28,
+                  180,
+                  133,
+                  237,
+                  95,
+                  91,
+                  55,
+                  145,
+                  58,
+                  140,
+                  245,
+                  133,
+                  126,
+                  255,
+                  0,
+                  169
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "tokenMint"
+              }
+            ],
+            "program": {
+              "kind": "const",
+              "value": [
+                140,
+                151,
+                37,
+                143,
+                78,
+                36,
+                137,
+                241,
+                187,
+                61,
+                16,
+                41,
+                20,
+                142,
+                13,
+                131,
+                11,
+                90,
+                19,
+                153,
+                218,
+                255,
+                16,
+                132,
+                4,
+                142,
+                123,
+                216,
+                219,
+                233,
+                248,
+                89
+              ]
+            }
+          }
+        },
+        {
+          "name": "associatedTokenProgram",
+          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
+        },
+        {
+          "name": "tokenProgram",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "poolId",
+          "type": "u8"
+        }
+      ]
+    },
+    {
+      "name": "contributeSol",
+      "discriminator": [
+        186,
+        36,
+        137,
+        50,
+        25,
+        152,
+        8,
+        5
+      ],
+      "accounts": [
+        {
+          "name": "contributor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "globalData",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "poolInfo",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "const",
+                "value": [
+                  6,
+                  155,
+                  136,
+                  87,
+                  254,
+                  171,
+                  129,
+                  132,
+                  251,
+                  104,
+                  127,
+                  99,
+                  70,
+                  24,
+                  192,
+                  53,
+                  218,
+                  196,
+                  57,
+                  220,
+                  26,
+                  235,
+                  59,
+                  85,
+                  152,
+                  160,
+                  240,
+                  0,
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "solVault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "systemProgram",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "contributeToken",
+      "discriminator": [
+        63,
+        47,
+        179,
+        97,
+        237,
+        210,
+        209,
+        49
+      ],
+      "accounts": [
+        {
+          "name": "contributor",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "globalData",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  103,
+                  108,
+                  111,
+                  98,
+                  97,
+                  108,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "poolInfo",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  112,
+                  111,
+                  111,
+                  108,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "tokenMint"
+              }
+            ]
+          }
+        },
+        {
+          "name": "tokenMint"
+        },
+        {
+          "name": "contributorAta",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1128,7 +1530,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -1171,13 +1573,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_ata",
+          "name": "poolAta",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "account",
-                "path": "pool_info"
+                "path": "poolInfo"
               },
               {
                 "kind": "const",
@@ -1218,7 +1620,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -1261,21 +1663,21 @@ export type MevStaking = {
           }
         },
         {
-          "name": "associated_token_program",
+          "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "pool_id",
+          "name": "poolId",
           "type": "u8"
         },
         {
@@ -1285,7 +1687,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "create_pool",
+      "name": "createPool",
       "discriminator": [
         233,
         146,
@@ -1303,7 +1705,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1332,7 +1734,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "stake_pool",
+          "name": "stakePool",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1357,27 +1759,27 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ]
           }
         },
         {
-          "name": "token_mint",
+          "name": "tokenMint",
           "writable": true
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "token_mint",
+          "name": "tokenMint",
           "type": "pubkey"
         }
       ]
@@ -1396,7 +1798,7 @@ export type MevStaking = {
       ],
       "accounts": [
         {
-          "name": "global_data",
+          "name": "globalData",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1425,7 +1827,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "sol_pool",
+          "name": "solPool",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1494,14 +1896,14 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": []
     },
     {
-      "name": "set_global_data",
+      "name": "setGlobalData",
       "discriminator": [
         210,
         202,
@@ -1519,7 +1921,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1553,14 +1955,14 @@ export type MevStaking = {
           "name": "updates",
           "type": {
             "defined": {
-              "name": "GlobalDataUpdate"
+              "name": "globalDataUpdate"
             }
           }
         }
       ]
     },
     {
-      "name": "stake_sol",
+      "name": "stakeSol",
       "discriminator": [
         200,
         38,
@@ -1578,7 +1980,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -1606,7 +2008,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1670,17 +2072,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "sol_vault",
+          "name": "solVault",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  115,
-                  111,
-                  108,
-                  45,
                   118,
                   97,
                   117,
@@ -1702,7 +2100,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "user_stake",
+          "name": "userStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1731,13 +2129,13 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
         },
         {
-          "name": "referrer_stake",
+          "name": "referrerStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1766,7 +2164,7 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
@@ -1775,13 +2173,13 @@ export type MevStaking = {
           "name": "referrer"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "pool_id",
+          "name": "poolId",
           "type": "u8"
         },
         {
@@ -1789,7 +2187,7 @@ export type MevStaking = {
           "type": "u64"
         },
         {
-          "name": "lock_period",
+          "name": "lockPeriod",
           "type": "u8"
         },
         {
@@ -1799,7 +2197,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "stake_token",
+      "name": "stakeToken",
       "discriminator": [
         191,
         127,
@@ -1817,7 +2215,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -1845,7 +2243,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1870,16 +2268,16 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ]
           }
         },
         {
-          "name": "token_mint"
+          "name": "tokenMint"
         },
         {
-          "name": "user_stake",
+          "name": "userStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1908,13 +2306,13 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
         },
         {
-          "name": "referrer_stake",
+          "name": "referrerStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1943,7 +2341,7 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
@@ -1952,7 +2350,7 @@ export type MevStaking = {
           "name": "referrer"
         },
         {
-          "name": "user_ata",
+          "name": "userAta",
           "writable": true,
           "pda": {
             "seeds": [
@@ -1999,7 +2397,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -2042,13 +2440,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_ata",
+          "name": "poolAta",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "account",
-                "path": "pool_info"
+                "path": "poolInfo"
               },
               {
                 "kind": "const",
@@ -2089,7 +2487,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -2132,21 +2530,21 @@ export type MevStaking = {
           }
         },
         {
-          "name": "associated_token_program",
+          "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "pool_id",
+          "name": "poolId",
           "type": "u8"
         },
         {
@@ -2154,7 +2552,7 @@ export type MevStaking = {
           "type": "u64"
         },
         {
-          "name": "lock_period",
+          "name": "lockPeriod",
           "type": "u8"
         },
         {
@@ -2164,7 +2562,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "withdraw_for_mev_sol",
+      "name": "withdrawForMevSol",
       "discriminator": [
         16,
         135,
@@ -2177,12 +2575,12 @@ export type MevStaking = {
       ],
       "accounts": [
         {
-          "name": "mev_bot",
+          "name": "mevBot",
           "writable": true,
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -2210,7 +2608,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -2274,17 +2672,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "sol_vault",
+          "name": "solVault",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  115,
-                  111,
-                  108,
-                  45,
                   118,
                   97,
                   117,
@@ -2306,11 +2700,11 @@ export type MevStaking = {
           }
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
@@ -2322,7 +2716,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "withdraw_for_mev_token",
+      "name": "withdrawForMevToken",
       "discriminator": [
         6,
         240,
@@ -2335,12 +2729,12 @@ export type MevStaking = {
       ],
       "accounts": [
         {
-          "name": "mev_bot",
+          "name": "mevBot",
           "writable": true,
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -2368,7 +2762,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -2393,22 +2787,22 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ]
           }
         },
         {
-          "name": "token_mint"
+          "name": "tokenMint"
         },
         {
-          "name": "mev_bot_ata",
+          "name": "mevBotAta",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "account",
-                "path": "mev_bot"
+                "path": "mevBot"
               },
               {
                 "kind": "const",
@@ -2449,7 +2843,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -2492,13 +2886,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_ata",
+          "name": "poolAta",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "account",
-                "path": "pool_info"
+                "path": "poolInfo"
               },
               {
                 "kind": "const",
@@ -2539,7 +2933,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -2582,21 +2976,21 @@ export type MevStaking = {
           }
         },
         {
-          "name": "associated_token_program",
+          "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "pool_id",
+          "name": "poolId",
           "type": "u8"
         },
         {
@@ -2606,7 +3000,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "withdraw_sol",
+      "name": "withdrawSol",
       "discriminator": [
         145,
         131,
@@ -2624,7 +3018,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -2652,7 +3046,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -2716,17 +3110,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "sol_vault",
+          "name": "solVault",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "const",
                 "value": [
-                  115,
-                  111,
-                  108,
-                  45,
                   118,
                   97,
                   117,
@@ -2748,7 +3138,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "user_stake",
+          "name": "userStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -2777,33 +3167,33 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
+          "name": "poolId",
+          "type": "u8"
+        },
+        {
           "name": "amount",
           "type": "u64"
         },
         {
-          "name": "lock_period",
-          "type": "u8"
-        },
-        {
-          "name": "pool_id",
+          "name": "lockPeriod",
           "type": "u8"
         }
       ]
     },
     {
-      "name": "withdraw_token",
+      "name": "withdrawToken",
       "discriminator": [
         136,
         235,
@@ -2821,7 +3211,7 @@ export type MevStaking = {
           "signer": true
         },
         {
-          "name": "global_data",
+          "name": "globalData",
           "pda": {
             "seeds": [
               {
@@ -2849,7 +3239,7 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_info",
+          "name": "poolInfo",
           "writable": true,
           "pda": {
             "seeds": [
@@ -2874,16 +3264,16 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ]
           }
         },
         {
-          "name": "token_mint"
+          "name": "tokenMint"
         },
         {
-          "name": "user_stake",
+          "name": "userStake",
           "writable": true,
           "pda": {
             "seeds": [
@@ -2912,13 +3302,13 @@ export type MevStaking = {
               },
               {
                 "kind": "arg",
-                "path": "pool_id"
+                "path": "poolId"
               }
             ]
           }
         },
         {
-          "name": "user_ata",
+          "name": "userAta",
           "writable": true,
           "pda": {
             "seeds": [
@@ -2965,7 +3355,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -3008,13 +3398,13 @@ export type MevStaking = {
           }
         },
         {
-          "name": "pool_ata",
+          "name": "poolAta",
           "writable": true,
           "pda": {
             "seeds": [
               {
                 "kind": "account",
-                "path": "pool_info"
+                "path": "poolInfo"
               },
               {
                 "kind": "const",
@@ -3055,7 +3445,7 @@ export type MevStaking = {
               },
               {
                 "kind": "account",
-                "path": "token_mint"
+                "path": "tokenMint"
               }
             ],
             "program": {
@@ -3098,21 +3488,21 @@ export type MevStaking = {
           }
         },
         {
-          "name": "associated_token_program",
+          "name": "associatedTokenProgram",
           "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
-          "name": "token_program",
+          "name": "tokenProgram",
           "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": [
         {
-          "name": "pool_id",
+          "name": "poolId",
           "type": "u8"
         },
         {
@@ -3120,7 +3510,7 @@ export type MevStaking = {
           "type": "u64"
         },
         {
-          "name": "lock_period",
+          "name": "lockPeriod",
           "type": "u8"
         }
       ]
@@ -3128,7 +3518,7 @@ export type MevStaking = {
   ],
   "accounts": [
     {
-      "name": "GlobalData",
+      "name": "globalData",
       "discriminator": [
         48,
         194,
@@ -3141,7 +3531,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "PoolInfo",
+      "name": "poolInfo",
       "discriminator": [
         18,
         19,
@@ -3154,7 +3544,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "UserStake",
+      "name": "userStake",
       "discriminator": [
         102,
         53,
@@ -3169,7 +3559,7 @@ export type MevStaking = {
   ],
   "events": [
     {
-      "name": "GlobalDataUpdated",
+      "name": "globalDataUpdated",
       "discriminator": [
         141,
         248,
@@ -3182,7 +3572,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "MevWithdrawal",
+      "name": "mevWithdrawal",
       "discriminator": [
         224,
         195,
@@ -3195,7 +3585,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "PoolContributed",
+      "name": "poolContributed",
       "discriminator": [
         48,
         232,
@@ -3208,7 +3598,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "PoolCreated",
+      "name": "poolCreated",
       "discriminator": [
         202,
         44,
@@ -3221,7 +3611,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "PoolStaked",
+      "name": "poolStaked",
       "discriminator": [
         237,
         8,
@@ -3234,7 +3624,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "PoolWithdrawn",
+      "name": "poolWithdrawn",
       "discriminator": [
         23,
         62,
@@ -3247,7 +3637,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "ProgramInitialized",
+      "name": "programInitialized",
       "discriminator": [
         43,
         70,
@@ -3260,7 +3650,7 @@ export type MevStaking = {
       ]
     },
     {
-      "name": "RewardClaimed",
+      "name": "rewardClaimed",
       "discriminator": [
         49,
         28,
@@ -3271,120 +3661,133 @@ export type MevStaking = {
         229,
         175
       ]
+    },
+    {
+      "name": "rewardCompounded",
+      "discriminator": [
+        140,
+        75,
+        138,
+        218,
+        247,
+        191,
+        253,
+        225
+      ]
     }
   ],
   "errors": [
     {
       "code": 6000,
-      "name": "StakeStillLocked",
+      "name": "stakeStillLocked",
       "msg": "Stake is still locked"
     },
     {
       "code": 6001,
-      "name": "NoRewardsToClaim",
+      "name": "noRewardsToClaim",
       "msg": "No rewards to claim"
     },
     {
       "code": 6002,
-      "name": "InvalidAmount",
+      "name": "invalidAmount",
       "msg": "Invalid amount"
     },
     {
       "code": 6003,
-      "name": "InvalidLockPeriod",
+      "name": "invalidLockPeriod",
       "msg": "Invalid lock period"
     },
     {
       "code": 6004,
-      "name": "StakeNotFound",
+      "name": "stakeNotFound",
       "msg": "Stake not found"
     },
     {
       "code": 6005,
-      "name": "InsufficientBalance",
+      "name": "insufficientBalance",
       "msg": "Insufficient balance"
     },
     {
       "code": 6006,
-      "name": "ReferralAccountNotFound",
+      "name": "referralAccountNotFound",
       "msg": "Referral account not found"
     },
     {
       "code": 6007,
-      "name": "CannotReferYourself",
+      "name": "cannotReferYourself",
       "msg": "Cannot refer yourself"
     },
     {
       "code": 6008,
-      "name": "RewardCalculationOverflow",
+      "name": "rewardCalculationOverflow",
       "msg": "Reward calculation overflow"
     },
     {
       "code": 6009,
-      "name": "InvalidRewardRate",
+      "name": "invalidRewardRate",
       "msg": "Invalid reward rate"
     },
     {
       "code": 6010,
-      "name": "Unauthorized",
+      "name": "unauthorized",
       "msg": "Unauthorized access"
     },
     {
       "code": 6011,
-      "name": "PoolAlreadyExists",
+      "name": "poolAlreadyExists",
       "msg": "Pool already exists"
     },
     {
       "code": 6012,
-      "name": "PoolInactive",
+      "name": "poolInactive",
       "msg": "Pool is inactive"
     },
     {
       "code": 6013,
-      "name": "InvalidTokenAccount",
+      "name": "invalidTokenAccount",
       "msg": "Invalid token account"
     },
     {
       "code": 6014,
-      "name": "InvalidTokenMint",
+      "name": "invalidTokenMint",
       "msg": "Invalid token mint"
     },
     {
       "code": 6015,
-      "name": "InvalidPoolId",
+      "name": "invalidPoolId",
       "msg": "Invalid pool ID"
     },
     {
       "code": 6016,
-      "name": "InvalidReferrer",
+      "name": "invalidReferrer",
       "msg": "Invalid referrer"
     },
     {
       "code": 6017,
-      "name": "PoolLimitReached",
+      "name": "poolLimitReached",
       "msg": "Pool limit reached (maximum 10 pools)"
     }
   ],
   "types": [
     {
-      "name": "GlobalData",
+      "name": "globalData",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "super_admin",
+            "name": "superAdmin",
             "type": "pubkey"
           },
           {
-            "name": "referral_fee",
+            "name": "referralFee",
             "type": "u16"
           },
           {
-            "name": "next_pool_id",
+            "name": "nextPoolId",
             "type": "u8"
           },
           {
-            "name": "pool_count",
+            "name": "poolCount",
             "type": "u8"
           },
           {
@@ -3397,65 +3800,65 @@ export type MevStaking = {
             }
           },
           {
-            "name": "tier_0_reward",
+            "name": "tier0Reward",
             "type": "u16"
           },
           {
-            "name": "tier_1_reward",
+            "name": "tier1Reward",
             "type": "u16"
           },
           {
-            "name": "tier_2_reward",
+            "name": "tier2Reward",
             "type": "u16"
           },
           {
-            "name": "tier_3_reward",
+            "name": "tier3Reward",
             "type": "u16"
           },
           {
-            "name": "tier_4_reward",
+            "name": "tier4Reward",
             "type": "u16"
           }
         ]
       }
     },
     {
-      "name": "GlobalDataUpdate",
+      "name": "globalDataUpdate",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "referral_fee",
+            "name": "referralFee",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_0_reward",
+            "name": "tier0Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_1_reward",
+            "name": "tier1Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_2_reward",
+            "name": "tier2Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_3_reward",
+            "name": "tier3Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_4_reward",
+            "name": "tier4Reward",
             "type": {
               "option": "u16"
             }
@@ -3464,7 +3867,7 @@ export type MevStaking = {
       }
     },
     {
-      "name": "GlobalDataUpdated",
+      "name": "globalDataUpdated",
       "type": {
         "kind": "struct",
         "fields": [
@@ -3473,37 +3876,37 @@ export type MevStaking = {
             "type": "pubkey"
           },
           {
-            "name": "referral_fee",
+            "name": "referralFee",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_0_reward",
+            "name": "tier0Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_1_reward",
+            "name": "tier1Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_2_reward",
+            "name": "tier2Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_3_reward",
+            "name": "tier3Reward",
             "type": {
               "option": "u16"
             }
           },
           {
-            "name": "tier_4_reward",
+            "name": "tier4Reward",
             "type": {
               "option": "u16"
             }
@@ -3516,39 +3919,39 @@ export type MevStaking = {
       }
     },
     {
-      "name": "LockPeriod",
+      "name": "lockPeriod",
       "type": {
         "kind": "enum",
         "variants": [
           {
-            "name": "FreeLock"
+            "name": "freeLock"
           },
           {
-            "name": "OneWeek"
+            "name": "oneWeek"
           },
           {
-            "name": "OneMonth"
+            "name": "oneMonth"
           },
           {
-            "name": "ThreeMonths"
+            "name": "threeMonths"
           },
           {
-            "name": "SixMonths"
+            "name": "sixMonths"
           }
         ]
       }
     },
     {
-      "name": "MevWithdrawal",
+      "name": "mevWithdrawal",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "mev_bot",
+            "name": "mevBot",
             "type": "pubkey"
           },
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
@@ -3563,7 +3966,7 @@ export type MevStaking = {
       }
     },
     {
-      "name": "PoolContributed",
+      "name": "poolContributed",
       "type": {
         "kind": "struct",
         "fields": [
@@ -3572,7 +3975,7 @@ export type MevStaking = {
             "type": "pubkey"
           },
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
@@ -3587,16 +3990,16 @@ export type MevStaking = {
       }
     },
     {
-      "name": "PoolCreated",
+      "name": "poolCreated",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
-            "name": "token_mint",
+            "name": "tokenMint",
             "type": "pubkey"
           },
           {
@@ -3611,36 +4014,36 @@ export type MevStaking = {
       }
     },
     {
-      "name": "PoolInfo",
+      "name": "poolInfo",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
-            "name": "token_mint",
+            "name": "tokenMint",
             "type": "pubkey"
           },
           {
-            "name": "total_contributed",
+            "name": "totalContributed",
             "type": "u64"
           },
           {
-            "name": "total_staked",
+            "name": "totalStaked",
             "type": "u64"
           },
           {
-            "name": "total_rewards_distributed",
+            "name": "totalRewardsDistributed",
             "type": "u64"
           },
           {
-            "name": "total_referral_fee",
+            "name": "totalReferralFee",
             "type": "u64"
           },
           {
-            "name": "is_active",
+            "name": "isActive",
             "type": "bool"
           },
           {
@@ -3648,14 +4051,14 @@ export type MevStaking = {
             "type": "u8"
           },
           {
-            "name": "created_at",
+            "name": "createdAt",
             "type": "i64"
           }
         ]
       }
     },
     {
-      "name": "PoolStaked",
+      "name": "poolStaked",
       "type": {
         "kind": "struct",
         "fields": [
@@ -3664,7 +4067,7 @@ export type MevStaking = {
             "type": "pubkey"
           },
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
@@ -3672,10 +4075,10 @@ export type MevStaking = {
             "type": "u64"
           },
           {
-            "name": "lock_period",
+            "name": "lockPeriod",
             "type": {
               "defined": {
-                "name": "LockPeriod"
+                "name": "lockPeriod"
               }
             }
           },
@@ -3691,7 +4094,7 @@ export type MevStaking = {
       }
     },
     {
-      "name": "PoolWithdrawn",
+      "name": "poolWithdrawn",
       "type": {
         "kind": "struct",
         "fields": [
@@ -3700,7 +4103,7 @@ export type MevStaking = {
             "type": "pubkey"
           },
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
@@ -3708,10 +4111,10 @@ export type MevStaking = {
             "type": "u64"
           },
           {
-            "name": "lock_period",
+            "name": "lockPeriod",
             "type": {
               "defined": {
-                "name": "LockPeriod"
+                "name": "lockPeriod"
               }
             }
           },
@@ -3723,7 +4126,7 @@ export type MevStaking = {
       }
     },
     {
-      "name": "ProgramInitialized",
+      "name": "programInitialized",
       "type": {
         "kind": "struct",
         "fields": [
@@ -3739,7 +4142,7 @@ export type MevStaking = {
       }
     },
     {
-      "name": "RewardClaimed",
+      "name": "rewardClaimed",
       "type": {
         "kind": "struct",
         "fields": [
@@ -3748,7 +4151,7 @@ export type MevStaking = {
             "type": "pubkey"
           },
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
@@ -3763,7 +4166,7 @@ export type MevStaking = {
       }
     },
     {
-      "name": "UserStake",
+      "name": "rewardCompounded",
       "type": {
         "kind": "struct",
         "fields": [
@@ -3772,55 +4175,79 @@ export type MevStaking = {
             "type": "pubkey"
           },
           {
-            "name": "pool_id",
+            "name": "poolId",
             "type": "u8"
           },
           {
-            "name": "tier_0_amount",
+            "name": "amount",
             "type": "u64"
           },
           {
-            "name": "tier_1_amount",
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "userStake",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "pubkey"
+          },
+          {
+            "name": "poolId",
+            "type": "u8"
+          },
+          {
+            "name": "tier0Amount",
             "type": "u64"
           },
           {
-            "name": "tier_2_amount",
+            "name": "tier1Amount",
             "type": "u64"
           },
           {
-            "name": "tier_3_amount",
+            "name": "tier2Amount",
             "type": "u64"
           },
           {
-            "name": "tier_4_amount",
+            "name": "tier3Amount",
             "type": "u64"
           },
           {
-            "name": "tier_1_withdrawable_time",
+            "name": "tier4Amount",
+            "type": "u64"
+          },
+          {
+            "name": "tier1WithdrawableTime",
             "type": "i64"
           },
           {
-            "name": "tier_2_withdrawable_time",
+            "name": "tier2WithdrawableTime",
             "type": "i64"
           },
           {
-            "name": "tier_3_withdrawable_time",
+            "name": "tier3WithdrawableTime",
             "type": "i64"
           },
           {
-            "name": "tier_4_withdrawable_time",
+            "name": "tier4WithdrawableTime",
             "type": "i64"
           },
           {
-            "name": "last_claim_time",
+            "name": "lastClaimTime",
             "type": "i64"
           },
           {
-            "name": "total_claimed",
+            "name": "totalClaimed",
             "type": "u64"
           },
           {
-            "name": "total_staked",
+            "name": "totalStaked",
             "type": "u64"
           },
           {
@@ -3828,15 +4255,15 @@ export type MevStaking = {
             "type": "pubkey"
           },
           {
-            "name": "referral_count",
+            "name": "referralCount",
             "type": "u8"
           },
           {
-            "name": "referral_amount",
+            "name": "referralAmount",
             "type": "u64"
           }
         ]
       }
     }
   ]
-}
+};
