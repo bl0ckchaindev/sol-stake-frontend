@@ -387,7 +387,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 gap-2">
               <Button
                 onClick={handleClaim}
                 disabled={isClaiming || userStake?.pendingRewards <= 0}
