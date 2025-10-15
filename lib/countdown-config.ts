@@ -10,8 +10,8 @@ export interface CountdownConfig {
 export const countdownConfig: CountdownConfig = {
   targetDate: "2025-10-10T10:00:00Z", // UTC format - change this to your launch date
   enabledPages: {
-    dashboard: true,
-    mevTracker: true,
-    referrals: true
+    dashboard: false,
+    referrals: false,
+    mevTracker: false,
   }
 };

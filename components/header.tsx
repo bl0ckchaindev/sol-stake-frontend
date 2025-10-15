@@ -20,8 +20,8 @@ export function Header() {
   const navigation = [
     { name: t('common.header.navigation.home'), href: "/", current: pathname === "/" },
     { name: t('common.header.navigation.dashboard'), href: "/dashboard", current: pathname === "/dashboard" },
-    { name: t('common.header.navigation.mevTracker'), href: "/mev-tracker", current: pathname === "/mev-tracker" },
     { name: t('common.header.navigation.referrals'), href: "/referrals", current: pathname === "/referrals" },
+    { name: t('common.header.navigation.mevTracker'), href: "/mev-tracker", current: pathname === "/mev-tracker" },
   ]
 
   return (

@@ -12,7 +12,7 @@ import {
   getAssociatedTokenAddress,
   createAssociatedTokenAccountInstruction
 } from "@solana/spl-token"
-import { Program, AnchorProvider, BN, web3 } from "@coral-xyz/anchor"
+import { Program, AnchorProvider, BN } from "@coral-xyz/anchor"
 import { 
   MevStaking,
   PROGRAM_ID,
@@ -26,7 +26,8 @@ import {
   POOL_AUTHORITY_SEED,
   USER_AUTHORITY_SEED,
   SUPPORTED_TOKENS,
-  LOCK_PERIOD_CONFIG
+  LOCK_PERIOD_CONFIG,
+  getLockPeriodConfig
 } from "./types"
 
 export class MevStakingProgram {
@@ -137,7 +138,7 @@ export class MevStakingProgram {
           
           const pendingRewards = await this.calculatePendingRewards(userStake, globalData)
           const canWithdraw = this.canWithdraw(userStake)
-          const lockEndTime = this.getLockEndTime(userStake)
+          const lockEndTime = this.getLockEndTime(userStake, globalData)
           const apy = this.calculateAPY(globalData, userStake)
 
           positions.push({
@@ -427,10 +428,11 @@ export class MevStakingProgram {
     return userStake.tier0Amount.gt(new BN(0))
   }
 
-  private getLockEndTime(userStake: UserStake): Date {
+  private getLockEndTime(userStake: UserStake, globalData?: GlobalData): Date {
     // This is simplified - you might need to track individual lock end times
     const lastClaimTime = userStake.lastClaimTime.toNumber() * 1000
-    const maxLockDuration = LOCK_PERIOD_CONFIG[LockPeriod.SixMonths].duration * 1000
+    const config = getLockPeriodConfig(LockPeriod.SixMonths, globalData)
+    const maxLockDuration = config.duration * 1000
     return new Date(lastClaimTime + maxLockDuration)
   }
 

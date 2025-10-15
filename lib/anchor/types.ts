@@ -5,7 +5,7 @@ import { BN } from "@coral-xyz/anchor"
 // 🎯 PROGRAM CONFIGURATION
 // ============================================================================
 
-export const PROGRAM_ID = new PublicKey("8afvHrvgATxL21paW9H25bzqkq87mhyvssfvUDDSeV7E")
+export const PROGRAM_ID = new PublicKey("CKnWdKzE87gGpNM5zoGkjKbjGfHxxMxLLQFcSH5i9eui")
 
 // PDA Seeds
 export const GLOBAL_DATA_SEED = "global-authority"
@@ -29,39 +29,70 @@ export const LOCK_PERIOD_CONFIG = {
   [LockPeriod.FreeLock]: {
     name: "No Lock",
     duration: 0,
-    multiplier: 1.0,
     description: "Withdraw anytime",
     emoji: "🔓"
   },
   [LockPeriod.OneWeek]: {
     name: "1 Week",
     duration: 7 * 24 * 60 * 60,
-    multiplier: 1.2,
     description: "7 days lock period",
     emoji: "📅"
   },
   [LockPeriod.OneMonth]: {
     name: "1 Month", 
     duration: 30 * 24 * 60 * 60,
-    multiplier: 1.5,
     description: "30 days lock period",
     emoji: "🗓️"
   },
   [LockPeriod.ThreeMonths]: {
     name: "3 Months",
     duration: 90 * 24 * 60 * 60,
-    multiplier: 2.0,
     description: "90 days lock period",
     emoji: "🔒"
   },
   [LockPeriod.SixMonths]: {
     name: "6 Months",
     duration: 180 * 24 * 60 * 60,
-    multiplier: 3.0,
     description: "180 days lock period",
     emoji: "🔐"
   }
 } as const
+
+// Helper function to get lock period config with dynamic multiplier from global data
+export const getLockPeriodConfig = (lockPeriod: LockPeriod, globalData?: GlobalData) => {
+  const baseConfig = LOCK_PERIOD_CONFIG[lockPeriod]
+  
+  if (!globalData) {
+    // Fallback multipliers if no global data
+    const fallbackMultipliers = {
+      [LockPeriod.FreeLock]: 1.0,
+      [LockPeriod.OneWeek]: 1.2,
+      [LockPeriod.OneMonth]: 1.5,
+      [LockPeriod.ThreeMonths]: 2.0,
+      [LockPeriod.SixMonths]: 3.0
+    }
+    return {
+      ...baseConfig,
+      multiplier: fallbackMultipliers[lockPeriod]
+    }
+  }
+  
+  // Calculate multiplier from global data tier rewards
+  const tierRewards = [
+    globalData.tier0Reward,
+    globalData.tier1Reward,
+    globalData.tier2Reward,
+    globalData.tier3Reward,
+    globalData.tier4Reward
+  ]
+  
+  const multiplier = tierRewards[lockPeriod] / 100
+  
+  return {
+    ...baseConfig,
+    multiplier
+  }
+}
 
 // ============================================================================
 // 🏦 PROGRAM ACCOUNT INTERFACES
@@ -100,6 +131,10 @@ export interface UserStake {
   tier2Amount: BN  // 1 Month amount
   tier3Amount: BN  // 3 Months amount
   tier4Amount: BN  // 6 Months amount
+  tier1WithdrawableTime: BN
+  tier2WithdrawableTime: BN
+  tier3WithdrawableTime: BN
+  tier4WithdrawableTime: BN
   lastClaimTime: BN
   totalClaimed: BN
   totalStaked: BN
@@ -299,7 +334,7 @@ export const getTierEmoji = (tierIndex: number): string => {
 // ============================================================================
 
 export type MevStaking = {
-  "address": "8afvHrvgATxL21paW9H25bzqkq87mhyvssfvUDDSeV7E",
+  "address": "CKnWdKzE87gGpNM5zoGkjKbjGfHxxMxLLQFcSH5i9eui",
   "metadata": {
     "name": "mev_staking",
     "version": "0.1.0",
@@ -412,6 +447,38 @@ export type MevStaking = {
                   0,
                   0,
                   1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "sol_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  45,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
                 ]
               }
             ]
@@ -884,6 +951,38 @@ export type MevStaking = {
                   0,
                   0,
                   1
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "name": "sol_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  45,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
                 ]
               }
             ]
@@ -1571,6 +1670,38 @@ export type MevStaking = {
           }
         },
         {
+          "name": "sol_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  45,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
           "name": "user_stake",
           "writable": true,
           "pda": {
@@ -2143,192 +2274,36 @@ export type MevStaking = {
           }
         },
         {
-          "name": "wsol_mint",
-          "address": "So11111111111111111111111111111111111111112"
-        },
-        {
-          "name": "pool_wsol_ata",
+          "name": "sol_vault",
           "writable": true,
           "pda": {
             "seeds": [
               {
-                "kind": "account",
-                "path": "pool_info"
-              },
-              {
                 "kind": "const",
                 "value": [
-                  6,
-                  221,
-                  246,
-                  225,
-                  215,
-                  101,
-                  161,
-                  147,
-                  217,
-                  203,
-                  225,
-                  70,
-                  206,
-                  235,
-                  121,
-                  172,
-                  28,
-                  180,
-                  133,
-                  237,
-                  95,
-                  91,
-                  55,
-                  145,
-                  58,
-                  140,
-                  245,
-                  133,
-                  126,
-                  255,
-                  0,
-                  169
+                  115,
+                  111,
+                  108,
+                  45,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
                 ]
-              },
-              {
-                "kind": "account",
-                "path": "wsol_mint"
               }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
-              ]
-            }
+            ]
           }
-        },
-        {
-          "name": "mev_bot_wsol_ata",
-          "writable": true,
-          "pda": {
-            "seeds": [
-              {
-                "kind": "account",
-                "path": "mev_bot"
-              },
-              {
-                "kind": "const",
-                "value": [
-                  6,
-                  221,
-                  246,
-                  225,
-                  215,
-                  101,
-                  161,
-                  147,
-                  217,
-                  203,
-                  225,
-                  70,
-                  206,
-                  235,
-                  121,
-                  172,
-                  28,
-                  180,
-                  133,
-                  237,
-                  95,
-                  91,
-                  55,
-                  145,
-                  58,
-                  140,
-                  245,
-                  133,
-                  126,
-                  255,
-                  0,
-                  169
-                ]
-              },
-              {
-                "kind": "account",
-                "path": "wsol_mint"
-              }
-            ],
-            "program": {
-              "kind": "const",
-              "value": [
-                140,
-                151,
-                37,
-                143,
-                78,
-                36,
-                137,
-                241,
-                187,
-                61,
-                16,
-                41,
-                20,
-                142,
-                13,
-                131,
-                11,
-                90,
-                19,
-                153,
-                218,
-                255,
-                16,
-                132,
-                4,
-                142,
-                123,
-                216,
-                219,
-                233,
-                248,
-                89
-              ]
-            }
-          }
-        },
-        {
-          "name": "associated_token_program",
-          "address": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"
         },
         {
           "name": "token_program",
@@ -2741,8 +2716,71 @@ export type MevStaking = {
           }
         },
         {
+          "name": "sol_vault",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  115,
+                  111,
+                  108,
+                  45,
+                  118,
+                  97,
+                  117,
+                  108,
+                  116,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              }
+            ]
+          }
+        },
+        {
           "name": "user_stake",
-          "writable": true
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  117,
+                  115,
+                  101,
+                  114,
+                  45,
+                  97,
+                  117,
+                  116,
+                  104,
+                  111,
+                  114,
+                  105,
+                  116,
+                  121
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "user"
+              },
+              {
+                "kind": "arg",
+                "path": "pool_id"
+              }
+            ]
+          }
         },
         {
           "name": "system_program",
@@ -2756,6 +2794,10 @@ export type MevStaking = {
         },
         {
           "name": "lock_period",
+          "type": "u8"
+        },
+        {
+          "name": "pool_id",
           "type": "u8"
         }
       ]
@@ -3752,6 +3794,22 @@ export type MevStaking = {
           {
             "name": "tier_4_amount",
             "type": "u64"
+          },
+          {
+            "name": "tier_1_withdrawable_time",
+            "type": "i64"
+          },
+          {
+            "name": "tier_2_withdrawable_time",
+            "type": "i64"
+          },
+          {
+            "name": "tier_3_withdrawable_time",
+            "type": "i64"
+          },
+          {
+            "name": "tier_4_withdrawable_time",
+            "type": "i64"
           },
           {
             "name": "last_claim_time",

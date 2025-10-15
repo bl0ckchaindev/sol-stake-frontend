@@ -14,6 +14,6 @@ export default function DashboardPage() {
         </main>
         <Footer />
       </MotionWrapper>
-    </ComingSoonWrapper>
+    // </ComingSoonWrapper>
   )
 }

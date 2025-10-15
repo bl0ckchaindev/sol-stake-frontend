@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useWallet } from "@/components/wallet-provider"
 import { useAnchorStaking } from "@/components/anchor-staking-provider"
 import { useTranslation } from "@/components/translation-context"
-import { SUPPORTED_TOKENS, LOCK_PERIOD_CONFIG, LockPeriod, type SupportedToken, type PoolInfo } from "@/lib/anchor/types"
+import { SUPPORTED_TOKENS, LOCK_PERIOD_CONFIG, getLockPeriodConfig, LockPeriod, type SupportedToken, type PoolInfo } from "@/lib/anchor/types"
 import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
 import { PublicKey } from "@solana/web3.js"
@@ -31,7 +31,7 @@ interface StakingCardProps {
 
 export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userBalance, isLoading = false, initialLoading = false, refreshing = false }: StakingCardProps) {
   const { connected, publicKey } = useWallet()
-  const { stakeTokens, withdrawTokens, claimRewards, formatAmount, parseAmount } = useAnchorStaking()
+  const { stakeTokens, withdrawTokens, claimRewards, formatAmount, parseAmount, globalData } = useAnchorStaking()
   const { t } = useTranslation()
   
   const [amount, setAmount] = useState("")
@@ -50,7 +50,10 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
 
   // Calculate APY based on lock period
   const getAPY = () => {
-    if (!userStake) return LOCK_PERIOD_CONFIG[lockPeriod].multiplier * 10 // Base 10% APY
+    if (!userStake) {
+      const config = getLockPeriodConfig(lockPeriod, globalData)
+      return config.multiplier * 10 // Base 10% APY
+    }
     return userStake.apy
   }
 
@@ -69,8 +72,9 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
 
   // Calculate daily reward percentage for each lock period
   const getDailyRewardPercentage = (period: LockPeriod) => {
-    const baseDailyRate = 0.027 // Base 10% APY / 365 days ≈ 0.027% daily
-    return (baseDailyRate * LOCK_PERIOD_CONFIG[period].multiplier).toFixed(3)
+    const config = getLockPeriodConfig(period, globalData)
+    const baseDailyRate = 1 // 0.027 // Base 10% APY / 365 days ≈ 0.027% daily
+    return (baseDailyRate * config.multiplier).toFixed(1)
   }
 
   // Calculate withdrawable balance (only FreeLock tier)
