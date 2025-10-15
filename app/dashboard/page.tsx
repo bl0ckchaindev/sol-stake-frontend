@@ -12,6 +12,6 @@ export default function DashboardPage() {
         <AnchorStakingDashboard />
         <Footer />
       </MotionWrapper>
-    // </ComingSoonWrapper>
+     </ComingSoonWrapper>
   )
 }
