@@ -86,14 +86,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       detected.push({
         name: "Phantom",
         adapter: window.phantom.solana,
-        icon: "👻",
+        icon: "/phantom.png",
         downloadUrl: "https://phantom.app/"
       })
     } else {
       available.push({
         name: "Phantom",
         adapter: null as any,
-        icon: "👻",
+        icon: "/phantom.png",
         downloadUrl: "https://phantom.app/"
       })
     }
@@ -103,14 +103,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       detected.push({
         name: "Solflare",
         adapter: window.solflare,
-        icon: "☀️",
+        icon: "/solflare.png",
         downloadUrl: "https://solflare.com/"
       })
     } else {
       available.push({
         name: "Solflare",
         adapter: null as any,
-        icon: "☀️",
+        icon: "/solflare.png",
         downloadUrl: "https://solflare.com/"
       })
     }
@@ -120,14 +120,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       detected.push({
         name: "Backpack",
         adapter: window.backpack,
-        icon: "🎒",
+        icon: "/backpack.png",
         downloadUrl: "https://backpack.app/"
       })
     } else {
       available.push({
         name: "Backpack",
         adapter: null as any,
-        icon: "🎒",
+        icon: "/backpack.png",
         downloadUrl: "https://backpack.app/"
       })
     }
@@ -144,14 +144,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
           disconnect: async () => {},
           ...window.ethereum
         } as any,
-        icon: "🦊",
+        icon: "/metamask.png",
         downloadUrl: "https://metamask.io/"
       })
     } else {
       available.push({
         name: "MetaMask",
         adapter: null as any,
-        icon: "🦊",
+        icon: "/metamask.png",
         downloadUrl: "https://metamask.io/"
       })
     }
@@ -168,14 +168,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
           disconnect: async () => {},
           ...window.ethereum
         } as any,
-        icon: "🔵",
+        icon: "/coinbasewallet.png",
         downloadUrl: "https://wallet.coinbase.com/"
       })
     } else {
       available.push({
         name: "Coinbase Wallet",
         adapter: null as any,
-        icon: "🔵",
+        icon: "/coinbasewallet.png",
         downloadUrl: "https://wallet.coinbase.com/"
       })
     }
@@ -192,14 +192,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
           disconnect: async () => {},
           ...window.ethereum
         } as any,
-        icon: "🔐",
+        icon: "/trustwallet.png",
         downloadUrl: "https://trustwallet.com/"
       })
     } else {
       available.push({
         name: "Trust Wallet",
         adapter: null as any,
-        icon: "🔐",
+        icon: "/trustwallet.png",
         downloadUrl: "https://trustwallet.com/"
       })
     }
@@ -208,7 +208,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     available.push({
       name: "WalletConnect",
       adapter: null as any,
-      icon: "🔗",
+      icon: "/walletconnect.png",
       downloadUrl: "https://walletconnect.com/"
     })
 

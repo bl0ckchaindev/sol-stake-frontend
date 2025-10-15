@@ -1,0 +1,19 @@
+{
+  "stakingOverview": "Staking Overview",
+  "connectWalletDescription": "Connect your wallet to see your staking summary",
+  "connectWalletMessage": "Connect your wallet to view your staking summary",
+  "myTotalStaked": "My Total Staked",
+  "totalStakedDescription": "Your total staked amounts across all tokens",
+  "notStaked": "Not staked",
+  "recentTransactions": "Recent Transactions",
+  "recentTransactionsDescription": "Your recent staking transactions",
+  "noTransactions": "No transactions yet",
+  "noTransactionsDescription": "Your staking transactions will appear here",
+  "rewardClaim": "Reward Claim",
+  "stakeWithdrawal": "Stake Withdrawal",
+  "stake": "Stake",
+  "at": "at",
+  "confirmed": "Confirmed",
+  "pending": "Pending",
+  "failed": "Failed"
+}

@@ -117,18 +117,18 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
 
   const handleStake = async () => {
     if (!connected || !publicKey) {
-      toast.error("Please connect your wallet")
+      toast.error(t('dashboard.staking.pleaseConnectWallet'))
       return
     }
 
     const stakeAmount = parseFloat(amount)
     if (isNaN(stakeAmount) || stakeAmount <= 0) {
-      toast.error("Please enter a valid amount")
+      toast.error(t('dashboard.staking.pleaseEnterValidAmount'))
       return
     }
 
     if (stakeAmount > userBalance) {
-      toast.error("Insufficient balance")
+      toast.error(t('dashboard.staking.insufficientBalance'))
       return
     }
 
@@ -153,13 +153,13 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
 
     const withdrawValue = parseFloat(withdrawAmount)
     if (isNaN(withdrawValue) || withdrawValue <= 0) {
-      toast.error("Please enter a valid withdrawal amount")
+      toast.error(t('dashboard.staking.pleaseEnterValidWithdrawalAmount'))
       return
     }
 
     const maxWithdraw = formatAmount(userStake.userStake.totalStaked, tokenInfo.decimals)
     if (withdrawValue > maxWithdraw) {
-      toast.error("Withdrawal amount exceeds staked amount")
+      toast.error(t('dashboard.staking.withdrawalAmountExceeds'))
       return
     }
 
@@ -192,12 +192,12 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
   }
 
   const handleCompound = async () => {
-    if (!userStake || !userStake.pendingRewards) return
+    if (!userStake || !userStake?.pendingRewards) return
 
     setIsCompounding(true)
     try {
       // Compound by staking the pending rewards
-      const compoundAmount = userStake.pendingRewards
+      const compoundAmount = userStake?.pendingRewards
       const currentLockPeriod = getCurrentLockPeriod()
       
       const signature = await stakeTokens(
@@ -226,9 +226,9 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-              <span className="font-semibold text-primary text-lg">{tokenInfo.icon}</span>
-            </div>
+            {tokenInfo.icon && (
+              <img src={tokenInfo.icon} className="w-12 h-12" alt={tokenInfo.name} />
+            )}
             <div>
               <div className="flex items-center gap-2">
                 <CardTitle className="text-lg">{tokenInfo.name}</CardTitle>
@@ -236,7 +236,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
               </div>
               {poolInfo && (
                 <p className="text-base text-foreground">
-                  Pool Total: <span className={blurIfLoading("font-extrabold text-lg")}>{formatAmount(poolInfo.totalStaked, tokenInfo.decimals).toFixed(2)} {tokenSymbol}</span>
+                  {t('dashboard.staking.poolTotal')}: <span className={blurIfLoading("font-extrabold text-lg")}>{formatAmount(poolInfo.totalStaked, tokenInfo.decimals).toFixed(2)} {tokenSymbol}</span>
                 </p>
               )}
             </div>
@@ -244,7 +244,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
           <div className="text-right">
             {connected && (
               <div className="mb-2">
-                <div className="text-xs text-muted-foreground">My Total Staked</div>
+                <div className="text-xs text-muted-foreground">{t('dashboard.staking.myTotalStaked')}</div>
                 <div className={blurIfLoading("font-bold text-lg")}>
                   {userStake 
                     ? `${formatAmount(userStake.userStake.totalStaked, tokenInfo.decimals).toFixed(2)} ${tokenSymbol}`
@@ -266,9 +266,9 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
         <div className="space-y-4">
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <Label htmlFor={`amount-${tokenSymbol}`}>Amount to Stake</Label>
+              <Label htmlFor={`amount-${tokenSymbol}`}>{t('dashboard.staking.amountToStake')}</Label>
               <div className="text-right">
-                <p className="text-xs text-muted-foreground">Available</p>
+                <p className="text-xs text-muted-foreground">{t('dashboard.staking.available')}</p>
                 <p className={blurIfLoading("text-xs font-medium")}>
                   {userBalance.toFixed(2)} {tokenSymbol}
                 </p>
@@ -289,14 +289,15 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                 variant="outline"
                 size="sm"
                 onClick={() => setAmount(maxAmount.toString())}
+                className="transition-all duration-200 hover:scale-105"
               >
-                Max
+                {t('dashboard.staking.max')}
               </Button>
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor={`lock-${tokenSymbol}`}>Lock Period</Label>
+            <Label htmlFor={`lock-${tokenSymbol}`}>{t('dashboard.staking.lockPeriod')}</Label>
             <Select value={lockPeriod.toString()} onValueChange={(value) => setLockPeriod(parseInt(value) as LockPeriod)}>
               <SelectTrigger>
                 <SelectValue />
@@ -308,7 +309,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                       <span>{config.emoji}</span>
                       <span>{config.name}</span>
                       <Badge variant="outline" className="ml-auto">
-                        {getDailyRewardPercentage(parseInt(period) as LockPeriod)}% daily
+                        {getDailyRewardPercentage(parseInt(period) as LockPeriod)}% {t('dashboard.staking.daily')}
                       </Badge>
                     </div>
                   </SelectItem>
@@ -318,17 +319,17 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
           </div>
 
 
-          <Button 
-            onClick={!connected ? () => setShowWalletSelector(true) : handleStake} 
+          <Button
+            onClick={!connected ? () => setShowWalletSelector(true) : handleStake}
             disabled={connected && (isStaking || !amount || parseFloat(amount) <= 0)}
-            className="w-full"
+            className="w-full btn-gradient-primary hover:gradient-hover transition-all duration-300 hover:scale-elevate"
           >
             {isStaking ? (
               <Loader2 className="h-4 w-4 animate-spin mr-2" />
             ) : (
               <ArrowUpRight className="h-4 w-4 mr-2" />
             )}
-            {!connected ? "Connect Wallet" : "Stake"}
+            {!connected ? t('dashboard.staking.connectWallet') : t('dashboard.staking.stake')}
           </Button>
         </div>
 
@@ -338,9 +339,9 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
             {/* Progress Bar for Lock Period */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label className="text-sm">Lock Progress</Label>
+                <Label className="text-sm">{t('dashboard.staking.lockProgress')}</Label>
                 <span className="text-xs text-muted-foreground">
-                  {getLockProgress().toFixed(1)}% Complete
+                  {getLockProgress().toFixed(1)}% {t('dashboard.staking.complete')}
                 </span>
               </div>
               <div className="w-full bg-muted rounded-full h-2">
@@ -350,15 +351,15 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                 />
               </div>
               <p className="text-xs text-muted-foreground">
-                {LOCK_PERIOD_CONFIG[getCurrentLockPeriod()].name} - {getDailyRewardPercentage(getCurrentLockPeriod())}% daily
+                {LOCK_PERIOD_CONFIG[getCurrentLockPeriod()].name} - {getDailyRewardPercentage(getCurrentLockPeriod())}% {t('dashboard.staking.daily')}
               </p>
             </div>
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor={`withdraw-${tokenSymbol}`}>Amount to Withdraw</Label>
+                <Label htmlFor={`withdraw-${tokenSymbol}`}>{t('dashboard.staking.amountToWithdraw')}</Label>
                 <div className="text-right">
-                  <p className="text-xs text-muted-foreground">Withdrawable</p>
+                  <p className="text-xs text-muted-foreground">{t('dashboard.staking.withdrawable')}</p>
                   <p className={blurIfLoading("text-xs font-medium")}>
                     {getWithdrawableBalance().toFixed(2)} {tokenSymbol}
                   </p>
@@ -379,18 +380,19 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                   variant="outline"
                   size="sm"
                   onClick={() => setWithdrawAmount(getWithdrawableBalance().toString())}
+                  className="transition-all duration-200 hover:scale-105"
                 >
-                  Max
+                  {t('dashboard.staking.max')}
                 </Button>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-              <Button 
-                onClick={handleClaim} 
-                disabled={isClaiming || userStake.pendingRewards <= 0}
-                variant="outline"
+              <Button
+                onClick={handleClaim}
+                disabled={isClaiming || userStake?.pendingRewards <= 0}
                 size="sm"
+                className="btn-gradient-primary hover:gradient-hover transition-all duration-300 hover:scale-elevate"
               >
                 {isClaiming ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-1 sm:mr-2" />
@@ -398,36 +400,38 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
                   <Coins className="h-4 w-4 mr-1 sm:mr-2" />
                 )}
                 <span className={blurIfLoading("")}>
-                  <span className="hidden sm:inline">Claim </span>({userStake.pendingRewards.toFixed(2)})
+                  <span className="hidden sm:inline">{t('dashboard.staking.claim')} </span>({userStake?.pendingRewards.toFixed(2)})
                 </span>
               </Button>
               
-              <Button 
-                onClick={handleCompound} 
-                disabled={isCompounding || userStake.pendingRewards <= 0}
+              <Button
+                onClick={handleCompound}
+                disabled={isCompounding || userStake?.pendingRewards <= 0}
                 variant="secondary"
                 size="sm"
+                className="transition-all duration-200 hover:scale-105"
               >
                 {isCompounding ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-1 sm:mr-2" />
                 ) : (
                   <RefreshCw className="h-4 w-4 mr-1 sm:mr-2" />
                 )}
-                <span className="hidden sm:inline">Compound</span>
+                <span className="hidden sm:inline">{t('dashboard.staking.compound')}</span>
               </Button>
               
-              <Button 
-                onClick={handleWithdraw} 
+              <Button
+                onClick={handleWithdraw}
                 disabled={isWithdrawing || !withdrawAmount || parseFloat(withdrawAmount) <= 0}
                 variant="destructive"
                 size="sm"
+                className="transition-all duration-200 hover:scale-105"
               >
                 {isWithdrawing ? (
                   <Loader2 className="h-4 w-4 animate-spin mr-1 sm:mr-2" />
                 ) : (
                   <ArrowDownLeft className="h-4 w-4 mr-1 sm:mr-2" />
                 )}
-                <span className="hidden sm:inline">Withdraw</span>
+                <span className="hidden sm:inline">{t('dashboard.staking.withdraw')}</span>
               </Button>
             </div>
           </div>
@@ -447,7 +451,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
               onClick={() => setShowWalletSelector(false)}
               className="absolute top-2 right-2 w-8 h-8 bg-background border rounded-full flex items-center justify-center hover:bg-muted z-10 text-lg font-bold shadow-lg"
             >
-              ×
+              {t('dashboard.staking.close')}
             </button>
             <WalletSelector onClose={() => setShowWalletSelector(false)} />
           </div>

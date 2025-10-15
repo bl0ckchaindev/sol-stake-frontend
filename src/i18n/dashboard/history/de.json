@@ -1,0 +1,19 @@
+{
+  "stakingOverview": "Staking-Übersicht",
+  "connectWalletDescription": "Verbinden Sie Ihre Wallet, um Ihre Staking-Zusammenfassung zu sehen",
+  "connectWalletMessage": "Verbinden Sie Ihre Wallet, um Ihre Staking-Zusammenfassung anzuzeigen",
+  "myTotalStaked": "Mein Gesamt-Stacking",
+  "totalStakedDescription": "Ihre gesamten gestackten Beträge über alle Token",
+  "notStaked": "Nicht gestaked",
+  "recentTransactions": "Kürzliche Transaktionen",
+  "recentTransactionsDescription": "Ihre kürzlichen Staking-Transaktionen",
+  "noTransactions": "Noch keine Transaktionen",
+  "noTransactionsDescription": "Ihre Staking-Transaktionen werden hier erscheinen",
+  "rewardClaim": "Belohnungsanspruch",
+  "stakeWithdrawal": "Stake-Abhebung",
+  "stake": "Stake",
+  "at": "um",
+  "confirmed": "Bestätigt",
+  "pending": "Ausstehend",
+  "failed": "Fehlgeschlagen"
+}

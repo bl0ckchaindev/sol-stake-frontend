@@ -1,6 +1,7 @@
 {
   "title": "Plattform-Performance",
   "subtitle": "Unsere MEV-Bot-Infrastruktur liefert konsistente, transparente Ergebnisse für institutionelle und private Staker.",
+  "badge": "Leistungskennzahlen",
   "items": {
     "tvl": {
       "value": "$2M+",
@@ -21,6 +22,20 @@
       "value": "24/7",
       "label": "MEV-Überwachung",
       "description": "Kontinuierliche Möglichkeitserkennung"
+    }
+  },
+  "additional": {
+    "consistentReturns": {
+      "title": "Konsistente Erträge",
+      "description": "1% tägliches Ziel mit bewährtem Track Record"
+    },
+    "realtimeMonitoring": {
+      "title": "Echtzeit-Überwachung",
+      "description": "24/7 MEV-Chancenerkennung"
+    },
+    "instantRewards": {
+      "title": "Sofortige Belohnungen",
+      "description": "Tägliches Belohnungsverteilungssystem"
     }
   }
 }

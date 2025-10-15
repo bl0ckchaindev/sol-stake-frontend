@@ -1,6 +1,7 @@
 {
   "title": "Frequently Asked Questions",
   "subtitle": "Everything you need to know about MEV bot staking, rewards, and our platform.",
+  "badge": "Support Center",
   "categories": {
     "all": "All Questions",
     "general": "General",
@@ -54,5 +55,11 @@
       "question": "How can I track MEV bot performance?",
       "answer": "We provide transparent performance metrics including daily returns, total value locked, success rates, and historical performance data. All MEV operations are recorded on-chain for full transparency and verification."
     }
+  },
+  "support": {
+    "title": "Still have questions?",
+    "subtitle": "Our team is here to help you with any additional questions about MEV staking.",
+    "contactSupport": "Contact Support",
+    "joinCommunity": "Join Community"
   }
 }

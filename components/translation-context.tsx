@@ -76,6 +76,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
           dashboardStats,
           dashboardTabs,
           dashboardCalculator,
+          dashboardHistory,
           mevtrackerMain,
           mevtrackerStats,
           mevtrackerTabs,
@@ -101,6 +102,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
           loadTranslation('dashboard/stats'),
           loadTranslation('dashboard/tabs'),
           loadTranslation('dashboard/calculator'),
+          loadTranslation('dashboard/history'),
           loadTranslation('mevtracker/main'),
           loadTranslation('mevtracker/stats'),
           loadTranslation('mevtracker/tabs'),
@@ -132,7 +134,8 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
             positions: dashboardPositions,
             stats: dashboardStats,
             tabs: dashboardTabs,
-            calculator: dashboardCalculator
+            calculator: dashboardCalculator,
+            history: dashboardHistory
           },
           mevtracker: {
             main: mevtrackerMain,

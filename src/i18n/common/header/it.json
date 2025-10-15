@@ -11,5 +11,13 @@
   "installPhantom": "Installa Phantom",
   "installSolflare": "Installa Solflare",
   "balance": "Saldo",
-  "disconnect": "Disconnetti"
+  "disconnect": "Disconnetti",
+  "selectWallet": "Seleziona Wallet",
+  "selectWalletDescription": "Scegli il tuo wallet preferito per connetterti",
+  "installedWallets": "Wallet Installati",
+  "clickToConnect": "Clicca per connettere",
+  "clickToInstall": "Clicca per installare",
+  "noWalletsFound": "Nessun Wallet Trovato",
+  "installWalletFirst": "Per favore installa prima un'estensione wallet",
+  "companyTagline": "Infrastruttura MEV Bot"
 }

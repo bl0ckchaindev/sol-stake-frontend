@@ -188,16 +188,16 @@ export const SUPPORTED_TOKENS: Record<string, SupportedToken> = {
     name: "Solana",
     decimals: 9,
     poolId: 0,
-    icon: "🔥",
+    icon: "/sol.png",
     color: "#9945FF"
   },
   USDC: {
     mint: new PublicKey("7jjzvW2n1fSTjvzRyJu9jfboNZDZCSmiM9vfurZ9Bn9o"),
     symbol: "USDC",
-    name: "USD Coin", 
+    name: "USD Coin",
     decimals: 6,
     poolId: 1,
-    icon: "💵",
+    icon: "/usdc.png",
     color: "#2775CA"
   },
   USDT: {
@@ -206,7 +206,7 @@ export const SUPPORTED_TOKENS: Record<string, SupportedToken> = {
     name: "Tether",
     decimals: 6,
     poolId: 2,
-    icon: "💰",
+    icon: "/usdt.png",
     color: "#26A17B"
   }
 } as const

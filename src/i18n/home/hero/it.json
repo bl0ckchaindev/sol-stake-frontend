@@ -1,5 +1,5 @@
 {
-  "announcement": "Annuncio: oltre 2 milioni di dollari in ricompense MEV distribuite agli staker",
+  "announcement": "Stiamo per lanciare! Non perdere l'opportunità di entrare per primo!",
   "title": "MEV Bot Staking",
   "subtitle": "per Solana DeFi",
   "description": "Metti in staking i tuoi SOL, USDC, USDT e token meme con la nostra infrastruttura avanzata di bot MEV. Guadagna ricompense giornaliere dell'1% dalle opportunità di Maximum Extractable Value su Solana.",
@@ -20,5 +20,9 @@
       "title": "Ricompense Giornaliere",
       "description": "Riscatta l'1% di ricompense giornaliere mentre il tuo capitale rimane bloccato per l'ottimale cattura MEV"
     }
+  },
+  "trustIndicators": {
+    "auditedContracts": "Contratti Intelligenti Auditati",
+    "monitoring": "Monitoraggio MEV 24/7"
   }
 }

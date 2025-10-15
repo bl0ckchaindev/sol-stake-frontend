@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated theme to match sophisticated fintech design inspiration with neutral grays and professional accent */
+  /* Premium fintech theme with new gradient palette */
   --background: oklch(0.99 0.002 106.423);
   --foreground: oklch(0.15 0.01 106.423);
   --card: oklch(1 0 0);
@@ -33,7 +33,7 @@
   --chart-3: oklch(0.58 0.24 27.325);
   --chart-4: oklch(0.48 0.24 264.376);
   --chart-5: oklch(0.77 0.18 70.08);
-  --radius: 0.5rem;
+  --radius: 0.75rem;
   --sidebar: oklch(0.99 0.002 106.423);
   --sidebar-foreground: oklch(0.15 0.01 106.423);
   --sidebar-primary: oklch(0.25 0.02 106.423);
@@ -42,46 +42,62 @@
   --sidebar-accent-foreground: oklch(0.25 0.02 106.423);
   --sidebar-border: oklch(0.92 0.005 106.423);
   --sidebar-ring: oklch(0.25 0.02 106.423);
+  
+  /* New gradient variables - Light theme */
+  --gradient-primary: linear-gradient(135deg, #D1EDF9 0%, #C5FFDA 50%, #FFF7C8 100%);
+  --gradient-secondary: linear-gradient(45deg, #C5FFDA 0%, #D1EDF9 100%);
+  --gradient-accent: linear-gradient(90deg, #FFF7C8 0%, #C5FFDA 100%);
+  --gradient-footer: linear-gradient(135deg, #D1EDF9 0%, #C5FFDA 40%, #FFF7C8 100%);
+  --gradient-card: linear-gradient(135deg, rgba(209, 237, 249, 0.1) 0%, rgba(197, 255, 218, 0.1) 50%, rgba(255, 247, 200, 0.1) 100%);
+  --gradient-hover: linear-gradient(135deg, #FFF7C8 0%, #C5FFDA 50%, #D1EDF9 100%);;
 }
 
 .dark {
-  /* Dark theme with sophisticated black/gray palette matching design inspiration */
-  --background: oklch(0.05 0.01 106.423);
+  /* Dark theme with similar gradient colors but darker tones - matching light theme palette */
+  --background: oklch(0.08 0.01 106.423);
   --foreground: oklch(0.95 0.005 106.423);
-  --card: oklch(0.08 0.01 106.423);
+  --card: oklch(0.12 0.01 106.423);
   --card-foreground: oklch(0.95 0.005 106.423);
-  --popover: oklch(0.08 0.01 106.423);
+  --popover: oklch(0.15 0.01 106.423);
   --popover-foreground: oklch(0.95 0.005 106.423);
   --primary: oklch(0.95 0.005 106.423);
-  --primary-foreground: oklch(0.05 0.01 106.423);
-  --secondary: oklch(0.15 0.01 106.423);
+  --primary-foreground: oklch(0.08 0.01 106.423);
+  --secondary: oklch(0.18 0.01 106.423);
   --secondary-foreground: oklch(0.95 0.005 106.423);
-  --muted: oklch(0.15 0.01 106.423);
-  --muted-foreground: oklch(0.65 0.01 106.423);
-  --accent: oklch(0.65 0.15 142.495);
-  --accent-foreground: oklch(0.05 0.01 106.423);
-  --success: oklch(0.65 0.15 142.495);
-  --success-foreground: oklch(0.05 0.01 106.423);
+  --muted: oklch(0.18 0.01 106.423);
+  --muted-foreground: oklch(0.75 0.01 106.423);
+  --accent: oklch(0.75 0.15 142.495);
+  --accent-foreground: oklch(0.08 0.01 106.423);
+  --success: oklch(0.75 0.15 142.495);
+  --success-foreground: oklch(0.08 0.01 106.423);
   --warning: oklch(0.85 0.18 83.87);
-  --warning-foreground: oklch(0.05 0.01 106.423);
-  --destructive: oklch(0.58 0.24 27.325);
+  --warning-foreground: oklch(0.08 0.01 106.423);
+  --destructive: oklch(0.65 0.24 27.325);
   --destructive-foreground: oklch(0.95 0.005 106.423);
-  --border: oklch(0.15 0.01 106.423);
-  --input: oklch(0.15 0.01 106.423);
-  --ring: oklch(0.65 0.15 142.495);
-  --chart-1: oklch(0.65 0.15 142.495);
+  --border: oklch(0.25 0.01 106.423);
+  --input: oklch(0.25 0.01 106.423);
+  --ring: oklch(0.75 0.15 142.495);
+  --chart-1: oklch(0.75 0.15 142.495);
   --chart-2: oklch(0.85 0.18 83.87);
-  --chart-3: oklch(0.58 0.24 27.325);
-  --chart-4: oklch(0.48 0.24 264.376);
+  --chart-3: oklch(0.65 0.24 27.325);
+  --chart-4: oklch(0.55 0.24 264.376);
   --chart-5: oklch(0.77 0.18 70.08);
-  --sidebar: oklch(0.08 0.01 106.423);
+  --sidebar: oklch(0.12 0.01 106.423);
   --sidebar-foreground: oklch(0.95 0.005 106.423);
   --sidebar-primary: oklch(0.95 0.005 106.423);
-  --sidebar-primary-foreground: oklch(0.05 0.01 106.423);
-  --sidebar-accent: oklch(0.15 0.01 106.423);
+  --sidebar-primary-foreground: oklch(0.08 0.01 106.423);
+  --sidebar-accent: oklch(0.18 0.01 106.423);
   --sidebar-accent-foreground: oklch(0.95 0.005 106.423);
-  --sidebar-border: oklch(0.15 0.01 106.423);
-  --sidebar-ring: oklch(0.65 0.15 142.495);
+  --sidebar-border: oklch(0.25 0.01 106.423);
+  --sidebar-ring: oklch(0.75 0.15 142.495);
+  
+  /* Dark theme gradients - similar to light theme but darker */
+  --gradient-primary: linear-gradient(135deg, #0a1a2a 0%, #1a3a4a 50%, #2a5a6a 100%);
+  --gradient-secondary: linear-gradient(45deg, #1a3a4a 0%, #0a1a2a 100%);
+  --gradient-accent: linear-gradient(90deg, #2a5a6a 0%, #1a3a4a 100%);
+  --gradient-footer: linear-gradient(135deg, #0a1a2a 0%, #1a3a4a 40%, #2a5a6a 100%);
+  --gradient-card: linear-gradient(135deg, rgba(26, 58, 74, 0.4) 0%, rgba(42, 90, 106, 0.3) 50%, rgba(10, 26, 42, 0.4) 100%);
+  --gradient-hover: linear-gradient(135deg, rgba(26, 58, 74, 0.6) 0%, rgba(42, 90, 106, 0.5) 50%, rgba(10, 26, 42, 0.6) 100%);
 }
 
 @theme inline {
@@ -166,6 +182,51 @@
   }
 }
 
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Utility classes for animations */
 .animate-float {
   animation: float 3s ease-in-out infinite;
@@ -184,6 +245,127 @@
   );
   background-size: 1000px 100%;
   animation: shimmer 2s infinite;
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.8s ease-out;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out;
+}
+
+/* Gradient background utilities */
+.bg-gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.bg-gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.bg-gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.bg-gradient-footer {
+  background: var(--gradient-footer);
+}
+
+.bg-gradient-card {
+  background: var(--gradient-card);
+}
+
+.bg-gradient-hover {
+  background: var(--gradient-hover);
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(var(--card), 0.1);
+  border: 1px solid rgba(var(--border), 0.2);
+}
+
+/* Enhanced hover effects */
+.hover\:gradient-hover:hover {
+  background: var(--gradient-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hover\:scale-elevate:hover {
+  transform: scale(1.02) translateY(-2px);
+}
+
+/* Text gradient utilities */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient button utilities with proper text colors */
+.btn-gradient-primary {
+  background: var(--gradient-primary);
+  color: #0a0a0a !important; /* Dark text for light theme */
+  border: none !important;
+}
+
+.btn-gradient-primary:hover {
+  background: var(--gradient-hover);
+  color: #0a0a0a !important;
+}
+
+.dark .btn-gradient-primary {
+  color: #ffffff !important; /* White text for dark theme */
+}
+
+.btn-gradient-secondary {
+  background: var(--gradient-secondary);
+  color: #0a0a0a !important; /* Dark text for light theme */
+  border: none !important;
+}
+
+.btn-gradient-secondary:hover {
+  background: var(--gradient-hover);
+  color: #0a0a0a !important;
+}
+
+.dark .btn-gradient-secondary {
+  color: #ffffff !important; /* White text for dark theme */
+}
+
+.btn-gradient-accent {
+  background: var(--gradient-accent);
+  color: #0a0a0a !important; /* Dark text for light theme */
+  border: none !important;
+}
+
+.btn-gradient-accent:hover {
+  background: var(--gradient-hover);
+  color: #0a0a0a !important;
+}
+
+.dark .btn-gradient-accent {
+  color: #ffffff !important; /* White text for dark theme */
 }
 
 /* Smooth transitions for interactive elements */
@@ -230,4 +412,22 @@
 .scrollbar-hide {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
+}
+
+/* Equal height card utilities */
+.grid-equal-height {
+  display: grid;
+  grid-auto-rows: 1fr;
+}
+
+.card-equal-height {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content-equal-height {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }

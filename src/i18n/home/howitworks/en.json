@@ -1,6 +1,7 @@
 {
   "title": "How MEV Staking Works",
   "subtitle": "Our sophisticated MEV bot infrastructure generates consistent returns by capturing Maximum Extractable Value opportunities across the Solana ecosystem.",
+  "badge": "Process Overview",
   "steps": {
     "step1": {
       "title": "Connect & Stake",
@@ -22,5 +23,12 @@
       "description": "Earn 1% daily rewards from MEV profits while your principal remains locked for 90 days.",
       "badge": "Step 4"
     }
+  },
+  "cta": {
+    "title": "Ready to Start Earning?",
+    "subtitle": "Join thousands of stakers earning daily rewards from MEV opportunities",
+    "dailyReturns": "Daily Returns",
+    "apy": "APY",
+    "dayLock": "Day Lock"
   }
 }

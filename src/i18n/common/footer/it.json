@@ -1,12 +1,17 @@
 {
+  "title": "Sediamoci e parliamo",
   "company": {
     "name": "MEVStake",
-    "description": "Infrastruttura avanzata di bot MEV per lo staking Solana DeFi con sicurezza di livello istituzionale e ricompense trasparenti."
+    "description": "Infrastruttura avanzata di bot MEV per lo staking Solana DeFi con sicurezza di livello istituzionale e ricompense trasparenti.",
+    "tagline": "Infrastruttura MEV Bot"
   },
+  "address": "475 Cherry Dr, Troy, Michigan 48083 Stati Uniti ( (248) 823-3200 )",
+  "emailPlaceholder": "Inserisci la tua email",
   "sections": {
     "platform": "Piattaforma",
     "legal": "Legale",
-    "followUs": "Seguici"
+    "followUs": "Seguici",
+    "company": "Azienda"
   },
   "links": {
     "dashboard": "Dashboard",
@@ -14,7 +19,11 @@
     "referrals": "Referenze",
     "termsOfService": "Termini di Servizio",
     "privacyPolicy": "Informativa sulla Privacy",
-    "riskDisclosure": "Informativa sui Rischi"
+    "riskDisclosure": "Informativa sui Rischi",
+    "about": "Chi siamo",
+    "pricing": "Prezzi",
+    "jobs": "Lavori",
+    "blog": "Blog"
   },
-  "copyright": "© {{year}} MEVStake. Tutti i diritti riservati. Costruito su Solana."
+  "copyright": "© {{year}} Copyright By Mev Stake"
 }

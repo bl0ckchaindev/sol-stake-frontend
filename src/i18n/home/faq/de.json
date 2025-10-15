@@ -1,6 +1,7 @@
 {
   "title": "Häufig Gestellte Fragen",
   "subtitle": "Alles, was Sie über MEV-Bot-Staking, Belohnungen und unsere Plattform wissen müssen.",
+  "badge": "Support-Center",
   "categories": {
     "all": "Alle Fragen",
     "general": "Allgemein",
@@ -54,5 +55,11 @@
       "question": "Wie kann ich die MEV-Bot-Performance verfolgen?",
       "answer": "Wir bieten transparente Leistungskennzahlen einschließlich täglicher Renditen, gesperrtem Gesamtwert, Erfolgsquoten und historischer Performance-Daten. Alle MEV-Operationen werden On-Chain für volle Transparenz und Überprüfung aufgezeichnet."
     }
+  },
+  "support": {
+    "title": "Haben Sie noch Fragen?",
+    "subtitle": "Unser Team ist hier, um Ihnen bei allen zusätzlichen Fragen zum MEV-Staking zu helfen.",
+    "contactSupport": "Support Kontaktieren",
+    "joinCommunity": "Community Beitreten"
   }
 }

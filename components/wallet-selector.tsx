@@ -51,9 +51,12 @@ export function WalletSelector({ onClose }: WalletSelectorProps) {
           
           return (solanaWallets.length > 0 || solanaAvailable.length > 0) && (
             <div>
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">
-                🌟 Solana Wallets
-              </h3>
+              <div className="flex items-center gap-2 mb-2">
+                <img src="/sol.png" alt="Solana" className="w-4 h-4" />
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Solana Wallets
+                </h3>
+              </div>
               
               {/* Detected Solana Wallets */}
               {solanaWallets.length > 0 && (
@@ -62,12 +65,12 @@ export function WalletSelector({ onClose }: WalletSelectorProps) {
                     <Button
                       key={wallet.name}
                       variant="outline"
-                      className="w-full justify-start h-auto p-4"
+                      className="w-full justify-start h-auto p-4 transition-all duration-200 hover:scale-105 cursor-pointer"
                       onClick={() => handleWalletSelect(wallet.name)}
                       disabled={connecting}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">{wallet.icon}</span>
+                        <img src={wallet.icon} alt={wallet.name} className="w-10 h-10" />
                         <div className="flex-1 text-left">
                           <div className="font-medium">{wallet.name}</div>
                           <div className="text-sm text-muted-foreground">
@@ -90,11 +93,11 @@ export function WalletSelector({ onClose }: WalletSelectorProps) {
                     <Button
                       key={wallet.name}
                       variant="secondary"
-                      className="w-full justify-start h-auto p-4"
+                      className="w-full justify-start h-auto p-4 transition-all duration-200 hover:scale-105 cursor-pointer"
                       onClick={() => handleInstallWallet(wallet.downloadUrl)}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">{wallet.icon}</span>
+                        <img src={wallet.icon} alt={wallet.name} className="w-10 h-10" />
                         <div className="flex-1 text-left">
                           <div className="font-medium">{wallet.name}</div>
                           <div className="text-sm text-muted-foreground">
@@ -123,7 +126,7 @@ export function WalletSelector({ onClose }: WalletSelectorProps) {
           return (multiChainWallets.length > 0 || multiChainAvailable.length > 0) && (
             <div>
               <h3 className="text-sm font-medium text-muted-foreground mb-2">
-                🔗 Multi-Chain Wallets
+                Multi-Chain Wallets
               </h3>
               
               {/* Detected Multi-Chain Wallets */}
@@ -133,12 +136,12 @@ export function WalletSelector({ onClose }: WalletSelectorProps) {
                     <Button
                       key={wallet.name}
                       variant="outline"
-                      className="w-full justify-start h-auto p-4"
+                      className="w-full justify-start h-auto p-4 transition-all duration-200 hover:scale-105 cursor-pointer"
                       onClick={() => handleWalletSelect(wallet.name)}
                       disabled={connecting}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">{wallet.icon}</span>
+                        <img src={wallet.icon} alt={wallet.name} className="w-10 h-10" />
                         <div className="flex-1 text-left">
                           <div className="font-medium">{wallet.name}</div>
                           <div className="text-sm text-muted-foreground">
@@ -161,11 +164,11 @@ export function WalletSelector({ onClose }: WalletSelectorProps) {
                     <Button
                       key={wallet.name}
                       variant="secondary"
-                      className="w-full justify-start h-auto p-4"
+                      className="w-full justify-start h-auto p-4 transition-all duration-200 hover:scale-105 cursor-pointer"
                       onClick={() => handleInstallWallet(wallet.downloadUrl)}
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl">{wallet.icon}</span>
+                        <img src={wallet.icon} alt={wallet.name} className="w-10 h-10" />
                         <div className="flex-1 text-left">
                           <div className="font-medium">{wallet.name}</div>
                           <div className="text-sm text-muted-foreground">

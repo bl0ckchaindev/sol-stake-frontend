@@ -1,6 +1,7 @@
 {
   "title": "Come Funziona lo Staking MEV",
   "subtitle": "La nostra sofisticata infrastruttura di bot MEV genera rendimenti consistenti catturando opportunità di Maximum Extractable Value in tutto l'ecosistema Solana.",
+  "badge": "Panoramica del Processo",
   "steps": {
     "step1": {
       "title": "Connetti e Staka",
@@ -22,5 +23,12 @@
       "description": "Guadagna 1% di ricompense giornaliere dai profitti MEV mentre il tuo capitale rimane bloccato per 90 giorni.",
       "badge": "Passo 4"
     }
+  },
+  "cta": {
+    "title": "Pronto per Iniziare a Guadagnare?",
+    "subtitle": "Unisciti a migliaia di staker che guadagnano ricompense giornaliere dalle opportunità MEV",
+    "dailyReturns": "Rendimenti Giornalieri",
+    "apy": "APY",
+    "dayLock": "Blocco Giornaliero"
   }
 }

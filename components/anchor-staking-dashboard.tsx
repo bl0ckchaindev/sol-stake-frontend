@@ -84,12 +84,27 @@ export function AnchorStakingDashboard() {
 
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <MotionWrapper type="slideUp" delay={0.1} className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{t('dashboard.main.title')}</h1>
-        <p className="text-muted-foreground">
-          {connected ? t('dashboard.main.subtitle') : t('dashboard.main.subtitleDisconnected')}
-        </p>
+    <div className="container mx-auto px-4 py-8 relative">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-1/4 right-0 w-64 h-64 opacity-5 animate-float">
+          <img src="/gradient-orb-1.svg" alt="" className="w-full h-full" />
+        </div>
+        <div className="absolute bottom-1/4 left-0 w-48 h-48 opacity-5 animate-float" style={{animationDelay: '1.5s'}}>
+          <img src="/gradient-orb-2.svg" alt="" className="w-full h-full" />
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <MotionWrapper type="slideUp" delay={0.1} className="mb-12 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+            {t('dashboard.main.title')}
+          </h1>
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            {connected ? t('dashboard.main.subtitle') : t('dashboard.main.subtitleDisconnected')}
+          </p>
+        </div>
       </MotionWrapper>
 
       {/* {!connected && (
@@ -113,13 +128,16 @@ export function AnchorStakingDashboard() {
         staggerChildren={0.1}
       >
         <MotionWrapper type="scale" delay={0.1}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('dashboard.stats.totalStaked')}</CardTitle>
-              <Wallet className="h-4 w-4 text-muted-foreground" />
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary rounded-full opacity-10 blur-2xl"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('dashboard.stats.totalStaked')}</CardTitle>
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/staked.png" className="w-12 h-12 text-accent" alt="Total Staked" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
+              <div className="text-3xl font-bold text-foreground mb-1">
                 {connected ? `${totalStaked.toFixed(2)} SOL` : `-- SOL`}
               </div>
               <p className="text-xs text-muted-foreground">
@@ -132,13 +150,16 @@ export function AnchorStakingDashboard() {
         </MotionWrapper>
 
         <MotionWrapper type="scale" delay={0.2}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('dashboard.stats.dailyRewards')}</CardTitle>
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-accent rounded-full opacity-10 blur-2xl"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('dashboard.stats.dailyRewards')}</CardTitle>
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/daily-reward.png" className="w-12 h-12 text-accent" alt="Daily Rewards" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-success">
+              <div className="text-3xl font-bold text-success mb-1">
                 {connected ? `${dailyRewards.toFixed(4)} SOL` : `-- SOL`}
               </div>
               <p className="text-xs text-muted-foreground">
@@ -149,17 +170,20 @@ export function AnchorStakingDashboard() {
         </MotionWrapper>
 
         <MotionWrapper type="scale" delay={0.3}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-secondary rounded-full opacity-10 blur-2xl"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">
                 {connected && referralData && referralData.totalReferralRewards > 0
                   ? t('dashboard.stats.referralRewards')
                   : t('dashboard.stats.claimable')}
               </CardTitle>
-              <Lock className="h-4 w-4 text-muted-foreground" />
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/claimable.png" className="w-12 h-12 text-accent" alt="Claimable" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-success">
+              <div className="text-3xl font-bold text-success mb-1">
                 {connected
                   ? referralData && referralData.totalReferralRewards > 0
                     ? `${referralData.totalReferralRewards.toFixed(4)} SOL`
@@ -178,13 +202,16 @@ export function AnchorStakingDashboard() {
         </MotionWrapper>
 
         <MotionWrapper type="scale" delay={0.4}>
-          <Card className="hover:shadow-lg transition-shadow duration-300">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{t('dashboard.stats.totalEarned')}</CardTitle>
-              <Coins className="h-4 w-4 text-muted-foreground" />
+          <Card className="bg-gradient-card border-border/50 backdrop-blur-sm hover:gradient-hover transition-all duration-300 hover:scale-elevate group relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-primary rounded-full opacity-10 blur-2xl"></div>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
+              <CardTitle className="text-sm font-medium text-muted-foreground">{t('dashboard.stats.totalEarned')}</CardTitle>
+              <div className="w-16 h-16 bg-gradient-secondary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <img src="/total-earned.png" className="w-12 h-12 text-accent" alt="Total Earned" />
+              </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-success">
+              <div className="text-3xl font-bold text-success mb-1">
                 {connected ? `${totalRewards.toFixed(4)} SOL` : `-- SOL`}
               </div>
               <p className="text-xs text-muted-foreground">{t('dashboard.stats.lifetimeRewards')}</p>

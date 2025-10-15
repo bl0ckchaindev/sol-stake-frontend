@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { useAnchorStaking } from "./anchor-staking-provider"
 import { useWallet } from "./wallet-provider"
 import { SUPPORTED_TOKENS } from "@/lib/anchor/types"
+import { useTranslation } from "./translation-context"
 import { ArrowDownLeft, ArrowUpRight, Clock, TrendingUp, Coins } from "lucide-react"
 
 interface WithdrawalRecord {
@@ -20,6 +21,7 @@ interface WithdrawalRecord {
 export function WithdrawalHistory() {
   const { stakes, transactions, formatAmount } = useAnchorStaking()
   const { connected } = useWallet()
+  const { t } = useTranslation()
 
   // Calculate total staked amounts by token
   const getTotalStakedByToken = () => {
@@ -52,13 +54,13 @@ export function WithdrawalHistory() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Staking Overview</CardTitle>
-          <CardDescription>Connect your wallet to see your staking summary</CardDescription>
+          <CardTitle>{t('dashboard.history.stakingOverview')}</CardTitle>
+          <CardDescription>{t('dashboard.history.connectWalletDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8 text-muted-foreground">
             <Coins className="h-12 w-12 mx-auto mb-4 opacity-50" />
-            <p>Connect your wallet to view your staking summary</p>
+            <p>{t('dashboard.history.connectWalletMessage')}</p>
           </div>
         </CardContent>
       </Card>
@@ -72,9 +74,9 @@ export function WithdrawalHistory() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5" />
-            My Total Staked
+            {t('dashboard.history.myTotalStaked')}
           </CardTitle>
-          <CardDescription>Your total staked amounts across all tokens</CardDescription>
+          <CardDescription>{t('dashboard.history.totalStakedDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -82,7 +84,11 @@ export function WithdrawalHistory() {
               <div key={symbol} className="flex items-center justify-between p-4 border rounded-lg bg-muted/20">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                    <span className="text-lg">{data.icon}</span>
+                    {data.icon && data.icon.startsWith('/') ? (
+                      <img src={data.icon} className="w-6 h-6" alt={data.name} />
+                    ) : (
+                      <span className="text-lg">{data.icon}</span>
+                    )}
                   </div>
                   <div>
                     <div className="font-semibold">{data.name}</div>
@@ -94,7 +100,7 @@ export function WithdrawalHistory() {
                     {data.amount.toFixed(2)} {data.symbol}
                   </div>
                   {data.amount === 0 && (
-                    <div className="text-xs text-muted-foreground">Not staked</div>
+                    <div className="text-xs text-muted-foreground">{t('dashboard.history.notStaked')}</div>
                   )}
                 </div>
               </div>
@@ -106,15 +112,15 @@ export function WithdrawalHistory() {
       {/* Transaction History */}
       <Card>
         <CardHeader>
-          <CardTitle>Recent Transactions</CardTitle>
-          <CardDescription>Your recent staking transactions</CardDescription>
+          <CardTitle>{t('dashboard.history.recentTransactions')}</CardTitle>
+          <CardDescription>{t('dashboard.history.recentTransactionsDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           {transactions.length === 0 ? (
             <div className="text-center py-8 text-muted-foreground">
               <Clock className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p>No transactions yet</p>
-              <p className="text-sm">Your staking transactions will appear here</p>
+              <p>{t('dashboard.history.noTransactions')}</p>
+              <p className="text-sm">{t('dashboard.history.noTransactionsDescription')}</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -140,12 +146,12 @@ export function WithdrawalHistory() {
                     </div>
                     <div>
                       <div className="font-semibold capitalize">
-                        {transaction.type === "claim" ? "Reward Claim" : 
-                         transaction.type === "withdraw" ? "Stake Withdrawal" : 
-                         "Stake"}
+                        {transaction.type === "claim" ? t('dashboard.history.rewardClaim') :
+                         transaction.type === "withdraw" ? t('dashboard.history.stakeWithdrawal') :
+                         t('dashboard.history.stake')}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {transaction.timestamp.toLocaleDateString()} at {transaction.timestamp.toLocaleTimeString()}
+                        {transaction.timestamp.toLocaleDateString()} {t('dashboard.history.at')} {transaction.timestamp.toLocaleTimeString()}
                       </div>
                     </div>
                   </div>
@@ -164,7 +170,7 @@ export function WithdrawalHistory() {
                       }
                       className="text-xs"
                     >
-                      {transaction.status}
+                      {t(`dashboard.history.${transaction.status}`)}
                     </Badge>
                   </div>
                 </div>
