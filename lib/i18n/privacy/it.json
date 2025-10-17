@@ -1,103 +1,184 @@
 {
-  "title": "Informativa sulla Privacy",
+  "title": "Politica sulla Privacy",
   "lastUpdated": "Ultimo aggiornamento",
   "sections": {
+    "introduction": {
+      "title": "1. Introduzione",
+      "content": "MEVStake (\"noi\", \"nostro\" o \"la Piattaforma\") è impegnato a proteggere la tua privacy e le tue informazioni personali. Questa Politica sulla Privacy spiega come raccogliamo, utilizziamo, divulghiamo e proteggiamo le tue informazioni quando utilizzi la nostra piattaforma di finanza decentralizzata. Come servizio basato su blockchain, operiamo con principi di trasparenza e raccolta minima di dati mantenendo i più alti standard di sicurezza. Utilizzando la nostra Piattaforma, acconsenti alle pratiche sui dati descritte in questa Politica sulla Privacy."
+    },
     "collection": {
-      "title": "1. Informazioni che Raccogliamo",
-      "content": "MEVStake è progettato con la privacy in mente. Come piattaforma decentralizzata, raccogliamo informazioni personali minime necessarie per il funzionamento della piattaforma.",
-      "walletInfo": "Informazioni del Wallet",
+      "title": "2. Informazioni che Raccogliamo",
+      "content": "MEVStake è progettato con principi privacy-first. Come piattaforma decentralizzata, raccogliamo informazioni personali minime necessarie per il funzionamento della piattaforma, sicurezza e conformità. Non raccogliamo o memorizziamo chiavi private, frasi seed o altri dati di autenticazione sensibili.",
+      "walletInfo": "Informazioni Blockchain e Wallet",
       "walletItems": [
-        "Indirizzi wallet pubblici per l'elaborazione delle transazioni",
-        "Cronologia delle transazioni relative alle attività di staking",
-        "Posizioni di staking e calcoli delle ricompense"
+        "Indirizzi wallet pubblici per elaborazione transazioni e distribuzione ricompense",
+        "Hash delle transazioni e dati delle transazioni blockchain",
+        "Posizioni di staking, importi e calcoli delle ricompense",
+        "Relazioni referral e dati delle ricompense referral",
+        "Dati di interazione bot MEV e metriche delle prestazioni",
+        "Log di interazione smart contract e dati di utilizzo gas"
       ],
-      "technicalInfo": "Informazioni Tecniche",
+      "technicalInfo": "Informazioni Tecniche e di Utilizzo",
       "technicalItems": [
-        "Indirizzi IP per sicurezza e prevenzione delle frodi",
-        "Tipo e versione del browser per compatibilità",
-        "Informazioni sul dispositivo per esperienza utente ottimale",
-        "Analisi di utilizzo per migliorare le prestazioni della piattaforma"
+        "Indirizzi IP per monitoraggio sicurezza e prevenzione frodi",
+        "Tipo browser, versione e informazioni dispositivo per ottimizzazione compatibilità",
+        "Specifiche sistema operativo e hardware per ottimizzazione prestazioni",
+        "Analytics di utilizzo inclusi visualizzazioni pagina, durata sessione e interazioni funzioni",
+        "Log errori e report di crash per miglioramento piattaforma",
+        "Dati connessione di rete per ottimizzazione prestazioni",
+        "Dati posizione geografica (livello paese/regione) per conformità e analytics"
+      ],
+      "communicationInfo": "Informazioni di Comunicazione",
+      "communicationItems": [
+        "Indirizzi email (se forniti per notifiche o supporto)",
+        "Handle social media (se utilizzati per coinvolgimento community)",
+        "Ticket supporto e cronologia comunicazioni",
+        "Risposte feedback e sondaggi (se fornite volontariamente)"
       ]
     },
     "usage": {
-      "title": "2. Come Utilizziamo le Informazioni",
-      "content": "Utilizziamo le informazioni raccolte esclusivamente per:",
+      "title": "3. Come Utilizziamo le Tue Informazioni",
+      "content": "Utilizziamo le informazioni raccolte esclusivamente per scopi commerciali legittimi e funzionamento della piattaforma:",
       "items": [
-        "Elaborazione delle transazioni di staking e distribuzione delle ricompense",
-        "Mantenimento della sicurezza della piattaforma e prevenzione delle frodi",
-        "Miglioramento dell'esperienza utente e funzionalità della piattaforma",
-        "Conformità ai requisiti legali applicabili",
-        "Comunicazione di aggiornamenti importanti della piattaforma"
+        "Elaborazione transazioni staking, distribuzioni ricompense e operazioni bot MEV",
+        "Mantenimento sicurezza piattaforma, prevenzione frodi e rilevamento attività sospette",
+        "Miglioramento esperienza utente, funzionalità piattaforma e ottimizzazione prestazioni",
+        "Conformità requisiti legali applicabili, regolamenti e obblighi fiscali",
+        "Comunicazione aggiornamenti importanti piattaforma, avvisi sicurezza e cambiamenti servizio",
+        "Condotta analytics e ricerca per migliorare prestazioni e strategie bot MEV",
+        "Fornitura supporto clienti e risoluzione problemi tecnici",
+        "Applicazione nostri Termini di Servizio e prevenzione abuso o uso improprio",
+        "Gestione programmi referral e distribuzioni ricompense",
+        "Condotta audit, verifiche conformità e report normativi",
+        "Sviluppo nuove funzionalità e servizi basati su esigenze utente e feedback",
+        "Mantenimento stabilità piattaforma e prevenzione abuso sistema o attacchi"
       ]
     },
     "sharing": {
-      "title": "3. Condivisione delle Informazioni",
-      "content": "Non vendiamo, scambiamo o trasferiamo in altro modo le tue informazioni personali a terze parti, tranne:",
+      "title": "4. Condivisione e Divulgazione Informazioni",
+      "content": "Non vendiamo, scambiamo o affittiamo le tue informazioni personali a terze parti. Possiamo condividere informazioni solo nelle seguenti circostanze limitate:",
       "items": [
-        "Quando richiesto dalla legge o da procedimenti legali",
-        "Per proteggere i nostri diritti, proprietà o sicurezza",
-        "Con fornitori di servizi che assistono nelle operazioni della piattaforma (sotto stretta riservatezza)",
-        "In connessione con una fusione, acquisizione o vendita di asset"
-      ]
+        "Quando richiesto da legge, processo legale, ordine del tribunale o richiesta governativa",
+        "Per proteggere i nostri diritti, proprietà, sicurezza o la sicurezza dei nostri utenti",
+        "Con fornitori di servizi fidati che assistono nelle operazioni della piattaforma sotto accordi di riservatezza rigorosi",
+        "In connessione con fusione, acquisizione, vendita asset o altra transazione commerciale",
+        "Per prevenire frodi, abuso o attività illegali sulla piattaforma",
+        "Con reti blockchain e nodi necessari per elaborazione transazioni",
+        "Per conformarsi a requisiti anti-riciclaggio (AML) e conoscenza cliente (KYC)",
+        "Con autorità regolatorie quando legalmente richiesto o per scopi conformità",
+        "Per far rispettare i nostri Termini di Servizio o proteggere da reclami legali",
+        "Con il tuo consenso esplicito per scopi specifici non coperti in questa politica"
+      ],
+      "thirdPartyServices": "Fornitori di Servizi di Terze Parti: Possiamo utilizzare servizi di terze parti per analytics, monitoraggio sicurezza, supporto clienti e infrastruttura piattaforma. Tutti i fornitori di servizi sono vincolati da accordi di riservatezza rigorosi e requisiti di protezione dati."
     },
     "blockchain": {
-      "title": "4. Trasparenza Blockchain",
-      "notice": "Dati Pubblici della Blockchain",
-      "noticeText": "Tutte le transazioni di staking sono registrate sulla blockchain Solana e sono pubblicamente visibili. Questo include indirizzi wallet, importi delle transazioni e timestamp."
+      "title": "5. Trasparenza Blockchain e Dati Pubblici",
+      "notice": "⚠️ Importante: I Dati Blockchain sono Pubblici",
+      "noticeText": "Tutte le transazioni staking, indirizzi wallet e interazioni smart contract sono registrati sulla blockchain Solana e sono pubblicamente visibili a chiunque. Questo include importi transazioni, timestamp, indirizzi wallet e commissioni gas. Questa trasparenza è intrinseca alla tecnologia blockchain e non può essere modificata. Si prega di considerare questo quando si decide quali informazioni associare ai propri indirizzi wallet."
     },
     "security": {
-      "title": "5. Sicurezza dei Dati",
-      "content": "Implementiamo misure di sicurezza standard del settore per proteggere le tue informazioni:",
+      "title": "6. Sicurezza e Protezione Dati",
+      "content": "Implementiamo misure di sicurezza complete per proteggere le tue informazioni da accesso non autorizzato, alterazione, divulgazione o distruzione:",
       "items": [
-        "Crittografia dei dati sensibili in transito e a riposo",
-        "Audit di sicurezza regolari e valutazioni delle vulnerabilità",
-        "Controlli di accesso e meccanismi di autenticazione",
-        "Infrastrutture e ambienti di hosting sicuri",
-        "Procedure di risposta agli incidenti per violazioni della sicurezza"
-      ]
+        "Crittografia end-to-end di dati sensibili in transito e a riposo",
+        "Audit di sicurezza regolari, test di penetrazione e valutazioni vulnerabilità",
+        "Autenticazione multi-fattore e controlli accesso per tutti i sistemi",
+        "Infrastruttura sicura con fornitori hosting e cloud leader del settore",
+        "Procedure risposta incidenti e protocolli notifica violazioni",
+        "Formazione sicurezza regolare per tutti i membri del team e appaltatori",
+        "Pratiche di codifica sicura e aggiornamenti software regolari",
+        "Monitoraggio sicurezza di rete e sistemi rilevamento intrusioni",
+        "Procedure backup dati e recupero disastri",
+        "Conformità standard sicurezza settore e migliori pratiche",
+        "Revisione regolare e aggiornamento politiche e procedure sicurezza",
+        "Programma bug bounty anonimo per segnalazione vulnerabilità sicurezza"
+      ],
+      "breachNotification": "Nell'improbabile evento di una violazione dati, notificheremo utenti interessati e autorità rilevanti entro 72 ore come richiesto dalle leggi applicabili."
     },
     "cookies": {
-      "title": "6. Cookie e Tracciamento",
-      "content": "Utilizziamo cookie e tecnologie di tracciamento minime:",
+      "title": "7. Cookie e Tecnologie di Tracciamento",
+      "content": "Utilizziamo cookie e tecnologie di tracciamento simili per migliorare la tua esperienza e analizzare l'utilizzo della piattaforma:",
       "items": [
-        "Cookie essenziali per la funzionalità della piattaforma",
-        "Cookie analitici per comprendere i pattern di utilizzo (anonimizzati)",
-        "Cookie di preferenza per ricordare le tue impostazioni"
+        "Cookie essenziali richiesti per funzionalità e sicurezza piattaforma",
+        "Cookie prestazioni per analizzare pattern utilizzo e migliorare prestazioni (anonimizzato)",
+        "Cookie preferenze per ricordare le tue impostazioni e personalizzazioni",
+        "Cookie analytics per comprendere comportamento utente e ottimizzazione piattaforma",
+        "Cookie sicurezza per prevenire frodi e mantenere sicurezza sessione",
+        "Cookie marketing (con consenso) per contenuto promozionale rilevante"
       ],
-      "cookieControl": "Puoi controllare le preferenze dei cookie tramite le impostazioni del tuo browser."
+      "cookieControl": "Puoi controllare le preferenze cookie attraverso le impostazioni del tuo browser o il nostro banner consenso cookie. Nota che disabilitare certi cookie può influire sulla funzionalità della piattaforma.",
+      "thirdPartyAnalytics": "Possiamo utilizzare servizi analytics di terze parti (come Google Analytics) per comprendere l'utilizzo della piattaforma. Questi servizi hanno le loro proprie politiche privacy e pratiche sui dati."
     },
     "retention": {
-      "title": "7. Conservazione dei Dati",
-      "content": "Conserviamo le informazioni solo per il tempo necessario per:",
+      "title": "8. Conservazione ed Eliminazione Dati",
+      "content": "Conserviamo le tue informazioni solo per il tempo necessario per scopi commerciali legittimi e conformità legale:",
       "items": [
-        "Fornire servizi della piattaforma",
-        "Conformarsi agli obblighi legali",
-        "Risolvere dispute e far rispettare gli accordi",
-        "Mantenere sicurezza e prevenzione delle frodi"
-      ]
+        "Dati account e transazioni: Conservati per la durata del tuo account più 7 anni per conformità legale e fiscale",
+        "Dati sicurezza e prevenzione frodi: Conservati fino a 3 anni per monitoraggio sicurezza continuo",
+        "Dati analytics e utilizzo: Conservati in forma anonimizzata fino a 2 anni per miglioramento piattaforma",
+        "Registri comunicazioni: Conservati fino a 3 anni per supporto clienti e risoluzione controversie",
+        "Dati legali e conformità: Conservati come richiesto da leggi e regolamenti applicabili",
+        "Dati blockchain: Registrati permanentemente sulla blockchain e non possono essere eliminati",
+        "Dati marketing e promozionali: Conservati fino a disiscrizione o fino a 2 anni"
+      ],
+      "deletionRights": "Puoi richiedere l'eliminazione dei tuoi dati personali, soggetto a requisiti legali e operativi. Alcuni dati potrebbero dover essere conservati per scopi di conformità o sicurezza."
     },
     "rights": {
-      "title": "8. I Tuoi Diritti",
-      "content": "A seconda della tua giurisdizione, potresti avere il diritto di:",
+      "title": "9. I Tuoi Diritti Privacy",
+      "content": "A seconda della tua giurisdizione, potresti avere i seguenti diritti privacy:",
       "items": [
-        "Accedere alle tue informazioni personali",
-        "Correggere informazioni inaccurate",
-        "Richiedere la cancellazione delle tue informazioni",
-        "Opporti al trattamento delle tue informazioni",
-        "Portabilità dei dati"
-      ]
+        "Diritto di accesso: Richiedere copie delle tue informazioni personali che abbiamo",
+        "Diritto di rettifica: Correggere informazioni personali inesatte o incomplete",
+        "Diritto di cancellazione: Richiedere cancellazione delle tue informazioni personali (soggetto a requisiti legali)",
+        "Diritto di limitazione: Limitare come elaboriamo le tue informazioni personali",
+        "Diritto di portabilità dati: Ricevere i tuoi dati in formato strutturato e leggibile da macchina",
+        "Diritto di opposizione: Opporsi all'elaborazione delle tue informazioni personali per certi scopi",
+        "Diritto di revoca consenso: Revocare consenso per elaborazione dati dove applicabile",
+        "Diritto di presentare reclami: Presentare reclami con autorità protezione dati rilevanti",
+        "Diritto di opt-out: Rinunciare a comunicazioni marketing e certa elaborazione dati",
+        "Diritto di non discriminazione: Esercitare diritti privacy senza discriminazione"
+      ],
+      "exercisingRights": "Per esercitare questi diritti, contattaci a privacy@mevstake.com. Risponderemo entro 30 giorni e potremmo richiedere verifica identità."
+    },
+    "children": {
+      "title": "10. Privacy dei Minori",
+      "content": "MEVStake non è destinato a utenti sotto i 18 anni. Non raccogliamo consapevolmente informazioni personali da minori sotto i 18 anni. Se ci rendiamo conto di aver raccolto informazioni personali da un minore sotto i 18 anni, prenderemo provvedimenti per eliminare tali informazioni prontamente. I genitori o tutori che ritengono che il loro figlio abbia fornito informazioni personali dovrebbero contattarci immediatamente."
     },
     "transfers": {
-      "title": "9. Trasferimenti Internazionali",
-      "content": "Come piattaforma decentralizzata, le tue informazioni possono essere elaborate in varie giurisdizioni. Ci assicuriamo che siano in posto adeguate garanzie per i trasferimenti internazionali di dati."
+      "title": "11. Trasferimenti Internazionali Dati",
+      "content": "Come piattaforma decentralizzata globale, le tue informazioni potrebbero essere elaborate in varie giurisdizioni in tutto il mondo. Ci assicuriamo che salvaguardie appropriate siano in atto per trasferimenti internazionali di dati, inclusi:",
+      "safeguards": [
+        "Clausole contrattuali standard approvate da autorità protezione dati rilevanti",
+        "Decisioni di adeguatezza per trasferimenti a paesi con protezione dati adeguata",
+        "Regole aziendali vincolanti per trasferimenti intra-gruppo",
+        "Schemi di certificazione e codici di condotta dove applicabile",
+        "Misure tecniche e organizzative per proteggere dati trasferiti"
+      ]
     },
     "changes": {
-      "title": "10. Modifiche all'Informativa sulla Privacy",
-      "content": "Potremmo aggiornare periodicamente questa Informativa sulla Privacy. Le modifiche significative saranno comunicate tramite l'interfaccia della piattaforma. Il tuo utilizzo continuato costituisce accettazione della politica aggiornata."
+      "title": "12. Cambiamenti a questa Politica Privacy",
+      "content": "Potremmo aggiornare questa Politica sulla Privacy periodicamente per riflettere cambiamenti nelle nostre pratiche, tecnologia, requisiti legali o operazioni commerciali. I cambiamenti materiali saranno comunicati attraverso:",
+      "notificationMethods": [
+        "Notifiche email a utenti registrati",
+        "Avvisi prominenti sull'interfaccia della Piattaforma",
+        "Notifiche push per utenti mobili",
+        "Annunci community e social media",
+        "Timestamp aggiornati su questa pagina Politica Privacy"
+      ],
+      "acceptance": "Il tuo uso continuato della Piattaforma dopo che i cambiamenti entrano in vigore costituisce accettazione della Politica sulla Privacy aggiornata. Se non sei d'accordo con i cambiamenti, dovresti interrompere l'uso della Piattaforma."
     },
     "contact": {
-      "title": "11. Contattaci",
-      "content": "Per domande relative alla privacy o per esercitare i tuoi diritti, ti preghiamo di contattarci tramite i nostri canali ufficiali o forum della community."
+      "title": "13. Informazioni Contatto",
+      "content": "Per domande relative alla privacy, preoccupazioni o per esercitare i tuoi diritti, per favore contattaci:",
+      "contactMethods": [
+        "Email: privacy@mevstake.com (per richieste privacy)",
+        "Email: legal@mevstake.com (per questioni legali)",
+        "Discord: [Link Server Discord Ufficiale]",
+        "Sito web: Modulo contatto sul nostro sito web ufficiale",
+        "Supporto: Attraverso il nostro sistema supporto clienti"
+      ],
+      "responseTime": "Risponderemo a tutte le richieste privacy entro 30 giorni e a questioni sicurezza urgenti entro 72 ore.",
+      "dpo": "Responsabile Protezione Dati: Per utenti in giurisdizioni che richiedono un DPO, per favore contatta dpo@mevstake.com per questioni protezione dati."
     }
   }
 }

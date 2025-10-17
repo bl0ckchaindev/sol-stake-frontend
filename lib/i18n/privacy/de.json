@@ -2,102 +2,183 @@
   "title": "Datenschutzrichtlinie",
   "lastUpdated": "Zuletzt aktualisiert",
   "sections": {
+    "introduction": {
+      "title": "1. Einführung",
+      "content": "MEVStake (\"wir\", \"uns\", \"unser\" oder \"die Plattform\") ist dem Schutz Ihrer Privatsphäre und persönlichen Informationen verpflichtet. Diese Datenschutzrichtlinie erklärt, wie wir Ihre Informationen sammeln, verwenden, offenlegen und schützen, wenn Sie unsere dezentrale Finanzplattform nutzen. Als blockchain-basierter Service arbeiten wir mit Transparenz- und minimalen Datensammlungsprinzipien, während wir die höchsten Sicherheitsstandards einhalten. Durch die Nutzung unserer Plattform stimmen Sie den in dieser Datenschutzrichtlinie beschriebenen Datenpraktiken zu."
+    },
     "collection": {
-      "title": "1. Gesammelte Informationen",
-      "content": "MEVStake wurde mit Fokus auf Datenschutz entwickelt. Als dezentrale Plattform sammeln wir minimale persönliche Informationen, die für den Plattformbetrieb notwendig sind.",
-      "walletInfo": "Wallet-Informationen",
+      "title": "2. Informationen, die wir sammeln",
+      "content": "MEVStake ist mit Datenschutz-Prinzipien entwickelt. Als dezentrale Plattform sammeln wir minimale persönliche Informationen, die für Plattformbetrieb, Sicherheit und Compliance notwendig sind. Wir sammeln oder speichern keine privaten Schlüssel, Seed-Phrasen oder andere sensible Authentifizierungsdaten.",
+      "walletInfo": "Blockchain- und Wallet-Informationen",
       "walletItems": [
-        "Öffentliche Wallet-Adressen für Transaktionsverarbeitung",
-        "Transaktionsverlauf in Bezug auf Staking-Aktivitäten",
-        "Staking-Positionen und Belohnungsberechnungen"
+        "Öffentliche Wallet-Adressen für Transaktionsverarbeitung und Belohnungsverteilung",
+        "Transaktions-Hashes und Blockchain-Transaktionsdaten",
+        "Staking-Positionen, Beträge und Belohnungsberechnungen",
+        "Referral-Beziehungen und Referral-Belohnungsdaten",
+        "MEV-Bot-Interaktionsdaten und Leistungsmetriken",
+        "Smart-Contract-Interaktionslogs und Gas-Verbrauchsdaten"
       ],
-      "technicalInfo": "Technische Informationen",
+      "technicalInfo": "Technische und Nutzungsinformationen",
       "technicalItems": [
-        "IP-Adressen für Sicherheit und Betrugsprävention",
-        "Browser-Typ und Version für Kompatibilität",
-        "Geräteinformationen für optimale Benutzererfahrung",
-        "Nutzungsanalysen zur Verbesserung der Plattform-Performance"
+        "IP-Adressen für Sicherheitsmonitoring und Betrugsverhinderung",
+        "Browser-Typ, Version und Geräteinformationen für Kompatibilitätsoptimierung",
+        "Betriebssystem und Hardware-Spezifikationen für Leistungstuning",
+        "Nutzungsanalytik einschließlich Seitenaufrufe, Sitzungsdauer und Feature-Interaktionen",
+        "Fehler-Logs und Absturzberichte für Plattformverbesserung",
+        "Netzwerkverbindungsdaten für Leistungsoptimierung",
+        "Geografische Standortdaten (Länder-/Regionsebene) für Compliance und Analytik"
+      ],
+      "communicationInfo": "Kommunikationsinformationen",
+      "communicationItems": [
+        "E-Mail-Adressen (falls für Benachrichtigungen oder Support bereitgestellt)",
+        "Social-Media-Handles (falls für Community-Engagement verwendet)",
+        "Support-Tickets und Kommunikationshistorie",
+        "Feedback und Umfrageantworten (falls freiwillig bereitgestellt)"
       ]
     },
     "usage": {
-      "title": "2. Verwendung von Informationen",
-      "content": "Wir verwenden gesammelte Informationen ausschließlich für:",
+      "title": "3. Wie wir Ihre Informationen verwenden",
+      "content": "Wir verwenden gesammelte Informationen ausschließlich für legitime Geschäftszwecke und Plattformbetrieb:",
       "items": [
-        "Verarbeitung von Staking-Transaktionen und Belohnungsverteilungen",
-        "Aufrechterhaltung der Plattformsicherheit und Betrugsprävention",
-        "Verbesserung der Benutzererfahrung und Plattform-Funktionalität",
-        "Einhalten geltender gesetzlicher Anforderungen",
-        "Kommunikation wichtiger Plattform-Updates"
+        "Verarbeitung von Staking-Transaktionen, Belohnungsverteilungen und MEV-Bot-Operationen",
+        "Aufrechterhaltung der Plattformsicherheit, Betrugsverhinderung und Erkennung verdächtiger Aktivitäten",
+        "Verbesserung der Benutzererfahrung, Plattformfunktionalität und Leistungsoptimierung",
+        "Einhaltung anwendbarer rechtlicher Anforderungen, Vorschriften und Steuerpflichten",
+        "Kommunikation wichtiger Plattform-Updates, Sicherheitswarnungen und Serviceänderungen",
+        "Durchführung von Analytik und Forschung zur Verbesserung der MEV-Bot-Leistung und -Strategien",
+        "Bereitstellung von Kundensupport und Lösung technischer Probleme",
+        "Durchsetzung unserer Nutzungsbedingungen und Verhinderung von Missbrauch oder Fehlgebrauch",
+        "Verwaltung von Referral-Programmen und Belohnungsverteilungen",
+        "Durchführung von Audits, Compliance-Checks und regulatorischen Berichten",
+        "Entwicklung neuer Features und Services basierend auf Benutzerbedürfnissen und -feedback",
+        "Aufrechterhaltung der Plattformstabilität und Verhinderung von Systemmissbrauch oder -angriffen"
       ]
     },
     "sharing": {
-      "title": "3. Weitergabe von Informationen",
-      "content": "Wir verkaufen, handeln oder übertragen Ihre persönlichen Informationen nicht an Dritte, außer:",
+      "title": "4. Informationsaustausch und -offenlegung",
+      "content": "Wir verkaufen, handeln oder vermieten Ihre persönlichen Informationen nicht an Dritte. Wir können Informationen nur in den folgenden begrenzten Umständen teilen:",
       "items": [
-        "Wenn es gesetzlich vorgeschrieben ist oder durch rechtliche Verfahren erforderlich",
-        "Zum Schutz unserer Rechte, Eigentum oder Sicherheit",
-        "Mit Dienstleistern, die beim Plattformbetrieb helfen (unter strenger Vertraulichkeit)",
-        "Im Zusammenhang mit einer Fusion, Übernahme oder Vermögensveräußerung"
-      ]
+        "Wenn gesetzlich vorgeschrieben, durch rechtliche Verfahren, Gerichtsbeschluss oder Regierungsanfrage",
+        "Um unsere Rechte, Eigentum, Sicherheit oder die Sicherheit unserer Benutzer zu schützen",
+        "Mit vertrauenswürdigen Serviceanbietern, die bei Plattformoperationen unter strengen Vertraulichkeitsvereinbarungen assistieren",
+        "In Verbindung mit einer Fusion, Übernahme, Verkauf von Assets oder anderen Geschäftstransaktionen",
+        "Um Betrug, Missbrauch oder illegale Aktivitäten auf der Plattform zu verhindern",
+        "Mit Blockchain-Netzwerken und -Nodes, die für Transaktionsverarbeitung notwendig sind",
+        "Um Anti-Geldwäsche (AML) und Know-Your-Customer (KYC) Anforderungen zu erfüllen",
+        "Mit Regulierungsbehörden, wenn gesetzlich vorgeschrieben oder für Compliance-Zwecke",
+        "Um unsere Nutzungsbedingungen durchzusetzen oder vor rechtlichen Ansprüchen zu schützen",
+        "Mit Ihrer ausdrücklichen Zustimmung für spezifische Zwecke, die in dieser Richtlinie nicht abgedeckt sind"
+      ],
+      "thirdPartyServices": "Drittanbieter-Serviceanbieter: Wir können Drittanbieter-Services für Analytik, Sicherheitsmonitoring, Kundensupport und Plattform-Infrastruktur verwenden. Alle Serviceanbieter sind durch strenge Vertraulichkeitsvereinbarungen und Datenschutzanforderungen gebunden."
     },
     "blockchain": {
-      "title": "4. Blockchain-Transparenz",
-      "notice": "Öffentliche Blockchain-Daten",
-      "noticeText": "Alle Staking-Transaktionen werden auf der Solana-Blockchain aufgezeichnet und sind öffentlich sichtbar. Dies umfasst Wallet-Adressen, Transaktionsbeträge und Zeitstempel."
+      "title": "5. Blockchain-Transparenz und öffentliche Daten",
+      "notice": "⚠️ Wichtig: Blockchain-Daten sind öffentlich",
+      "noticeText": "Alle Staking-Transaktionen, Wallet-Adressen und Smart-Contract-Interaktionen werden auf der Solana-Blockchain aufgezeichnet und sind öffentlich für jedermann sichtbar. Dies umfasst Transaktionsbeträge, Zeitstempel, Wallet-Adressen und Gas-Gebühren. Diese Transparenz ist der Blockchain-Technologie inhärent und kann nicht geändert werden. Bitte berücksichtigen Sie dies, wenn Sie entscheiden, welche Informationen Sie mit Ihren Wallet-Adressen verknüpfen."
     },
     "security": {
-      "title": "5. Datensicherheit",
-      "content": "Wir implementieren branchenübliche Sicherheitsmaßnahmen zum Schutz Ihrer Informationen:",
+      "title": "6. Datensicherheit und -schutz",
+      "content": "Wir implementieren umfassende Sicherheitsmaßnahmen zum Schutz Ihrer Informationen vor unbefugtem Zugriff, Änderung, Offenlegung oder Zerstörung:",
       "items": [
-        "Verschlüsselung sensibler Daten während der Übertragung und Speicherung",
-        "Regelmäßige Sicherheitsprüfungen und Schwachstellenbewertungen",
-        "Zugriffskontrollen und Authentifizierungsmechanismen",
-        "Sichere Infrastruktur und Hosting-Umgebungen",
-        "Vorfallreaktionsverfahren für Sicherheitsverletzungen"
-      ]
+        "End-to-End-Verschlüsselung sensibler Daten im Transit und in Ruhe",
+        "Regelmäßige Sicherheitsaudits, Penetrationstests und Schwachstellenbewertungen",
+        "Multi-Faktor-Authentifizierung und Zugriffskontrollen für alle Systeme",
+        "Sichere Infrastruktur mit führenden Hosting- und Cloud-Anbietern der Branche",
+        "Incident-Response-Verfahren und Breach-Benachrichtigungsprotokolle",
+        "Regelmäßige Sicherheitsschulungen für alle Teammitglieder und Auftragnehmer",
+        "Sichere Codierungspraktiken und regelmäßige Software-Updates",
+        "Netzwerksicherheitsmonitoring und Intrusion-Detection-Systeme",
+        "Datensicherung und Disaster-Recovery-Verfahren",
+        "Compliance mit Branchensicherheitsstandards und Best Practices",
+        "Regelmäßige Überprüfung und Aktualisierung von Sicherheitsrichtlinien und -verfahren",
+        "Anonymes Bug-Bounty-Programm für Sicherheits-Schwachstellenberichterstattung"
+      ],
+      "breachNotification": "Im unwahrscheinlichen Fall eines Datenlecks werden wir betroffene Benutzer und relevante Behörden innerhalb von 72 Stunden wie durch anwendbare Gesetze vorgeschrieben benachrichtigen."
     },
     "cookies": {
-      "title": "6. Cookies und Tracking",
-      "content": "Wir verwenden minimale Cookies und Tracking-Technologien:",
+      "title": "7. Cookies und Tracking-Technologien",
+      "content": "Wir verwenden Cookies und ähnliche Tracking-Technologien, um Ihre Erfahrung zu verbessern und die Plattformnutzung zu analysieren:",
       "items": [
-        "Wesentliche Cookies für Plattform-Funktionalität",
-        "Analyse-Cookies zur Verständigung von Nutzungsmustern (anonymisiert)",
-        "Präferenz-Cookies zur Speicherung Ihrer Einstellungen"
+        "Essenzielle Cookies, die für Plattformfunktionalität und -sicherheit erforderlich sind",
+        "Leistungs-Cookies zur Analyse von Nutzungsmustern und Verbesserung der Leistung (anonymisiert)",
+        "Präferenz-Cookies, um Ihre Einstellungen und Anpassungen zu merken",
+        "Analytik-Cookies, um Benutzerverhalten und Plattformoptimierung zu verstehen",
+        "Sicherheits-Cookies zur Betrugsverhinderung und Aufrechterhaltung der Sitzungssicherheit",
+        "Marketing-Cookies (mit Zustimmung) für relevante Werbeinhalte"
       ],
-      "cookieControl": "Sie können Cookie-Präferenzen über Ihre Browsereinstellungen steuern."
+      "cookieControl": "Sie können Cookie-Präferenzen durch Ihre Browser-Einstellungen oder unser Cookie-Zustimmungsbanner kontrollieren. Beachten Sie, dass das Deaktivieren bestimmter Cookies die Plattformfunktionalität beeinträchtigen kann.",
+      "thirdPartyAnalytics": "Wir können Drittanbieter-Analytics-Services (wie Google Analytics) verwenden, um die Plattformnutzung zu verstehen. Diese Services haben ihre eigenen Datenschutzrichtlinien und Datenpraktiken."
     },
     "retention": {
-      "title": "7. Datenaufbewahrung",
-      "content": "Wir behalten Informationen nur so lange wie notwendig für:",
+      "title": "8. Datenspeicherung und -löschung",
+      "content": "Wir behalten Ihre Informationen nur so lange wie für legitime Geschäftszwecke und rechtliche Compliance notwendig:",
       "items": [
-        "Bereitstellung von Plattform-Dienstleistungen",
-        "Einhalten gesetzlicher Verpflichtungen",
-        "Beilegung von Streitigkeiten und Durchsetzung von Vereinbarungen",
-        "Aufrechterhaltung von Sicherheit und Betrugsprävention"
-      ]
+        "Konto- und Transaktionsdaten: Behalten für die Dauer Ihres Kontos plus 7 Jahre für rechtliche und Steuer-Compliance",
+        "Sicherheits- und Betrugsverhinderungsdaten: Behalten bis zu 3 Jahre für kontinuierliches Sicherheitsmonitoring",
+        "Analytik- und Nutzungsdaten: Behalten in anonymisierter Form bis zu 2 Jahre für Plattformverbesserung",
+        "Kommunikationsaufzeichnungen: Behalten bis zu 3 Jahre für Kundensupport und Streitbeilegung",
+        "Rechtliche und Compliance-Daten: Behalten wie durch anwendbare Gesetze und Vorschriften vorgeschrieben",
+        "Blockchain-Daten: Permanently auf der Blockchain aufgezeichnet und können nicht gelöscht werden",
+        "Marketing- und Werbedaten: Behalten bis Sie sich abmelden oder bis zu 2 Jahre"
+      ],
+      "deletionRights": "Sie können die Löschung Ihrer persönlichen Daten beantragen, vorbehaltlich rechtlicher und operativer Anforderungen. Einige Daten müssen möglicherweise für Compliance- oder Sicherheitszwecke aufbewahrt werden."
     },
     "rights": {
-      "title": "8. Ihre Rechte",
-      "content": "Je nach Gerichtsbarkeit haben Sie möglicherweise Rechte auf:",
+      "title": "9. Ihre Datenschutzrechte",
+      "content": "Je nach Ihrer Gerichtsbarkeit haben Sie möglicherweise die folgenden Datenschutzrechte:",
       "items": [
-        "Zugriff auf Ihre persönlichen Informationen",
-        "Berichtigung ungenauer Informationen",
-        "Löschung Ihrer Informationen",
-        "Widerspruch gegen die Verarbeitung Ihrer Informationen",
-        "Datenübertragbarkeit"
-      ]
+        "Recht auf Zugriff: Kopien Ihrer persönlichen Informationen anfordern, die wir besitzen",
+        "Recht auf Berichtigung: Unrichtige oder unvollständige persönliche Informationen korrigieren",
+        "Recht auf Löschung: Löschung Ihrer persönlichen Informationen anfordern (vorbehaltlich rechtlicher Anforderungen)",
+        "Recht auf Einschränkung: Einschränken, wie wir Ihre persönlichen Informationen verarbeiten",
+        "Recht auf Datenübertragbarkeit: Ihre Daten in einem strukturierten, maschinenlesbaren Format erhalten",
+        "Recht auf Widerspruch: Widerspruch gegen die Verarbeitung Ihrer persönlichen Informationen für bestimmte Zwecke",
+        "Recht auf Widerruf der Zustimmung: Zustimmung für Datenverarbeitung widerrufen, wo anwendbar",
+        "Recht auf Beschwerde: Beschwerden bei relevanten Datenschutzbehörden einreichen",
+        "Recht auf Opt-out: Abmeldung von Marketing-Kommunikationen und bestimmter Datenverarbeitung",
+        "Recht auf Nicht-Diskriminierung: Ausübung von Datenschutzrechten ohne Diskriminierung"
+      ],
+      "exercisingRights": "Um diese Rechte auszuüben, kontaktieren Sie uns unter privacy@mevstake.com. Wir werden innerhalb von 30 Tagen antworten und können eine Identitätsverifikation verlangen."
+    },
+    "children": {
+      "title": "10. Datenschutz von Kindern",
+      "content": "MEVStake ist nicht für Benutzer unter 18 Jahren bestimmt. Wir sammeln wissentlich keine persönlichen Informationen von Kindern unter 18. Wenn wir feststellen, dass wir persönliche Informationen von einem Kind unter 18 gesammelt haben, werden wir Schritte unternehmen, um solche Informationen umgehend zu löschen. Eltern oder Erziehungsberechtigte, die glauben, dass ihr Kind persönliche Informationen bereitgestellt hat, sollten uns sofort kontaktieren."
     },
     "transfers": {
-      "title": "9. Internationale Übertragungen",
-      "content": "Als dezentrale Plattform können Ihre Informationen in verschiedenen Gerichtsbarkeiten verarbeitet werden. Wir stellen sicher, dass angemessene Schutzmaßnahmen für internationale Datenübertragungen vorhanden sind."
+      "title": "11. Internationale Datenübertragungen",
+      "content": "Als globale dezentrale Plattform können Ihre Informationen in verschiedenen Gerichtsbarkeiten weltweit verarbeitet werden. Wir stellen sicher, dass angemessene Schutzmaßnahmen für internationale Datenübertragungen vorhanden sind, einschließlich:",
+      "safeguards": [
+        "Standardvertragsklauseln, die von relevanten Datenschutzbehörden genehmigt wurden",
+        "Angemessenheitsentscheidungen für Übertragungen in Länder mit angemessenem Datenschutz",
+        "Bindende Unternehmensregeln für Intra-Gruppen-Übertragungen",
+        "Zertifizierungssysteme und Verhaltenskodizes, wo anwendbar",
+        "Technische und organisatorische Maßnahmen zum Schutz übertragener Daten"
+      ]
     },
     "changes": {
-      "title": "10. Änderungen der Datenschutzrichtlinie",
-      "content": "Wir können diese Datenschutzrichtlinie periodically aktualisieren. Wesentliche Änderungen werden über die Plattform-Oberfläche kommuniziert. Ihre fortgesetzte Nutzung stellt die Annahme der aktualisierten Richtlinie dar."
+      "title": "12. Änderungen an dieser Datenschutzrichtlinie",
+      "content": "Wir können diese Datenschutzrichtlinie periodisch aktualisieren, um Änderungen in unseren Praktiken, Technologie, rechtlichen Anforderungen oder Geschäftstätigkeiten widerzuspiegeln. Wesentliche Änderungen werden kommuniziert durch:",
+      "notificationMethods": [
+        "E-Mail-Benachrichtigungen an registrierte Benutzer",
+        "Prominente Hinweise auf der Plattform-Oberfläche",
+        "Push-Benachrichtigungen für mobile Benutzer",
+        "Community-Ankündigungen und soziale Medien",
+        "Aktualisierte Zeitstempel auf dieser Datenschutzrichtlinie-Seite"
+      ],
+      "acceptance": "Ihre fortgesetzte Nutzung der Plattform nach Inkrafttreten der Änderungen stellt die Annahme der aktualisierten Datenschutzrichtlinie dar. Wenn Sie den Änderungen nicht zustimmen, sollten Sie die Nutzung der Plattform einstellen."
     },
     "contact": {
-      "title": "11. Kontaktieren Sie uns",
-      "content": "Bei datenschutzbezogenen Fragen oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte über unsere offiziellen Kanäle oder Community-Foren."
+      "title": "13. Kontaktinformationen",
+      "content": "Für datenschutzbezogene Fragen, Bedenken oder zur Ausübung Ihrer Rechte kontaktieren Sie uns bitte:",
+      "contactMethods": [
+        "E-Mail: privacy@mevstake.com (für Datenschutzanfragen)",
+        "E-Mail: legal@mevstake.com (für rechtliche Angelegenheiten)",
+        "Discord: [Offizieller Discord-Server-Link]",
+        "Website: Kontaktformular auf unserer offiziellen Website",
+        "Support: Durch unser Kundensupport-System"
+      ],
+      "responseTime": "Wir werden auf alle Datenschutzanfragen innerhalb von 30 Tagen und auf dringende Sicherheitsangelegenheiten innerhalb von 72 Stunden antworten.",
+      "dpo": "Datenschutzbeauftragter: Für Benutzer in Gerichtsbarkeiten, die einen DPO erfordern, kontaktieren Sie bitte dpo@mevstake.com für Datenschutzangelegenheiten."
     }
   }
 }
