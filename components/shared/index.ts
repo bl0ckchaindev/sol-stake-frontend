@@ -1,0 +1,12 @@
+// Shared components used across multiple pages
+export { Header } from './header'
+export { Footer } from './footer'
+export { WalletButton } from './wallet-button'
+export { WalletSelector } from './wallet-selector'
+export { LanguageSwitcher } from './language-switcher'
+export { ModeToggle } from './mode-toggle'
+export { MotionWrapper } from './motion-wrapper'
+export { ComingSoonWrapper } from './coming-soon-wrapper'
+export { CookieConsent } from './cookie-consent'
+export { SocialLinks } from './social-links'
+export { ToasterWrapper } from './toaster-wrapper'

@@ -1,0 +1,184 @@
+{
+  "title": "Privacy Policy",
+  "lastUpdated": "Last updated",
+  "sections": {
+    "introduction": {
+      "title": "1. Introduction",
+      "content": "MEVStake (\"we\", \"us\", \"our\", or \"the Platform\") is committed to protecting your privacy and personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our decentralized finance platform. As a blockchain-based service, we operate with transparency and minimal data collection principles while maintaining the highest security standards. By using our Platform, you consent to the data practices described in this Privacy Policy."
+    },
+    "collection": {
+      "title": "2. Information We Collect",
+      "content": "MEVStake is designed with privacy-first principles. As a decentralized platform, we collect minimal personal information necessary for platform operation, security, and compliance. We do not collect or store private keys, seed phrases, or other sensitive authentication data.",
+      "walletInfo": "Blockchain and Wallet Information",
+      "walletItems": [
+        "Public wallet addresses for transaction processing and reward distribution",
+        "Transaction hashes and blockchain transaction data",
+        "Staking positions, amounts, and reward calculations",
+        "Referral relationships and referral reward data",
+        "MEV bot interaction data and performance metrics",
+        "Smart contract interaction logs and gas usage data"
+      ],
+      "technicalInfo": "Technical and Usage Information",
+      "technicalItems": [
+        "IP addresses for security monitoring and fraud prevention",
+        "Browser type, version, and device information for compatibility optimization",
+        "Operating system and hardware specifications for performance tuning",
+        "Usage analytics including page views, session duration, and feature interactions",
+        "Error logs and crash reports for platform improvement",
+        "Network connection data for performance optimization",
+        "Geographic location data (country/region level) for compliance and analytics"
+      ],
+      "communicationInfo": "Communication Information",
+      "communicationItems": [
+        "Email addresses (if provided for notifications or support)",
+        "Social media handles (if used for community engagement)",
+        "Support tickets and communication history",
+        "Feedback and survey responses (if voluntarily provided)"
+      ]
+    },
+    "usage": {
+      "title": "3. How We Use Your Information",
+      "content": "We use collected information exclusively for legitimate business purposes and platform operation:",
+      "items": [
+        "Processing staking transactions, reward distributions, and MEV bot operations",
+        "Maintaining platform security, preventing fraud, and detecting suspicious activities",
+        "Improving user experience, platform functionality, and performance optimization",
+        "Complying with applicable legal requirements, regulations, and tax obligations",
+        "Communicating important platform updates, security alerts, and service changes",
+        "Conducting analytics and research to enhance MEV bot performance and strategies",
+        "Providing customer support and resolving technical issues",
+        "Enforcing our Terms of Service and preventing abuse or misuse",
+        "Managing referral programs and reward distributions",
+        "Conducting audits, compliance checks, and regulatory reporting",
+        "Developing new features and services based on user needs and feedback",
+        "Maintaining platform stability and preventing system abuse or attacks"
+      ]
+    },
+    "sharing": {
+      "title": "4. Information Sharing and Disclosure",
+      "content": "We do not sell, trade, or rent your personal information to third parties. We may share information only in the following limited circumstances:",
+      "items": [
+        "When required by law, legal process, court order, or government request",
+        "To protect our rights, property, safety, or the safety of our users",
+        "With trusted service providers who assist in platform operations under strict confidentiality agreements",
+        "In connection with a merger, acquisition, sale of assets, or other business transaction",
+        "To prevent fraud, abuse, or illegal activities on the platform",
+        "With blockchain networks and nodes necessary for transaction processing",
+        "To comply with anti-money laundering (AML) and know-your-customer (KYC) requirements",
+        "With regulatory authorities when legally required or for compliance purposes",
+        "To enforce our Terms of Service or protect against legal claims",
+        "With your explicit consent for specific purposes not covered in this policy"
+      ],
+      "thirdPartyServices": "Third-Party Service Providers: We may use third-party services for analytics, security monitoring, customer support, and platform infrastructure. All service providers are bound by strict confidentiality agreements and data protection requirements."
+    },
+    "blockchain": {
+      "title": "5. Blockchain Transparency and Public Data",
+      "notice": "⚠️ Important: Blockchain Data is Public",
+      "noticeText": "All staking transactions, wallet addresses, and smart contract interactions are recorded on the Solana blockchain and are publicly visible to anyone. This includes transaction amounts, timestamps, wallet addresses, and gas fees. This transparency is inherent to blockchain technology and cannot be changed. Please consider this when deciding what information to associate with your wallet addresses."
+    },
+    "security": {
+      "title": "6. Data Security and Protection",
+      "content": "We implement comprehensive security measures to protect your information against unauthorized access, alteration, disclosure, or destruction:",
+      "items": [
+        "End-to-end encryption of sensitive data in transit and at rest",
+        "Regular security audits, penetration testing, and vulnerability assessments",
+        "Multi-factor authentication and access controls for all systems",
+        "Secure infrastructure with industry-leading hosting and cloud providers",
+        "Incident response procedures and breach notification protocols",
+        "Regular security training for all team members and contractors",
+        "Secure coding practices and regular software updates",
+        "Network security monitoring and intrusion detection systems",
+        "Data backup and disaster recovery procedures",
+        "Compliance with industry security standards and best practices",
+        "Regular review and update of security policies and procedures",
+        "Anonymous bug bounty program for security vulnerability reporting"
+      ],
+      "breachNotification": "In the unlikely event of a data breach, we will notify affected users and relevant authorities within 72 hours as required by applicable laws."
+    },
+    "cookies": {
+      "title": "7. Cookies and Tracking Technologies",
+      "content": "We use cookies and similar tracking technologies to enhance your experience and analyze platform usage:",
+      "items": [
+        "Essential cookies required for platform functionality and security",
+        "Performance cookies to analyze usage patterns and improve performance (anonymized)",
+        "Preference cookies to remember your settings and customizations",
+        "Analytics cookies to understand user behavior and platform optimization",
+        "Security cookies to prevent fraud and maintain session security",
+        "Marketing cookies (with consent) for relevant promotional content"
+      ],
+      "cookieControl": "You can control cookie preferences through your browser settings or our cookie consent banner. Note that disabling certain cookies may affect platform functionality.",
+      "thirdPartyAnalytics": "We may use third-party analytics services (such as Google Analytics) to understand platform usage. These services have their own privacy policies and data practices."
+    },
+    "retention": {
+      "title": "8. Data Retention and Deletion",
+      "content": "We retain your information only as long as necessary for legitimate business purposes and legal compliance:",
+      "items": [
+        "Account and transaction data: Retained for the duration of your account plus 7 years for legal and tax compliance",
+        "Security and fraud prevention data: Retained for up to 3 years for ongoing security monitoring",
+        "Analytics and usage data: Retained in anonymized form for up to 2 years for platform improvement",
+        "Communication records: Retained for up to 3 years for customer support and dispute resolution",
+        "Legal and compliance data: Retained as required by applicable laws and regulations",
+        "Blockchain data: Permanently recorded on the blockchain and cannot be deleted",
+        "Marketing and promotional data: Retained until you opt out or for up to 2 years"
+      ],
+      "deletionRights": "You may request deletion of your personal data, subject to legal and operational requirements. Some data may need to be retained for compliance or security purposes."
+    },
+    "rights": {
+      "title": "9. Your Privacy Rights",
+      "content": "Depending on your jurisdiction, you may have the following privacy rights:",
+      "items": [
+        "Right to access: Request copies of your personal information we hold",
+        "Right to rectification: Correct inaccurate or incomplete personal information",
+        "Right to erasure: Request deletion of your personal information (subject to legal requirements)",
+        "Right to restriction: Limit how we process your personal information",
+        "Right to data portability: Receive your data in a structured, machine-readable format",
+        "Right to object: Object to processing of your personal information for certain purposes",
+        "Right to withdraw consent: Withdraw consent for data processing where applicable",
+        "Right to lodge complaints: File complaints with relevant data protection authorities",
+        "Right to opt-out: Opt out of marketing communications and certain data processing",
+        "Right to non-discrimination: Exercise privacy rights without discrimination"
+      ],
+      "exercisingRights": "To exercise these rights, contact us at privacy@mevstake.com. We will respond within 30 days and may require identity verification."
+    },
+    "children": {
+      "title": "10. Children's Privacy",
+      "content": "MEVStake is not intended for users under 18 years of age. We do not knowingly collect personal information from children under 18. If we become aware that we have collected personal information from a child under 18, we will take steps to delete such information promptly. Parents or guardians who believe their child has provided personal information should contact us immediately."
+    },
+    "transfers": {
+      "title": "11. International Data Transfers",
+      "content": "As a global decentralized platform, your information may be processed in various jurisdictions worldwide. We ensure appropriate safeguards are in place for international data transfers, including:",
+      "safeguards": [
+        "Standard contractual clauses approved by relevant data protection authorities",
+        "Adequacy decisions for transfers to countries with adequate data protection",
+        "Binding corporate rules for intra-group transfers",
+        "Certification schemes and codes of conduct where applicable",
+        "Technical and organizational measures to protect transferred data"
+      ]
+    },
+    "changes": {
+      "title": "12. Changes to This Privacy Policy",
+      "content": "We may update this Privacy Policy periodically to reflect changes in our practices, technology, legal requirements, or business operations. Material changes will be communicated through:",
+      "notificationMethods": [
+        "Email notifications to registered users",
+        "Prominent notices on the Platform interface",
+        "Push notifications for mobile users",
+        "Community announcements and social media",
+        "Updated timestamps on this Privacy Policy page"
+      ],
+      "acceptance": "Your continued use of the Platform after changes become effective constitutes acceptance of the updated Privacy Policy. If you do not agree with the changes, you should discontinue use of the Platform."
+    },
+    "contact": {
+      "title": "13. Contact Information",
+      "content": "For privacy-related questions, concerns, or to exercise your rights, please contact us:",
+      "contactMethods": [
+        "Email: privacy@mevstake.com (for privacy inquiries)",
+        "Email: legal@mevstake.com (for legal matters)",
+        "Discord: [Official Discord Server Link]",
+        "Website: Contact form on our official website",
+        "Support: Through our customer support system"
+      ],
+      "responseTime": "We will respond to all privacy inquiries within 30 days and to urgent security matters within 72 hours.",
+      "dpo": "Data Protection Officer: For users in jurisdictions requiring a DPO, please contact dpo@mevstake.com for data protection matters."
+    }
+  }
+}

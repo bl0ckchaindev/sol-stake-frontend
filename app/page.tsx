@@ -1,9 +1,9 @@
-import { Header } from "@/components/header"
-import { LandingHero } from "@/components/landing-hero"
-import { HowItWorks } from "@/components/how-it-works"
-import { StatsSection } from "@/components/stats-section"
-import { FAQSection } from "@/components/faq-section"
-import { Footer } from "@/components/footer"
+import { Header } from "@/components/shared/header"
+import { LandingHero } from "@/components/home/landing-hero"
+import { HowItWorks } from "@/components/home/how-it-works"
+import { StatsSection } from "@/components/home/stats-section"
+import { FAQSection } from "@/components/home/faq-section"
+import { Footer } from "@/components/shared/footer"
 
 export default function HomePage() {
   return (
@@ -11,8 +11,8 @@ export default function HomePage() {
       <Header />
       <main className="relative">
         <LandingHero />
-        <HowItWorks />
         <StatsSection />
+        <HowItWorks />
         <FAQSection />
       </main>
       <Footer />

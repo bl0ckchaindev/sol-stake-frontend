@@ -1,8 +1,8 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { ReferralPage } from "@/components/referral-page"
-import { MotionWrapper } from "@/components/motion-wrapper"
-import { ComingSoonWrapper } from "@/components/coming-soon-wrapper"
+import { Header } from "@/components/shared/header"
+import { Footer } from "@/components/shared/footer"
+import { ReferralPage } from "@/components/referrals/referral-page"
+import { MotionWrapper } from "@/components/shared/motion-wrapper"
+import { ComingSoonWrapper } from "@/components/shared/coming-soon-wrapper"
 
 export default function ReferralsPage() {
   return (

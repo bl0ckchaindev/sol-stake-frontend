@@ -1,0 +1,254 @@
+{
+  "title": "Terms of Service",
+  "lastUpdated": "Last updated",
+  "sections": {
+    "acceptance": {
+      "title": "1. Acceptance of Terms",
+      "content": "Welcome to MEVStake (\"the Platform\", \"we\", \"us\", or \"our\"). These Terms of Service (\"Terms\") constitute a legally binding agreement between you (\"User\", \"you\", or \"your\") and MEVStake regarding your access to and use of our decentralized finance platform. By accessing, browsing, or using the Platform in any manner, you acknowledge that you have read, understood, and agree to be bound by these Terms and all applicable laws and regulations. If you do not agree to these Terms, you must not access or use the Platform. These Terms apply to all users of the Platform, including visitors, users who create accounts, and users who interact with our smart contracts."
+    },
+    "description": {
+      "title": "2. Description of Service",
+      "content": "MEVStake is a decentralized finance (DeFi) platform built on the Solana blockchain that enables users to stake cryptocurrency tokens and participate in Maximum Extractable Value (MEV) bot operations. Our sophisticated MEV bot infrastructure continuously monitors Solana decentralized exchanges (DEXs) to identify and execute profitable trading opportunities including arbitrage, liquidation, and other MEV extraction strategies. The Platform operates as a non-custodial service, meaning users maintain full control of their private keys and funds while participating in our staking pools.",
+      "rewards": "Users receive daily rewards based on actual MEV bot performance, with a target of approximately 1% daily returns (subject to market conditions and bot performance). All staked assets are subject to a mandatory 90-day lock period to ensure optimal MEV capture opportunities. Rewards are distributed proportionally based on each user's stake size and can be claimed daily while the principal remains locked. Referral rewards are set at 10% of the referred user's stake amount and are automatically staked for 90 days upon generation.",
+      "tokens": "The Platform currently supports staking of the following tokens: SOL (Solana), USDC (USD Coin), USDT (Tether), and select approved meme tokens. The list of supported tokens may be updated periodically based on market conditions and technical requirements.",
+      "technology": "Our MEV bot infrastructure utilizes advanced algorithms and real-time market analysis to identify profitable opportunities across multiple Solana DEXs including Raydium, Orca, Jupiter, and others. The bots execute trades automatically to capture MEV opportunities while maintaining competitive advantages through speed and efficiency."
+    },
+    "risk": {
+      "title": "3. Risk Disclosure and Warning",
+      "warning": "⚠️ CRITICAL RISK WARNING",
+      "warningText": "CRYPTOCURRENCY STAKING AND MEV BOT OPERATIONS INVOLVE EXTREMELY HIGH FINANCIAL RISKS. YOU COULD LOSE ALL OF YOUR INVESTED CAPITAL. Past performance does not guarantee future results. MEV bot operations are highly speculative and subject to market volatility, technical risks, and competitive pressures. You should only invest money that you can afford to lose completely. The Platform is not suitable for inexperienced users or those seeking guaranteed returns.",
+      "risks": [
+        "MEV bot performance is subject to market conditions, competition from other MEV bots, and network congestion",
+        "Smart contract risks including potential bugs, vulnerabilities, or exploits that could result in loss of funds",
+        "Solana network risks including downtime, congestion, high transaction fees, and network upgrades",
+        "Regulatory risks as cryptocurrency regulations evolve in your jurisdiction",
+        "Liquidity risks during the 90-day lock period - you cannot withdraw funds early",
+        "Impermanent loss and slippage risks during MEV bot trading operations",
+        "Technology risks including software bugs, hardware failures, or network attacks",
+        "Market risks including extreme volatility, flash crashes, and manipulation",
+        "Operational risks including bot downtime, maintenance periods, and technical issues",
+        "Competition risks as more sophisticated MEV bots enter the market",
+        "Regulatory changes that could affect the legality or operation of MEV activities",
+        "Smart contract upgrade risks and potential migration issues"
+      ],
+      "additional": "You acknowledge and agree that you understand these risks and that your participation in the Platform is entirely at your own risk. We strongly recommend consulting with qualified financial and legal advisors before participating."
+    },
+    "staking": {
+      "title": "4. Staking Terms and Conditions",
+      "overview": "MEVStake operates a sophisticated staking system that enables users to participate in MEV bot operations while maintaining full custody of their assets. The following terms govern all staking activities on the Platform.",
+      "terms": [
+        "Minimum staking period: 90 days from the date of deposit (no early withdrawal permitted under any circumstances)",
+        "Target daily rewards: 1% (subject to actual MEV bot performance, market conditions, and network congestion)",
+        "Supported tokens: SOL, USDC, USDT, and approved meme tokens (list may change with 30 days notice)",
+        "Rewards are distributed daily based on actual MEV bot profits and your proportional stake size",
+        "Early withdrawal is strictly prohibited during the lock period - no exceptions for emergencies",
+        "Platform reserves the right to adjust reward rates based on performance and market conditions",
+        "All staking transactions are final and irreversible once confirmed on the blockchain",
+        "Users must maintain sufficient SOL balance for transaction fees (minimum 0.01 SOL recommended)",
+        "Staking rewards are subject to taxation in your jurisdiction - consult tax professionals",
+        "Platform may implement additional security measures or requirements at any time",
+        "Users are responsible for maintaining secure access to their wallets and private keys",
+        "Platform reserves the right to suspend staking operations for security or maintenance",
+        "Minimum staking amounts: 0.1 SOL, 10 USDC, 10 USDT, or equivalent in approved tokens",
+        "Maximum staking amounts: No individual limit, but subject to platform capacity",
+        "Staking rewards are calculated and distributed at 00:00 UTC daily",
+        "Unclaimed rewards accumulate but are subject to platform maintenance schedules",
+        "Platform may implement emergency pause mechanisms for security purposes",
+        "Users acknowledge that MEV bot performance varies with market conditions",
+        "Staking positions are non-transferable and tied to the original wallet address",
+        "Platform reserves the right to implement KYC/AML requirements if legally required"
+      ],
+      "technicalDetails": {
+        "title": "Technical Staking Details",
+        "items": [
+          "Smart contracts are audited and deployed on Solana mainnet",
+          "All staking operations are recorded on-chain for transparency",
+          "Reward calculations use real-time MEV bot performance data",
+          "Gas fees for transactions are paid by users, not the platform",
+          "Platform uses institutional-grade infrastructure for MEV bot operations",
+          "Staking pools are managed by automated smart contracts",
+          "Emergency pause mechanisms are built into the smart contract system",
+          "All transactions are verified through Solana's consensus mechanism"
+        ]
+      },
+      "rewardStructure": {
+        "title": "Reward Structure and Distribution",
+        "items": [
+          "Daily rewards are calculated based on MEV bot profits from the previous 24 hours",
+          "Reward distribution occurs automatically via smart contracts",
+          "Users receive rewards proportional to their stake size relative to total pool",
+          "Reward rates may vary daily based on MEV opportunity availability",
+          "Historical performance data is available through the platform interface",
+          "Rewards are distributed in the same token type as the original stake",
+          "Compound interest applies to unclaimed rewards",
+          "Platform takes no fees from user rewards - 100% of MEV profits go to stakers"
+        ]
+      },
+      "referral": "Referral Program Terms: Referrers earn 10% of the stake amount from users they refer. Referral rewards are automatically staked for 90 days upon generation. Referral codes are non-transferable and tied to the original wallet address. The Platform reserves the right to modify or terminate the referral program at any time with 30 days notice.",
+      "emergencyProcedures": {
+        "title": "Emergency Procedures",
+        "items": [
+          "Platform may implement emergency pause for security incidents",
+          "Emergency withdrawals are not permitted during pause periods",
+          "Users will be notified of emergency situations through official channels",
+          "Platform maintains insurance coverage for certain operational risks",
+          "Emergency contact procedures are available through support channels",
+          "Platform reserves the right to implement circuit breakers during extreme volatility"
+        ]
+      }
+    },
+    "responsibilities": {
+      "title": "5. User Responsibilities and Obligations",
+      "overview": "As a user of MEVStake, you have specific responsibilities and obligations that are essential for the safe and legal operation of the Platform. These responsibilities are designed to protect you, other users, and the Platform from risks and ensure compliance with applicable laws.",
+      "securityResponsibilities": {
+        "title": "Security Responsibilities",
+        "items": [
+          "Maintain absolute security of your wallet, private keys, and seed phrases at all times",
+          "Never share your private keys, seed phrases, or wallet access credentials with anyone",
+          "Use hardware wallets or secure software wallets with strong password protection",
+          "Enable two-factor authentication on all associated accounts where available",
+          "Regularly update your wallet software and keep security patches current",
+          "Use only trusted devices and networks when accessing the Platform",
+          "Never access the Platform from public or unsecured Wi-Fi networks",
+          "Implement proper backup procedures for your wallet and recovery phrases",
+          "Monitor your accounts regularly for any unauthorized activity",
+          "Report any suspected security breaches or unauthorized access immediately",
+          "Use unique, strong passwords for all Platform-related accounts",
+          "Keep your wallet software and browser extensions updated to latest versions"
+        ]
+      },
+      "transactionResponsibilities": {
+        "title": "Transaction and Financial Responsibilities",
+        "items": [
+          "Verify all transaction details, amounts, and addresses before confirming any transaction",
+          "Double-check wallet addresses using multiple verification methods",
+          "Understand that all blockchain transactions are irreversible once confirmed",
+          "Ensure sufficient balance for transaction fees before initiating transactions",
+          "Use only legitimate, legally-obtained funds for staking activities",
+          "Not use funds obtained through illegal activities, fraud, or money laundering",
+          "Maintain accurate records of all transactions for tax and compliance purposes",
+          "Understand the tax implications of staking rewards in your jurisdiction",
+          "Consult with qualified tax professionals regarding your staking activities",
+          "Report all staking rewards and activities to relevant tax authorities as required",
+          "Not engage in wash trading, market manipulation, or other prohibited activities",
+          "Respect minimum and maximum staking limits as defined by the Platform"
+        ]
+      },
+      "legalCompliance": {
+        "title": "Legal and Regulatory Compliance",
+        "items": [
+          "Comply with all applicable laws, regulations, and tax obligations in your jurisdiction",
+          "Ensure your use of the Platform is legal in your country of residence",
+          "Not use the Platform for any illegal activities, money laundering, or terrorist financing",
+          "Provide accurate and truthful information when required by the Platform",
+          "Comply with any KYC/AML requirements that may be implemented by the Platform",
+          "Not use the Platform if you are a prohibited person under applicable laws",
+          "Respect intellectual property rights and not infringe on third-party rights",
+          "Not use the Platform to evade taxes or other legal obligations",
+          "Comply with sanctions and embargo restrictions applicable to your jurisdiction",
+          "Report any suspicious activities or violations of these Terms to the Platform",
+          "Cooperate with legitimate law enforcement requests as required by law",
+          "Not use the Platform in any way that violates export control laws"
+        ]
+      },
+      "technicalResponsibilities": {
+        "title": "Technical Knowledge and Platform Use",
+        "items": [
+          "Ensure you have sufficient technical knowledge to safely use the Platform",
+          "Understand how blockchain technology, smart contracts, and DeFi protocols work",
+          "Familiarize yourself with Solana network operations and transaction fees",
+          "Understand the risks associated with cryptocurrency staking and MEV operations",
+          "Keep up-to-date with Platform updates, changes, and announcements",
+          "Use only official Platform interfaces and avoid third-party applications",
+          "Not attempt to exploit, hack, or manipulate the Platform or smart contracts",
+          "Report any suspected security vulnerabilities or technical issues to the Platform",
+          "Follow all Platform guidelines and best practices for secure usage",
+          "Not reverse engineer, decompile, or attempt to extract source code",
+          "Use compatible browsers and devices that meet Platform requirements",
+          "Maintain stable internet connection during critical transactions"
+        ]
+      },
+      "conductResponsibilities": {
+        "title": "Conduct and Community Responsibilities",
+        "items": [
+          "Respect other users and maintain appropriate conduct in all interactions",
+          "Not create multiple accounts to circumvent Platform limitations or policies",
+          "Not engage in harassment, abuse, or inappropriate behavior toward other users",
+          "Not spread false information or misinformation about the Platform",
+          "Not impersonate Platform staff, representatives, or other users",
+          "Respect Platform community guidelines and moderation decisions",
+          "Not use the Platform to promote or advertise other competing services",
+          "Maintain professional and respectful communication in all Platform interactions",
+          "Not attempt to manipulate or influence other users' investment decisions",
+          "Report inappropriate behavior or violations by other users to Platform moderators",
+          "Not create or distribute content that violates intellectual property rights",
+          "Respect the Platform's intellectual property and branding guidelines"
+        ]
+      },
+      "informationResponsibilities": {
+        "title": "Information and Communication Responsibilities",
+        "items": [
+          "Keep your contact information and wallet addresses up to date",
+          "Provide accurate and truthful information when creating accounts or profiles",
+          "Respond promptly to legitimate requests from Platform support or security teams",
+          "Monitor official Platform communications for important updates and announcements",
+          "Not provide false or misleading information to other users or Platform staff",
+          "Maintain confidentiality of any sensitive information shared by the Platform",
+          "Not disclose private information about other users without permission",
+          "Use official Platform channels for support and communication",
+          "Report any communication or information security concerns to the Platform",
+          "Not engage in social engineering or phishing attempts against other users",
+          "Respect Platform communication guidelines and response timeframes",
+          "Not abuse Platform support systems or create false support requests"
+        ]
+      },
+      "consequences": "Failure to comply with these responsibilities may result in immediate suspension or termination of your account, forfeiture of staking rewards, and potential legal action. The Platform reserves the right to take appropriate action to protect itself and other users from violations of these responsibilities."
+    },
+    "limitations": {
+      "title": "6. Platform Limitations and Disclaimers",
+      "content": "MEVStake operates on a best-effort basis and provides no guarantees or warranties. The Platform is provided \"as is\" without any express or implied warranties. We explicitly disclaim:",
+      "items": [
+        "Any guarantee of specific reward rates, returns, or profits",
+        "Continuous, uninterrupted, or error-free platform availability",
+        "Protection against smart contract vulnerabilities, bugs, or exploits",
+        "Recovery of funds in case of user error, lost keys, or technical issues",
+        "Protection against market volatility, network congestion, or external attacks",
+        "Compliance with regulations in all jurisdictions",
+        "Accuracy of market data, pricing information, or MEV opportunity calculations",
+        "Prevention of all security risks or unauthorized access attempts",
+        "Compatibility with all wallet types, browsers, or devices",
+        "Resolution of all disputes or technical issues",
+        "Protection against third-party actions or regulatory changes",
+        "Maintenance of specific MEV bot performance levels"
+      ]
+    },
+    "liability": {
+      "title": "7. Limitation of Liability and Indemnification",
+      "content": "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, MEVSTAKE, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AND CONTRACTORS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM YOUR USE OF THE PLATFORM. IN NO EVENT SHALL OUR TOTAL LIABILITY EXCEED THE AMOUNT YOU HAVE PAID TO US IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM. You agree to indemnify, defend, and hold harmless MEVStake from any claims, damages, losses, or expenses arising from your use of the Platform or violation of these Terms."
+    },
+    "intellectual": {
+      "title": "8. Intellectual Property Rights",
+      "content": "All content, software, algorithms, smart contracts, and other materials on the Platform are owned by MEVStake or its licensors and are protected by intellectual property laws. Users may not copy, modify, distribute, or reverse engineer any Platform components without explicit written permission. The MEVStake name, logo, and branding are trademarks that may not be used without authorization."
+    },
+    "termination": {
+      "title": "9. Termination and Suspension",
+      "content": "We reserve the right to terminate or suspend your access to the Platform at any time, with or without notice, for any reason including violation of these Terms, suspicious activity, or legal requirements. Upon termination, your staked assets will remain locked for the full 90-day period, and you will continue to receive rewards during this time. You may discontinue using the Platform at any time, but your staked assets must remain locked until the end of the staking period."
+    },
+    "modifications": {
+      "title": "10. Modifications to Terms",
+      "content": "We reserve the right to modify these Terms at any time to reflect changes in our services, legal requirements, or business practices. Material changes will be communicated through the Platform interface, email notifications, or other appropriate means at least 30 days before taking effect. Your continued use of the Platform after modifications constitutes acceptance of the updated Terms. If you do not agree to the modified Terms, you must discontinue use of the Platform and may withdraw your staked assets after the lock period expires."
+    },
+    "governing": {
+      "title": "11. Governing Law and Dispute Resolution",
+      "content": "These Terms are governed by the laws of [Jurisdiction to be specified]. Any disputes arising from these Terms or your use of the Platform shall be resolved through binding arbitration in accordance with the rules of [Arbitration Organization]. The arbitration shall be conducted in [Location] and in the English language. You waive any right to participate in class action lawsuits or class-wide arbitration."
+    },
+    "severability": {
+      "title": "12. Severability and Entire Agreement",
+      "content": "If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions shall remain in full force and effect. These Terms, together with our Privacy Policy, constitute the entire agreement between you and MEVStake regarding the Platform and supersede all prior agreements and understandings."
+    },
+    "contact": {
+      "title": "13. Contact Information",
+      "content": "For questions, concerns, or legal notices regarding these Terms of Service, please contact us through our official channels: Email: legal@mevstake.com, Discord: [Discord Server Link], or through our official website contact form. We will respond to all legitimate inquiries within 5-7 business days."
+    }
+  }
+}

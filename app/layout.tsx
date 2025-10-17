@@ -3,21 +3,22 @@ import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
-import { WalletProvider } from "@/components/wallet-provider"
-import { AnchorStakingProvider } from "@/components/anchor-staking-provider"
-import { ReferralProvider } from "@/components/referral-provider"
-import { TranslationProvider } from "@/components/translation-context"
-import { ThemeProvider } from "@/components/theme-provider"
+import { WalletProvider } from "@/context/wallet-provider"
+import { MevStakingProvider } from "@/context/mev-staking-provider"
+import { AnchorStakingProvider } from "@/context/anchor-staking-provider"
+import { ReferralProvider } from "@/context/referral-provider"
+import { TranslationProvider } from "@/context/translation-context"
+import { ThemeProvider } from "@/context/theme-provider"
 import { Toaster } from "sonner"
 import { Suspense } from "react"
-import { ToasterWrapper } from "@/components/toaster-wrapper"
-import { CookieConsent } from "@/components/cookie-consent"
+import { ToasterWrapper } from "@/components/shared/toaster-wrapper"
+import { CookieConsent } from "@/components/shared/cookie-consent"
 import "./globals.css"
 
 export const metadata: Metadata = {
   title: "MEVStake - Advanced MEV Bot Staking on Solana",
   description:
-    "Stake SOL, USDC, USDT and meme tokens with our MEV bot infrastructure. Earn 1% daily rewards from Maximum Extractable Value opportunities on Solana DeFi.",
+    "Stake SOL, USDC, USDT and meme tokens with our MEV bot infrastructure. Earn 1% daily rewards from Maximum Extractable Value opportunities on Solana DeFi. Get 10% referral rewards!",
   keywords: "MEV, Solana, staking, DeFi, arbitrage, bot, cryptocurrency, rewards, yield farming",
   authors: [{ name: "MEVStake Team" }],
   creator: "MEVStake",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MEVStake - Advanced MEV Bot Staking on Solana",
-    description: "Earn 1% daily rewards from MEV bot operations. Stake your tokens with institutional-grade security.",
+    description: "Earn 1% daily rewards from MEV bot operations. Get 10% referral rewards! Stake your tokens with institutional-grade security.",
     url: "https://mevstake.com",
     siteName: "MEVStake",
     locale: "en_US",
@@ -50,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "MEVStake - Advanced MEV Bot Staking on Solana",
-    description: "Earn 1% daily rewards from MEV bot operations. Stake your tokens with institutional-grade security.",
+    description: "Earn 1% daily rewards from MEV bot operations. Get 10% referral rewards! Stake your tokens with institutional-grade security.",
     creator: "@mevstake",
     images: ["/og-image.png"],
   },
@@ -79,11 +80,13 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <TranslationProvider>
             <WalletProvider>
-              <ReferralProvider>
-                <AnchorStakingProvider>
-                  <Suspense>{children}</Suspense>
-                </AnchorStakingProvider>
-              </ReferralProvider>
+              <MevStakingProvider>
+                <ReferralProvider>
+                  <AnchorStakingProvider>
+                    <Suspense>{children}</Suspense>
+                  </AnchorStakingProvider>
+                </ReferralProvider>
+              </MevStakingProvider>
             </WalletProvider>
             <ToasterWrapper />
             <CookieConsent />

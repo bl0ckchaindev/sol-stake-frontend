@@ -1,0 +1,34 @@
+{
+  "title": "How MEV Staking Works",
+  "subtitle": "Our sophisticated MEV bot infrastructure generates consistent returns by capturing Maximum Extractable Value opportunities across the Solana ecosystem.",
+  "badge": "Process Overview",
+  "steps": {
+    "step1": {
+      "title": "Connect & Stake",
+      "description": "Connect your Solana wallet and stake SOL, USDC, USDT, or meme tokens with our platform.",
+      "badge": "Step 1"
+    },
+    "step2": {
+      "title": "MEV Bot Deployment",
+      "description": "Your staked funds are deployed across our MEV bot infrastructure to capture arbitrage opportunities.",
+      "badge": "Step 2"
+    },
+    "step3": {
+      "title": "Value Extraction",
+      "description": "Our bots identify and execute profitable trades, liquidations, and arbitrage across Solana DEXs.",
+      "badge": "Step 3"
+    },
+    "step4": {
+      "title": "Reward Distribution",
+      "description": "Earn 1% daily rewards from MEV profits while your principal remains locked for 90 days. Referral rewards are automatically staked with 90-day lock period.",
+      "badge": "Step 4"
+    }
+  },
+  "cta": {
+    "title": "Ready to Start Earning?",
+    "subtitle": "Join thousands of stakers earning daily rewards from MEV opportunities",
+    "dailyReturns": "Daily Returns",
+    "apy": "APY",
+    "dayLock": "Day Lock"
+  }
+}

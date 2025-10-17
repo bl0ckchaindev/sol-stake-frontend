@@ -1,8 +1,8 @@
 "use client"
 
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { useTranslation } from "@/components/translation-context"
+import { Header } from "@/components/shared/header"
+import { Footer } from "@/components/shared/footer"
+import { useTranslation } from "@/context/translation-context"
 
 export default function PrivacyPage() {
   const { t } = useTranslation()
@@ -30,6 +30,13 @@ export default function PrivacyPage() {
           </div>
 
           <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">{t('privacy.sections.introduction.title')}</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.introduction.content')}
+            </p>
+          </section>
+
+          <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t('privacy.sections.collection.title')}</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               {t('privacy.sections.collection.content')}
@@ -37,14 +44,21 @@ export default function PrivacyPage() {
 
             <h3 className="text-lg font-semibold mb-2">{t('privacy.sections.collection.walletInfo')}</h3>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.collection.walletItems')) && t('privacy.sections.collection.walletItems').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.collection.walletItems')) && (t('privacy.sections.collection.walletItems') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
 
             <h3 className="text-lg font-semibold mb-2">{t('privacy.sections.collection.technicalInfo')}</h3>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.collection.technicalItems')) && t('privacy.sections.collection.technicalItems').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.collection.technicalItems')) && (t('privacy.sections.collection.technicalItems') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <h3 className="text-lg font-semibold mb-2">{t('privacy.sections.collection.communicationInfo')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
+              {Array.isArray(t('privacy.sections.collection.communicationItems')) && (t('privacy.sections.collection.communicationItems') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
@@ -54,7 +68,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-semibold mb-4">{t('privacy.sections.usage.title')}</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">{t('privacy.sections.usage.content')}</p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.usage.items')) && t('privacy.sections.usage.items').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.usage.items')) && (t('privacy.sections.usage.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
@@ -66,10 +80,13 @@ export default function PrivacyPage() {
               {t('privacy.sections.sharing.content')}
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.sharing.items')) && t('privacy.sections.sharing.items').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.sharing.items')) && (t('privacy.sections.sharing.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.sharing.thirdPartyServices')}
+            </p>
           </section>
 
           <section className="mb-8">
@@ -88,10 +105,15 @@ export default function PrivacyPage() {
               {t('privacy.sections.security.content')}
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.security.items')) && t('privacy.sections.security.items').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.security.items')) && (t('privacy.sections.security.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
+            <div className="bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+              <p className="text-sm text-green-800 dark:text-green-200 leading-relaxed">
+                {t('privacy.sections.security.breachNotification')}
+              </p>
+            </div>
           </section>
 
           <section className="mb-8">
@@ -100,12 +122,15 @@ export default function PrivacyPage() {
               {t('privacy.sections.cookies.content')}
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.cookies.items')) && t('privacy.sections.cookies.items').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.cookies.items')) && (t('privacy.sections.cookies.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
             <p className="text-muted-foreground leading-relaxed mb-4">
               {t('privacy.sections.cookies.cookieControl')}
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.cookies.thirdPartyAnalytics')}
             </p>
           </section>
 
@@ -115,10 +140,13 @@ export default function PrivacyPage() {
               {t('privacy.sections.retention.content')}
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.retention.items')) && t('privacy.sections.retention.items').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.retention.items')) && (t('privacy.sections.retention.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.retention.deletionRights')}
+            </p>
           </section>
 
           <section className="mb-8">
@@ -127,10 +155,20 @@ export default function PrivacyPage() {
               {t('privacy.sections.rights.content')}
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('privacy.sections.rights.items')) && t('privacy.sections.rights.items').map((item: string, index: number) => (
+              {Array.isArray(t('privacy.sections.rights.items')) && (t('privacy.sections.rights.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.rights.exercisingRights')}
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">{t('privacy.sections.children.title')}</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.children.content')}
+            </p>
           </section>
 
           <section className="mb-8">
@@ -138,6 +176,11 @@ export default function PrivacyPage() {
             <p className="text-muted-foreground leading-relaxed mb-4">
               {t('privacy.sections.transfers.content')}
             </p>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
+              {Array.isArray(t('privacy.sections.transfers.safeguards')) && (t('privacy.sections.transfers.safeguards') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
           </section>
 
           <section className="mb-8">
@@ -145,12 +188,31 @@ export default function PrivacyPage() {
             <p className="text-muted-foreground leading-relaxed mb-4">
               {t('privacy.sections.changes.content')}
             </p>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
+              {Array.isArray(t('privacy.sections.changes.notificationMethods')) && (t('privacy.sections.changes.notificationMethods') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.changes.acceptance')}
+            </p>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t('privacy.sections.contact.title')}</h2>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed mb-4">
               {t('privacy.sections.contact.content')}
+            </p>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
+              {Array.isArray(t('privacy.sections.contact.contactMethods')) && (t('privacy.sections.contact.contactMethods') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('privacy.sections.contact.responseTime')}
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              {t('privacy.sections.contact.dpo')}
             </p>
           </section>
         </div>

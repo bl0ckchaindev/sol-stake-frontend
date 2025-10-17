@@ -4,7 +4,8 @@ import {
   Transaction,
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
-  Keypair
+  Keypair,
+  SendTransactionError
 } from "@solana/web3.js"
 import { 
   TOKEN_PROGRAM_ID,
@@ -104,8 +105,9 @@ export class MevStakingProgram {
   async getPoolInfo(tokenMint: PublicKey): Promise<PoolInfo | null> {
     try {
       const [poolInfoPDA] = this.getPoolInfoPDA(tokenMint)
-      console.log('log-> poolInfoPDA', tokenMint.toBase58(), poolInfoPDA.toBase58())
-      return await this.program.account.poolInfo.fetch(poolInfoPDA)
+      const poolInfo = await this.program.account.poolInfo.fetch(poolInfoPDA)
+      console.log('log-> poolInfo', tokenMint.toBase58(), poolInfoPDA.toBase58(), poolInfo)
+      return poolInfo
     } catch (error) {
       console.error("Error fetching pool info:", error)
       return null
@@ -115,8 +117,9 @@ export class MevStakingProgram {
   async getUserStake(user: PublicKey, poolId: number): Promise<UserStake | null> {
     try {
       const [userStakePDA] = this.getUserStakePDA(user, poolId)
-      console.log('log-> userStakePDA', poolId, userStakePDA.toBase58())
-      return await this.program.account.userStake.fetch(userStakePDA)
+      const userStake = await this.program.account.userStake.fetch(userStakePDA)
+      console.log('log-> userStake', userStakePDA.toBase58(), poolId, userStake)
+      return userStake
     } catch (error) {
       console.error("Error fetching user stake:", error)
       return null
@@ -142,10 +145,10 @@ export class MevStakingProgram {
           const [userStakeAddress] = this.getUserStakePDA(user, token.poolId)
           const [poolInfoAddress] = this.getPoolInfoPDA(token.mint)
           
-          const pendingRewards = await this.calculatePendingRewards(userStake, globalData)
+          const pendingRewards = await this.calculatePendingRewards(userStake, globalData, token.decimals)
           const canWithdraw = this.canWithdraw(userStake)
           const lockEndTime = this.getLockEndTime(userStake, globalData)
-          const apy = this.calculateAPY(globalData, userStake)
+          const apy = this.calculateAPY(globalData, userStake, token.decimals)
 
           positions.push({
             userStake,
@@ -175,6 +178,7 @@ export class MevStakingProgram {
     lockPeriod: LockPeriod,
     referrer?: PublicKey
   ): Promise<string> {
+    console.log('log->stakeTokens params', tokenMint.toBase58(), poolId, amount.toString(), lockPeriod, referrer?.toBase58())
     const user = this.provider.wallet.publicKey
     if (!user) throw new Error("Wallet not connected")
 
@@ -273,7 +277,41 @@ export class MevStakingProgram {
       console.log('log->transaction confirmed:', signature)
       return signature
     } catch (error) {
-      console.error('Error creating stake transaction:', error)
+      console.error('Stake transaction failed:', error)
+      
+      // Handle specific error types
+      if (error instanceof Error) {
+        const errorMessage = error.message.toLowerCase()
+        
+        // Check for duplicate transaction errors
+        if (errorMessage.includes('already been processed') || 
+            errorMessage.includes('duplicate') ||
+            errorMessage.includes('processed')) {
+          throw new Error('Transaction already processed. Please wait and try again.')
+        }
+        
+        // Check for insufficient funds
+        if (errorMessage.includes('insufficient funds') || 
+            errorMessage.includes('insufficient balance')) {
+          throw new Error('Insufficient funds for this transaction.')
+        }
+        
+        // Check for account not found
+        if (errorMessage.includes('account not found') || 
+            errorMessage.includes('invalid account')) {
+          throw new Error('Account not found. Please check your wallet connection.')
+        }
+        
+        // Check if it's a SendTransactionError and extract signature if available
+        if (error instanceof SendTransactionError) {
+          const signature = (error as any).signature
+          if (signature) {
+            throw new Error(`Transaction failed: ${errorMessage} (Signature: ${signature})`)
+          }
+        }
+      }
+      
+      // Re-throw the original error if it's not one we handle specifically
       throw error
     }
   }
@@ -334,8 +372,47 @@ export class MevStakingProgram {
         .transaction()
     }
 
-    const signature = await this.provider.sendAndConfirm(tx)
-    return signature
+    try {
+      const signature = await this.provider.sendAndConfirm(tx)
+      return signature
+    } catch (error) {
+      console.error('Withdraw transaction failed:', error)
+      
+      // Handle specific error types
+      if (error instanceof Error) {
+        const errorMessage = error.message.toLowerCase()
+        
+        // Check for duplicate transaction errors
+        if (errorMessage.includes('already been processed') || 
+            errorMessage.includes('duplicate') ||
+            errorMessage.includes('processed')) {
+          throw new Error('Transaction already processed. Please wait and try again.')
+        }
+        
+        // Check for insufficient funds
+        if (errorMessage.includes('insufficient funds') || 
+            errorMessage.includes('insufficient balance')) {
+          throw new Error('Insufficient funds for this transaction.')
+        }
+        
+        // Check for account not found
+        if (errorMessage.includes('account not found') || 
+            errorMessage.includes('invalid account')) {
+          throw new Error('Account not found. Please check your wallet connection.')
+        }
+        
+        // Check if it's a SendTransactionError and extract signature if available
+        if (error instanceof SendTransactionError) {
+          const signature = (error as any).signature
+          if (signature) {
+            throw new Error(`Transaction failed: ${errorMessage} (Signature: ${signature})`)
+          }
+        }
+      }
+      
+      // Re-throw the original error if it's not one we handle specifically
+      throw error
+    }
   }
 
   async claimRewards(tokenMint: PublicKey, poolId: number): Promise<string> {
@@ -388,12 +465,51 @@ export class MevStakingProgram {
         .transaction()
     }
 
-    const signature = await this.provider.sendAndConfirm(tx)
-    return signature
+    try {
+      const signature = await this.provider.sendAndConfirm(tx)
+      return signature
+    } catch (error) {
+      console.error('Claim rewards transaction failed:', error)
+      
+      // Handle specific error types
+      if (error instanceof Error) {
+        const errorMessage = error.message.toLowerCase()
+        
+        // Check for duplicate transaction errors
+        if (errorMessage.includes('already been processed') || 
+            errorMessage.includes('duplicate') ||
+            errorMessage.includes('processed')) {
+          throw new Error('Transaction already processed. Please wait and try again.')
+        }
+        
+        // Check for insufficient funds
+        if (errorMessage.includes('insufficient funds') || 
+            errorMessage.includes('insufficient balance')) {
+          throw new Error('Insufficient funds for this transaction.')
+        }
+        
+        // Check for account not found
+        if (errorMessage.includes('account not found') || 
+            errorMessage.includes('invalid account')) {
+          throw new Error('Account not found. Please check your wallet connection.')
+        }
+        
+        // Check if it's a SendTransactionError and extract signature if available
+        if (error instanceof SendTransactionError) {
+          const signature = (error as any).signature
+          if (signature) {
+            throw new Error(`Transaction failed: ${errorMessage} (Signature: ${signature})`)
+          }
+        }
+      }
+      
+      // Re-throw the original error if it's not one we handle specifically
+      throw error
+    }
   }
 
   // Helper methods
-  private async calculatePendingRewards(userStake: UserStake, globalData: GlobalData): Promise<number> {
+  private async calculatePendingRewards(userStake: UserStake, globalData: GlobalData, tokenDecimals: number = 9): Promise<number> {
     const currentTime = Math.floor(Date.now() / 1000)
     const timeSinceLastClaim = currentTime - userStake.lastClaimTime.toNumber()
     const daysSinceLastClaim = timeSinceLastClaim / (24 * 60 * 60)
@@ -411,7 +527,7 @@ export class MevStakingProgram {
 
     for (const tier of tiers) {
       if (tier.amount.gt(new BN(0))) {
-        const stakeAmount = tier.amount.toNumber() / Math.pow(10, 9) // Convert from lamports
+        const stakeAmount = tier.amount.toNumber() / Math.pow(10, tokenDecimals) // Convert using correct decimals
         const dailyRate = tier.rate / 10000 // Convert from basis points (now number instead of BN)
         const tierRewards = stakeAmount * dailyRate * daysSinceLastClaim
         totalRewards += tierRewards
@@ -435,7 +551,7 @@ export class MevStakingProgram {
     return new Date(lastClaimTime + maxLockDuration)
   }
 
-  private calculateAPY(globalData: GlobalData, userStake: UserStake): number {
+  private calculateAPY(globalData: GlobalData, userStake: UserStake, tokenDecimals: number = 9): number {
     // Calculate weighted average APY based on stake distribution
     let totalStaked = 0
     let weightedRewards = 0
@@ -449,7 +565,7 @@ export class MevStakingProgram {
     ]
 
     for (const tier of tiers) {
-      const amount = tier.amount.toNumber()
+      const amount = tier.amount.toNumber() / Math.pow(10, tokenDecimals) // Convert using correct decimals
       const rate = tier.rate / 10000 // Convert from basis points (now number instead of BN)
       totalStaked += amount
       weightedRewards += amount * rate

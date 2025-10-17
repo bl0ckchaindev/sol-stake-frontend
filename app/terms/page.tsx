@@ -1,8 +1,8 @@
 "use client"
 
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { useTranslation } from "@/components/translation-context"
+import { Header } from "@/components/shared/header"
+import { Footer } from "@/components/shared/footer"
+import { useTranslation } from "@/context/translation-context"
 
 export default function TermsPage() {
   const { t } = useTranslation()
@@ -55,7 +55,7 @@ export default function TermsPage() {
               </p>
             </div>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('terms.sections.risk.risks')) && t('terms.sections.risk.risks').map((risk: string, index: number) => (
+              {Array.isArray(t('terms.sections.risk.risks')) && (t('terms.sections.risk.risks') as unknown as string[]).map((risk: string, index: number) => (
                 <li key={index}>{risk}</li>
               ))}
             </ul>
@@ -63,20 +63,100 @@ export default function TermsPage() {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t('terms.sections.staking.title')}</h2>
-            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('terms.sections.staking.terms')) && t('terms.sections.staking.terms').map((term: string, index: number) => (
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('terms.sections.staking.overview')}
+            </p>
+            
+            <h3 className="text-lg font-semibold mb-3">Core Staking Terms</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.staking.terms')) && (t('terms.sections.staking.terms') as unknown as string[]).map((term: string, index: number) => (
                 <li key={index}>{term}</li>
+              ))}
+            </ul>
+
+            <h3 className="text-lg font-semibold mb-3">{t('terms.sections.staking.technicalDetails.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.staking.technicalDetails.items')) && (t('terms.sections.staking.technicalDetails.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <h3 className="text-lg font-semibold mb-3">{t('terms.sections.staking.rewardStructure.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.staking.rewardStructure.items')) && (t('terms.sections.staking.rewardStructure.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+              <h4 className="text-md font-semibold text-blue-900 dark:text-blue-100 mb-2">Referral Program</h4>
+              <p className="text-sm text-blue-800 dark:text-blue-200 leading-relaxed">
+                {t('terms.sections.staking.referral')}
+              </p>
+            </div>
+
+            <h3 className="text-lg font-semibold mb-3">{t('terms.sections.staking.emergencyProcedures.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
+              {Array.isArray(t('terms.sections.staking.emergencyProcedures.items')) && (t('terms.sections.staking.emergencyProcedures.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
               ))}
             </ul>
           </section>
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t('terms.sections.responsibilities.title')}</h2>
-            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('terms.sections.responsibilities.items')) && t('terms.sections.responsibilities.items').map((item: string, index: number) => (
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              {t('terms.sections.responsibilities.overview')}
+            </p>
+
+            <h3 className="text-lg font-semibold mb-3 text-foreground">{t('terms.sections.responsibilities.securityResponsibilities.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.responsibilities.securityResponsibilities.items')) && (t('terms.sections.responsibilities.securityResponsibilities.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
+
+            <h3 className="text-lg font-semibold mb-3 text-foreground">{t('terms.sections.responsibilities.transactionResponsibilities.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.responsibilities.transactionResponsibilities.items')) && (t('terms.sections.responsibilities.transactionResponsibilities.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <h3 className="text-lg font-semibold mb-3 text-foreground">{t('terms.sections.responsibilities.legalCompliance.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.responsibilities.legalCompliance.items')) && (t('terms.sections.responsibilities.legalCompliance.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <h3 className="text-lg font-semibold mb-3 text-foreground">{t('terms.sections.responsibilities.technicalResponsibilities.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.responsibilities.technicalResponsibilities.items')) && (t('terms.sections.responsibilities.technicalResponsibilities.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <h3 className="text-lg font-semibold mb-3 text-foreground">{t('terms.sections.responsibilities.conductResponsibilities.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.responsibilities.conductResponsibilities.items')) && (t('terms.sections.responsibilities.conductResponsibilities.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <h3 className="text-lg font-semibold mb-3 text-foreground">{t('terms.sections.responsibilities.informationResponsibilities.title')}</h3>
+            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-6">
+              {Array.isArray(t('terms.sections.responsibilities.informationResponsibilities.items')) && (t('terms.sections.responsibilities.informationResponsibilities.items') as unknown as string[]).map((item: string, index: number) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+
+            <div className="bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-800 rounded-lg p-4">
+              <h4 className="text-md font-semibold text-red-900 dark:text-red-100 mb-2">⚠️ Important Notice</h4>
+              <p className="text-sm text-red-800 dark:text-red-200 leading-relaxed">
+                {t('terms.sections.responsibilities.consequences')}
+              </p>
+            </div>
           </section>
 
           <section className="mb-8">
@@ -85,7 +165,7 @@ export default function TermsPage() {
               {t('terms.sections.limitations.content')}
             </p>
             <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              {Array.isArray(t('terms.sections.limitations.items')) && t('terms.sections.limitations.items').map((item: string, index: number) => (
+              {Array.isArray(t('terms.sections.limitations.items')) && (t('terms.sections.limitations.items') as unknown as string[]).map((item: string, index: number) => (
                 <li key={index}>{item}</li>
               ))}
             </ul>
@@ -99,9 +179,37 @@ export default function TermsPage() {
           </section>
 
           <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">{t('terms.sections.intellectual.title')}</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('terms.sections.intellectual.content')}
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">{t('terms.sections.termination.title')}</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('terms.sections.termination.content')}
+            </p>
+          </section>
+
+          <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">{t('terms.sections.modifications.title')}</h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
               {t('terms.sections.modifications.content')}
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">{t('terms.sections.governing.title')}</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('terms.sections.governing.content')}
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold mb-4">{t('terms.sections.severability.title')}</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              {t('terms.sections.severability.content')}
             </p>
           </section>
 
