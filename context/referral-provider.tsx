@@ -65,10 +65,10 @@ export function ReferralProvider({ children }: { children: ReactNode }) {
   const getSharingModeFromEnv = (): ReferralSharingMode => {
     const envMode = process.env.NEXT_PUBLIC_REFERRAL_SHARING_MODE
     if (envMode === 'all-users' || envMode === 'stakers-only') {
-      console.log(`Referral sharing mode loaded from env: ${envMode}`)
+      // console.log(`Referral sharing mode loaded from env: ${envMode}`)
       return envMode
     }
-    console.log(`Invalid or missing NEXT_PUBLIC_REFERRAL_SHARING_MODE, defaulting to 'all-users'`)
+    // console.log(`Invalid or missing NEXT_PUBLIC_REFERRAL_SHARING_MODE, defaulting to 'all-users'`)
     return 'all-users'
   }
   
@@ -332,7 +332,7 @@ export function ReferralProvider({ children }: { children: ReactNode }) {
       isProcessingRef.current = true
       processedWalletRef.current = walletKey
       
-      console.log(`Processing new wallet: ${walletKey}, sharing mode: ${sharingMode}`)
+      // console.log(`Processing new wallet: ${walletKey}, sharing mode: ${sharingMode}`)
 
       // Check for referral code in URL
       const urlParams = new URLSearchParams(window.location.search)
@@ -348,25 +348,25 @@ export function ReferralProvider({ children }: { children: ReactNode }) {
         referralHistory: [],
       }
       setReferralData(immediateData)
-      console.log(`Generated referral code for ${walletKey}: ${immediateCode}`)
+      // console.log(`Generated referral code for ${walletKey}: ${immediateCode}`)
 
       // Try to enhance the data in the background (non-blocking)
       if (sharingMode === 'stakers-only') {
         ensureExistingStakersHaveCodes().then(() => {
           setIsStakeChecker(false)
-          console.log(`Enhanced referral data for ${walletKey}`)
+          // console.log(`Enhanced referral data for ${walletKey}`)
         }).catch(error => {
           console.error(`Error enhancing referral data for ${walletKey}:`, error)
           setIsStakeChecker(false)
         })
       } else {
         setIsStakeChecker(false)
-        console.log(`Referral code ready for ${walletKey}`)
+        // console.log(`Referral code ready for ${walletKey}`)
       }
 
       isProcessingRef.current = false
     } else if (!connected) {
-      console.log('Wallet disconnected, clearing referral data')
+      // console.log('Wallet disconnected, clearing referral data')
       setReferralData(null)
       setHasActiveStakes(false)
       setIsStakeChecker(false)

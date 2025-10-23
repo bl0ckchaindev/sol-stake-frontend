@@ -270,14 +270,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     setBalanceLoading(true)
     try {
       const connection = getConnection()
-      console.log(
-        `[v0] Attempting to fetch balance from endpoint: ${process.env.NEXT_PUBLIC_RPC_ENDPOINT || "https://api.devnet.solana.com"}`,
-      )
+      // console.log(
+      //   `[v0] Attempting to fetch balance from endpoint: ${process.env.NEXT_PUBLIC_RPC_ENDPOINT || "https://api.devnet.solana.com"}`,
+      // )
 
       const balance = await connection.getBalance(pubKey)
       const solBalance = balance / LAMPORTS_PER_SOL
 
-      console.log(`[v0] Successfully fetched balance of ${pubKey.toBase58()}: ${solBalance} SOL`)
+      // console.log(`[v0] Successfully fetched balance of ${pubKey.toBase58()}: ${solBalance} SOL`)
       setBalance(solBalance)
       setBalanceLoading(false)
     } catch (error) {
@@ -311,11 +311,11 @@ export function WalletProvider({ children }: { children: ReactNode }) {
           const balance = Number(tokenAccount.amount) / Math.pow(10, tokenInfo.decimals)
           balances[symbol] = balance
           
-          console.log(`[v0] Token ${symbol} balance of ${pubKey.toBase58()}: ${balance}`)
+          // console.log(`[v0] Token ${symbol} balance of ${pubKey.toBase58()}: ${balance}`)
         } catch (error) {
           // Token account doesn't exist or other error
           balances[symbol] = 0
-          console.log(`[v0] Token ${symbol} balance of ${pubKey.toBase58()}: 0 (no account or error)`)
+          // console.log(`[v0] Token ${symbol} balance of ${pubKey.toBase58()}: 0 (no account or error)`)
         }
       }
       
@@ -337,7 +337,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     const detectedWallet = detectWallet(walletName)
 
     if (!detectedWallet) {
-      console.error(`[v0] Wallet ${walletName || 'default'} not detected`)
+      // console.error(`[v0] Wallet ${walletName || 'default'} not detected`)
       toast.error(`Wallet ${walletName || 'default'} not detected`)
       return
     }
@@ -349,7 +349,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
       // Validate that the connected wallet matches what we expect
       if (detectedWallet.adapter.publicKey?.toString() !== pubKey.toString()) {
-        console.error(`[v0] Wallet public key mismatch: expected ${detectedWallet.adapter.publicKey?.toString()}, got ${pubKey.toString()}`)
+        // console.error(`[v0] Wallet public key mismatch: expected ${detectedWallet.adapter.publicKey?.toString()}, got ${pubKey.toString()}`)
         throw new Error("Wallet connection validation failed")
       }
 
@@ -364,7 +364,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         setPreferredWallet(detectedWallet.name)
       }
 
-      console.log(`[v0] Wallet connected: ${pubKey.toString()}`)
+      // console.log(`[v0] Wallet connected: ${pubKey.toString()}`)
       
       // Fetch balances only after successful connection and validation
       await Promise.all([
@@ -420,7 +420,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       if (detectedWallet.adapter.on) {
         // Listen for account changes
         const handleConnect = (publicKey: any) => {
-          console.log(`[v0] Wallet ${detectedWallet.name} connected via event: ${publicKey?.publicKey ? publicKey?.publicKey : publicKey.toString()}`)
+          // console.log(`[v0] Wallet ${detectedWallet.name} connected via event: ${publicKey?.publicKey ? publicKey?.publicKey : publicKey.toString()}`)
           
           // Only handle if this is the currently connected wallet or no wallet is connected
           if (!connected || walletName === detectedWallet.name) {
@@ -449,7 +449,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         }
 
         const handleDisconnect = () => {
-          console.log(`[v0] Wallet ${detectedWallet.name} disconnected via event`)
+          // console.log(`[v0] Wallet ${detectedWallet.name} disconnected via event`)
           // Only handle disconnect if this is the currently connected wallet
           if (walletName === detectedWallet.name) {
             setPublicKey(null)
@@ -466,7 +466,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
         const handleAccountChanged = (publicKey: PublicKey | null) => {
           if (publicKey && walletName === detectedWallet.name) {
-            console.log(`[v0] Account changed in ${detectedWallet.name}: ${publicKey.toString()}`)
+            // console.log(`[v0] Account changed in ${detectedWallet.name}: ${publicKey.toString()}`)
             setPublicKey(publicKey)
             Promise.all([
               fetchBalance(publicKey),
@@ -505,7 +505,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       if (preferredWallet) {
         const preferred = detected.find(w => w.name.toLowerCase() === preferredWallet.toLowerCase())
         if (preferred?.adapter.isConnected && preferred.adapter.publicKey) {
-          console.log(`[v0] Found existing connection for preferred wallet: ${preferred.name}`)
+          // console.log(`[v0] Found existing connection for preferred wallet: ${preferred.name}`)
           setPublicKey(preferred.adapter.publicKey)
           setConnected(true)
           setWallet(preferred.adapter)
@@ -521,7 +521,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       // Otherwise, check all wallets and connect to the first one found
       for (const detectedWallet of detected) {
         if (detectedWallet.adapter.isConnected && detectedWallet.adapter.publicKey) {
-          console.log(`[v0] Found existing connection: ${detectedWallet.name}`)
+          // console.log(`[v0] Found existing connection: ${detectedWallet.name}`)
           setPublicKey(detectedWallet.adapter.publicKey)
           setConnected(true)
           setWallet(detectedWallet.adapter)

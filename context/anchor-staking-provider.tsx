@@ -279,7 +279,6 @@ export function AnchorStakingProvider({ children }: { children: ReactNode }) {
   // Refresh data when wallet connects (moved after refreshData declaration)
   useEffect(() => {
     if (connected && publicKey && program) {
-      console.log('log->connected', connected, publicKey.toBase58())
       if (!hasInitialData) {
         refreshData(true) // Initial load
       }
@@ -296,7 +295,6 @@ export function AnchorStakingProvider({ children }: { children: ReactNode }) {
   // Refresh data when wallet changes
   useEffect(() => {
     if (connected && publicKey && program && hasInitialData) {
-      console.log('log->wallet changed, refreshing data for:', publicKey.toBase58())
       
       // Clear existing data first
       setStakes([])

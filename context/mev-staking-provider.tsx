@@ -50,7 +50,7 @@ export function MevStakingProvider({ children }: { children: ReactNode }) {
         setProgram(stakingProgram)
 
         setIsInitialized(true)
-        console.log("MevStakingProgram initialized successfully")
+        // console.log("MevStakingProgram initialized successfully")
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : "Failed to initialize MevStakingProgram"
         console.error("Failed to initialize MevStakingProgram:", err)
@@ -69,7 +69,7 @@ export function MevStakingProvider({ children }: { children: ReactNode }) {
       try {
         const updatedProgram = new MevStakingProgram(connection, wallet || null)
         setProgram(updatedProgram)
-        console.log("MevStakingProgram updated for wallet connection change")
+        // console.log("MevStakingProgram updated for wallet connection change")
       } catch (err) {
         console.error("Failed to update MevStakingProgram:", err)
         setError(err instanceof Error ? err.message : "Failed to update program")
@@ -80,7 +80,7 @@ export function MevStakingProvider({ children }: { children: ReactNode }) {
   // Track wallet changes to trigger data refresh in child providers
   useEffect(() => {
     if (publicKey) {
-      console.log("Wallet changed, triggering data refresh:", publicKey.toString())
+      // console.log("Wallet changed, triggering data refresh:", publicKey.toString())
       setWalletChangeTrigger(prev => prev + 1)
     }
   }, [publicKey])

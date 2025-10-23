@@ -5,14 +5,11 @@ import Image from "next/image"
 import { useState } from "react"
 import { useTranslation } from "@/context/translation-context"
 import { MotionWrapper } from "@/components/shared/motion-wrapper"
-import { useTheme } from "next-themes"
 import { FaXTwitter, FaTelegram } from "react-icons/fa6"
 
 export function Footer() {
   const { t } = useTranslation()
   const [email, setEmail] = useState("")
-  const { theme } = useTheme()
-  const iconColor = theme === "dark" ? "white" : "black"
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -82,9 +79,9 @@ export function Footer() {
                 href="https://t.me/MevSmartDefi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity"
+                className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity text-foreground"
               >
-                <FaTelegram size={24} color={iconColor} />
+                <FaTelegram size={24} />
               </Link>
             </div>
           </div>

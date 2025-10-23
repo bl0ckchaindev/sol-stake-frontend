@@ -133,7 +133,7 @@ export function ReferralPage() {
       // Convert referral amount from lamports to actual token amount
       const referralAmountInTokens = (stake.userStake.referralAmount?.toNumber() || 0) / Math.pow(10, decimals);
       
-      console.log(`Pool ${stake.userStake.poolId}: referralAmount raw=${stake.userStake.referralAmount?.toNumber() || 0}, decimals=${decimals}, converted=${referralAmountInTokens}`);
+      // console.log(`Pool ${stake.userStake.poolId}: referralAmount raw=${stake.userStake.referralAmount?.toNumber() || 0}, decimals=${decimals}, converted=${referralAmountInTokens}`);
       
       if (stake.userStake.poolId === 0) {
         // SOL pool - convert to USD using current SOL price
@@ -148,7 +148,7 @@ export function ReferralPage() {
       }
     });
 
-    console.log(`Total referral rewards: USD=${totalReferralRewardsUsd}, SOL=${totalReferralRewardsSol}`);
+    // console.log(`Total referral rewards: USD=${totalReferralRewardsUsd}, SOL=${totalReferralRewardsSol}`);
 
     return {
       totalUsd: totalReferralRewardsUsd,

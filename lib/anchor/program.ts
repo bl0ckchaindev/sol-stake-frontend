@@ -94,7 +94,6 @@ export class MevStakingProgram {
         return null
       }      
       const globalData = await this.program.account.globalData.fetch(globalDataPDA)
-      console.log('log->globalData fetched successfully', globalData)
       return globalData
     } catch (error) {
       console.error("Error fetching global data:", error)
@@ -106,7 +105,6 @@ export class MevStakingProgram {
     try {
       const [poolInfoPDA] = this.getPoolInfoPDA(tokenMint)
       const poolInfo = await this.program.account.poolInfo.fetch(poolInfoPDA)
-      console.log('log-> poolInfo', tokenMint.toBase58(), poolInfoPDA.toBase58(), poolInfo)
       return poolInfo
     } catch (error) {
       console.error("Error fetching pool info:", error)
@@ -118,7 +116,6 @@ export class MevStakingProgram {
     try {
       const [userStakePDA] = this.getUserStakePDA(user, poolId)
       const userStake = await this.program.account.userStake.fetch(userStakePDA)
-      console.log('log-> userStake', userStakePDA.toBase58(), poolId, userStake)
       return userStake
     } catch (error) {
       console.error("Error fetching user stake:", error)
@@ -178,7 +175,6 @@ export class MevStakingProgram {
     lockPeriod: LockPeriod,
     referrer?: PublicKey
   ): Promise<string> {
-    console.log('log->stakeTokens params', tokenMint.toBase58(), poolId, amount.toString(), lockPeriod, referrer?.toBase58())
     const user = this.provider.wallet.publicKey
     if (!user) throw new Error("Wallet not connected")
 
@@ -195,8 +191,6 @@ export class MevStakingProgram {
     const [referrerPDA] = this.getUserStakePDA(finalReferrer, poolId)
     referrerStakePDA = referrerPDA
     
-    console.log('log->finalReferrer', finalReferrer.toBase58())
-    console.log('log->referrerStakePDA', referrerStakePDA.toBase58())
     // Determine if this is SOL or a token based on the mint
     const isSOL = tokenMint.equals(new PublicKey("So11111111111111111111111111111111111111112"))
     
@@ -230,19 +224,16 @@ export class MevStakingProgram {
     }
 
     // Referrer stake account (either actual referrer or PublicKey.default when no referrer)
-    console.log('log->referrerStakePDA added', referrerStakePDA.toBase58())
-    console.log('log->lockPeriod', lockPeriod)
-    console.log('log->accounts', accounts)
-    console.log('log->method args:', { 
-      poolId, 
-      amount: amount.toString(), 
-      lockPeriod, 
-      lockPeriodType: typeof lockPeriod,
-      lockPeriodValue: Object.keys(LockPeriod)[lockPeriod],
-      originalReferrer: referrer?.toBase58() || 'null',
-      finalReferrer: finalReferrer.toBase58(),
-      isDefaultReferrer: finalReferrer.equals(PublicKey.default)
-    })
+    // console.log('log->method args:', { 
+    //   poolId, 
+    //   amount: amount.toString(), 
+    //   lockPeriod, 
+    //   lockPeriodType: typeof lockPeriod,
+    //   lockPeriodValue: Object.keys(LockPeriod)[lockPeriod],
+    //   originalReferrer: referrer?.toBase58() || 'null',
+    //   finalReferrer: finalReferrer.toBase58(),
+    //   isDefaultReferrer: finalReferrer.equals(PublicKey.default)
+    // })
     
     try {
       // Convert enum to the format expected by Anchor
@@ -255,8 +246,6 @@ export class MevStakingProgram {
           default: return { freeLock: {} }
         }
       })()
-      
-      console.log('log->lockPeriodVariant', lockPeriodVariant)
 
       let tx: Transaction
       if (isSOL) {
@@ -270,10 +259,7 @@ export class MevStakingProgram {
           .accounts(accounts)
           .transaction()
       }
-      
-      console.log('log->transaction created successfully')
       const signature = await this.provider.sendAndConfirm(tx)
-      console.log('log->transaction confirmed:', signature)
       return signature
     } catch (error) {
       console.error('Stake transaction failed:', error)
@@ -351,7 +337,6 @@ export class MevStakingProgram {
     } else {
       const userAta = await getAssociatedTokenAddress(tokenMint, user)
       const poolAta = await getAssociatedTokenAddress(tokenMint, poolInfoPDA, true)
-      console.log('log->withdrawToken params', poolId, poolAta.toBase58(), amount.toString(), lockPeriod)
       accounts = {
         user,
         globalData: globalDataPDA,
@@ -364,7 +349,6 @@ export class MevStakingProgram {
         tokenProgram: TOKEN_PROGRAM_ID,
         systemProgram: SystemProgram.programId,
       }
-      console.log('log->withdrawToken accounts', accounts)
       tx = await this.program.methods
         .withdrawToken(poolId, amount, lockPeriod as number)
         .accounts(accounts)
