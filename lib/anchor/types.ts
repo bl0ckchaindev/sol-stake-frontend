@@ -5,7 +5,7 @@ import { BN } from "@coral-xyz/anchor"
 // 🎯 PROGRAM CONFIGURATION
 // ============================================================================
 
-export const PROGRAM_ID = new PublicKey("AbJ3DoPsWjHg3SLTV1CNP9Ep6dAJSFGAvrMx2AUmTgb9")
+export const PROGRAM_ID = new PublicKey("78MgM2W2VgNb6bgQcc98yx1WmG86QwYy1w51rAWwZz77")
 
 // PDA Seeds
 export const GLOBAL_DATA_SEED = "global-authority"
@@ -18,26 +18,13 @@ export const USER_AUTHORITY_SEED = "user-authority"
 // ============================================================================
 
 export enum LockPeriod {
-  FreeLock = 0,
-  OneWeek = 1,
-  OneMonth = 2,
-  ThreeMonths = 3,
-  SixMonths = 4,
+  OneMonth = 0,
+  ThreeMonths = 1,
+  SixMonths = 2,
+  OneYear = 3,
 }
 
 export const LOCK_PERIOD_CONFIG = {
-  [LockPeriod.FreeLock]: {
-    name: "No Lock",
-    duration: 0,
-    description: "Withdraw anytime",
-    emoji: "🔓"
-  },
-  [LockPeriod.OneWeek]: {
-    name: "1 Week",
-    duration: 7 * 24 * 60 * 60,
-    description: "7 days lock period",
-    emoji: "📅"
-  },
   [LockPeriod.OneMonth]: {
     name: "1 Month", 
     duration: 30 * 24 * 60 * 60,
@@ -55,6 +42,12 @@ export const LOCK_PERIOD_CONFIG = {
     duration: 180 * 24 * 60 * 60,
     description: "180 days lock period",
     emoji: "🔐"
+  },
+  [LockPeriod.OneYear]: {
+    name: "1 Year",
+    duration: 365 * 24 * 60 * 60,
+    description: "365 days lock period",
+    emoji: "🔐"
   }
 } as const
 
@@ -65,11 +58,10 @@ export const getLockPeriodConfig = (lockPeriod: LockPeriod, globalData?: GlobalD
   if (!globalData) {
     // Fallback multipliers if no global data
     const fallbackMultipliers = {
-      [LockPeriod.FreeLock]: 1.0,
-      [LockPeriod.OneWeek]: 1.2,
-      [LockPeriod.OneMonth]: 1.5,
-      [LockPeriod.ThreeMonths]: 2.0,
-      [LockPeriod.SixMonths]: 3.0
+      [LockPeriod.OneMonth]: 0.6,
+      [LockPeriod.ThreeMonths]: 1.0,
+      [LockPeriod.SixMonths]: 1.2,
+      [LockPeriod.OneYear]: 1.5
     }
     return {
       ...baseConfig,
@@ -83,7 +75,6 @@ export const getLockPeriodConfig = (lockPeriod: LockPeriod, globalData?: GlobalD
     globalData.tier1Reward,
     globalData.tier2Reward,
     globalData.tier3Reward,
-    globalData.tier4Reward
   ]
   
   const multiplier = tierRewards[lockPeriod] / 100
@@ -104,11 +95,10 @@ export interface GlobalData {
   nextPoolId: number
   poolCount: number
   pools: PublicKey[]
-  tier0Reward: number  // No Lock rewards
-  tier1Reward: number  // 1 Week rewards
-  tier2Reward: number  // 1 Month rewards
-  tier3Reward: number  // 3 Months rewards
-  tier4Reward: number  // 6 Months rewards
+  tier0Reward: number  // 1 Month
+  tier1Reward: number  // 3 Months
+  tier2Reward: number  // 6 Months
+  tier3Reward: number  // 12 Months
 }
 
 export interface PoolInfo {
@@ -126,15 +116,14 @@ export interface PoolInfo {
 export interface UserStake {
   user: PublicKey
   poolId: number
-  tier0Amount: BN  // No Lock amount
-  tier1Amount: BN  // 1 Week amount
-  tier2Amount: BN  // 1 Month amount
-  tier3Amount: BN  // 3 Months amount
-  tier4Amount: BN  // 6 Months amount
+  tier0Amount: BN  // 1 Month amount
+  tier1Amount: BN  // 3 Months amount
+  tier2Amount: BN  // 6 Months amount
+  tier3Amount: BN  // 12 Months amount
+  tier0WithdrawableTime: BN
   tier1WithdrawableTime: BN
   tier2WithdrawableTime: BN
   tier3WithdrawableTime: BN
-  tier4WithdrawableTime: BN
   lastClaimTime: BN
   totalClaimed: BN
   totalStaked: BN
@@ -192,7 +181,7 @@ export const SUPPORTED_TOKENS: Record<string, SupportedToken> = {
     color: "#9945FF"
   },
   USDC: {
-    mint: new PublicKey("7jjzvW2n1fSTjvzRyJu9jfboNZDZCSmiM9vfurZ9Bn9o"),
+    mint: new PublicKey("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"),
     symbol: "USDC",
     name: "USD Coin",
     decimals: 6,
@@ -200,15 +189,15 @@ export const SUPPORTED_TOKENS: Record<string, SupportedToken> = {
     icon: "/usdc.png",
     color: "#2775CA"
   },
-  // USDT: {
-  //   mint: new PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"),
-  //   symbol: "USDT",
-  //   name: "Tether",
-  //   decimals: 6,
-  //   poolId: 2,
-  //   icon: "/usdt.png",
-  //   color: "#26A17B"
-  // }
+  USDT: {
+    mint: new PublicKey("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB"),
+    symbol: "USDT",
+    name: "Tether",
+    decimals: 6,
+    poolId: 2,
+    icon: "/usdt.png",
+    color: "#26A17B"
+  }
 } as const
 
 // ============================================================================
@@ -334,7 +323,7 @@ export const getTierEmoji = (tierIndex: number): string => {
 // ============================================================================
 
 export type MevStaking = {
-  "address": "AbJ3DoPsWjHg3SLTV1CNP9Ep6dAJSFGAvrMx2AUmTgb9",
+  "address": "78MgM2W2VgNb6bgQcc98yx1WmG86QwYy1w51rAWwZz77",
   "metadata": {
     "name": "mevStaking",
     "version": "0.1.0",
@@ -3814,10 +3803,6 @@ export type MevStaking = {
           {
             "name": "tier3Reward",
             "type": "u16"
-          },
-          {
-            "name": "tier4Reward",
-            "type": "u16"
           }
         ]
       }
@@ -3853,12 +3838,6 @@ export type MevStaking = {
           },
           {
             "name": "tier3Reward",
-            "type": {
-              "option": "u16"
-            }
-          },
-          {
-            "name": "tier4Reward",
             "type": {
               "option": "u16"
             }
@@ -3906,12 +3885,6 @@ export type MevStaking = {
             }
           },
           {
-            "name": "tier4Reward",
-            "type": {
-              "option": "u16"
-            }
-          },
-          {
             "name": "timestamp",
             "type": "i64"
           }
@@ -3924,12 +3897,6 @@ export type MevStaking = {
         "kind": "enum",
         "variants": [
           {
-            "name": "freeLock"
-          },
-          {
-            "name": "oneWeek"
-          },
-          {
             "name": "oneMonth"
           },
           {
@@ -3937,6 +3904,9 @@ export type MevStaking = {
           },
           {
             "name": "sixMonths"
+          },
+          {
+            "name": "oneYear"
           }
         ]
       }
@@ -4219,8 +4189,8 @@ export type MevStaking = {
             "type": "u64"
           },
           {
-            "name": "tier4Amount",
-            "type": "u64"
+            "name": "tier0WithdrawableTime",
+            "type": "i64"
           },
           {
             "name": "tier1WithdrawableTime",
@@ -4232,10 +4202,6 @@ export type MevStaking = {
           },
           {
             "name": "tier3WithdrawableTime",
-            "type": "i64"
-          },
-          {
-            "name": "tier4WithdrawableTime",
             "type": "i64"
           },
           {

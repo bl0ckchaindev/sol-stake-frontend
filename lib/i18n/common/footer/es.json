@@ -21,9 +21,9 @@
     "privacyPolicy": "Política de Privacidad",
     "riskDisclosure": "Divulgación de Riesgos",
     "about": "Acerca de",
-    "pricing": "Precios",
-    "jobs": "Empleos",
-    "blog": "Blog"
+    "performance": "Rendimiento",
+    "howItWorks": "Cómo funciona",
+    "faq": "FAQ"
   },
   "copyright": "© {{year}} Copyright By Mev Stake"
 }

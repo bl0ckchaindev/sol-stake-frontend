@@ -124,7 +124,7 @@ export function StatsSection() {
   ]
 
   return (
-    <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
+    <section id="performance" className="py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <MotionWrapper type="slideUp" trigger="inView" className="text-center mb-20">
           <Badge variant="secondary" className="mb-4 text-sm">

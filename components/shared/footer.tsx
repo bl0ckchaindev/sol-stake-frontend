@@ -70,16 +70,16 @@ export function Footer() {
 
             {/* Social Icons - X and Telegram only */}
             <div className="flex gap-3">
-              <Link
+              {/* <Link
                 href="https://x.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity"
               >
                 <FaXTwitter size={24} color={iconColor} />
-              </Link>
+              </Link> */}
               <Link
-                href="https://t.me"
+                href="https://t.me/MevSmartDefi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 lg:w-10 lg:h-10 flex items-center justify-center hover:opacity-80 transition-opacity"
@@ -116,17 +116,17 @@ export function Footer() {
                   {t('common.footer.sections.company')}
                 </h4>
                 <div className="space-y-3">
-                  <Link href="/" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href="/#about" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
                     {t('common.footer.links.about')}
                   </Link>
-                  <Link href="/" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
-                    {t('common.footer.links.pricing')}
+                  <Link href="/#performance" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
+                    {t('common.footer.links.performance')}
                   </Link>
-                  <Link href="/" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
-                    {t('common.footer.links.jobs')}
+                  <Link href="/#how-it-works" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
+                    {t('common.footer.links.howItWorks')}
                   </Link>
-                  <Link href="/" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
-                    {t('common.footer.links.blog')}
+                  <Link href="/#faq" className="block font-poppins font-normal text-base leading-tight text-muted-foreground hover:text-foreground transition-colors">
+                    {t('common.footer.links.faq')}
                   </Link>
                 </div>
               </div>

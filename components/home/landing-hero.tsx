@@ -11,7 +11,7 @@ export function LandingHero() {
   const { t } = useTranslation()
 
   return (
-    <MotionWrapper type="fadeIn" className="relative overflow-hidden bg-background">
+    <section id="about" className="relative overflow-hidden bg-background">
       {/* Hero background image - lowest z-index */}
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none z-0" style={{ backgroundImage: "url('/hero-background.png')" }}>
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
@@ -37,7 +37,7 @@ export function LandingHero() {
       <MotionWrapper type="slideDown" delay={0.1} className="bg-gradient-accent border-b relative z-20">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-center gap-3 text-sm">
-            <div className="w-2 h-2 bg-gradient-primary rounded-full animate-pulse" />
+            <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
             <span className="text-muted-foreground font-medium">{t('home.hero.announcement')}</span>
             <ArrowRight className="w-4 h-4 text-muted-foreground" />
           </div>
@@ -70,7 +70,7 @@ export function LandingHero() {
                 {/* Enhanced countdown timer */}
                 {/* <MotionWrapper type="fadeIn" delay={0.9} className="mt-12">
                   <div className="max-w-2xl mx-auto lg:mx-0">
-                    <CountdownTimer targetDate="2025-10-10T10:00:00Z" />
+                    <CountdownTimer targetDate="2025-12-31T23:59:59Z" />
                   </div>
                 </MotionWrapper> */}
 
@@ -159,6 +159,6 @@ export function LandingHero() {
 
         </div>
       </div>
-    </MotionWrapper>
+    </section>
   )
 }

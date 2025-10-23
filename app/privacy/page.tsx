@@ -26,7 +26,7 @@ export default function PrivacyPage() {
             <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-foreground">
               {t('privacy.title')}
             </h1>
-            <p className="text-lg text-muted-foreground">{t('privacy.lastUpdated')}: {new Date().toLocaleDateString()}</p>
+            <p className="text-lg text-muted-foreground">{t('privacy.lastUpdated')}: October 24, 2025</p>
           </div>
 
           <section className="mb-8">

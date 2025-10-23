@@ -38,7 +38,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
   
   const [amount, setAmount] = useState("")
   const [withdrawAmount, setWithdrawAmount] = useState("")
-  const [lockPeriod, setLockPeriod] = useState<LockPeriod>(LockPeriod.FreeLock)
+  const [lockPeriod, setLockPeriod] = useState<LockPeriod>(LockPeriod.ThreeMonths)
   const [isStaking, setIsStaking] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [isClaiming, setIsClaiming] = useState(false)
@@ -102,15 +102,14 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
 
   // Get current lock period from user stake
   const getCurrentLockPeriod = () => {
-    if (!userStake) return LockPeriod.FreeLock
+    if (!userStake) return LockPeriod.ThreeMonths
     
     // Determine primary lock period based on largest stake
     const amounts = [
       userStake.userStake.tier0Amount.toNumber(),
       userStake.userStake.tier1Amount.toNumber(),
       userStake.userStake.tier2Amount.toNumber(),
-      userStake.userStake.tier3Amount.toNumber(),
-      userStake.userStake.tier4Amount.toNumber(),
+      userStake.userStake.tier3Amount.toNumber()
     ]
     
     const maxIndex = amounts.indexOf(Math.max(...amounts))

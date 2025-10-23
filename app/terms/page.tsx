@@ -26,7 +26,7 @@ export default function TermsPage() {
             <h1 className="text-4xl lg:text-5xl font-bold mb-4 text-foreground">
               {t('terms.title')}
             </h1>
-            <p className="text-lg text-muted-foreground">{t('terms.lastUpdated')}: {new Date().toLocaleDateString()}</p>
+            <p className="text-lg text-muted-foreground">{t('terms.lastUpdated')}: October 24, 2025</p>
           </div>
 
           <section className="mb-8">

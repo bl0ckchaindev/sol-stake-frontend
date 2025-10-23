@@ -165,7 +165,6 @@ export function AnchorStakingProvider({ children }: { children: ReactNode }) {
       { amount: stake.userStake.tier1Amount, rate: globalData.tier1Reward },
       { amount: stake.userStake.tier2Amount, rate: globalData.tier2Reward },
       { amount: stake.userStake.tier3Amount, rate: globalData.tier3Reward },
-      { amount: stake.userStake.tier4Amount, rate: globalData.tier4Reward },
     ]
 
     let poolDailyRewards = 0

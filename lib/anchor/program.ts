@@ -94,7 +94,7 @@ export class MevStakingProgram {
         return null
       }      
       const globalData = await this.program.account.globalData.fetch(globalDataPDA)
-      console.log('log->globalData fetched successfully', globalData.pools[0].toBase58())
+      console.log('log->globalData fetched successfully', globalData)
       return globalData
     } catch (error) {
       console.error("Error fetching global data:", error)
@@ -248,11 +248,10 @@ export class MevStakingProgram {
       // Convert enum to the format expected by Anchor
       const lockPeriodVariant = (() => {
         switch (lockPeriod) {
-          case LockPeriod.FreeLock: return { freeLock: {} }
-          case LockPeriod.OneWeek: return { oneWeek: {} }
           case LockPeriod.OneMonth: return { oneMonth: {} }
           case LockPeriod.ThreeMonths: return { threeMonths: {} }
           case LockPeriod.SixMonths: return { sixMonths: {} }
+          case LockPeriod.OneYear: return { oneYear: {} }
           default: return { freeLock: {} }
         }
       })()
@@ -522,7 +521,6 @@ export class MevStakingProgram {
       { amount: userStake.tier1Amount, rate: globalData.tier1Reward },
       { amount: userStake.tier2Amount, rate: globalData.tier2Reward },
       { amount: userStake.tier3Amount, rate: globalData.tier3Reward },
-      { amount: userStake.tier4Amount, rate: globalData.tier4Reward },
     ]
 
     for (const tier of tiers) {
@@ -561,7 +559,6 @@ export class MevStakingProgram {
       { amount: userStake.tier1Amount, rate: globalData.tier1Reward },
       { amount: userStake.tier2Amount, rate: globalData.tier2Reward },
       { amount: userStake.tier3Amount, rate: globalData.tier3Reward },
-      { amount: userStake.tier4Amount, rate: globalData.tier4Reward },
     ]
 
     for (const tier of tiers) {
@@ -585,7 +582,6 @@ export class MevStakingProgram {
       userStake.tier1Amount.toNumber(),
       userStake.tier2Amount.toNumber(),
       userStake.tier3Amount.toNumber(),
-      userStake.tier4Amount.toNumber(),
     ]
     
     const maxIndex = amounts.indexOf(Math.max(...amounts))
