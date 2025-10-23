@@ -6,7 +6,7 @@
     "tvl": {
       "value": "$2M+",
       "label": "Valore Totale Bloccato",
-      "description": "Asset garantiti nella nostra infrastruttura MEV"
+      "description": "Valore totale bloccato in tutti i pool (SOL, USDC, USDT)"
     },
     "apy": {
       "value": "365%",
@@ -22,6 +22,14 @@
       "value": "24/7",
       "label": "Monitoraggio MEV",
       "description": "Identificazione continua delle opportunità"
+    },
+    "totalClaimed": {
+      "label": "Totale Reclamato",
+      "description": "Totale ricompense distribuite in tutti i pool"
+    },
+    "dailyMevProfit": {
+      "label": "Profitto MEV Giornaliero",
+      "description": "In tutte le strategie"
     }
   },
   "additional": {

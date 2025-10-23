@@ -6,7 +6,7 @@
     "tvl": {
       "value": "$2M+",
       "label": "Total Value Locked",
-      "description": "Assets secured in our MEV infrastructure"
+      "description": "Total value locked across all pools (SOL, USDC, USDT)"
     },
     "apy": {
       "value": "365%",
@@ -22,6 +22,14 @@
       "value": "24/7",
       "label": "MEV Monitoring",
       "description": "Continuous opportunity identification"
+    },
+    "totalClaimed": {
+      "label": "Total Claimed",
+      "description": "Total rewards distributed across all pools"
+    },
+    "dailyMevProfit": {
+      "label": "Daily MEV Profit",
+      "description": "Across all strategies"
     }
   },
   "additional": {

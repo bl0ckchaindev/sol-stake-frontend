@@ -2,13 +2,71 @@
  * Price utilities for converting SOL to USD and other currencies
  */
 
+// React hook import
+import { useState, useEffect } from 'react'
+
 // Cache for price data
 let priceCache: { price: number; timestamp: number } | null = null
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+const FALLBACK_PRICE = 100 // Default fallback price
+
+// File storage operations via API routes
+const savePriceToFile = async (price: number, timestamp: number): Promise<boolean> => {
+  try {
+    const response = await fetch('/api/price/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        price,
+        timestamp,
+        source: 'coingecko'
+      })
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    return true
+  } catch (error) {
+    console.warn('Failed to save price to file:', error)
+    return false
+  }
+}
+
+// Load cached price from file storage
+const loadCachedPrice = async (): Promise<{ price: number; timestamp: number } | null> => {
+  try {
+    const response = await fetch('/api/price/load')
+    
+    if (!response.ok) {
+      if (response.status === 404) {
+        return null // No cached data
+      }
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const data = await response.json()
+    return { price: data.price, timestamp: data.timestamp }
+  } catch (error) {
+    console.warn('Failed to load cached price from file:', error)
+    return null
+  }
+}
+
+// Initialize cache from file storage
+const initializeCache = async () => {
+  priceCache = await loadCachedPrice()
+}
+
+// Initialize cache on module load
+initializeCache()
 
 /**
  * Get current SOL price in USD
- * Uses CoinGecko API with caching
+ * Uses CoinGecko API with file storage persistence
  */
 export async function getSolPrice(): Promise<number> {
   // Return cached price if still valid
@@ -37,25 +95,33 @@ export async function getSolPrice(): Promise<number> {
       throw new Error('Invalid price data received')
     }
 
-    // Cache the price
-    priceCache = {
-      price,
-      timestamp: Date.now()
-    }
+    // Cache the price in memory and save to file
+    const timestamp = Date.now()
+    priceCache = { price, timestamp }
+    await savePriceToFile(price, timestamp)
 
+    console.log('SOL price updated and saved to file:', price)
     return price
   } catch (error) {
     console.error('Failed to fetch SOL price:', error)
     
-    // Return cached price if available, otherwise fallback
+    // Return cached price if available (from memory or file)
     if (priceCache) {
       console.warn('Using cached SOL price due to API error')
       return priceCache.price
     }
     
-    // Fallback price (you might want to update this periodically)
+    // Try to load from file as last resort
+    const cached = await loadCachedPrice()
+    if (cached) {
+      console.warn('Using file cached SOL price')
+      priceCache = cached
+      return cached.price
+    }
+    
+    // Final fallback price
     console.warn('Using fallback SOL price')
-    return 100 // Fallback price
+    return FALLBACK_PRICE
   }
 }
 
@@ -95,7 +161,60 @@ export function formatSol(amount: number, decimals: number = 4): string {
 }
 
 /**
+ * Force refresh the SOL price (bypasses cache)
+ */
+export async function refreshSolPrice(): Promise<number> {
+  // Clear cache to force fresh fetch
+  priceCache = null
+  
+  // Fetch fresh data and save to file
+  try {
+    const response = await fetch(
+      'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd'
+    )
+
+    if (response.ok) {
+      const data = await response.json()
+      const price = data.solana?.usd
+
+      if (typeof price === 'number' && price > 0) {
+        const timestamp = Date.now()
+        priceCache = { price, timestamp }
+        await savePriceToFile(price, timestamp)
+        console.log('SOL price refreshed and saved to file:', price)
+        return price
+      }
+    }
+  } catch (error) {
+    console.warn('Failed to refresh price:', error)
+  }
+  
+  return await getSolPrice()
+}
+
+/**
+ * Get cached price without making API call
+ */
+export async function getCachedSolPrice(): Promise<number | null> {
+  // First check memory cache
+  if (priceCache && Date.now() - priceCache.timestamp < 24 * 60 * 60 * 1000) {
+    return priceCache.price
+  }
+  
+  // Then check file cache
+  const cached = await loadCachedPrice()
+  if (cached && Date.now() - cached.timestamp < 24 * 60 * 60 * 1000) {
+    priceCache = cached
+    return cached.price
+  }
+  
+  // Return fallback price if no valid cache
+  return FALLBACK_PRICE
+}
+
+/**
  * Get price with loading state for React components
+ * Includes automatic periodic updates
  */
 export function useSolPrice() {
   const [price, setPrice] = useState<number | null>(null)
@@ -104,6 +223,7 @@ export function useSolPrice() {
 
   useEffect(() => {
     let mounted = true
+    let intervalId: NodeJS.Timeout | null = null
 
     const fetchPrice = async () => {
       try {
@@ -125,15 +245,41 @@ export function useSolPrice() {
       }
     }
 
-    fetchPrice()
+    // First, try to load cached price immediately
+    const loadCachedPriceFirst = async () => {
+      try {
+        const cached = await getCachedSolPrice()
+        if (cached && mounted) {
+          setPrice(cached)
+          setLoading(false)
+        }
+      } catch (err) {
+        console.warn('Failed to load cached price:', err)
+      }
+    }
+
+    // Load cached price first, then fetch fresh data
+    loadCachedPriceFirst().then(() => {
+      if (mounted) {
+        fetchPrice()
+      }
+    })
+
+    // Set up periodic updates every 5 minutes
+    intervalId = setInterval(() => {
+      if (mounted) {
+        fetchPrice()
+      }
+    }, 5 * 60 * 1000)
 
     return () => {
       mounted = false
+      if (intervalId) {
+        clearInterval(intervalId)
+      }
     }
   }, [])
 
   return { price, loading, error }
 }
 
-// React hook import
-import { useState, useEffect } from 'react'

@@ -151,8 +151,7 @@ export function AnchorStakingDashboard() {
       globalData.tier0Reward,
       globalData.tier1Reward,
       globalData.tier2Reward,
-      globalData.tier3Reward,
-      globalData.tier4Reward
+      globalData.tier3Reward
     )
     
     const dailyRate = maxRate / 10000 // Convert from basis points

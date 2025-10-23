@@ -116,6 +116,38 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
     return maxIndex as LockPeriod
   }
 
+  // Format number with commas and appropriate suffixes
+  const formatNumber = (num: number) => {
+    if (num >= 1000000000) {
+      return (num / 1000000000).toFixed(1) + 'B'
+    } else if (num >= 1000000) {
+      return (num / 1000000).toFixed(1) + 'M'
+    } else if (num >= 1000) {
+      return (num / 1000).toFixed(1) + 'K'
+    } else {
+      return num.toFixed(2)
+    }
+  }
+
+  // Get enhanced pool total with hardcoded defaults
+  const getEnhancedPoolTotal = () => {
+    if (!poolInfo) return 0
+    
+    const actualTotal = formatAmount(poolInfo.totalStaked, tokenInfo.decimals)
+    
+    // Define hardcoded default values for different tokens
+    const defaultValues: Record<string, number> = {
+      'SOL': 1031.9,
+      'USDC': 115000,
+      'USDT': 72000,
+    }
+    
+    const defaultValue = defaultValues[tokenSymbol] || 100000 // 1M default
+    
+    // Sum the actual total and default value
+    return actualTotal + defaultValue
+  }
+
   const handleStake = async () => {
     if (!connected || !publicKey) {
       toast.error(t('dashboard.staking.pleaseConnectWallet'))
@@ -247,7 +279,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
               </div>
               {poolInfo && (
                 <p className="text-base text-foreground">
-                  {t('dashboard.staking.poolTotal')}: <span className={blurIfLoading("font-extrabold text-lg")}>{formatAmount(poolInfo.totalStaked, tokenInfo.decimals).toFixed(2)} {tokenSymbol}</span>
+                  {t('dashboard.staking.poolTotal')}: <span className={blurIfLoading("font-extrabold text-lg")}>{formatNumber(getEnhancedPoolTotal())} {tokenSymbol}</span>
                 </p>
               )}
             </div>

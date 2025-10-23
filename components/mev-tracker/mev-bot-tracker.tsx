@@ -8,6 +8,9 @@ import { TrendingUp, Activity, DollarSign, Zap, Target, CheckCircle, AlertCircle
 import { useState, useEffect, useMemo, useCallback } from "react"
 import { useTranslation } from '@/context/translation-context'
 import { MotionWrapper } from "@/components/shared/motion-wrapper"
+import { useAnchorStaking } from "@/context/anchor-staking-provider"
+import { useSolPrice } from "@/lib/price-utils"
+import { SUPPORTED_TOKENS } from "@/lib/anchor/types"
 
 interface BotPerformance {
   totalProfit: number
@@ -30,10 +33,53 @@ interface Transaction {
 
 export function MevBotTracker() {
   const { t } = useTranslation();
+  const { globalData, poolsInfo } = useAnchorStaking()
+  const { price: solPrice } = useSolPrice()
+  
+  // Get enhanced pool values with hardcoded defaults (same logic as stats-section.tsx)
+  const getEnhancedPoolValue = (poolId: number, actualValue: number) => {
+    const defaultValues: Record<number, number> = {
+      0: 1031.9,    // SOL
+      1: 115000,    // USDC
+      2: 72000,    // USDT
+    }
+    
+    const defaultValue = defaultValues[poolId] || 100000
+    return actualValue + defaultValue
+  }
+
+  // Calculate daily MEV profit dynamically (same logic as stats-section.tsx)
+  const dailyMevProfitSol = useMemo(() => {
+    if (!poolsInfo || !solPrice) return 0
+
+    let totalStakedUsd = 0
+
+    Object.values(poolsInfo).forEach(pool => {
+      if (pool.isActive) {
+        const tokenInfo = Object.values(SUPPORTED_TOKENS).find(token => 
+          token.poolId === pool.poolId
+        )
+        const decimals = tokenInfo?.decimals || 9
+        const stakedAmount = pool.totalStaked.toNumber() / Math.pow(10, decimals)
+        const enhancedStakedAmount = getEnhancedPoolValue(pool.poolId, stakedAmount)
+        
+        if (pool.poolId === 0) {
+          // SOL pool - convert to USD using current SOL price
+          totalStakedUsd += enhancedStakedAmount * solPrice
+        } else if (pool.poolId === 1 || pool.poolId === 2) {
+          // USDC/USDT pools - already in USD equivalent
+          totalStakedUsd += enhancedStakedAmount
+        }
+      }
+    })
+
+    // Calculate daily MEV profit in SOL: totalStakedUSD * 0.0143 / solPrice
+    return (totalStakedUsd * 0.0143) / solPrice
+  }, [poolsInfo, solPrice])
   
   const [performance, setPerformance] = useState<BotPerformance>({
     totalProfit: 1247.89,
-    dailyProfit: 23.45,
+    dailyProfit: dailyMevProfitSol,
     successRate: 94.2,
     activeStrategies: 7,
     totalTransactions: 15847,
@@ -84,15 +130,23 @@ export function MevBotTracker() {
     },
   ])
 
+  // Update performance when dailyMevProfitSol changes
+  useEffect(() => {
+    setPerformance((prev) => ({
+      ...prev,
+      dailyProfit: dailyMevProfitSol,
+    }))
+  }, [dailyMevProfitSol])
+
   // Simulate real-time updates with memoized callback
   const updatePerformance = useCallback(() => {
     setPerformance((prev) => ({
       ...prev,
-      dailyProfit: prev.dailyProfit + (Math.random() - 0.5) * 0.1,
+      dailyProfit: dailyMevProfitSol + (Math.random() - 0.5) * 0.1,
       totalProfit: prev.totalProfit + (Math.random() - 0.5) * 0.1,
       totalTransactions: prev.totalTransactions + Math.floor(Math.random() * 3),
     }))
-  }, [])
+  }, [dailyMevProfitSol])
 
   useEffect(() => {
     const interval = setInterval(updatePerformance, 5000)

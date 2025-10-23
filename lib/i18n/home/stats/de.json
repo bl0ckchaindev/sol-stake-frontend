@@ -6,7 +6,7 @@
     "tvl": {
       "value": "$2M+",
       "label": "Gesamter Gesperrter Wert",
-      "description": "Vermögenswerte in unserer MEV-Infrastruktur gesichert"
+      "description": "Gesamter gesperrter Wert über alle Pools (SOL, USDC, USDT)"
     },
     "apy": {
       "value": "365%",
@@ -22,6 +22,14 @@
       "value": "24/7",
       "label": "MEV-Überwachung",
       "description": "Kontinuierliche Möglichkeitserkennung"
+    },
+    "totalClaimed": {
+      "label": "Gesamt Ausgezahlt",
+      "description": "Gesamte Belohnungen über alle Pools verteilt"
+    },
+    "dailyMevProfit": {
+      "label": "Täglicher MEV-Gewinn",
+      "description": "Über alle Strategien"
     }
   },
   "additional": {
