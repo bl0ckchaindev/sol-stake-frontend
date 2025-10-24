@@ -212,6 +212,30 @@ export function AnchorStakingProvider({ children }: { children: ReactNode }) {
   // For backward compatibility, keep totalRewards as SOL amount
   const totalRewards = totalRewardsByToken.SOL || 0
 
+  // Fetch public data (global data and pool info) without requiring wallet connection
+  const fetchPublicData = useCallback(async () => {
+    if (!program || mevStakingLoading) return
+
+    try {
+      // Fetch global data
+      const globalDataResult = await program.getGlobalData()
+      setGlobalData(globalDataResult)
+
+      // Fetch pool info for each supported token
+      const pools: Record<string, PoolInfo> = {}
+      for (const [symbol, token] of Object.entries(SUPPORTED_TOKENS)) {
+        const poolInfo = await program.getPoolInfo(token.mint)
+        if (poolInfo) {
+          pools[symbol] = poolInfo
+        }
+      }
+      setPoolsInfo(pools)
+
+    } catch (error) {
+      console.error("Error fetching public data:", error)
+    }
+  }, [program, mevStakingLoading])
+
   // Data fetching functions
   const refreshData = useCallback(async (isInitialLoad: boolean = false) => {
     if (!program || !publicKey || mevStakingLoading) return
@@ -276,6 +300,13 @@ export function AnchorStakingProvider({ children }: { children: ReactNode }) {
     }
   }, [program, publicKey])
 
+  // Fetch public data (global data and pool info) when program is available
+  useEffect(() => {
+    if (program && !mevStakingLoading) {
+      fetchPublicData()
+    }
+  }, [program, mevStakingLoading, fetchPublicData])
+
   // Refresh data when wallet connects (moved after refreshData declaration)
   useEffect(() => {
     if (connected && publicKey && program) {
@@ -284,9 +315,9 @@ export function AnchorStakingProvider({ children }: { children: ReactNode }) {
       }
       // Remove automatic background refresh on every dependency change
     } else {
+      // Only clear user-specific data when wallet disconnects
+      // Keep global data and pool info as they are public
       setStakes([])
-      setGlobalData(null)
-      setPoolsInfo({})
       setTransactions([])
       setHasInitialData(false)
     }
@@ -296,10 +327,9 @@ export function AnchorStakingProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (connected && publicKey && program && hasInitialData) {
       
-      // Clear existing data first
+      // Clear only user-specific data when wallet changes
+      // Keep global data and pool info as they are public
       setStakes([])
-      setGlobalData(null)
-      setPoolsInfo({})
       setTransactions([])
       setHasInitialData(false)
       

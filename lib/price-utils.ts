@@ -10,59 +10,69 @@ let priceCache: { price: number; timestamp: number } | null = null
 const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
 const FALLBACK_PRICE = 100 // Default fallback price
 
-// File storage operations via API routes
+// File storage operations via localStorage (for static export)
 const savePriceToFile = async (price: number, timestamp: number): Promise<boolean> => {
+  // Skip API calls during build time
+  if (typeof window === 'undefined') {
+    return false
+  }
+
   try {
-    const response = await fetch('/api/price/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        price,
-        timestamp,
-        source: 'coingecko'
-      })
-    })
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`)
+    // Use localStorage for static export
+    const priceData = {
+      price,
+      timestamp,
+      source: 'coingecko',
+      savedAt: new Date().toISOString()
     }
-
+    
+    localStorage.setItem('sol-price-cache', JSON.stringify(priceData))
     return true
   } catch (error) {
-    console.warn('Failed to save price to file:', error)
+    console.warn('Failed to save price to localStorage:', error)
     return false
   }
 }
 
-// Load cached price from file storage
+// Load cached price from localStorage (for static export)
 const loadCachedPrice = async (): Promise<{ price: number; timestamp: number } | null> => {
+  // Skip API calls during build time
+  if (typeof window === 'undefined') {
+    return null
+  }
+
   try {
-    const response = await fetch('/api/price/load')
-    
-    if (!response.ok) {
-      if (response.status === 404) {
-        return null // No cached data
-      }
-      throw new Error(`HTTP error! status: ${response.status}`)
+    const cached = localStorage.getItem('sol-price-cache')
+    if (!cached) {
+      return null
     }
 
-    const data = await response.json()
+    const data = JSON.parse(cached)
+    
+    // Check if data is still valid (within 24 hours)
+    if (Date.now() - data.timestamp > 24 * 60 * 60 * 1000) {
+      return null
+    }
+    
     return { price: data.price, timestamp: data.timestamp }
   } catch (error) {
-    console.warn('Failed to load cached price from file:', error)
+    console.warn('Failed to load cached price from localStorage:', error)
     return null
   }
 }
 
 // Initialize cache from file storage
 const initializeCache = async () => {
-  priceCache = await loadCachedPrice()
+  // Only initialize in browser environment
+  if (typeof window !== 'undefined') {
+    priceCache = await loadCachedPrice()
+  }
 }
 
-// Initialize cache on module load
-initializeCache()
+// Initialize cache only in browser environment
+if (typeof window !== 'undefined') {
+  initializeCache()
+}
 
 /**
  * Get current SOL price in USD
