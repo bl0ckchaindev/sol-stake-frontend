@@ -21,7 +21,7 @@ const socialLinks: SocialLink[] = [
   },
   {
     name: "Telegram",
-    href: "https://t.me/mevstake",
+    href: "https://t.me/MevSmartDefi",
     icon: Users,
     description: "Get real-time support and announcements",
   },

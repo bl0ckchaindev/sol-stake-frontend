@@ -235,11 +235,32 @@ export function FAQSection() {
                 {t('home.faq.support.subtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="btn-gradient-primary hover:gradient-hover">
-                  {t('home.faq.support.contactSupport')}
+                <Button 
+                  size="lg" 
+                  className="btn-gradient-primary hover:gradient-hover"
+                  asChild
+                >
+                  <a 
+                    href="mailto:support@mevstake.fi"
+                    className="flex items-center gap-2"
+                  >
+                    {t('home.faq.support.contactSupport')}
+                  </a>
                 </Button>
-                <Button size="lg" variant="outline" className="hover:bg-gradient-card">
-                  {t('home.faq.support.joinCommunity')}
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="hover:bg-gradient-card"
+                  asChild
+                >
+                  <a 
+                    href="https://t.me/MevSmartDefi" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    {t('home.faq.support.joinCommunity')}
+                  </a>
                 </Button>
               </div>
             </div>

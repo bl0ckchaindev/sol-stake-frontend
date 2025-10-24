@@ -106,7 +106,7 @@ export function ComingSoon({ targetDate }: ComingSoonProps) {
                         {t('comingSoon.contactDescription')}
                       </p>
                       <Button variant="outline" className="w-full" asChild>
-                        <a href="mailto:support@mevstake.com">
+                        <a href="mailto:support@mevstake.fi">
                           <Mail className="w-4 h-4 mr-2" />
                           {t('comingSoon.contactButton')}
                         </a>
