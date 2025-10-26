@@ -20,7 +20,7 @@
     },
     "step4": {
       "title": "Reward Distribution",
-      "description": "Earn 1% daily rewards from MEV profits while your principal remains locked for 90 days. Referral rewards are automatically staked with 90-day lock period.",
+      "description": "Earn 1% daily rewards from MEV profits. Referral rewards are automatically staked.",
       "badge": "Step 4"
     }
   },

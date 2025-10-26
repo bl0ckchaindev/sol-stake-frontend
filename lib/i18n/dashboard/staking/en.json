@@ -1,6 +1,6 @@
 {
   "availableTokens": "Available Tokens",
-  "selectToken": "Select a token to start staking with 90-day lock period. Current APY:",
+  "selectToken": "Select a token to start staking. Current APY:",
   "balance": "Balance:",
   "stake": "Stake",
   "connectWallet": "Connect Wallet",

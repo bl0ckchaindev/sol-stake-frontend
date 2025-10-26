@@ -1,7 +1,6 @@
 {
   "title": "Calcolatore di Ricompense",
   "stakeAmount": "Importo da Stake",
-  "lockPeriod": "Periodo di Blocco (Giorni)",
   "dailyReward": "Ricompensa Giornaliera",
   "totalRewards": "Ricompense Totali",
   "apy": "APY",

@@ -19,7 +19,7 @@ export interface StakeRewardParams {
 
 export class RewardEngine {
   private static readonly DAILY_RATE = 0.01 // 1% daily
-  private static readonly LOCK_PERIOD_DAYS = 90
+  private static readonly LOCK_PERIOD_DAYS = 365
   private static readonly SECONDS_PER_DAY = 24 * 60 * 60 * 1000
 
   /**

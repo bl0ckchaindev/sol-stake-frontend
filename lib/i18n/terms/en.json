@@ -9,7 +9,7 @@
     "description": {
       "title": "2. Description of Service",
       "content": "MEVStake is a decentralized finance (DeFi) platform built on the Solana blockchain that enables users to stake cryptocurrency tokens and participate in Maximum Extractable Value (MEV) bot operations. Our sophisticated MEV bot infrastructure continuously monitors Solana decentralized exchanges (DEXs) to identify and execute profitable trading opportunities including arbitrage, liquidation, and other MEV extraction strategies. The Platform operates as a non-custodial service, meaning users maintain full control of their private keys and funds while participating in our staking pools.",
-      "rewards": "Users receive daily rewards based on actual MEV bot performance, with a target of approximately 1% daily returns (subject to market conditions and bot performance). All staked assets are subject to a mandatory 90-day lock period to ensure optimal MEV capture opportunities. Rewards are distributed proportionally based on each user's stake size and can be claimed daily while the principal remains locked. Referral rewards are set at 10% of the referred user's stake amount and are automatically staked for 90 days upon generation.",
+      "rewards": "Users receive daily rewards based on actual MEV bot performance, with a target of approximately 1% daily returns (subject to market conditions and bot performance). IMPORTANT: All staked assets are subject to a mandatory 1-year lock period to ensure optimal MEV capture opportunities. Rewards are distributed proportionally based on each user's stake size and can be claimed daily while the principal remains locked. Referral rewards are set at 10% of the referred user's stake amount and are automatically staked for 1 year upon generation.",
       "tokens": "The Platform currently supports staking of the following tokens: SOL (Solana), USDC (USD Coin), USDT (Tether), and select approved meme tokens. The list of supported tokens may be updated periodically based on market conditions and technical requirements.",
       "technology": "Our MEV bot infrastructure utilizes advanced algorithms and real-time market analysis to identify profitable opportunities across multiple Solana DEXs including Raydium, Orca, Jupiter, and others. The bots execute trades automatically to capture MEV opportunities while maintaining competitive advantages through speed and efficiency."
     },
@@ -22,7 +22,7 @@
         "Smart contract risks including potential bugs, vulnerabilities, or exploits that could result in loss of funds",
         "Solana network risks including downtime, congestion, high transaction fees, and network upgrades",
         "Regulatory risks as cryptocurrency regulations evolve in your jurisdiction",
-        "Liquidity risks during the 90-day lock period - you cannot withdraw funds early",
+        "Liquidity risks during the 1-year lock period - you cannot withdraw funds early",
         "Impermanent loss and slippage risks during MEV bot trading operations",
         "Technology risks including software bugs, hardware failures, or network attacks",
         "Market risks including extreme volatility, flash crashes, and manipulation",
@@ -37,7 +37,7 @@
       "title": "4. Staking Terms and Conditions",
       "overview": "MEVStake operates a sophisticated staking system that enables users to participate in MEV bot operations while maintaining full custody of their assets. The following terms govern all staking activities on the Platform.",
       "terms": [
-        "Minimum staking period: 90 days from the date of deposit (no early withdrawal permitted under any circumstances)",
+        "Minimum staking period: 1 year from the date of deposit (no early withdrawal permitted under any circumstances)",
         "Target daily rewards: 1% (subject to actual MEV bot performance, market conditions, and network congestion)",
         "Supported tokens: SOL, USDC, USDT, and approved meme tokens (list may change with 30 days notice)",
         "Rewards are distributed daily based on actual MEV bot profits and your proportional stake size",
@@ -84,7 +84,7 @@
           "Platform takes no fees from user rewards - 100% of MEV profits go to stakers"
         ]
       },
-      "referral": "Referral Program Terms: Referrers earn 10% of the stake amount from users they refer. Referral rewards are automatically staked for 90 days upon generation. Referral codes are non-transferable and tied to the original wallet address. The Platform reserves the right to modify or terminate the referral program at any time with 30 days notice.",
+      "referral": "Referral Program Terms: Referrers earn 10% of the stake amount from users they refer. Referral rewards are automatically staked for 1 year upon generation. Referral codes are non-transferable and tied to the original wallet address. The Platform reserves the right to modify or terminate the referral program at any time with 30 days notice.",
       "emergencyProcedures": {
         "title": "Emergency Procedures",
         "items": [
@@ -232,7 +232,7 @@
     },
     "termination": {
       "title": "9. Termination and Suspension",
-      "content": "We reserve the right to terminate or suspend your access to the Platform at any time, with or without notice, for any reason including violation of these Terms, suspicious activity, or legal requirements. Upon termination, your staked assets will remain locked for the full 90-day period, and you will continue to receive rewards during this time. You may discontinue using the Platform at any time, but your staked assets must remain locked until the end of the staking period."
+      "content": "We reserve the right to terminate or suspend your access to the Platform at any time, with or without notice, for any reason including violation of these Terms, suspicious activity, or legal requirements. Upon termination, your staked assets will remain locked for the full 1-year period, and you will continue to receive rewards during this time. You may discontinue using the Platform at any time, but your staked assets must remain locked until the end of the staking period."
     },
     "modifications": {
       "title": "10. Modifications to Terms",

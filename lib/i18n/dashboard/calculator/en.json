@@ -1,7 +1,6 @@
 {
   "title": "Reward Calculator",
   "stakeAmount": "Stake Amount",
-  "lockPeriod": "Lock Period (Days)",
   "dailyReward": "Daily Reward",
   "totalRewards": "Total Rewards",
   "apy": "APY",

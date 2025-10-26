@@ -1,7 +1,6 @@
 {
   "title": "Belohnungsrechner",
   "stakeAmount": "Stake-Betrag",
-  "lockPeriod": "Sperrzeit (Tage)",
   "dailyReward": "Tägliche Belohnung",
   "totalRewards": "Gesamtbelohnungen",
   "apy": "APY",

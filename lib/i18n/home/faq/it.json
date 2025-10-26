@@ -27,10 +27,6 @@
       "question": "Come vengono calcolate le ricompense giornaliere?",
       "answer": "Le ricompense giornaliere si basano sulla performance reale del bot MEV e tipicamente mirano all'1% al giorno. Le ricompense sono calcolate dai profitti generati dalle nostre operazioni MEV e distribuite proporzionalmente a tutti gli staker. I rendimenti effettivi possono variare in base alle condizioni di mercato e alle opportunità MEV."
     },
-    "lockPeriod": {
-      "question": "Perché c'è un periodo di blocco di 90 giorni?",
-      "answer": "Il periodo di blocco di 90 giorni garantisce un'ottima cattura MEV fornendo ai nostri bot liquidità stabile per operazioni più grandi e profittevoli. Questo periodo di blocco ci consente di eseguire strategie complesse di arbitraggio e mantenere vantaggi competitivi nell'estrazione MEV."
-    },
     "securityMeasures": {
       "question": "Quanto sono sicuri i miei fondi?",
       "answer": "Implementiamo misure di sicurezza di livello istituzionale inclusi portafogli multi-firma, audit di sicurezza regolari e archiviazione separata dei fondi. I nostri smart contract sono auditati da leading società di sicurezza e manteniamo un'assicurazione completa per gli asset in staking."

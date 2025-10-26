@@ -27,10 +27,6 @@
       "question": "¿Cómo se calculan las recompensas diarias?",
       "answer": "Las recompensas diarias se basan en el rendimiento real del bot MEV y típicamente apuntan al 1% por día. Las recompensas se calculan desde las ganancias generadas por nuestras operaciones MEV y se distribuyen proporcionalmente a todos los stakers. Los rendimientos reales pueden variar según las condiciones del mercado y las oportunidades MEV."
     },
-    "lockPeriod": {
-      "question": "¿Por qué hay un período de bloqueo de 90 días?",
-      "answer": "El período de bloqueo de 90 días garantiza una captura óptima de MEV al proporcionar a nuestros bots liquidez estable para operaciones más grandes y rentables. Este período de bloqueo nos permite ejecutar estrategias complejas de arbitraje y mantener ventajas competitivas en la extracción de MEV."
-    },
     "securityMeasures": {
       "question": "¿Qué tan seguros están mis fondos?",
       "answer": "Implementamos medidas de seguridad de grado institucional incluyendo billeteras de múltiples firmas, auditorías de seguridad regulares y almacenamiento segregado de fondos. Nuestros contratos inteligentes son auditados por empresas líderes de seguridad, y mantenemos cobertura de seguro integral para activos en staking."

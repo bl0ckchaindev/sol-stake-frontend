@@ -27,10 +27,6 @@
       "question": "Wie werden tägliche Belohnungen berechnet?",
       "answer": "Tägliche Belohnungen basieren auf der tatsächlichen MEV-Bot-Performance und zielen typischerweise auf 1% pro Tag ab. Die Belohnungen werden aus den Gewinnen berechnet, die durch unsere MEV-Operationen generiert werden, und proportional an alle Staker verteilt. Die tatsächlichen Renditen können je nach Marktbedingungen und MEV-Möglichkeiten variieren."
     },
-    "lockPeriod": {
-      "question": "Warum gibt es eine 90-Tage-Sperrfrist?",
-      "answer": "Die 90-Tage-Sperrfrist gewährleistet eine optimale MEV-Erfassung, indem sie unseren Bots stabile Liquidität für größere, profitablere Operationen bietet. Diese Sperrfrist ermöglicht es uns, komplexe Arbitrage-Strategien auszuführen und wettbewerbsfähige Vorteile bei der MEV-Extraktion zu behalten."
-    },
     "securityMeasures": {
       "question": "Wie sicher sind meine Mittel?",
       "answer": "Wir implementieren institutionelle Sicherheitsmaßnahmen einschließlich Multi-Signature-Wallets, regelmäßiger Sicherheitsprüfungen und getrennter Fondsaufbewahrung. Unsere Smart Contracts werden von führenden Sicherheitsfirmen geprüft, und wir unterhalten eine umfassende Versicherungsabdeckung für gestakte Vermögenswerte."

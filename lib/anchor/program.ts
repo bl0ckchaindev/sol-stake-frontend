@@ -239,11 +239,8 @@ export class MevStakingProgram {
       // Convert enum to the format expected by Anchor
       const lockPeriodVariant = (() => {
         switch (lockPeriod) {
-          case LockPeriod.OneMonth: return { oneMonth: {} }
-          case LockPeriod.ThreeMonths: return { threeMonths: {} }
-          case LockPeriod.SixMonths: return { sixMonths: {} }
           case LockPeriod.OneYear: return { oneYear: {} }
-          default: return { freeLock: {} }
+          default: return { oneYear: {} }
         }
       })()
 
@@ -528,7 +525,7 @@ export class MevStakingProgram {
   private getLockEndTime(userStake: UserStake, globalData?: GlobalData): Date {
     // This is simplified - you might need to track individual lock end times
     const lastClaimTime = userStake.lastClaimTime.toNumber() * 1000
-    const config = getLockPeriodConfig(LockPeriod.SixMonths, globalData)
+    const config = getLockPeriodConfig(LockPeriod.OneYear, globalData)
     const maxLockDuration = config.duration * 1000
     return new Date(lastClaimTime + maxLockDuration)
   }
@@ -560,16 +557,8 @@ export class MevStakingProgram {
 
   // Utility methods
   getLockPeriodFromTier(userStake: UserStake): LockPeriod {
-    // Determine primary lock period based on largest stake
-    const amounts = [
-      userStake.tier0Amount.toNumber(),
-      userStake.tier1Amount.toNumber(),
-      userStake.tier2Amount.toNumber(),
-      userStake.tier3Amount.toNumber(),
-    ]
-    
-    const maxIndex = amounts.indexOf(Math.max(...amounts))
-    return maxIndex as LockPeriod
+    // Only 1 year lock period is supported now
+    return LockPeriod.OneYear
   }
 
   formatAmount(amount: BN, decimals: number = 9): number {

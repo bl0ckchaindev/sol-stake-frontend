@@ -5,17 +5,16 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useWallet } from "@/context/wallet-provider"
 import { useAnchorStaking } from "@/context/anchor-staking-provider"
 import { useReferral } from "@/context/referral-provider"
 import { useTranslation } from "@/context/translation-context"
-import { SUPPORTED_TOKENS, LOCK_PERIOD_CONFIG, getLockPeriodConfig, LockPeriod, type SupportedToken, type PoolInfo } from "@/lib/anchor/types"
+import { getLockPeriodConfig, LockPeriod, type SupportedToken, type PoolInfo } from "@/lib/anchor/types"
 import { useState, useEffect } from "react"
 import { createPortal } from "react-dom"
 import { PublicKey } from "@solana/web3.js"
 import { BN } from "@coral-xyz/anchor"
-import { ArrowUpRight, ArrowDownLeft, Coins, Clock, TrendingUp, Loader2, RefreshCw } from "lucide-react"
+import { ArrowUpRight, ArrowDownLeft, Coins, Loader2, RefreshCw } from "lucide-react"
 import { WalletSelector } from "@/components/shared/wallet-selector"
 import { toast } from "sonner"
 
@@ -38,22 +37,22 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
   
   const [amount, setAmount] = useState("")
   const [withdrawAmount, setWithdrawAmount] = useState("")
-  const [lockPeriod, setLockPeriod] = useState<LockPeriod>(LockPeriod.ThreeMonths)
   const [isStaking, setIsStaking] = useState(false)
   const [isWithdrawing, setIsWithdrawing] = useState(false)
   const [isClaiming, setIsClaiming] = useState(false)
   const [isCompounding, setIsCompounding] = useState(false)
   const [showWalletSelector, setShowWalletSelector] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [showTermsModal, setShowTermsModal] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Calculate APY based on lock period
+  // Calculate APY (using 1 year lock period)
   const getAPY = () => {
     if (!userStake) {
-      const config = getLockPeriodConfig(lockPeriod, globalData || undefined)
+      const config = getLockPeriodConfig(LockPeriod.OneYear, globalData || undefined)
       return config.multiplier * 10 // Base 10% APY
     }
     return userStake.apy
@@ -72,12 +71,6 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
     return null
   }
 
-  // Calculate daily reward percentage for each lock period
-  const getDailyRewardPercentage = (period: LockPeriod) => {
-    const config = getLockPeriodConfig(period, globalData || undefined)
-    const baseDailyRate = 1 // 0.027 // Base 10% APY / 365 days ≈ 0.027% daily
-    return (baseDailyRate * config.multiplier).toFixed(1)
-  }
 
   // Calculate withdrawable balance (only FreeLock tier)
   const getWithdrawableBalance = () => {
@@ -85,36 +78,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
     return formatAmount(userStake.userStake.tier0Amount, tokenInfo.decimals)
   }
 
-  // Calculate lock period progress
-  const getLockProgress = () => {
-    if (!userStake) return 0
-    
-    // For simplicity, assume all locked amounts have the same lock period
-    // You might need to track individual lock periods per tier
-    const currentTime = Math.floor(Date.now() / 1000)
-    const stakeTime = userStake.userStake.lastClaimTime.toNumber()
-    const lockDuration = LOCK_PERIOD_CONFIG[LockPeriod.SixMonths].duration // Max lock duration
-    
-    const elapsed = currentTime - stakeTime
-    const progress = Math.min(elapsed / lockDuration, 1)
-    return progress * 100
-  }
 
-  // Get current lock period from user stake
-  const getCurrentLockPeriod = () => {
-    if (!userStake) return LockPeriod.ThreeMonths
-    
-    // Determine primary lock period based on largest stake
-    const amounts = [
-      userStake.userStake.tier0Amount.toNumber(),
-      userStake.userStake.tier1Amount.toNumber(),
-      userStake.userStake.tier2Amount.toNumber(),
-      userStake.userStake.tier3Amount.toNumber()
-    ]
-    
-    const maxIndex = amounts.indexOf(Math.max(...amounts))
-    return maxIndex as LockPeriod
-  }
 
   // Format number with commas and appropriate suffixes
   const formatNumber = (num: number) => {
@@ -179,7 +143,7 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
         }
       }
       
-      await stakeTokens(tokenSymbol, stakeAmount, lockPeriod, referralAddress)
+      await stakeTokens(tokenSymbol, stakeAmount, LockPeriod.OneYear, referralAddress)
       
       setAmount("")
       // Success notification is handled by the staking provider
@@ -241,12 +205,11 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
     try {
       // Compound by staking the pending rewards
       const compoundAmount = userStake?.pendingRewards
-      const currentLockPeriod = getCurrentLockPeriod()
       
       const signature = await stakeTokens(
         tokenSymbol,
         compoundAmount,
-        currentLockPeriod
+        LockPeriod.OneYear
       )
       
       if (signature) {
@@ -339,31 +302,9 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor={`lock-${tokenSymbol}`}>{t('dashboard.staking.lockPeriod')}</Label>
-            <Select value={lockPeriod.toString()} onValueChange={(value) => setLockPeriod(parseInt(value) as LockPeriod)}>
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(LOCK_PERIOD_CONFIG).map(([period, config]) => (
-                  <SelectItem key={period} value={period}>
-                    <div className="flex items-center gap-2">
-                      <span>{config.emoji}</span>
-                      <span>{config.name}</span>
-                      <Badge variant="outline" className="ml-auto">
-                        {getDailyRewardPercentage(parseInt(period) as LockPeriod)}% {t('dashboard.staking.daily')}
-                      </Badge>
-                    </div>
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
 
           <Button
-            onClick={!connected ? () => setShowWalletSelector(true) : handleStake}
+            onClick={!connected ? () => setShowWalletSelector(true) : () => setShowTermsModal(true)}
             disabled={connected && (isStaking || !amount || parseFloat(amount) <= 0)}
             className="w-full btn-gradient-primary hover:gradient-hover transition-all duration-300 hover:scale-elevate"
           >
@@ -379,24 +320,6 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
         {/* Withdrawal Form - Only show if user has stakes */}
         {userStake && (
           <div className="space-y-4 pt-4 border-t">
-            {/* Progress Bar for Lock Period */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Label className="text-sm">{t('dashboard.staking.lockProgress')}</Label>
-                <span className="text-xs text-muted-foreground">
-                  {getLockProgress().toFixed(1)}% {t('dashboard.staking.complete')}
-                </span>
-              </div>
-              <div className="w-full bg-muted rounded-full h-2">
-                <div 
-                  className="bg-primary h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${getLockProgress()}%` }}
-                />
-              </div>
-              <p className="text-xs text-muted-foreground">
-                {LOCK_PERIOD_CONFIG[getCurrentLockPeriod()].name} - {getDailyRewardPercentage(getCurrentLockPeriod())}% {t('dashboard.staking.daily')}
-              </p>
-            </div>
 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
@@ -480,6 +403,57 @@ export function StakingCard({ tokenSymbol, tokenInfo, poolInfo, userStake, userB
           </div>
         )}
       </CardContent>
+
+      {/* Terms Confirmation Modal */}
+      {showTermsModal && mounted && createPortal(
+        <div 
+          className="fixed inset-0 bg-black/50 z-[9999] flex items-center justify-center"
+          onClick={() => setShowTermsModal(false)}
+        >
+          <div 
+            className="relative max-w-md w-full max-h-[90vh] overflow-y-auto m-4 bg-background rounded-lg border shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold">Terms of Service</h3>
+                <button
+                  onClick={() => setShowTermsModal(false)}
+                  className="w-8 h-8 bg-muted border rounded-full flex items-center justify-center hover:bg-muted/80 text-lg font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="mb-6">
+                <p className="text-sm text-muted-foreground">
+                  By proceeding, you agree to our <a href="/terms" target="_blank" className="text-primary hover:underline">Terms of Service</a>.
+                </p>
+              </div>
+              
+              <div className="flex gap-3">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowTermsModal(false)}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={() => {
+                    setShowTermsModal(false)
+                    handleStake()
+                  }}
+                  className="flex-1 btn-gradient-primary hover:gradient-hover"
+                >
+                  Proceed & Stake
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>, 
+        document.body
+      )}
 
       {showWalletSelector && mounted && createPortal(
         <div 

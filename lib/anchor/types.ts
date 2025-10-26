@@ -18,31 +18,10 @@ export const USER_AUTHORITY_SEED = "user-authority"
 // ============================================================================
 
 export enum LockPeriod {
-  OneMonth = 0,
-  ThreeMonths = 1,
-  SixMonths = 2,
   OneYear = 3,
 }
 
 export const LOCK_PERIOD_CONFIG = {
-  [LockPeriod.OneMonth]: {
-    name: "1 Month", 
-    duration: 30 * 24 * 60 * 60,
-    description: "30 days lock period",
-    emoji: "🗓️"
-  },
-  [LockPeriod.ThreeMonths]: {
-    name: "3 Months",
-    duration: 90 * 24 * 60 * 60,
-    description: "90 days lock period",
-    emoji: "🔒"
-  },
-  [LockPeriod.SixMonths]: {
-    name: "6 Months",
-    duration: 180 * 24 * 60 * 60,
-    description: "180 days lock period",
-    emoji: "🔐"
-  },
   [LockPeriod.OneYear]: {
     name: "1 Year",
     duration: 365 * 24 * 60 * 60,
@@ -58,9 +37,6 @@ export const getLockPeriodConfig = (lockPeriod: LockPeriod, globalData?: GlobalD
   if (!globalData) {
     // Fallback multipliers if no global data
     const fallbackMultipliers = {
-      [LockPeriod.OneMonth]: 0.6,
-      [LockPeriod.ThreeMonths]: 1.0,
-      [LockPeriod.SixMonths]: 1.2,
       [LockPeriod.OneYear]: 1.5
     }
     return {
@@ -69,15 +45,8 @@ export const getLockPeriodConfig = (lockPeriod: LockPeriod, globalData?: GlobalD
     }
   }
   
-  // Calculate multiplier from global data tier rewards
-  const tierRewards = [
-    globalData.tier0Reward,
-    globalData.tier1Reward,
-    globalData.tier2Reward,
-    globalData.tier3Reward,
-  ]
-  
-  const multiplier = tierRewards[lockPeriod] / 100
+  // Calculate multiplier from global data tier rewards (only 1 year)
+  const multiplier = globalData.tier3Reward / 100
   
   return {
     ...baseConfig,
@@ -95,10 +64,10 @@ export interface GlobalData {
   nextPoolId: number
   poolCount: number
   pools: PublicKey[]
-  tier0Reward: number  // 1 Month
-  tier1Reward: number  // 3 Months
-  tier2Reward: number  // 6 Months
-  tier3Reward: number  // 12 Months
+  tier0Reward: number  // Unused (legacy)
+  tier1Reward: number  // Unused (legacy)
+  tier2Reward: number  // Unused (legacy)
+  tier3Reward: number  // 1 Year (active)
 }
 
 export interface PoolInfo {
@@ -116,14 +85,14 @@ export interface PoolInfo {
 export interface UserStake {
   user: PublicKey
   poolId: number
-  tier0Amount: BN  // 1 Month amount
-  tier1Amount: BN  // 3 Months amount
-  tier2Amount: BN  // 6 Months amount
-  tier3Amount: BN  // 12 Months amount
-  tier0WithdrawableTime: BN
-  tier1WithdrawableTime: BN
-  tier2WithdrawableTime: BN
-  tier3WithdrawableTime: BN
+  tier0Amount: BN  // Unused (legacy)
+  tier1Amount: BN  // Unused (legacy)
+  tier2Amount: BN  // Unused (legacy)
+  tier3Amount: BN  // 1 Year amount (active)
+  tier0WithdrawableTime: BN  // Unused (legacy)
+  tier1WithdrawableTime: BN  // Unused (legacy)
+  tier2WithdrawableTime: BN  // Unused (legacy)
+  tier3WithdrawableTime: BN  // 1 Year withdrawable time (active)
   lastClaimTime: BN
   totalClaimed: BN
   totalStaked: BN

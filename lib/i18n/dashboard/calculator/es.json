@@ -1,7 +1,6 @@
 {
   "title": "Calculadora de Recompensas",
   "stakeAmount": "Cantidad a Stakear",
-  "lockPeriod": "Período de Bloqueo (Días)",
   "dailyReward": "Recompensa Diaria",
   "totalRewards": "Recompensas Totales",
   "apy": "APY",
