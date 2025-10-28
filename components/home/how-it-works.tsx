@@ -145,7 +145,7 @@ export function HowItWorks() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <div className="text-center">
-                <div className="text-3xl font-bold text-foreground">10%</div>
+                <div className="text-3xl font-bold text-foreground">1%</div>
                 <div className="text-sm text-muted-foreground">{t('home.howitworks.cta.dailyReturns')}</div>
               </div>
               <div className="text-center">
